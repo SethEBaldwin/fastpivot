@@ -85,15 +85,11 @@ def pivot(df, index, column, value):
     Returns a pandas dataframe
     """
     tick = time.perf_counter()
-    idx_arr_unique = df[index].unique()
-    col_arr_unique = df[column].unique()
+    idx_arr, idx_arr_unique = df[index].astype("category").factorize()
+    col_arr, col_arr_unique = df[column].astype("category").factorize()
+    print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
-    print(1.1, time.perf_counter() - tick)
-    tick = time.perf_counter()
-    idx_arr = enumerate2(df[index].to_numpy(), idx_arr_unique)
-    col_arr = enumerate2(df[column].to_numpy(), col_arr_unique)
-    print(1.2, time.perf_counter() - tick)
     tick = time.perf_counter()
     pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
     print(2, time.perf_counter() - tick)
