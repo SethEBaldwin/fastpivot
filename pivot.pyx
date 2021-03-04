@@ -85,8 +85,8 @@ def pivot(df, index, column, value):
     Returns a pandas dataframe
     """
     tick = time.perf_counter()
-    idx_arr, idx_arr_unique = df[index].astype("category").factorize()
-    col_arr, col_arr_unique = df[column].astype("category").factorize()
+    idx_arr, idx_arr_unique = df[index].factorize()
+    col_arr, col_arr_unique = df[column].factorize()
     print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
