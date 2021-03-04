@@ -54,6 +54,25 @@ def enumerate(arr):
             count += 1            
     return return_arr
 
+def enumerate2(arr, unique_arr):
+    # takes 1d np array of strings 1d array of unique strings from arr.
+    # returns an array of ints, where 0 corresponds to first unique element of arr, 1 the second, etc.
+    cdef cmap[string, int] enumeration_map
+    cdef cpair[string, int] map_pair
+    cdef string value
+    cdef int n = arr.shape[0]
+    cdef int m = unique_arr.shape[0]
+    cdef long[:] return_arr = np.empty(n, dtype=np.int)
+    cdef int i, j
+    for j in range(m):
+        value = unique_arr[j]
+        map_pair = (value, j)
+        enumeration_map.insert(map_pair)
+    for i in range(n):
+        value = arr[i]
+        return_arr[i] = enumeration_map[value]
+    return return_arr
+
 def pivot(df, index, column, value):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
@@ -72,8 +91,8 @@ def pivot(df, index, column, value):
     n_col = col_arr_unique.shape[0]
     print(1.1, time.perf_counter() - tick)
     tick = time.perf_counter()
-    idx_arr = enumerate(df[index].to_numpy())
-    col_arr = enumerate(df[column].to_numpy())
+    idx_arr = enumerate2(df[index].to_numpy(), idx_arr_unique)
+    col_arr = enumerate2(df[column].to_numpy(), col_arr_unique)
     print(1.2, time.perf_counter() - tick)
     tick = time.perf_counter()
     pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
