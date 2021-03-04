@@ -47,13 +47,13 @@ def pivot(df, index, column, value):
     col_list = list(df[column].unique())
     idx_dict = {idx_list[i]:i for i in range(len(idx_list))}
     col_dict = {col_list[i]:i for i in range(len(col_list))}
-    idx = dict_to_cmap(idx_dict)
-    col = dict_to_cmap(col_dict)
-    idx_arr = array_to_vector(df[index].to_numpy())
-    col_arr = array_to_vector(df[column].to_numpy())
-    print(1, time.perf_counter() - tick)
+    print(1.1, time.perf_counter() - tick)
     tick = time.perf_counter()
-    pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), idx, col)
+    idx_arr = df[index].map(idx_dict).to_numpy()
+    col_arr = df[column].map(col_dict).to_numpy()
+    print(1.2, time.perf_counter() - tick)
+    tick = time.perf_counter()
+    pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), len(idx_list), len(col_list))
     print(2, time.perf_counter() - tick)
     tick = time.perf_counter()
     arr = np.array(pivot_arr)
@@ -61,15 +61,13 @@ def pivot(df, index, column, value):
     print(3, time.perf_counter() - tick)
     return pivot_df
 
-cdef double[:, :] pivot_cython(vector[string] idx_arr, vector[string] col_arr, double[:] value_arr, cmap[string, int] idx, cmap[string, int] col):
-    cdef int N = idx.size()
-    cdef int M = col.size()
+cdef double[:, :] pivot_cython(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
     cdef int i, j, k
     cdef double value
-    for k in range(idx_arr.size()):
-        i = idx[idx_arr[k]]
-        j = col[col_arr[k]]
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
         value = value_arr[k]
         pivot_arr[i, j] += value
     return pivot_arr
