@@ -6,6 +6,7 @@ from libcpp.pair cimport pair as cpair
 from libcpp.vector cimport vector
 import pandas as pd
 import numpy as np
+import time
 
 cdef cmap[string, int] dict_to_cmap(dict the_dict):
     # the_dict is a dictionary mapping strings to ints
@@ -41,6 +42,7 @@ def pivot(df, index, column, value):
     value: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
     Returns a pandas dataframe
     """
+    tick = time.perf_counter()
     idx_list = list(df[index].unique())
     col_list = list(df[column].unique())
     idx_dict = {idx_list[i]:i for i in range(len(idx_list))}
@@ -49,18 +51,21 @@ def pivot(df, index, column, value):
     col = dict_to_cmap(col_dict)
     idx_arr = array_to_vector(df[index].to_numpy())
     col_arr = array_to_vector(df[column].to_numpy())
+    print(1, time.perf_counter() - tick)
+    tick = time.perf_counter()
     pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), idx, col)
+    print(2, time.perf_counter() - tick)
+    tick = time.perf_counter()
     arr = np.array(pivot_arr)
     pivot_df = pd.DataFrame(arr, index=idx_list, columns=col_list)
+    print(3, time.perf_counter() - tick)
     return pivot_df
 
 cdef double[:, :] pivot_cython(vector[string] idx_arr, vector[string] col_arr, double[:] value_arr, cmap[string, int] idx, cmap[string, int] col):
     cdef int N = idx.size()
     cdef int M = col.size()
     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
-    cdef int i
-    cdef int j
-    cdef int k
+    cdef int i, j, k
     cdef double value
     for k in range(idx_arr.size()):
         i = idx[idx_arr[k]]
