@@ -4,6 +4,7 @@ from libcpp.string cimport string
 from libcpp.map cimport map as cmap
 from libcpp.pair cimport pair as cpair
 from libcpp.vector cimport vector
+from libcpp.set cimport set as cset
 import pandas as pd
 import numpy as np
 import time
@@ -31,6 +32,28 @@ def array_to_vector(arr):
         my_vector.push_back(element)
     return my_vector
 
+def enumerate(arr):
+    # takes 1d np array of strings and returns an array of ints, where 0 corresponds to first unique element of arr, 1 the second, etc.
+    cdef cmap[string, int] enumeration_map
+    cdef cpair[string, int] map_pair
+    cdef string value
+    cdef int is_old
+    cdef long count = 0
+    cdef int n = arr.shape[0]
+    cdef long[:] return_arr = np.empty(n, dtype=np.int)
+    cdef int i
+    for i in range(n):
+        value = arr[i]
+        is_old = enumeration_map.count(value)
+        if is_old:
+            return_arr[i] = enumeration_map[value]
+        else:
+            return_arr[i] = count
+            map_pair = (value, count)
+            enumeration_map.insert(map_pair)
+            count += 1            
+    return return_arr
+
 def pivot(df, index, column, value):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
@@ -43,21 +66,21 @@ def pivot(df, index, column, value):
     Returns a pandas dataframe
     """
     tick = time.perf_counter()
-    idx_list = list(df[index].unique())
-    col_list = list(df[column].unique())
-    idx_dict = {idx_list[i]:i for i in range(len(idx_list))}
-    col_dict = {col_list[i]:i for i in range(len(col_list))}
+    idx_arr_unique = df[index].unique()
+    col_arr_unique = df[column].unique()
+    n_idx = idx_arr_unique.shape[0]
+    n_col = col_arr_unique.shape[0]
     print(1.1, time.perf_counter() - tick)
     tick = time.perf_counter()
-    idx_arr = df[index].map(idx_dict).to_numpy()
-    col_arr = df[column].map(col_dict).to_numpy()
+    idx_arr = enumerate(df[index].to_numpy())
+    col_arr = enumerate(df[column].to_numpy())
     print(1.2, time.perf_counter() - tick)
     tick = time.perf_counter()
-    pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), len(idx_list), len(col_list))
+    pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
     print(2, time.perf_counter() - tick)
     tick = time.perf_counter()
     arr = np.array(pivot_arr)
-    pivot_df = pd.DataFrame(arr, index=idx_list, columns=col_list)
+    pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
     print(3, time.perf_counter() - tick)
     return pivot_df
 
