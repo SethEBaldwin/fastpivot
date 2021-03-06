@@ -5,9 +5,12 @@ from libcpp.map cimport map as cmap
 from libcpp.pair cimport pair as cpair
 from libcpp.vector cimport vector
 from libcpp.set cimport set as cset
+from cython.operator import dereference, postincrement
 import pandas as pd
 import numpy as np
 import time
+
+ctypedef double (*f_vec_to_double)(vector[double])
 
 # cdef cmap[string, int] dict_to_cmap(dict the_dict):
 #     # the_dict is a dictionary mapping strings to ints
@@ -73,14 +76,14 @@ import time
 #         return_arr[i] = enumeration_map[value]
 #     return return_arr
 
-def pivot(df, index, column, value):
+def pivot(df, index, column, value, agg='sum'):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    Aggregates by sum.
+    Aggregates by sum, fills by 0.0
     Arguments:
     df: pandas dataframe
-    index: string, name of column that you want to become the index. values must be of type string.
-    column: string, name of column that contains as values the columns of the pivot table. values must be of type string.
+    index: string, name of column that you want to become the index. 
+    column: string, name of column that contains as values the columns of the pivot table. 
     value: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
     Returns a pandas dataframe
     """
@@ -91,7 +94,14 @@ def pivot(df, index, column, value):
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
     #tick = time.perf_counter()
-    pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
+    if agg == 'orig':
+        pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
+    else:
+        if agg == 'sum':
+            aggfunc = vec_sum
+        if agg == 'mean':
+            aggfunc = vec_mean
+        pivot_arr = pivot_cython_agg(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col, aggfunc)
     #print(2, time.perf_counter() - tick)
     #tick = time.perf_counter()
     arr = np.array(pivot_arr)
@@ -109,3 +119,47 @@ cdef double[:, :] pivot_cython(long[:] idx_arr, long[:] col_arr, double[:] value
         value = value_arr[k]
         pivot_arr[i, j] += value
     return pivot_arr
+
+cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, f_vec_to_double aggfunc):
+    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+    cdef cpair[int, int] coords
+    cdef cmap[cpair[int, int], vector[double]] pivot_map
+    cdef int i, j, k
+    cdef double value
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        value = value_arr[k]
+        coords = (i, j)
+        if pivot_map.count(coords):
+            pivot_map[coords].push_back(value)
+        else:
+            pivot_map[coords] = [value]
+
+    cdef cmap[cpair[int, int], vector[double]].iterator it = pivot_map.begin()
+    while it != pivot_map.end():
+        coords = dereference(it).first # key
+        i = coords.first
+        j = coords.second
+        values = dereference(it).second # value
+        pivot_arr[i, j] = aggfunc(values)
+        postincrement(it)
+    return pivot_arr
+
+cdef double vec_sum(vector[double] vec):
+    cdef double result = 0
+    cdef int i
+    for i in range(vec.size()):
+        result += vec[i]
+    return result
+
+cdef double vec_mean(vector[double] vec):
+    cdef double result = 0
+    cdef double divisor
+    cdef int i
+    for i in range(vec.size()):
+        result += vec[i]
+    if vec.size() != 0:
+        divisor = vec.size()
+        result = result / divisor
+    return result
