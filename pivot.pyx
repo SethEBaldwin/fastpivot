@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import time
 
-ctypedef double (*f_vec_to_double)(vector[double])
+# ctypedef double (*f_vec_to_double)(vector[double])
 
 # cdef cmap[string, int] dict_to_cmap(dict the_dict):
 #     # the_dict is a dictionary mapping strings to ints
@@ -79,14 +79,16 @@ ctypedef double (*f_vec_to_double)(vector[double])
 def pivot(df, index, column, value, agg='sum'):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    Aggregates by sum, fills by 0.0
+    Fills by 0.0, currently aggregates by either sum or mean.
     Arguments:
     df: pandas dataframe
     index: string, name of column that you want to become the index. 
     column: string, name of column that contains as values the columns of the pivot table. 
     value: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
+    agg: string, name of aggregation function. must be 'sum' or 'mean'.
     Returns a pandas dataframe
     """
+    assert agg in ['sum', 'mean']
     #tick = time.perf_counter()
     idx_arr, idx_arr_unique = df[index].factorize(sort=True)
     col_arr, col_arr_unique = df[column].factorize(sort=True)
@@ -94,14 +96,10 @@ def pivot(df, index, column, value, agg='sum'):
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
     #tick = time.perf_counter()
-    if agg == 'orig':
-        pivot_arr = pivot_cython(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
-    else:
-        if agg == 'sum':
-            aggfunc = vec_sum
-        if agg == 'mean':
-            aggfunc = vec_mean
-        pivot_arr = pivot_cython_agg(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col, aggfunc)
+    if agg == 'sum':
+        pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
+    elif agg == 'mean':
+        pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
     #print(2, time.perf_counter() - tick)
     #tick = time.perf_counter()
     arr = np.array(pivot_arr)
@@ -109,7 +107,7 @@ def pivot(df, index, column, value, agg='sum'):
     #print(3, time.perf_counter() - tick)
     return pivot_df
 
-cdef double[:, :] pivot_cython(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
     cdef int i, j, k
     cdef double value
@@ -120,46 +118,67 @@ cdef double[:, :] pivot_cython(long[:] idx_arr, long[:] col_arr, double[:] value
         pivot_arr[i, j] += value
     return pivot_arr
 
-cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, f_vec_to_double aggfunc):
+cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
-    cdef cpair[int, int] coords
-    cdef cmap[cpair[int, int], vector[double]] pivot_map
+    cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
     cdef int i, j, k
     cdef double value
+    cdef double divisor
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        coords = (i, j)
-        if pivot_map.count(coords):
-            pivot_map[coords].push_back(value)
-        else:
-            pivot_map[coords] = [value]
-
-    cdef cmap[cpair[int, int], vector[double]].iterator it = pivot_map.begin()
-    while it != pivot_map.end():
-        coords = dereference(it).first # key
-        i = coords.first
-        j = coords.second
-        values = dereference(it).second # value
-        pivot_arr[i, j] = aggfunc(values)
-        postincrement(it)
+        pivot_arr[i, j] += value
+        pivot_counts_arr[i, j] += 1.0
+        # print(i, j, value)
+    for i in range(N):
+        for j in range(M):
+            divisor = pivot_counts_arr[i, j]
+            if divisor != 0.0:
+                pivot_arr[i, j] /= divisor
+            # print(i, j, divisor)
     return pivot_arr
 
-cdef double vec_sum(vector[double] vec):
-    cdef double result = 0
-    cdef int i
-    for i in range(vec.size()):
-        result += vec[i]
-    return result
+# cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, f_vec_to_double aggfunc):
+#     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+#     cdef cpair[int, int] coords
+#     cdef cmap[cpair[int, int], vector[double]] pivot_map
+#     cdef int i, j, k
+#     cdef double value
+#     for k in range(idx_arr.shape[0]):
+#         i = idx_arr[k]
+#         j = col_arr[k]
+#         value = value_arr[k]
+#         coords = (i, j)
+#         if pivot_map.count(coords):
+#             pivot_map[coords].push_back(value)
+#         else:
+#             pivot_map[coords] = [value]
 
-cdef double vec_mean(vector[double] vec):
-    cdef double result = 0
-    cdef double divisor
-    cdef int i
-    for i in range(vec.size()):
-        result += vec[i]
-    if vec.size() != 0:
-        divisor = vec.size()
-        result = result / divisor
-    return result
+#     cdef cmap[cpair[int, int], vector[double]].iterator it = pivot_map.begin()
+#     while it != pivot_map.end():
+#         coords = dereference(it).first # key
+#         i = coords.first
+#         j = coords.second
+#         values = dereference(it).second # value
+#         pivot_arr[i, j] = aggfunc(values)
+#         postincrement(it)
+#     return pivot_arr
+
+# cdef double vec_sum(vector[double] vec):
+#     cdef double result = 0
+#     cdef int i
+#     for i in range(vec.size()):
+#         result += vec[i]
+#     return result
+
+# cdef double vec_mean(vector[double] vec):
+#     cdef double result = 0
+#     cdef double divisor
+#     cdef int i
+#     for i in range(vec.size()):
+#         result += vec[i]
+#     if vec.size() != 0:
+#         divisor = vec.size()
+#         result = result / divisor
+#     return result
