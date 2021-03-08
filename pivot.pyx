@@ -77,7 +77,6 @@ import time
 #         return_arr[i] = enumeration_map[value]
 #     return return_arr
 
-# TODO: general multi index
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
 def pivot(df, index, columns, values, agg='mean'):
     """
@@ -92,10 +91,22 @@ def pivot(df, index, columns, values, agg='mean'):
     Returns a pandas dataframe
     """
     assert agg in ['sum', 'mean']
-    #tick = time.perf_counter()
-    idx_arr, idx_arr_unique = df[index].factorize(sort=True)
+    tick = time.perf_counter()
+    if isinstance(index, str):
+        tick1 = time.perf_counter()
+        idx_arr, idx_arr_unique = df[index].factorize(sort=True)
+        print('factorize idx', time.perf_counter() - tick1)
+    else:
+        tick1 = time.perf_counter()
+        index_series = pd.Series([tuple(x) for x in df[index].to_numpy()])
+        print('tuple conversion idx', time.perf_counter() - tick1)
+        tick1 = time.perf_counter()
+        idx_arr, idx_arr_unique = index_series.factorize(sort=True)
+        print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
+        tick1 = time.perf_counter()
         col_arr, col_arr_unique = df[columns].factorize(sort=True)
+        print('tuple conversion col', time.perf_counter() - tick1)
     #elif len(columns) == 2 and isinstance(df.loc[0, columns[0]], str) and isinstance(df.loc[0, columns[1]], str):
     #    tick = time.perf_counter()
     #    columns_pairs_series = pd.Series(to_pairs(df[columns].to_numpy()))
@@ -105,27 +116,29 @@ def pivot(df, index, columns, values, agg='mean'):
         tick1 = time.perf_counter()
         #columns_series = df[columns].apply(lambda x: tuple(x), axis=1)
         columns_series = pd.Series([tuple(x) for x in df[columns].to_numpy()])
-        print('tuple conversion', time.perf_counter() - tick1)
+        print('tuple conversion col', time.perf_counter() - tick1)
+        tick1 = time.perf_counter()
         col_arr, col_arr_unique = columns_series.factorize(sort=True)
+        print('factorize col', time.perf_counter() - tick)
         #return df.pivot_table(index=index, columns=columns, values=values, fill_value=0.0, aggfunc=agg)
-    #print(1, time.perf_counter() - tick)
+    print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
-    #tick = time.perf_counter()
+    tick = time.perf_counter()
     if agg == 'sum':
         pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     elif agg == 'mean':
         pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    #print(2, time.perf_counter() - tick)
+    print(2, time.perf_counter() - tick)
     #tick = time.perf_counter()
     arr = np.array(pivot_arr)
-    if isinstance(columns, str):
-        pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
-        pivot_df.columns.rename(columns, inplace=True)
-    else:
-        col_arr_unique_multi = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
-        pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique_multi)
+    if not isinstance(index, str):
+        idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
+    if not isinstance(columns, str):
+        col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
+    pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
     pivot_df.index.rename(index, inplace=True)
+    pivot_df.columns.rename(columns, inplace=True)
     #print(3, time.perf_counter() - tick)
     return pivot_df
 
