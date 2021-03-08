@@ -8,6 +8,7 @@ from libcpp.set cimport set as cset
 from cython.operator import dereference, postincrement
 import pandas as pd
 import numpy as np
+cimport numpy as np
 import time
 
 # ctypedef double (*f_vec_to_double)(vector[double])
@@ -76,36 +77,66 @@ import time
 #         return_arr[i] = enumeration_map[value]
 #     return return_arr
 
-def pivot(df, index, column, value, agg='sum'):
+# TODO: general multi index / multi columns
+def pivot(df, index, columns, values, agg='mean'):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
     Fills by 0.0, currently aggregates by either sum or mean.
     Arguments:
     df: pandas dataframe
     index: string, name of column that you want to become the index. 
-    column: string, name of column that contains as values the columns of the pivot table. 
-    value: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
+    columns: string or list, name(s) of column that contains as values the columns of the pivot table. 
+        currently only fast if columns is a string or a list of two strings.
+    values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
     agg: string, name of aggregation function. must be 'sum' or 'mean'.
     Returns a pandas dataframe
     """
     assert agg in ['sum', 'mean']
-    #tick = time.perf_counter()
+    tick = time.perf_counter()
     idx_arr, idx_arr_unique = df[index].factorize(sort=True)
-    col_arr, col_arr_unique = df[column].factorize(sort=True)
-    #print(1, time.perf_counter() - tick)
+    if isinstance(columns, str):
+        col_arr, col_arr_unique = df[columns].factorize(sort=True)
+    elif len(columns) == 2 and isinstance(columns[0], str) and isinstance(columns[1], str):
+        tick = time.perf_counter()
+        columns_pairs_arr = pd.Series(to_pairs(df[columns].to_numpy()))
+        print('to pairs', time.perf_counter() - tick)
+        col_arr, col_arr_unique = columns_pairs_arr.factorize(sort=True)
+    else:
+        """This is going to be slow, so just resort to pandas method. TODO: improve this"""
+        # tick = time.perf_counter()
+        # columns_series = df[columns].apply(lambda x: tuple(x), axis=1)
+        # print('apply', time.perf_counter() - tick)
+        # col_arr, col_arr_unique = columns_series.factorize(sort=True)
+        return df.pivot_table(index=index, columns=columns, values=values, fill_value=0.0, aggfunc=agg)
+    print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
     #tick = time.perf_counter()
     if agg == 'sum':
-        pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
+        pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     elif agg == 'mean':
-        pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[value].to_numpy(), n_idx, n_col)
+        pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     #print(2, time.perf_counter() - tick)
     #tick = time.perf_counter()
     arr = np.array(pivot_arr)
-    pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
+    if isinstance(columns, str):
+        pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
+        pivot_df.columns.rename(columns, inplace=True)
+    else:
+        col_arr_unique_multi = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
+        pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique_multi)
+    pivot_df.index.rename(index, inplace=True)
     #print(3, time.perf_counter() - tick)
     return pivot_df
+
+cdef vector[cpair[string, string]] to_pairs(np.ndarray arr):
+    cdef cpair[string, string] tup
+    cdef int i
+    cdef vector[cpair[string, string]] pairs
+    for i in range(arr.shape[0]):
+        tup = (arr[i, 0], arr[i, 1])
+        pairs.push_back(tup)
+    return pairs
 
 cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
