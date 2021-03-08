@@ -123,4 +123,13 @@ def test_multiple_columns():
     print(msg, time.perf_counter() - tick)
     # print(pivot_pandas)
 
-    assert True
+    # check results are equal
+
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+
+    assert is_equal
+    assert within_epsilon

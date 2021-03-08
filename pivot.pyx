@@ -77,7 +77,8 @@ import time
 #         return_arr[i] = enumeration_map[value]
 #     return return_arr
 
-# TODO: general multi index / multi columns
+# TODO: general multi index
+# TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
 def pivot(df, index, columns, values, agg='mean'):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
@@ -85,7 +86,7 @@ def pivot(df, index, columns, values, agg='mean'):
     Arguments:
     df: pandas dataframe
     index: string, name of column that you want to become the index. 
-    columns: string or list, name(s) of column that contains as values the columns of the pivot table. 
+    columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
     agg: string, name of aggregation function. must be 'sum' or 'mean'.
     Returns a pandas dataframe
@@ -104,7 +105,7 @@ def pivot(df, index, columns, values, agg='mean'):
         tick1 = time.perf_counter()
         #columns_series = df[columns].apply(lambda x: tuple(x), axis=1)
         columns_series = pd.Series([tuple(x) for x in df[columns].to_numpy()])
-        print('apply', time.perf_counter() - tick1)
+        print('tuple conversion', time.perf_counter() - tick1)
         col_arr, col_arr_unique = columns_series.factorize(sort=True)
         #return df.pivot_table(index=index, columns=columns, values=values, fill_value=0.0, aggfunc=agg)
     #print(1, time.perf_counter() - tick)
