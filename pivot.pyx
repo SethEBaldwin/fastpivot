@@ -86,7 +86,7 @@ def pivot(df, index, columns, values, agg='mean'):
     df: pandas dataframe
     index: string, name of column that you want to become the index. 
     columns: string or list, name(s) of column that contains as values the columns of the pivot table. 
-        currently only fast if columns is a string or a list of two strings.
+        currently only fast if columns is a string or a list of two strings that correspond to columns with dtype string.
     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
     agg: string, name of aggregation function. must be 'sum' or 'mean'.
     Returns a pandas dataframe
@@ -96,13 +96,14 @@ def pivot(df, index, columns, values, agg='mean'):
     idx_arr, idx_arr_unique = df[index].factorize(sort=True)
     if isinstance(columns, str):
         col_arr, col_arr_unique = df[columns].factorize(sort=True)
-    elif len(columns) == 2 and isinstance(columns[0], str) and isinstance(columns[1], str):
+    elif len(columns) == 2 and isinstance(df.loc[0, columns[0]], str) and isinstance(df.loc[0, columns[1]], str):
         tick = time.perf_counter()
         columns_pairs_arr = pd.Series(to_pairs(df[columns].to_numpy()))
         print('to pairs', time.perf_counter() - tick)
         col_arr, col_arr_unique = columns_pairs_arr.factorize(sort=True)
     else:
         """This is going to be slow, so just resort to pandas method. TODO: improve this"""
+        print('cannot provide speedup, resorting to calling pd.pivot_table')
         # tick = time.perf_counter()
         # columns_series = df[columns].apply(lambda x: tuple(x), axis=1)
         # print('apply', time.perf_counter() - tick)
