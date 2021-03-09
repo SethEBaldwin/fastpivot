@@ -173,3 +173,86 @@ def test_multiple_index():
 
     assert is_equal
     assert within_epsilon
+
+# def test_pivot_sum_agg():
+
+#     df = gen_df()
+
+#     # time
+
+#     msg = 'cython'
+#     tick = time.perf_counter()
+#     pivot_cython = pivot.pivot_agg(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, agg='sum')
+#     print(msg, time.perf_counter() - tick)
+#     print(pivot_cython)
+
+#     msg = 'pandas'
+#     tick = time.perf_counter()
+#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+#     print(msg, time.perf_counter() - tick)
+#     print(pivot_pandas)
+
+#     # check results are equal
+
+#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+#     print('componentwise equal: ', is_equal)
+#     epsilon = 1e-8
+#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+#     print('componentwise within {} :'.format(epsilon), within_epsilon)
+
+#     assert is_equal
+#     assert within_epsilon
+
+# def test_multiple_columns_agg():
+
+#     df = gen_df_multiple_columns()
+
+#     msg = 'cython'
+#     tick = time.perf_counter()
+#     pivot_cython = pivot.pivot_agg(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, agg='sum')
+#     print(msg, time.perf_counter() - tick)
+#     # print(pivot_cython)
+
+#     msg = 'pandas'
+#     tick = time.perf_counter()
+#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+#     print(msg, time.perf_counter() - tick)
+#     # print(pivot_pandas)
+
+#     # check results are equal
+
+#     epsilon = 1e-8
+#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+#     print('componentwise within {} :'.format(epsilon), within_epsilon)
+#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+#     print('componentwise equal: ', is_equal)
+
+#     assert is_equal
+#     assert within_epsilon
+
+# def test_multiple_index_agg():
+
+#     df = gen_df_multiple_index()
+
+#     msg = 'cython'
+#     tick = time.perf_counter()
+#     pivot_cython = pivot.pivot_agg(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, agg='sum')
+#     print(msg, time.perf_counter() - tick)
+#     # print(pivot_cython)
+
+#     msg = 'pandas'
+#     tick = time.perf_counter()
+#     pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+#     print(msg, time.perf_counter() - tick)
+#     # print(pivot_pandas)
+
+#     # check results are equal
+
+#     epsilon = 1e-8
+#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+#     print('componentwise within {} :'.format(epsilon), within_epsilon)
+#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+#     print('componentwise equal: ', is_equal)
+
+#     assert is_equal
+#     assert within_epsilon

@@ -226,3 +226,62 @@ cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] 
 #         divisor = vec.size()
 #         result = result / divisor
 #     return result
+
+# # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
+# def pivot_agg(df, index, columns, values, agg='mean'):
+#     """
+#     A very basic and limited, but hopefully fast implementation of pivot table.
+#     Fills by 0.0, currently aggregates by either sum or mean.
+#     Arguments:
+#     df: pandas dataframe
+#     index: string, name of column that you want to become the index. 
+#     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
+#     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
+#     agg: string, name of aggregation function. must be 'sum' or 'mean'.
+#     Returns a pandas dataframe
+#     """
+#     assert agg in ['sum', 'mean']
+#     tick = time.perf_counter()
+#     idx_dict = df.groupby(index).indices
+#     idx_list = sorted(idx_dict.keys())
+#     if isinstance(columns, str):
+#         tick1 = time.perf_counter()
+#         col_arr, col_arr_unique = df[columns].factorize(sort=True)
+#         print('tuple conversion col', time.perf_counter() - tick1)
+#     else:
+#         tick1 = time.perf_counter()
+#         columns_series = pd.Series([tuple(x) for x in df[columns].to_numpy()])
+#         print('tuple conversion col', time.perf_counter() - tick1)
+#         tick1 = time.perf_counter()
+#         col_arr, col_arr_unique = columns_series.factorize(sort=True)
+#         print('factorize col', time.perf_counter() - tick)
+#     print(1, time.perf_counter() - tick)
+#     n_idx = len(idx_list)
+#     n_col = col_arr_unique.shape[0]
+#     tick = time.perf_counter()
+#     if agg == 'sum':
+#         pivot_arr = pivot_cython_agg(idx_dict, idx_list, col_arr, df[values].to_numpy(), n_idx, n_col)
+#     print(2, time.perf_counter() - tick)
+#     #tick = time.perf_counter()
+#     arr = np.array(pivot_arr)
+#     idx_arr_unique = idx_list
+#     if not isinstance(index, str):
+#         idx_arr_unique = pd.MultiIndex.from_tuples(idx_list, names=index)
+#     if not isinstance(columns, str):
+#         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
+#     pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
+#     pivot_df.index.rename(index, inplace=True)
+#     pivot_df.columns.rename(columns, inplace=True)
+#     #print(3, time.perf_counter() - tick)
+#     return pivot_df
+
+# def pivot_cython_agg(idx_dict, idx_list, col_arr, value_arr, N, M):
+#     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+#     cdef int i, j, k
+#     cdef double value
+#     for i in range(N):
+#         idx_arr = idx_dict[idx_list[i]]
+#         for k in range(idx_arr.shape[0]):
+#             j = idx_arr[k]
+#             pivot_arr[i, col_arr[j]] += value_arr[j]
+#     return pivot_arr
