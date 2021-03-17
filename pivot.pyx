@@ -25,38 +25,38 @@ def pivot(df, index, columns, values, agg='mean'):
     Returns a pandas dataframe
     """
     assert agg in ['sum', 'mean']
-    tick = time.perf_counter()
+    #tick = time.perf_counter()
     if isinstance(index, str):
-        tick1 = time.perf_counter()
+        #tick1 = time.perf_counter()
         idx_arr, idx_arr_unique = df[index].factorize(sort=True)
-        print('factorize idx', time.perf_counter() - tick1)
+        #print('factorize idx', time.perf_counter() - tick1)
     else:
-        tick1 = time.perf_counter()
+        #tick1 = time.perf_counter()
         index_series = pd.Series([tuple(x) for x in df[index].to_numpy()])
-        print('tuple conversion idx', time.perf_counter() - tick1)
-        tick1 = time.perf_counter()
+        #print('tuple conversion idx', time.perf_counter() - tick1)
+        #tick1 = time.perf_counter()
         idx_arr, idx_arr_unique = index_series.factorize(sort=True)
-        print('factorize idx', time.perf_counter() - tick1)
+        #print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
-        tick1 = time.perf_counter()
+        #tick1 = time.perf_counter()
         col_arr, col_arr_unique = df[columns].factorize(sort=True)
-        print('tuple conversion col', time.perf_counter() - tick1)
+        #print('tuple conversion col', time.perf_counter() - tick1)
     else:
-        tick1 = time.perf_counter()
+        #tick1 = time.perf_counter()
         columns_series = pd.Series([tuple(x) for x in df[columns].to_numpy()])
-        print('tuple conversion col', time.perf_counter() - tick1)
-        tick1 = time.perf_counter()
+        #print('tuple conversion col', time.perf_counter() - tick1)
+        #tick1 = time.perf_counter()
         col_arr, col_arr_unique = columns_series.factorize(sort=True)
-        print('factorize col', time.perf_counter() - tick)
-    print(1, time.perf_counter() - tick)
+        #print('factorize col', time.perf_counter() - tick1)
+    #print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
-    tick = time.perf_counter()
+    #tick = time.perf_counter()
     if agg == 'sum':
         pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     elif agg == 'mean':
         pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    print(2, time.perf_counter() - tick)
+    #print(2, time.perf_counter() - tick)
     #tick = time.perf_counter()
     arr = np.array(pivot_arr)
     if not isinstance(index, str):
