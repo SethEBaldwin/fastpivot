@@ -70,7 +70,7 @@ def test_pivot_sum():
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, agg='sum')
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
 
@@ -102,7 +102,7 @@ def test_pivot_mean():
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, agg='mean')
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, aggfunc='mean')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
 
@@ -132,7 +132,7 @@ def test_multiple_columns():
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, agg='sum')
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
 
@@ -162,7 +162,7 @@ def test_multiple_index():
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, agg='sum')
+    pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
 

@@ -12,19 +12,19 @@ cimport numpy as np
 import time
 
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
-def pivot(df, index, columns, values, agg='mean'):
+def pivot_table(df, index, columns, values, aggfunc='mean'):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
     Fills by 0.0, currently aggregates by either sum or mean.
     Arguments:
     df: pandas dataframe
-    index: string, name of column that you want to become the index. 
+    index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
-    agg: string, name of aggregation function. must be 'sum' or 'mean'.
+    aggfunc: string, name of aggregation function. must be 'sum' or 'mean'.
     Returns a pandas dataframe
     """
-    assert agg in ['sum', 'mean']
+    assert aggfunc in ['sum', 'mean']
     #tick = time.perf_counter()
     if isinstance(index, str):
         #tick1 = time.perf_counter()
@@ -52,9 +52,9 @@ def pivot(df, index, columns, values, agg='mean'):
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
     #tick = time.perf_counter()
-    if agg == 'sum':
+    if aggfunc == 'sum':
         pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    elif agg == 'mean':
+    elif aggfunc == 'mean':
         pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     #print(2, time.perf_counter() - tick)
     #tick = time.perf_counter()
