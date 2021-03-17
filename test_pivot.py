@@ -21,6 +21,11 @@ NAME_COL = 'to_be_col'
 NAME_COL2 = 'to_be_col2'
 NAME_VALUE = 'value'
 
+print()
+print('n_rows: {}'.format(N_ROWS))
+print('n_columns: {}'.format(N_COLS))
+print('n_idx: {}'.format(N_IDX))
+
 def gen_df():
     col1 = ['idx{}'.format(x) for x in np.random.randint(0, N_IDX, size=N_ROWS)]
     col2 = ['col{}'.format(x) for x in np.random.randint(0, N_COLS, size=N_ROWS)]
