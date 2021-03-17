@@ -87,9 +87,12 @@ def test_pivot_sum():
     epsilon = 1e-8
     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
     print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-    assert is_equal
     assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
 def test_pivot_mean():
 
@@ -116,9 +119,12 @@ def test_pivot_mean():
     print('componentwise within {} :'.format(epsilon), within_epsilon)
     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
     print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-    assert is_equal
     assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
 def test_multiple_columns():
 
@@ -143,9 +149,12 @@ def test_multiple_columns():
     print('componentwise within {} :'.format(epsilon), within_epsilon)
     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
     print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-    assert is_equal
     assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
 def test_multiple_index():
 
@@ -170,6 +179,9 @@ def test_multiple_index():
     print('componentwise within {} :'.format(epsilon), within_epsilon)
     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
     print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-    assert is_equal
     assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
