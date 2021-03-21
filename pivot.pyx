@@ -6,29 +6,30 @@ from libcpp.pair cimport pair as cpair
 from libcpp.vector cimport vector
 from libcpp.set cimport set as cset
 from libcpp cimport bool
+from libc.math cimport sqrt
 from cython.operator import dereference, postincrement
 import pandas as pd
 import numpy as np
 cimport numpy as np
 import time
 
-# TODO: other aggfuncs: median, mode, std
+# TODO: other aggfuncs: median, mode
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    Aggregates by any of ['sum', 'mean', 'max', 'min', 'count']
+    Aggregates by any of ['sum', 'mean', 'std', 'max', 'min', 'count']
     Arguments:
     df: pandas dataframe
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
         values must not contain NaNs.
-    aggfunc: string, name of aggregation function. full list of aggfuncs: ['sum', 'mean', 'max', 'min', 'count']
+    aggfunc: string, name of aggregation function. full list of aggfuncs: ['sum', 'mean', 'std', 'max', 'min', 'count']
     fill_value: scalar, value to replace missing values with in the pivot table.
     Returns a pandas dataframe
     """
-    assert aggfunc in ['sum', 'mean', 'max', 'min', 'count']
+    assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count']
     #tick = time.perf_counter()
     if isinstance(index, str):
         #tick1 = time.perf_counter()
@@ -60,6 +61,8 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
         pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     elif aggfunc == 'mean':
         pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
+    elif aggfunc == 'std':
+        pivot_arr = pivot_cython_std(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     elif aggfunc == 'max':
         pivot_arr = pivot_cython_max(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
     elif aggfunc == 'min':
@@ -77,7 +80,10 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
     if fill_value != 0:
-        missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
+        if aggfunc == 'std':
+            missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
+        else:
+            missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
         missing_arr = np.array(missing_arr_cython)
         pivot_df[missing_arr] = fill_value
     #print(3, time.perf_counter() - tick)
@@ -111,6 +117,37 @@ cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] 
             divisor = pivot_counts_arr[i, j]
             if divisor != 0.0:
                 pivot_arr[i, j] /= divisor
+    return pivot_arr
+
+cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+    cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)
+    cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
+    cdef int i, j, k
+    cdef double value
+    cdef double divisor
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        value = value_arr[k]
+        mean_arr[i, j] += value
+        pivot_counts_arr[i, j] += 1.0
+    for i in range(N):
+        for j in range(M):
+            divisor = pivot_counts_arr[i, j]
+            if divisor != 0.0:
+                mean_arr[i, j] /= divisor
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        value = value_arr[k] - mean_arr[i, j]
+        pivot_arr[i, j] += (value*value)
+    for i in range(N):
+        for j in range(M):
+            divisor = pivot_counts_arr[i, j]
+            if divisor != 0.0 and divisor != 1.0:
+                pivot_arr[i, j] /= (divisor - 1)
+                pivot_arr[i, j] = sqrt(pivot_arr[i, j])
     return pivot_arr
 
 cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
@@ -164,6 +201,20 @@ cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int
         i = idx_arr[k]
         j = col_arr[k]
         missing_arr[i, j] = 0
+    return missing_arr
+
+cdef bool[:, :] find_missing_std_cython(long[:] idx_arr, long[:] col_arr, int N, int M):
+    cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)
+    cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)
+    cdef int i, j, k
+    cdef double value
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        if exists_arr[i, j]:
+            missing_arr[i, j] = 0
+        else:
+            exists_arr[i, j] = 1
     return missing_arr
 
 # def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=0.0): # change to np.nan

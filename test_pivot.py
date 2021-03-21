@@ -131,6 +131,45 @@ def test_pivot_mean():
     assert is_equal
     assert is_equal_pd
 
+def test_pivot_std():
+
+    df = gen_df()
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='std')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='std')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    pivot_cython_numpy = pivot_cython.to_numpy()
+    pivot_pandas_numpy = pivot_pandas.to_numpy()
+    same_nan = ((pivot_cython_numpy == np.nan) == (pivot_pandas_numpy == np.nan)).all()
+    print('same NaN: ', same_nan)
+    pivot_cython_numpy = np.nan_to_num(pivot_cython_numpy)
+    pivot_pandas_numpy = np.nan_to_num(pivot_pandas_numpy)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython_numpy - pivot_pandas_numpy) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    # is_equal = (pivot_cython_numpy == pivot_pandas_numpy).all()
+    # print('componentwise equal: ', is_equal)
+    # is_equal_pd = pivot_cython.equals(pivot_pandas)
+    # print('pd.equals: ', is_equal_pd)
+
+    assert same_nan
+    assert within_epsilon
+    # assert is_equal
+    # assert is_equal_pd
+
 def test_pivot_max():
 
     df = gen_df()
