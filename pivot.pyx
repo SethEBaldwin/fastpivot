@@ -5,6 +5,7 @@ from libcpp.map cimport map as cmap
 from libcpp.pair cimport pair as cpair
 from libcpp.vector cimport vector
 from libcpp.set cimport set as cset
+from libcpp cimport bool
 from cython.operator import dereference, postincrement
 import pandas as pd
 import numpy as np
@@ -12,16 +13,18 @@ cimport numpy as np
 import time
 
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
-def pivot_table(df, index, columns, values, aggfunc='mean'):
+def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    Fills by 0.0, currently aggregates by either sum or mean.
+    Aggregates by either sum or mean.
     Arguments:
     df: pandas dataframe
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
+        values must not contain NaNs.
     aggfunc: string, name of aggregation function. must be 'sum' or 'mean'.
+    fill_value: scalar, value to replace missing values with in the pivot table.
     Returns a pandas dataframe
     """
     assert aggfunc in ['sum', 'mean']
@@ -66,6 +69,10 @@ def pivot_table(df, index, columns, values, aggfunc='mean'):
     pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
+    if fill_value != 0:
+        missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
+        missing_arr = np.array(missing_arr_cython)
+        pivot_df[missing_arr] = fill_value
     #print(3, time.perf_counter() - tick)
     return pivot_df
 
@@ -98,3 +105,66 @@ cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] 
             if divisor != 0.0:
                 pivot_arr[i, j] /= divisor
     return pivot_arr
+
+cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int M):
+    cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)
+    cdef int i, j, k
+    cdef double value
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        missing_arr[i, j] = 0
+    return missing_arr
+
+# def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=0.0): # change to np.nan
+#     """
+#     A very basic and limited, but hopefully fast implementation of pivot table.
+#     Fills by 0.0, currently aggregates by either sum or mean.
+#     Arguments:
+#     df: pandas dataframe
+#     index: string, name of column that you want to become the index. 
+#     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
+#     values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
+#     aggfunc: string, name of aggregation function. must be 'sum' or 'mean'.
+#     Returns a pandas dataframe
+#     """
+#     assert aggfunc in ['sum', 'mean']
+#     tick = time.perf_counter()
+#     idx_dict = df.groupby(index).indices
+#     idx_list = sorted(idx_dict.keys())
+#     n_idx = len(idx_list)
+#     idx_enum = {idx_list[i]: i for i in range(n_idx)}
+#     col_dict = df.groupby(columns).indices
+#     col_list = sorted(col_dict.keys())
+#     n_col = len(col_list)
+#     col_enum = {col_list[i]: i for i in range(n_col)}
+#     print(0, time.perf_counter() - tick)
+#     tick = time.perf_counter()
+#     if isinstance(index, str) and isinstance(columns, str):
+#         idx_col_dict = df.groupby([index, columns]).indices
+#     else:
+#         print('todo')
+#     print(1, time.perf_counter() - tick)
+#     tick = time.perf_counter()
+#     if aggfunc == 'sum':
+#         pivot_arr = pivot_cython_agg(idx_col_dict, idx_enum, col_enum, df[values].to_numpy(), n_idx, n_col)
+#     print(2, time.perf_counter() - tick)
+#     #tick = time.perf_counter()
+#     arr = np.array(pivot_arr)
+#     pivot_df = pd.DataFrame(arr, index=idx_list, columns=col_list)
+#     pivot_df.index.rename(index, inplace=True)
+#     pivot_df.columns.rename(columns, inplace=True)
+#     #print(3, time.perf_counter() - tick)
+#     return pivot_df
+
+# def pivot_cython_agg(idx_col_dict, idx_enum, col_enum, value_arr, N, M):
+#     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+#     cdef int i, j, k
+#     #cdef double value
+#     cdef np.ndarray idx_arr
+#     for key, idx_arr in idx_col_dict.items():
+#         i = idx_enum[key[0]]
+#         j = col_enum[key[1]]
+#         for k in range(idx_arr.shape[0]):
+#             pivot_arr[i, j] += value_arr[idx_arr[k]]
+#     return pivot_arr
