@@ -69,6 +69,9 @@ def gen_df_multiple_index():
 
 def test_pivot_sum():
 
+    print()
+    print('test pivot sum')
+
     df = gen_df()
 
     # time
@@ -99,7 +102,19 @@ def test_pivot_sum():
     assert is_equal
     assert is_equal_pd
 
+    # compare to groupby hack
+
+    # msg = 'pandas groupby'
+    # tick = time.perf_counter()
+    # groupby_pandas = df.groupby([NAME_COL, NAME_IDX])[NAME_VALUE].sum().unstack(level=NAME_COL).fillna(0)
+    # print(msg, time.perf_counter() - tick)
+    # # print(groupby_pandas)
+
+    # assert (groupby_pandas.equals(pivot_pandas))
+    
 def test_pivot_mean():
+
+    print('test pivot mean')
 
     df = gen_df()
 
@@ -132,6 +147,8 @@ def test_pivot_mean():
     assert is_equal_pd
 
 def test_pivot_std():
+
+    print('test pivot std')
 
     df = gen_df()
 
@@ -172,6 +189,8 @@ def test_pivot_std():
 
 def test_pivot_max():
 
+    print('test pivot max')
+
     df = gen_df()
 
     # time
@@ -203,6 +222,8 @@ def test_pivot_max():
     assert is_equal_pd
 
 def test_pivot_min():
+
+    print('test pivot min')
 
     df = gen_df()
 
@@ -236,6 +257,8 @@ def test_pivot_min():
 
 def test_pivot_count():
 
+    print('test pivot count')
+
     df = gen_df()
 
     # time
@@ -268,6 +291,8 @@ def test_pivot_count():
 
 def test_pivot_sum_fill_none():
 
+    print('test pivot sum with fill_value=None')
+
     df = gen_df()
 
     # time
@@ -293,6 +318,8 @@ def test_pivot_sum_fill_none():
 
 def test_pivot_sum_fill_string():
 
+    print('test pivot sum with fill_value="Nothing!"')
+
     df = gen_df()
 
     # time
@@ -317,6 +344,8 @@ def test_pivot_sum_fill_string():
     assert is_equal_pd
 
 def test_multiple_columns():
+
+    print('test pivot sum with multiple columns')
 
     df = gen_df_multiple_columns()
 
@@ -347,6 +376,8 @@ def test_multiple_columns():
     assert is_equal_pd
 
 def test_multiple_index():
+
+    print('test pivot sum with multiple index')
 
     df = gen_df_multiple_index()
 
