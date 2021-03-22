@@ -30,18 +30,17 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     df: pandas dataframe
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
-    values: string, name of column that contains as values the values of the pivot table.
-    aggfunc: string, name of aggregation function. must be on implemented list above.
+    values: string or list, name(s) of column(s) that contains as values the values of the pivot table.
+        if values is a list, aggfunc (below) must be a dict
+    aggfunc: string or dict, name of aggregation function. must be on implemented list above.
+        aggfunc must be a dict if and only if values is a list. in this case, the format must be as in the following example:
+        values = ['column_name1', 'column_name2', 'column_name3']
+        aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': 'nunique'}
     fill_value: scalar, value to replace missing values with in the pivot table.
     dropna: bool, if True rows and columns that are entirely NaN values will be dropped.
     Returns a pandas dataframe
     """
-    assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
-    values_dtype = df[values].dtype
-    assert values_dtype == np.float64 or values_dtype == np.int64
-    assert not df[values].isnull().to_numpy().any()
-    if values_dtype == np.int64:
-        df[values] = df[values].astype(np.float64)
+    
     tick = time.perf_counter()
     if isinstance(index, str):
         #tick1 = time.perf_counter()
@@ -50,7 +49,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
         idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True)
-        #idx_arr, idx_arr_unique = df.set_index(index).index.factorize(sort=True)
+        idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
         #print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
         #tick1 = time.perf_counter()
@@ -59,38 +58,74 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True)
-        #col_arr, col_arr_unique = df.set_index(columns).index.factorize(sort=True)
+        col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
-    print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
+    print(1, time.perf_counter() - tick)
+
     tick = time.perf_counter()
-    if aggfunc == 'sum':
-        pivot_arr = pivot_cython_sum(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    elif aggfunc == 'mean':
-        pivot_arr = pivot_cython_mean(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    elif aggfunc == 'std':
-        pivot_arr = pivot_cython_std(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    elif aggfunc == 'max':
-        pivot_arr = pivot_cython_max(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    elif aggfunc == 'min':
-        pivot_arr = pivot_cython_min(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col)
-    elif aggfunc == 'count':
-        pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col)
-    elif aggfunc == 'median':
-        pivot_arr = pivot_cython_agg(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col, median_cython)
-    elif aggfunc == 'nunique':
-        pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, df[values].to_numpy(), n_idx, n_col, nunique_cython)
+    if isinstance(values, str):
+        pivot_arr = pivot_compute_agg(aggfunc, idx_arr, col_arr, df[values], n_idx, n_col)
+        pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
+        pivot_df = pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
+        pivot_df.index.rename(index, inplace=True)
+        pivot_df.columns.rename(columns, inplace=True)
+    else:  
+        # in this case we assume values is a list of strings and aggfunc is a dict of form {column_string: aggfunc_string}
+        pivot_dfs = []
+        for value in values:
+            pivot_arr = pivot_compute_agg(aggfunc[value], idx_arr, col_arr, df[value], n_idx, n_col)
+            pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
+            pivot_df = pivot_fill(aggfunc[value], fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
+            pivot_df.index.rename(index, inplace=True)
+            pivot_df.columns.rename(columns, inplace=True)
+            pivot_dfs.append(pivot_df)
+        pivot_df = pd.concat(pivot_dfs, axis=1, keys=values)
     print(2, time.perf_counter() - tick)
-    #tick = time.perf_counter()
+    
+    return pivot_df
+
+def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
+    values_dtype = values_series.dtype
+    assert not values_series.isnull().to_numpy().any()
+    if values_dtype == np.float64 or values_dtype == np.int64:
+        numeric = True
+        assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
+        values_series = values_series.astype(np.float64)
+    else:
+        assert aggfunc in ['count', 'nunique']
+        values_series = values_series.astype(str)
+    if numeric:
+        if aggfunc == 'sum':
+            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        elif aggfunc == 'mean':
+            pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        elif aggfunc == 'std':
+            pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        elif aggfunc == 'max':
+            pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        elif aggfunc == 'min':
+            pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        elif aggfunc == 'count':
+            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col)
+        elif aggfunc == 'median':
+            pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+        elif aggfunc == 'nunique':
+            pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
+    # else:
+    #     if aggfunc == 'count':
+    #         pivot_arr = pivot_cython_count_str(idx_arr, col_arr, n_idx, n_col)
+    #     elif aggfunc == 'nunique':
+    #         pivot_arr = pivot_cython_agg_str(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
     arr = np.array(pivot_arr)
-    if not isinstance(index, str):
-        idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
-    if not isinstance(columns, str):
-        col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
-    pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
-    pivot_df.index.rename(index, inplace=True)
-    pivot_df.columns.rename(columns, inplace=True)
+
+    if values_dtype == np.int64:
+        if aggfunc in ['sum', 'max', 'min']:
+            arr = arr.astype(np.int64)
+    return arr
+
+def pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col):
     if aggfunc == 'std' and (dropna or fill_value != 0):
         missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
         missing_arr = np.array(missing_arr_cython)
@@ -104,10 +139,6 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
         missing_arr = np.array(missing_arr_cython)
         pivot_df[missing_arr] = fill_value
-    if values_dtype == np.int64:
-        if aggfunc in ['sum', 'max', 'min']:
-            pivot_df = pivot_df.astype(values_dtype)
-    #print(3, time.perf_counter() - tick)
     return pivot_df
 
 cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
