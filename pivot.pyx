@@ -40,10 +40,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
         #print('factorize idx', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        index_series = pd.Series([tuple(x) for x in df[index].to_numpy()]) # slow
-        #print('tuple conversion idx', time.perf_counter() - tick1)
-        #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = index_series.factorize(sort=True)
+        idx_arr, idx_arr_unique = df.set_index(index).index.factorize(sort=True)
         #print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
         #tick1 = time.perf_counter()
@@ -51,10 +48,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
         #print('tuple conversion col', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        columns_series = pd.Series([tuple(x) for x in df[columns].to_numpy()]) # slow
-        #print('tuple conversion col', time.perf_counter() - tick1)
-        #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = columns_series.factorize(sort=True)
+        col_arr, col_arr_unique = df.set_index(columns).index.factorize(sort=True)
         #print('factorize col', time.perf_counter() - tick1)
     print(1, time.perf_counter() - tick)
     n_idx = idx_arr_unique.shape[0]
