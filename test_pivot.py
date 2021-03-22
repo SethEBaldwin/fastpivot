@@ -3,18 +3,18 @@ import pandas as pd
 import numpy as np
 import time
 
-#NOTE: 
+#NOTE on speed: 
 # this pivot tends to be faster than pandas with single idx and col and with N_COLS and N_IDX large
 # this pivot tends to be slightly faster than pandas with single idx and col and with N_COLS and N_IDX small
-# this pivot tends to be slower than pandas with multiple idx and col, although in some cases it is still faster
+# this pivot is sometimes slower and sometimes faster than pandas with multiple idx and col
 
 # N_ROWS = 4
 # N_COLS = 2
 # N_IDX = 2
 
-N_ROWS = 1000000
-N_COLS = 100
-N_IDX = 10000
+# N_ROWS = 1000000
+# N_COLS = 100
+# N_IDX = 10000
 
 # N_ROWS = 1000000
 # N_COLS = 100 # note: pandas can't handle 10000 or even 1000... but this pivot can
@@ -24,10 +24,14 @@ N_IDX = 10000
 # N_COLS = 10
 # N_IDX = 10
 
-# These values make me run out of memory
+# These values cause memory error (out of memory)
 # N_ROWS = 1000000
 # N_COLS = 1000
 # N_IDX = 10000
+
+N_ROWS = 100000
+N_COLS = 1000
+N_IDX = 1000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
@@ -348,6 +352,47 @@ def test_pivot_std():
     msg = 'pandas'
     tick = time.perf_counter()
     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='std')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    pivot_cython_numpy = pivot_cython.to_numpy()
+    pivot_pandas_numpy = pivot_pandas.to_numpy()
+    same_nan = ((pivot_cython_numpy == np.nan) == (pivot_pandas_numpy == np.nan)).all()
+    print('same NaN: ', same_nan)
+    pivot_cython_numpy = np.nan_to_num(pivot_cython_numpy)
+    pivot_pandas_numpy = np.nan_to_num(pivot_pandas_numpy)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython_numpy - pivot_pandas_numpy) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    # is_equal = (pivot_cython_numpy == pivot_pandas_numpy).all()
+    # print('componentwise equal: ', is_equal)
+    # is_equal_pd = pivot_cython.equals(pivot_pandas)
+    # print('pd.equals: ', is_equal_pd)
+
+    assert same_nan
+    assert within_epsilon
+    # assert is_equal
+    # assert is_equal_pd
+
+def test_pivot_std_fill():
+
+    print('test pivot std fill_value=0.0')
+
+    df = gen_df()
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='std')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0.0, aggfunc='std')
     print(msg, time.perf_counter() - tick)
     # print(pivot_pandas)
 

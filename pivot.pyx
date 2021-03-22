@@ -80,11 +80,17 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
     pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
-    if fill_value != 0:
-        if aggfunc == 'std':
-            missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
-        else:
-            missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
+    if aggfunc == 'std':
+        missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
+        missing_arr = np.array(missing_arr_cython)
+        pivot_df[missing_arr] = np.nan
+        # pandas pivot_table automatically removes rows and cols that are all NaN
+        pivot_df = pivot_df.dropna(axis=0, how='all')
+        pivot_df = pivot_df.dropna(axis=1, how='all')
+        if fill_value is not None:
+            pivot_df = pivot_df.fillna(value=fill_value)
+    elif fill_value != 0:
+        missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
         missing_arr = np.array(missing_arr_cython)
         pivot_df[missing_arr] = fill_value
     #print(3, time.perf_counter() - tick)
