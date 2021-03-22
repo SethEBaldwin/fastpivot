@@ -16,7 +16,7 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: convenience like fill_value dict? aggfunc list of single value when values is list?
+# TODO: convenience like fill_value dict? aggfunc list or dict with values lists?
 # TODO: handle other dtypes for nunique
 # TODO: std is slow because of processing at the end
 # TODO: faster median
@@ -112,8 +112,9 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
         values_series = values_series.astype(np.float64)
     else:
+        numeric = False
         assert aggfunc in ['count', 'nunique']
-        values_series = values_series.astype(str)
+        #values_series = values_series.astype(str)
     
     # pivot and aggregate
     if numeric:
@@ -136,8 +137,10 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
     else:
         if aggfunc == 'count':
             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col)
-        #elif aggfunc == 'nunique':
-        #    pivot_arr = pivot_cython_agg_str(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
+        elif aggfunc == 'nunique':
+            values_arr, _ = values_series.factorize()
+            values_arr = values_arr.astype(np.float64)
+            pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython)
     arr = np.array(pivot_arr)
 
     # handle type conversion back if sensible
