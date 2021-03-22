@@ -16,23 +16,32 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: multiple values and aggfunc dicts
+# TODO: handle other dtypes
+# TODO: std is slow because of processing at the end
+# TODO: faster median
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
-def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
+def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
     Aggregates by any of ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
-    Values must be of type np.float64 and must not contain any NaNs.
+    Values must be of type np.float64 or np.int64 and must not contain any NaNs.
     Arguments:
     df: pandas dataframe
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
-    values: string, name of column that contains as values the values of the pivot table. values must be of type np.float64.
-        values must not contain NaNs.
+    values: string, name of column that contains as values the values of the pivot table.
     aggfunc: string, name of aggregation function. must be on implemented list above.
     fill_value: scalar, value to replace missing values with in the pivot table.
+    dropna: bool, if True rows and columns that are entirely NaN values will be dropped.
     Returns a pandas dataframe
     """
     assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
+    values_dtype = df[values].dtype
+    assert values_dtype == np.float64 or values_dtype == np.int64
+    assert not df[values].isnull().to_numpy().any()
+    if values_dtype == np.int64:
+        df[values] = df[values].astype(np.float64)
     tick = time.perf_counter()
     if isinstance(index, str):
         #tick1 = time.perf_counter()
@@ -82,19 +91,22 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None):
     pivot_df = pd.DataFrame(arr, index=idx_arr_unique, columns=col_arr_unique)
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
-    if aggfunc == 'std':
+    if aggfunc == 'std' and (dropna or fill_value != 0):
         missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
         missing_arr = np.array(missing_arr_cython)
         pivot_df[missing_arr] = np.nan
-        # pandas pivot_table automatically removes rows and cols that are all NaN
-        pivot_df = pivot_df.dropna(axis=0, how='all')
-        pivot_df = pivot_df.dropna(axis=1, how='all')
+        if dropna:
+            pivot_df = pivot_df.dropna(axis=0, how='all')
+            pivot_df = pivot_df.dropna(axis=1, how='all')
         if fill_value is not None:
             pivot_df = pivot_df.fillna(value=fill_value)
     elif fill_value != 0:
         missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
         missing_arr = np.array(missing_arr_cython)
         pivot_df[missing_arr] = fill_value
+    if values_dtype == np.int64:
+        if aggfunc in ['sum', 'max', 'min']:
+            pivot_df = pivot_df.astype(values_dtype)
     #print(3, time.perf_counter() - tick)
     return pivot_df
 
