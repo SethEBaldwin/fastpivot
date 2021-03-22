@@ -16,16 +16,20 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: multiple values and aggfunc dicts
-# TODO: handle other dtypes
+# TODO: convenience like fill_value dict? aggfunc list of single value when values is list?
+# TODO: handle other dtypes for nunique
 # TODO: std is slow because of processing at the end
 # TODO: faster median
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    Aggregates by any of ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
-    Values must be of type np.float64 or np.int64 and must not contain any NaNs.
+    Values must not contain any NaNs.
+    For numerical values (np.float64 or np.int64), aggregates by any of 
+        ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
+    For other values, aggregates by any of 
+        ['count', 'nunique']
+    
     Arguments:
     df: pandas dataframe
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
@@ -38,7 +42,9 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': 'nunique'}
     fill_value: scalar, value to replace missing values with in the pivot table.
     dropna: bool, if True rows and columns that are entirely NaN values will be dropped.
-    Returns a pandas dataframe
+
+    Returns:
+    pivot_df: pandas dataframe
     """
     
     tick = time.perf_counter()
@@ -87,6 +93,8 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     return pivot_df
 
 def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
+
+    # handle types
     values_dtype = values_series.dtype
     assert not values_series.isnull().to_numpy().any()
     if values_dtype == np.float64 or values_dtype == np.int64:
@@ -96,6 +104,8 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
     else:
         assert aggfunc in ['count', 'nunique']
         values_series = values_series.astype(str)
+    
+    # pivot and aggregate
     if numeric:
         if aggfunc == 'sum':
             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
@@ -113,13 +123,14 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
         elif aggfunc == 'nunique':
             pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
-    # else:
-    #     if aggfunc == 'count':
-    #         pivot_arr = pivot_cython_count_str(idx_arr, col_arr, n_idx, n_col)
-    #     elif aggfunc == 'nunique':
-    #         pivot_arr = pivot_cython_agg_str(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
+    else:
+        if aggfunc == 'count':
+            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col)
+        #elif aggfunc == 'nunique':
+        #    pivot_arr = pivot_cython_agg_str(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
     arr = np.array(pivot_arr)
 
+    # handle type conversion back if sensible
     if values_dtype == np.int64:
         if aggfunc in ['sum', 'max', 'min']:
             arr = arr.astype(np.int64)

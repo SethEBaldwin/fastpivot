@@ -164,6 +164,36 @@ def test_pivot_sum():
 
     # assert (groupby_pandas.equals(pivot_pandas))
 
+def test_pivot_multiple_values_string():
+
+    print()
+    print('test pivot multiple values string')
+
+    df = gen_df_multiple_columns()
+
+    aggfunc_dict = {NAME_COL2: 'count', NAME_VALUE: 'median'}
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=[NAME_COL2, NAME_VALUE], fill_value=None, aggfunc=aggfunc_dict)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=[NAME_COL2, NAME_VALUE], fill_value=None, aggfunc=aggfunc_dict)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert is_equal_pd
+
 def test_pivot_multiple_values():
 
     print()
