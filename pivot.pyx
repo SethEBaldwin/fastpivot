@@ -35,11 +35,12 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
     values: string or list, name(s) of column(s) that contains as values the values of the pivot table.
-        if values is a list, aggfunc (below) must be a dict
     aggfunc: string or dict, name of aggregation function. must be on implemented list above.
-        aggfunc must be a dict if and only if values is a list. in this case, the format must be as in the following example:
+        if aggfunc is a dict, the format must be as in the following example:
         values = ['column_name1', 'column_name2', 'column_name3']
         aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': 'nunique'}
+        we currently don't support lists of aggfuncs, and when aggfunct is a dict, we do not support its values being lists 
+        of aggfuncs - they must be strings
     fill_value: scalar, value to replace missing values with in the pivot table.
     dropna: bool, if True rows and columns that are entirely NaN values will be dropped.
 
@@ -78,15 +79,24 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         pivot_df.index.rename(index, inplace=True)
         pivot_df.columns.rename(columns, inplace=True)
     else:  
-        # in this case we assume values is a list of strings and aggfunc is a dict of form {column_string: aggfunc_string}
+        if isinstance(aggfunc, str):
+            aggfunc_dict = {value: aggfunc for value in values}
+        # elif isinstance(aggfunc, list):
+        #     aggfunc_dict = {value: agg for value, agg in zip(values, aggfunc)}
+        else:
+            aggfunc_dict = aggfunc
         pivot_dfs = []
         for value in values:
-            pivot_arr = pivot_compute_agg(aggfunc[value], idx_arr, col_arr, df[value], n_idx, n_col)
+            pivot_arr = pivot_compute_agg(aggfunc_dict[value], idx_arr, col_arr, df[value], n_idx, n_col)
             pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
-            pivot_df = pivot_fill(aggfunc[value], fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
+            pivot_df = pivot_fill(aggfunc_dict[value], fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
             pivot_df.index.rename(index, inplace=True)
             pivot_df.columns.rename(columns, inplace=True)
             pivot_dfs.append(pivot_df)
+        # if isinstance(aggfunc, list):
+        #     keys = zip(aggfunc, values)
+        # else: 
+            # keys = values
         pivot_df = pd.concat(pivot_dfs, axis=1, keys=values)
     print(2, time.perf_counter() - tick)
     
