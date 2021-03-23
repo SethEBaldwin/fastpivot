@@ -1,7 +1,5 @@
-# Cython
-Repo for various useful Cython optimizations
-
-Currently includes a basic but fast implementation of pivot_table
+# FastPivot
+A basic but fast implementation of pivot_table in the style of pandas.pivot_table
 
 Instructions:
 
