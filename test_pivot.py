@@ -20,9 +20,9 @@ import time
 # N_COLS = 100  # note: pandas can't handle 10000 or even 1000... but this pivot can
 # N_IDX = 100
 
-# N_ROWS = 1000000
-# N_COLS = 10
-# N_IDX = 10
+N_ROWS = 1000000
+N_COLS = 10
+N_IDX = 10
 
 # N_ROWS = 10000
 # N_COLS = 100
@@ -34,9 +34,9 @@ import time
 # N_IDX = 10000
 
 # Really good speed ups for these parameters
-N_ROWS = 100000
-N_COLS = 1000
-N_IDX = 1000
+# N_ROWS = 100000
+# N_COLS = 1000
+# N_IDX = 1000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
@@ -118,69 +118,6 @@ def gen_df_multiple_index():
     # print(df)
 
     return df
-
-# def test_special(): # apparently pandas sorts the columns when you pass a dict?
-
-#     n_rows = 10000000
-#     col1 = ['ind{}'.format(x) for x in np.random.randint(0, 1000, size=n_rows)]
-#     col2 = ['month{}'.format(x) for x in np.random.randint(0, 12, size=n_rows)]
-#     col3 = [x for x in np.random.randint(0, 1000, size=n_rows)]
-#     #col4 = [x for x in np.random.randint(0, 1000, size=n_rows)]
-#     col4 = ['name{}'.format(x) for x in np.random.randint(0, 10000, size=n_rows)]
-
-#     data = np.transpose([col1, col2, col3, col4])
-#     df = pd.DataFrame(data, columns=['industry', 'month', "orders", "client_name"], index=range(len(data)))
-#     df['orders'] = df['orders'].astype(np.int64)
-#     df['client_name'] = df['client_name'].astype("category")
-#     #df['client_name'] = df['client_name'].astype(np.int64)
-
-#     aggfunc_dict = {'orders': 'sum', 'client_name': 'nunique'}
-
-#     # time
-
-#     msg = 'cython only sum'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index='industry', columns='month', values='orders', fill_value=0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
-
-#     msg = 'pandas only sum'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index='industry', columns=['month'], values='orders', fill_value=0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
-
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index='industry', columns='month', values=['orders', 'client_name'], fill_value=0, aggfunc=aggfunc_dict)
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
-
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index='industry', columns=['month'], values=['orders', 'client_name'], fill_value=0, aggfunc=aggfunc_dict)
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
-
-#     msg = 'pandas groupby'
-#     tick = time.perf_counter()
-#     pivot_groupby = df.groupby(["month", "industry"]).agg({"orders": np.sum, "client_name": pd.Series.nunique}).unstack(level="month").fillna(0)
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_groupby)
-
-#     # check results are equal
-
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
-
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
 
 def test_pivot_values_list():
     # inexplicably, pandas does not sort here.

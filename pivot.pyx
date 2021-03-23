@@ -18,7 +18,6 @@ import time
 
 # TODO: convenience like fill_value dict?
 # TODO: std is slow because of processing at the end
-# TODO: faster median
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
@@ -373,21 +372,55 @@ cdef double sum_cython(vector[double] &vec):
         value += vec[k]
     return value
 
-# TODO faster algorithm?
+# cdef double median_cython(vector[double] &vec):
+#     cdef int k
+#     cdef int idx
+#     cdef double value = 0.0
+#     cdef double med
+#     stdsort(vec.begin(), vec.end())
+#     idx = vec.size() / 2
+#     if vec.size() % 2 == 1:
+#         med = vec[idx]
+#     elif vec.size() == 0:
+#         med = 0.0
+#     else:
+#         med = (vec[idx] + vec[idx-1]) / 2
+#     return med
+
 cdef double median_cython(vector[double] &vec):
-    cdef int k
-    cdef int idx
-    cdef double value = 0.0
+    cdef int k = 0
+    cdef int mid = vec.size() / 2
     cdef double med
-    stdsort(vec.begin(), vec.end())
-    idx = vec.size() / 2
     if vec.size() % 2 == 1:
-        med = vec[idx]
+        while k != mid:
+            k = partition(vec, mid)
+        med = vec[mid]
     elif vec.size() == 0:
         med = 0.0
     else:
-        med = (vec[idx] + vec[idx-1]) / 2
+        while k != mid:
+            k = partition(vec, mid)
+        while k != mid - 1:
+            k = partition(vec, mid - 1)
+        med = (vec[mid] + vec[mid-1]) / 2
     return med
+
+cdef int partition(vector[double] &vec, int mid):
+    cdef double x = vec[mid]
+    cdef double temp
+    cdef int i = 0
+    cdef int j = vec.size() - 1
+    while True:
+        while vec[i] < x:
+            i += 1
+        while vec[j] > x:
+            j -= 1
+        if i == j:
+            return j
+        else:
+            temp = vec[i]
+            vec[i] = vec[j]
+            vec[j] = temp
 
 cdef long nunique_cython(vector[double] &vec):
     cdef int k
