@@ -16,13 +16,13 @@ import time
 # N_COLS = 100
 # N_IDX = 10000
 
-# N_ROWS = 1000000
-# N_COLS = 100  # note: pandas can't handle 10000 or even 1000... but this pivot can
-# N_IDX = 100
-
 N_ROWS = 1000000
-N_COLS = 10
-N_IDX = 10
+N_COLS = 500  # note: pandas can't handle 10000 or even 1000... but this pivot can
+N_IDX = 100
+
+# N_ROWS = 1000000
+# N_COLS = 10
+# N_IDX = 10
 
 # N_ROWS = 10000
 # N_COLS = 100
