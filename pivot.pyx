@@ -391,25 +391,42 @@ cdef double median_cython(vector[double] &vec):
     cdef int k = 0
     cdef int mid = vec.size() / 2
     cdef double med
+    cdef int i = 0
+    cdef int j = vec.size() - 1
+    cdef double max_left
     if vec.size() % 2 == 1:
         while k != mid:
-            k = partition(vec, mid)
+            k = partition(vec, mid, i, j)
+            if k < mid:
+                i = k
+            elif k > mid:
+                j = k
         med = vec[mid]
     elif vec.size() == 0:
         med = 0.0
     else:
         while k != mid:
-            k = partition(vec, mid)
-        while k != mid - 1:
-            k = partition(vec, mid - 1)
-        med = (vec[mid] + vec[mid-1]) / 2
+            k = partition(vec, mid, i, j)
+            if k < mid:
+                i = k
+            elif k > mid:
+                j = k
+        # i = 0
+        # j = mid - 1
+        # while k != mid - 1:  # or just get of left partition
+        #     k = partition(vec, mid - 1, i, j)
+        #     if k < mid:
+        #         i = k
+        #     elif k > mid:
+        #         j = k
+        # med = (vec[mid] + vec[mid-1]) / 2
+        max_left = max_cython(vec, mid - 1)
+        med = (vec[mid] + max_left) / 2
     return med
 
-cdef int partition(vector[double] &vec, int mid):
+cdef int partition(vector[double] &vec, int mid, int i, int j):
     cdef double x = vec[mid]
     cdef double temp
-    cdef int i = 0
-    cdef int j = vec.size() - 1
     while True:
         while vec[i] < x:
             i += 1
@@ -421,6 +438,16 @@ cdef int partition(vector[double] &vec, int mid):
             temp = vec[i]
             vec[i] = vec[j]
             vec[j] = temp
+
+cdef double max_cython(vector[double] & vec, int upper_idx):
+    # never called on empty vec
+    cdef int i
+    cdef double value
+    value = vec[0]
+    for i in range(1, upper_idx + 1):
+        if value < vec[i]:
+            value = vec[i]
+    return value
 
 cdef long nunique_cython(vector[double] &vec):
     cdef int k
