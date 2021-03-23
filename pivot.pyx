@@ -16,31 +16,44 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: convenience like fill_value dict? aggfunc list or dict with values lists?
-# TODO: handle other dtypes for nunique
+# TODO: convenience like fill_value dict?
 # TODO: std is slow because of processing at the end
 # TODO: faster median
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    Values must not contain any NaNs.
-    For numerical values (np.float64 or np.int64), aggregates by any of 
-        ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
-    For other values, aggregates by any of 
-        ['count', 'nunique']
-    
+    The main limitations are:
+        1) Values must not contain any NaNs.
+        2) You must aggregate, and you must do so by a list of preconstructed functions:
+            For numerical values (np.float64 or np.int64), you can aggregate by any of 
+                ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
+            For other values, you can aggregate by any of 
+                ['count', 'nunique']
+
+    The arguments and return format mimic pandas very closely, with a few small differences.
+    Occasionaly the ordering of the columns, such as when passing a list of aggfuncs and a single value column
+    Occasionally the returned data types will be slightly different, for example, when taking the mean of a column of ints, 
+    pandas returns an int if the result is an int, and a float otherwise, whereas this pivot_table returns a float in all cases
+    The following arguments are not supported here: margins, margins_name, observed.
+
+    Speed tends to beat pandas.pivot_table by a factor of 2 to 20 depending on the dataframe passed.
+    Generally on a dataframe with many rows, and many distinct values in the passed index and column, the performance of this
+    pivot_tabel function beats pandas significantly.
+    On a dataframe with many rows but few distinct values in the passed index and column, the speed of this pivot_table
+    tends to be roughly on par with pandas.
+    This pivot_table tends to be slower than pandas when there are many rows, multiple index or columns are passed,
+    and the index and columns passed have few distinct values. 
+
     Arguments:
     df: pandas dataframe
     index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
     columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
     values: string or list, name(s) of column(s) that contains as values the values of the pivot table.
-    aggfunc: string or dict, name of aggregation function. must be on implemented list above.
+    aggfunc: string, list, or dict, name of aggregation function. must be on implemented list above.
         if aggfunc is a dict, the format must be as in the following example:
         values = ['column_name1', 'column_name2', 'column_name3']
-        aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': 'nunique'}
-        we currently don't support lists of aggfuncs, and when aggfunct is a dict, we do not support its values being lists 
-        of aggfuncs - they must be strings
+        aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': ['count', 'nunique']}
     fill_value: scalar, value to replace missing values with in the pivot table.
     dropna: bool, if True rows and columns that are entirely NaN values will be dropped.
 
@@ -49,6 +62,15 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     """
     
     tick = time.perf_counter()
+    assert isinstance(index, str) or isinstance(index, list)
+    assert isinstance(columns, str) or isinstance(columns, list)
+    if isinstance(index, list):
+        if len(index) == 1:
+            index = index[0]
+    if isinstance(columns, list):
+        if len(columns) == 1:
+            columns = columns[0]
+    
     if isinstance(index, str):
         #tick1 = time.perf_counter()
         idx_arr, idx_arr_unique = df[index].factorize(sort=True)
@@ -67,39 +89,87 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
-    n_idx = idx_arr_unique.shape[0]
-    n_col = col_arr_unique.shape[0]
     print(1, time.perf_counter() - tick)
 
     tick = time.perf_counter()
-    if isinstance(values, str):
-        pivot_arr = pivot_compute_agg(aggfunc, idx_arr, col_arr, df[values], n_idx, n_col)
-        pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
-        pivot_df = pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
-        pivot_df.index.rename(index, inplace=True)
-        pivot_df.columns.rename(columns, inplace=True)
-    else:  
-        if isinstance(aggfunc, str):
-            aggfunc_dict = {value: aggfunc for value in values}
-        # elif isinstance(aggfunc, list):
-        #     aggfunc_dict = {value: agg for value, agg in zip(values, aggfunc)}
-        else:
-            aggfunc_dict = aggfunc
-        pivot_dfs = []
-        for value in values:
-            pivot_arr = pivot_compute_agg(aggfunc_dict[value], idx_arr, col_arr, df[value], n_idx, n_col)
-            pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
-            pivot_df = pivot_fill(aggfunc_dict[value], fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
-            pivot_df.index.rename(index, inplace=True)
-            pivot_df.columns.rename(columns, inplace=True)
+    values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)
+
+    pivot_dfs = []
+    for value in values_list:
+        agg_list = aggfunc_dict[value]
+        for agg in agg_list:
+            pivot_df = pivot_compute_table(
+                agg, 
+                fill_value, 
+                dropna, 
+                index,
+                columns,
+                idx_arr, 
+                col_arr, 
+                df[value], 
+                idx_arr_unique, 
+                col_arr_unique
+            )
             pivot_dfs.append(pivot_df)
-        # if isinstance(aggfunc, list):
-        #     keys = zip(aggfunc, values)
-        # else: 
-            # keys = values
-        pivot_df = pd.concat(pivot_dfs, axis=1, keys=values)
+    pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)
     print(2, time.perf_counter() - tick)
     
+    return pivot_df
+
+def process_values_aggfunc(values, aggfunc):
+    # standardize format of values, aggfunc.
+    # standardized means values is a sorted list of strings and
+    # aggfunc is a dict with keys the strings in values and values
+    # sorted lists of strings
+    # keys gives the multicolumn keys for constructing pivot_df
+
+    assert isinstance(values, str) or isinstance(values, list)
+    
+    if isinstance(values, str):
+        values_list = [values]
+    elif isinstance(values, list):
+        values_list = sorted(values)
+
+    assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)
+    
+    if isinstance(aggfunc, str):
+        aggfunc_dict = {value: [aggfunc] for value in values_list}
+    elif isinstance(aggfunc, list):
+        aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
+    elif isinstance(aggfunc, dict):
+        def process(x):
+            assert isinstance(x, str) or isinstance(x, list)
+            if isinstance(x, str):
+                return [x]
+            elif isinstance(x, list):
+                return sorted(x)
+        aggfunc_dict = {value: process(aggfunc[value]) for value in values_list}
+    
+    # construct most general key
+    keys = []
+    for value in values_list:
+        for agg in aggfunc_dict[value]:
+            keys.append((value, agg))
+    # if we don't need most general key, reduce layers of multicolumn
+    if len(keys) == 1:
+        keys = None
+    elif len(values_list) == 1:
+        keys = aggfunc_dict[values_list[0]]
+    elif len(keys) == len(values_list):
+        keys = values_list
+
+    return values_list, aggfunc_dict, keys
+
+def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):
+
+    n_idx = idx_arr_unique.shape[0]
+    n_col = col_arr_unique.shape[0]
+    pivot_arr = pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col)
+    pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
+    pivot_df = pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
+    pivot_df.index.rename(index, inplace=True)
+    pivot_df.columns.rename(columns, inplace=True)
+
     return pivot_df
 
 def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
