@@ -17,9 +17,11 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: difference between nunique of empty list vs (idx, col) doesn't exist... fix this
 # TODO: consider coding special case for fill_value=0
 # TODO: faster dropna, fillna?
 # TODO: faster std
+# TODO: why median still so slow?
 # TODO: further optimization... multithread / proc when values or aggfunc multiple?
 # TODO: unit tests for types object (string), bool, date, timestamp, categorical
 # TODO: make sure Datetime.date isn't converted to Timestamp
@@ -33,20 +35,11 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
             ['count', 'nunique']
 
     The arguments and return format mimic pandas very closely, with a few small differences:
-    1) Occasionaly the ordering of the columns, such as when passing a list of aggfuncs and a single value column
-    2) When passing values of type np.int64, values of type np.float64 will be returned for sum, mean, std, max, min,
-        and median, and int.64 for count, and nunique. Pandas returns different types in some of these cases.
-    3) edge cases are handled differently for the aggregation functions. The conventions are:
-                            fastpivot       pandas
-        sum of empty:       0.0             0.0 or 0
-        mean of empty:      NaN             NaN
-        std of empty:       NaN             NaN
-        max of empty:       NaN             NaN
-        min of empty:       NaN             NaN
-        median of empty:    NaN             NaN
-        count of empty:     0               NaN
-        nunique of empty:   0               Nan
-    4) The following arguments are not supported here: margins, margins_name, observed.
+    1) Occasionaly the ordering of the columns will be different, such as when passing a list of aggfuncs 
+        with a single value column
+    2) When passing values of type np.int64, values of type np.float64 will be returned. 
+        Pandas returns np.int64 in some cases and np.float64 in others.
+    3) The following arguments are not supported here: margins, margins_name, observed.
 
     Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of this
     pivot_tabel function beats pandas significantly, by a factor of 2 to 20.
@@ -462,14 +455,18 @@ cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] v
                 pivot_arr[i, j] = value
     return pivot_arr
 
-cdef long[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr):
-    cdef long[:, :] pivot_arr = np.zeros((N, M), dtype=np.int64)
+cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr):
+    nans = np.zeros((N, M), dtype=np.float64)
+    nans.fill(np.nan)
+    cdef double[:, :] pivot_arr = nans
     cdef int i, j, k
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
+        if isnan(pivot_arr[i, j]):
+            pivot_arr[i, j] = 0.0
         if not nans_arr[k]:
-            pivot_arr[i, j] += 1
+            pivot_arr[i, j] += 1.0
     return pivot_arr
 
 cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int M):

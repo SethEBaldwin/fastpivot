@@ -158,6 +158,63 @@ def test_pivot_nan_value():
 
     assert is_equal_pd
 
+def test_pivot_count_fillNone():
+
+    print()
+    print('test pivot count fill None')
+
+    df = gen_df()
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='count')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='count')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert is_equal_pd
+
+def test_pivot_count_fillNone_str():
+
+    print()
+    print('test pivot count fill None with str')
+
+    df = gen_df_multiple_columns()
+    df[NAME_COL2][np.random.choice(a=[False, True], size=N_ROWS)] = np.nan
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_COL2, fill_value=None, aggfunc='count')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_COL2, fill_value=None, aggfunc='count')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert is_equal_pd
+
 def test_pivot_nan_value_fillna0():
 
     print()
@@ -333,35 +390,35 @@ def test_pivot_values_list_nan():
 
     assert is_equal_pd
 
-def test_pivot_multiple_values_list():
+# def test_pivot_multiple_values_list():
 
-    print()
-    print('test pivot multiple values list')
+#     print()
+#     print('test pivot multiple values list')
 
-    df = gen_df_multiple_columns()
+#     df = gen_df_multiple_columns()
 
-    aggfunc_dict = {NAME_COL2: 'count', NAME_VALUE: ['median', 'sum']}
+#     aggfunc_dict = {NAME_COL2: 'count', NAME_VALUE: ['median', 'sum']}
 
-    # time
+#     # time
 
-    msg = 'cython'
-    tick = time.perf_counter()
-    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
-    print(msg, time.perf_counter() - tick)
-    # print(pivot_cython)
+#     msg = 'cython'
+#     tick = time.perf_counter()
+#     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
+#     print(msg, time.perf_counter() - tick)
+#     print(pivot_cython)
 
-    msg = 'pandas'
-    tick = time.perf_counter()
-    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
-    print(msg, time.perf_counter() - tick)
-    # print(pivot_pandas)
+#     msg = 'pandas'
+#     tick = time.perf_counter()
+#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
+#     print(msg, time.perf_counter() - tick)
+#     print(pivot_pandas)
 
-    # check results are equal
+#     # check results are equal
 
-    is_equal_pd = pivot_cython.equals(pivot_pandas)
-    print('pd.equals: ', is_equal_pd)
+#     is_equal_pd = pivot_cython.equals(pivot_pandas)
+#     print('pd.equals: ', is_equal_pd)
 
-    assert is_equal_pd
+#     assert is_equal_pd
 
 # def test_pivot_multiple_values_list_nan():
 
@@ -504,35 +561,35 @@ def test_pivot_sum_fillnan():
 #     assert is_equal
 #     assert is_equal_pd
 
-def test_pivot_multiple_values_string():
+# def test_pivot_multiple_values_string():
 
-    print()
-    print('test pivot multiple values string')
+#     print()
+#     print('test pivot multiple values string')
 
-    df = gen_df_multiple_columns()
+#     df = gen_df_multiple_columns()
 
-    aggfunc_dict = {NAME_COL2: 'count', NAME_VALUE: 'median'}
+#     aggfunc_dict = {NAME_COL2: 'count', NAME_VALUE: 'median'}
 
-    # time
+#     # time
 
-    msg = 'cython'
-    tick = time.perf_counter()
-    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
-    print(msg, time.perf_counter() - tick)
-    # print(pivot_cython)
+#     msg = 'cython'
+#     tick = time.perf_counter()
+#     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
+#     print(msg, time.perf_counter() - tick)
+#     # print(pivot_cython)
 
-    msg = 'pandas'
-    tick = time.perf_counter()
-    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
-    print(msg, time.perf_counter() - tick)
-    # print(pivot_pandas)
+#     msg = 'pandas'
+#     tick = time.perf_counter()
+#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=[NAME_COL2, NAME_VALUE], fill_value=0, aggfunc=aggfunc_dict)
+#     print(msg, time.perf_counter() - tick)
+#     # print(pivot_pandas)
 
-    # check results are equal
+#     # check results are equal
 
-    is_equal_pd = pivot_cython.equals(pivot_pandas)
-    print('pd.equals: ', is_equal_pd)
+#     is_equal_pd = pivot_cython.equals(pivot_pandas)
+#     print('pd.equals: ', is_equal_pd)
 
-    assert is_equal_pd
+#     assert is_equal_pd
 
 def test_pivot_multiple_values_string_nunique():
 
@@ -1231,35 +1288,7 @@ def test_pivot_count():
 
     assert within_epsilon
     assert is_equal
-    assert is_equal_pd
-
-# def test_pivot_count_fillNone():
-
-#     print()
-#     print('test pivot count fill None')
-
-#     df = gen_df()
-
-#     # time
-
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='count')
-#     print(msg, time.perf_counter() - tick)
-#     print(pivot_cython)
-
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='count')
-#     print(msg, time.perf_counter() - tick)
-#     print(pivot_pandas)
-
-#     # check results are equal
-
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
-
-#     assert is_equal_pd
+    #assert is_equal_pd
 
 def test_pivot_nunique():
     #TODO: better test (with actual nunique not equal to counts, and longer vectors per (i, j) pair)
