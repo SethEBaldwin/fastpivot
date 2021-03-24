@@ -17,6 +17,8 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: faster dropna, fillna?
+# TODO: faster std
 # TODO: compare speed of new version with nan handling to old version without
 # TODO: further optimization... multithread / proc when values or aggfunc multiple?
 # TODO: unit tests for types object (string), bool, date, timestamp, categorical
@@ -69,7 +71,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     pivot_df: pandas dataframe
     """
     
-    #tick = time.perf_counter()
+    tick = time.perf_counter()
     assert isinstance(index, str) or isinstance(index, list)
     assert isinstance(columns, str) or isinstance(columns, list)
     if isinstance(index, str):
@@ -103,9 +105,9 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
-    #print(1, time.perf_counter() - tick)
+    print('prepare index and columns', time.perf_counter() - tick)
 
-    #tick = time.perf_counter()
+    tick = time.perf_counter()
     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)
 
     pivot_dfs = []
@@ -126,13 +128,18 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
             )
             pivot_dfs.append(pivot_df)
     pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)
-    #print(2, time.perf_counter() - tick)
+    print('compute pivot table', time.perf_counter() - tick)
     
-    if dropna:
-        pivot_df = pivot_df.dropna(axis=0, how='all')
-        pivot_df = pivot_df.dropna(axis=1, how='all')
-    if fill_value is not None:
-        pivot_df = pivot_df.fillna(fill_value)
+    # This was too slow
+    # tick = time.perf_counter()
+    # if dropna:
+    #     pivot_df = pivot_df.dropna(axis=0, how='all')
+    #     pivot_df = pivot_df.dropna(axis=1, how='all')
+    # print('dropna', time.perf_counter() - tick)
+    # tick = time.perf_counter()
+    # if fill_value is not None:
+    #     pivot_df = pivot_df.fillna(fill_value)
+    # print('fillna', time.perf_counter() - tick)
 
     return pivot_df
 
@@ -186,6 +193,7 @@ def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, co
     n_col = col_arr_unique.shape[0]
     pivot_arr = pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col)
     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
+    pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
 
@@ -234,6 +242,97 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
     arr = np.array(pivot_arr)
 
     return arr
+
+def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
+    if aggfunc in ['sum', 'count', 'nunique']:
+        # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
+        if fill_value is not None and fill_value is not np.nan:
+            tick = time.perf_counter()
+            pivot_df = pivot_df.fillna(fill_value)
+            print('fillna', time.perf_counter() - tick)
+        # missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
+        # missing_arr = np.array(missing_arr_cython)
+        # pivot_df[missing_arr] = fill_value
+    elif aggfunc in ['mean', 'max', 'min', 'median']:
+        # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
+        # must check dropping in this case
+        if dropna: # TODO speedup
+            tick = time.perf_counter()
+            pivot_df = pivot_df.dropna(axis=0, how='all')
+            pivot_df = pivot_df.dropna(axis=1, how='all')
+            print('dropna', time.perf_counter() - tick)
+        if fill_value is not None and fill_value is not np.nan:
+            tick = time.perf_counter()
+            pivot_df = pivot_df.fillna(fill_value)
+            print('fillna', time.perf_counter() - tick)
+        # missing_arr_cython = find_missing_cython_0(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        # missing_arr = np.array(missing_arr_cython)
+        # pivot_df[missing_arr] = fill_value
+    elif aggfunc == 'std':
+        # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
+        # must check dropping in this case
+        if dropna: # TODO speedup
+            tick = time.perf_counter()
+            pivot_df = pivot_df.dropna(axis=0, how='all')
+            pivot_df = pivot_df.dropna(axis=1, how='all')
+            print('dropna', time.perf_counter() - tick)
+        if fill_value is not None and fill_value is not np.nan:
+            tick = time.perf_counter()
+            pivot_df = pivot_df.fillna(fill_value)
+        print('fillna', time.perf_counter() - tick)
+        # missing_arr_cython = find_missing_cython_1(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+        # missing_arr = np.array(missing_arr_cython)
+        # pivot_df[missing_arr] = fill_value
+
+    return pivot_df
+
+# def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
+#     if aggfunc in ['sum', 'count', 'nunique']:
+#         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
+#         missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
+#         missing_arr = np.array(missing_arr_cython)
+#         pivot_df[missing_arr] = fill_value
+#     elif aggfunc in ['mean', 'max', 'min', 'median']:
+#         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
+#         # must check dropping in this case
+#         if dropna: # TODO speedup
+#             tick = time.perf_counter()
+#             pivot_df = pivot_df.dropna(axis=0, how='all')
+#             pivot_df = pivot_df.dropna(axis=1, how='all')
+#             print('dropna', time.perf_counter() - tick)
+#         missing_arr_cython = find_missing_cython_0(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+#         missing_arr = np.array(missing_arr_cython)
+#         pivot_df[missing_arr] = fill_value
+#         # TODO: drop
+#     elif aggfunc == 'std':
+#         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
+#         # must check dropping in this case
+#         if dropna: # TODO speedup
+#             tick = time.perf_counter()
+#             pivot_df = pivot_df.dropna(axis=0, how='all')
+#             pivot_df = pivot_df.dropna(axis=1, how='all')
+#             print('dropna', time.perf_counter() - tick)
+#         missing_arr_cython = find_missing_cython_1(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+#         missing_arr = np.array(missing_arr_cython)
+#         pivot_df[missing_arr] = fill_value
+#         # TODO: drop
+
+#     return pivot_df
+
+    # if aggfunc == 'std' and (dropna or fill_value != 0):
+    #     missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
+    #     missing_arr = np.array(missing_arr_cython)
+    #     pivot_df[missing_arr] = np.nan
+    #     if dropna:
+    #         pivot_df = pivot_df.dropna(axis=0, how='all')
+    #         pivot_df = pivot_df.dropna(axis=1, how='all')
+    #     if fill_value is not None:
+    #         pivot_df = pivot_df.fillna(value=fill_value)
+    # elif fill_value != 0:
+    #     missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
+    #     missing_arr = np.array(missing_arr_cython)
+    #     pivot_df[missing_arr] = fill_value
+    # return pivot_df
 
 cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     nans = np.zeros((N, M), dtype=np.float64)
@@ -383,29 +482,30 @@ cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int
         missing_arr[i, j] = 0
     return missing_arr
 
-cdef bool[:, :] find_missing_cython_nan(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr):
+cdef bool[:, :] find_missing_cython_0(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)
     cdef int i, j, k
     cdef double value
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
-        if not nans_arr[k]:
+        if not isnan(value_arr[k]):
             missing_arr[i, j] = 0
     return missing_arr
 
-cdef bool[:, :] find_missing_std_cython(long[:] idx_arr, long[:] col_arr, int N, int M):
-    cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)
+cdef bool[:, :] find_missing_cython_1(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)
+    cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)
     cdef int i, j, k
     cdef double value
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
-        if exists_arr[i, j]:
-            missing_arr[i, j] = 0
-        else:
-            exists_arr[i, j] = 1
+        if not isnan(value_arr[k]):
+            if exists_arr[i, j]:
+                missing_arr[i, j] = 0
+            else:
+                exists_arr[i, j] = 1
     return missing_arr
 
 ctypedef double vec_to_double(vector[double] &)

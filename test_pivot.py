@@ -39,13 +39,13 @@ import time
 # N_IDX = 10000
 
 # good speed ups for these parameters
-# N_ROWS = 100000
-# N_COLS = 1000
-# N_IDX = 1000
+N_ROWS = 100000
+N_COLS = 1000
+N_IDX = 1000
 
-N_ROWS = 2000000
-N_COLS = 2000
-N_IDX = 50000
+# N_ROWS = 2000000
+# N_COLS = 1000
+# N_IDX = 50000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
@@ -766,6 +766,34 @@ def test_pivot_mean_fillNone():
 
     assert is_equal_pd
 
+def test_pivot_mean_nodrop():
+
+    print()
+    print('test pivot mean fill_value=None, dropna=False')
+
+    df = gen_df()
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='mean', dropna=False)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='mean', dropna=False)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert is_equal_pd
+
 def test_pivot_mean_int():
     # NOTE: pandas keeps mean as int if all entries in column are ints. 
     # this pivot_table always returns float.
@@ -921,6 +949,34 @@ def test_pivot_max():
 
     assert within_epsilon
     assert is_equal
+    assert is_equal_pd
+
+def test_pivot_max_nodrop():
+
+    print()
+    print('test pivot max no drop')
+
+    df = gen_df()
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='max', dropna=False)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='max', dropna=False)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
     assert is_equal_pd
 
 def test_pivot_max_nan_fill_none():
@@ -1550,204 +1606,204 @@ def test_pivot_std_fill_nodrop():
     # assert is_equal
     # assert is_equal_pd
 
-# def test_multiple_columns():
+def test_multiple_columns():
 
-#     print()
-#     print('test pivot sum with multiple columns')
+    print()
+    print('test pivot sum with multiple columns')
 
-#     df = gen_df_multiple_columns()
+    df = gen_df_multiple_columns()
 
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
 
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
 
-#     # check results are equal
+    # check results are equal
 
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
-# def test_multiple_columns_nan():
+def test_multiple_columns_nan():
 
-#     print()
-#     print('test pivot sum with multiple columns nan')
+    print()
+    print('test pivot sum with multiple columns nan')
 
-#     df = gen_df_multiple_columns()
-#     df[NAME_COL][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
-#     df[NAME_COL2][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
+    df = gen_df_multiple_columns()
+    df[NAME_COL][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
+    df[NAME_COL2][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
 
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
 
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
 
-#     # check results are equal
+    # check results are equal
 
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
-# def test_multiple_columns_median():
+def test_multiple_columns_median():
 
-#     print()
-#     print('test pivot median with multiple columns')
+    print()
+    print('test pivot median with multiple columns')
 
-#     df = gen_df_multiple_columns()
+    df = gen_df_multiple_columns()
 
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='median')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='median')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
 
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='median')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='median')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
 
-#     # check results are equal
+    # check results are equal
 
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
-# def test_multiple_index():
+def test_multiple_index():
 
-#     print()
-#     print('test pivot sum with multiple index')
+    print()
+    print('test pivot sum with multiple index')
 
-#     df = gen_df_multiple_index()
+    df = gen_df_multiple_index()
 
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
 
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
 
-#     # check results are equal
+    # check results are equal
 
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
-# def test_multiple_index_nan():
+def test_multiple_index_nan():
 
-#     print()
-#     print('test pivot sum with multiple index nan')
+    print()
+    print('test pivot sum with multiple index nan')
 
-#     df = gen_df_multiple_index()
-#     df[NAME_IDX][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
-#     df[NAME_IDX2][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
+    df = gen_df_multiple_index()
+    df[NAME_IDX][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
+    df[NAME_IDX2][np.random.choice(a=[False, True], size=N_ROWS, p=[0.75, 0.25])] = np.nan
 
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
 
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
 
-#     # check results are equal
+    # check results are equal
 
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
-# def test_multiple_index_median():
+def test_multiple_index_median():
 
-#     print()
-#     print('test pivot median with multiple index')
+    print()
+    print('test pivot median with multiple index')
 
-#     df = gen_df_multiple_index()
+    df = gen_df_multiple_index()
 
-#     msg = 'cython'
-#     tick = time.perf_counter()
-#     pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='median')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_cython)
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='median')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
 
-#     msg = 'pandas'
-#     tick = time.perf_counter()
-#     pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='median')
-#     print(msg, time.perf_counter() - tick)
-#     # print(pivot_pandas)
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='median')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
 
-#     # check results are equal
+    # check results are equal
 
-#     epsilon = 1e-8
-#     within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
-#     print('componentwise within {} :'.format(epsilon), within_epsilon)
-#     is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
-#     print('componentwise equal: ', is_equal)
-#     is_equal_pd = pivot_cython.equals(pivot_pandas)
-#     print('pd.equals: ', is_equal_pd)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
 
-#     assert within_epsilon
-#     assert is_equal
-#     assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
