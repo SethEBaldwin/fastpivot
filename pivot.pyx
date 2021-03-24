@@ -21,6 +21,7 @@ import time
 # TODO: faster dropna, fillna?
 # TODO: faster std
 # TODO: why median still so slow?
+# TODO: nunique slow? maybe general agg slow? maybe factorize?
 # TODO: further optimization... multithread when values or aggfunc multiple?
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
@@ -336,15 +337,11 @@ cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] v
         value = value_arr[k]
         #####################################
         # pandas considers empty sums to be 0
-        if isnan(value):
-            if isnan(pivot_arr[i, j]):
-                pivot_arr[i, j] = 0.0
+        if isnan(pivot_arr[i, j]):
+            pivot_arr[i, j] = 0.0
         #####################################
-        else:
-            if not isnan(pivot_arr[i, j]):
-                pivot_arr[i, j] += value
-            else:
-                pivot_arr[i, j] = value
+        if not isnan(value):
+            pivot_arr[i, j] += value
     return pivot_arr
 
 cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):

@@ -40,13 +40,17 @@ import datetime
 # N_IDX = 10000
 
 # good speed ups for these parameters
-N_ROWS = 100000
-N_COLS = 1000
-N_IDX = 1000
+# N_ROWS = 100000
+# N_COLS = 1000
+# N_IDX = 1000
 
 # N_ROWS = 2000000
 # N_COLS = 1000
 # N_IDX = 50000
+
+N_ROWS = 1000000
+N_COLS = 2000
+N_IDX = 50000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
@@ -130,6 +134,7 @@ def gen_df_multiple_index():
     return df
 
 def test_pivot_datetime():
+    # pandas fills sum with 0.0 automatically? huh? that is silly. what is going on?
 
     print()
     print('test pivot datetime')
@@ -143,21 +148,29 @@ def test_pivot_datetime():
     df[NAME_IDX] = df[NAME_IDX].astype('category')
     df[NAME_VALUE] = df[NAME_VALUE].astype(np.float64)
 
+    # codes, uniques = df[NAME_IDX].factorize(sort=True)
+    # codes2, uniques2 = df[NAME_COL].factorize(sort=True)
+    # first_col_nans = set(range(N_IDX)) - {x[0] for x in zip(codes, codes2) if uniques2[x[1]] == datetime.datetime.strptime('2016-10-28', '%Y-%m-%d')}
+    # first_col_nans_list = sorted(list(first_col_nans))
+    # print(first_col_nans_list)
+
     # time
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
     # pivot_cython.info()
+    # print(pivot_cython.loc[first_col_nans_list])
 
     msg = 'pandas'
     tick = time.perf_counter()
-    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_pandas)
     # pivot_pandas.info()
+    # print(pivot_pandas.loc[first_col_nans_list])
 
     # check results are equal
 
@@ -192,14 +205,14 @@ def test_pivot_date():
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
     # pivot_cython.info()
 
     msg = 'pandas'
     tick = time.perf_counter()
-    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_pandas)
     # pivot_pandas.info()
@@ -236,14 +249,14 @@ def test_pivot_cat_bool():
 
     msg = 'cython'
     tick = time.perf_counter()
-    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_cython)
     # pivot_cython.info()
 
     msg = 'pandas'
     tick = time.perf_counter()
-    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0, aggfunc='sum')
     print(msg, time.perf_counter() - tick)
     # print(pivot_pandas)
     # pivot_pandas.info()
