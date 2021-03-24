@@ -17,9 +17,9 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: consider coding special case for fill_value=0
 # TODO: faster dropna, fillna?
 # TODO: faster std
-# TODO: compare speed of new version with nan handling to old version without
 # TODO: further optimization... multithread / proc when values or aggfunc multiple?
 # TODO: unit tests for types object (string), bool, date, timestamp, categorical
 # TODO: make sure Datetime.date isn't converted to Timestamp
@@ -256,7 +256,7 @@ def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, val
     elif aggfunc in ['mean', 'max', 'min', 'median']:
         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
         # must check dropping in this case
-        if dropna: # TODO speedup
+        if dropna and values_series.isna().to_numpy().any(): # TODO speedup
             tick = time.perf_counter()
             pivot_df = pivot_df.dropna(axis=0, how='all')
             pivot_df = pivot_df.dropna(axis=1, how='all')
