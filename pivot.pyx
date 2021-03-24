@@ -8,6 +8,7 @@ from libcpp.set cimport set as cset
 from libcpp.list cimport list as clist
 from libcpp cimport bool
 from libc.math cimport sqrt
+from libc.math cimport isnan
 from cython.operator import dereference, postincrement
 from libc.stdlib cimport malloc
 from libcpp.algorithm cimport sort as stdsort
@@ -16,31 +17,35 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: allow NaNs in values - follow template for sum
-# TODO: better unit tests for NaNs
-# TODO: convenience like fill_value dict?
-# TODO: std is slow because of processing at the end
-# TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
+# TODO: unit tests for types object (string), bool, date, timestamp, categorical
+# TODO: make sure Datetime.date isn't converted to Timestamp
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
-    The main limitations are:
-        1) Values must not contain any NaNs.
-        2) You must aggregate, and you must do so by a list of preconstructed functions:
-            For numerical values (np.float64 or np.int64), you can aggregate by any of 
-                ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
-            For other values, you can aggregate by any of 
-                ['count', 'nunique']
+    The main limitation is that you must aggregate, and you must do so by a list of preconstructed functions:
+        For numerical values (np.float64 or np.int64), you can aggregate by any of 
+           ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
+        For other values, you can aggregate by any of 
+            ['count', 'nunique']
 
-    The arguments and return format mimic pandas very closely, with a few small differences.
-    Occasionaly the ordering of the columns, such as when passing a list of aggfuncs and a single value column
-    Occasionally the returned data types will be slightly different, for example, when taking the mean of a column of ints, 
-    pandas returns an int if the result is an int, and a float otherwise, whereas this pivot_table returns a float in all cases
-    The following arguments are not supported here: margins, margins_name, observed.
+    The arguments and return format mimic pandas very closely, with a few small differences:
+    1) Occasionaly the ordering of the columns, such as when passing a list of aggfuncs and a single value column
+    2) When passing values of type np.int64, values of type np.float64 will be returned for sum, mean, std, max, min,
+        and median, and int.64 for count, and nunique. Pandas returns different types in some of these cases.
+    3) edge cases are handled differently for the aggregation functions. The conventions are:
+                            fastpivot       pandas
+        sum of empty:       0.0             0.0 or 0
+        mean of empty:      NaN             NaN
+        std of empty:       NaN             NaN
+        max of empty:       NaN             NaN
+        min of empty:       NaN             NaN
+        median of empty:    NaN             NaN
+        count of empty:     0               NaN
+        nunique of empty:   0               Nan
+    4) The following arguments are not supported here: margins, margins_name, observed.
 
-    Speed tends to beat pandas.pivot_table by a factor of 2 to 20 depending on the dataframe passed.
-    Generally on a dataframe with many rows, and many distinct values in the passed index and column, the performance of this
-    pivot_tabel function beats pandas significantly.
+    Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of this
+    pivot_tabel function beats pandas significantly, by a factor of 2 to 20.
     On a dataframe with many rows but few distinct values in the passed index and column, the speed of this pivot_table
     tends to be roughly on par with pandas.
     This pivot_table tends to be slower than pandas when there are many rows, multiple index or columns are passed,
@@ -62,7 +67,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     pivot_df: pandas dataframe
     """
     
-    tick = time.perf_counter()
+    #tick = time.perf_counter()
     assert isinstance(index, str) or isinstance(index, list)
     assert isinstance(columns, str) or isinstance(columns, list)
     if isinstance(index, str):
@@ -96,9 +101,9 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
-    print(1, time.perf_counter() - tick)
+    #print(1, time.perf_counter() - tick)
 
-    tick = time.perf_counter()
+    #tick = time.perf_counter()
     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)
 
     pivot_dfs = []
@@ -119,8 +124,14 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
             )
             pivot_dfs.append(pivot_df)
     pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)
-    print(2, time.perf_counter() - tick)
+    #print(2, time.perf_counter() - tick)
     
+    if dropna:
+        pivot_df = pivot_df.dropna(axis=0, how='all')
+        pivot_df = pivot_df.dropna(axis=1, how='all')
+    if fill_value is not None:
+        pivot_df = pivot_df.fillna(fill_value)
+
     return pivot_df
 
 def process_values_aggfunc(values, aggfunc):
@@ -173,7 +184,6 @@ def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, co
     n_col = col_arr_unique.shape[0]
     pivot_arr = pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col)
     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
-    pivot_df = pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col)
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
 
@@ -181,11 +191,8 @@ def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, co
 
 def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
 
-    nans_arr = values_series.isna().to_numpy()
-
     # handle types
     values_dtype = values_series.dtype
-    #assert not values_series.isnull().to_numpy().any()
     if values_dtype == np.float64 or values_dtype == np.int64:
         numeric = True
         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
@@ -198,7 +205,7 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
     # pivot and aggregate
     if numeric:
         if aggfunc == 'sum':
-            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nans_arr)
+            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         elif aggfunc == 'mean':
             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         elif aggfunc == 'std':
@@ -208,56 +215,51 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
         elif aggfunc == 'min':
             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         elif aggfunc == 'count':
-            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col)
+            nans_arr = values_series.isna().to_numpy()
+            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr)
         elif aggfunc == 'median':
             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
         elif aggfunc == 'nunique':
             pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
     else:
         if aggfunc == 'count':
-            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col)
+            nans_arr = values_series.isna().to_numpy()
+            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr)
         elif aggfunc == 'nunique':
             values_arr, _ = values_series.factorize()
-            values_arr = values_arr.astype(np.float64)
+            values_arr = values_arr.astype(np.float64) # TODO: unit tests... careful with nans?
             pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython)
     arr = np.array(pivot_arr)
 
-    # handle type conversion back if sensible
-    if values_dtype == np.int64:
-        if aggfunc in ['sum', 'max', 'min']:
-            arr = arr.astype(np.int64)
     return arr
 
-def pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n_col):
-    if aggfunc == 'std' and (dropna or fill_value != 0):
-        missing_arr_cython = find_missing_std_cython(idx_arr, col_arr, n_idx, n_col)
-        missing_arr = np.array(missing_arr_cython)
-        pivot_df[missing_arr] = np.nan
-        if dropna:
-            pivot_df = pivot_df.dropna(axis=0, how='all')
-            pivot_df = pivot_df.dropna(axis=1, how='all')
-        if fill_value is not None:
-            pivot_df = pivot_df.fillna(value=fill_value)
-    elif fill_value != 0:
-        missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
-        missing_arr = np.array(missing_arr_cython)
-        pivot_df[missing_arr] = fill_value
-    return pivot_df
-
-cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool[:] nans_arr):
-    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+    nans = np.zeros((N, M), dtype=np.float64)
+    nans.fill(np.nan)
+    cdef double[:, :] pivot_arr = nans
     cdef int i, j, k
     cdef double value
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        if not nans_arr[k]:
-            pivot_arr[i, j] += value
+        #####################################
+        # pandas considers empty sums to be 0
+        if isnan(value):
+            if isnan(pivot_arr[i, j]):
+                pivot_arr[i, j] = 0.0
+        #####################################
+        else:
+            if not isnan(pivot_arr[i, j]):
+                pivot_arr[i, j] += value
+            else:
+                pivot_arr[i, j] = value
     return pivot_arr
 
 cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
-    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
+    nans = np.zeros((N, M), dtype=np.float64)
+    nans.fill(np.nan)
+    cdef double[:, :] pivot_arr = nans
     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
     cdef int i, j, k
     cdef double value
@@ -266,8 +268,12 @@ cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] 
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        pivot_arr[i, j] += value
-        pivot_counts_arr[i, j] += 1.0
+        if not isnan(value):
+            if not isnan(pivot_arr[i, j]):
+                pivot_arr[i, j] += value
+            else:
+                pivot_arr[i, j] = value
+            pivot_counts_arr[i, j] += 1.0
     for i in range(N):
         for j in range(M):
             divisor = pivot_counts_arr[i, j]
@@ -276,8 +282,12 @@ cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] 
     return pivot_arr
 
 cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
-    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
-    cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)
+    nans1 = np.zeros((N, M), dtype=np.float64)
+    nans1.fill(np.nan)
+    cdef double[:, :] pivot_arr = nans1
+    nans2 = np.zeros((N, M), dtype=np.float64)
+    nans2.fill(np.nan)
+    cdef double[:, :] mean_arr = nans2
     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
     cdef int i, j, k
     cdef double value
@@ -286,8 +296,12 @@ cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] v
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        mean_arr[i, j] += value
-        pivot_counts_arr[i, j] += 1.0
+        if not isnan(value):
+            if not isnan(mean_arr[i, j]):
+                mean_arr[i, j] += value
+            else:
+                mean_arr[i, j] = value
+            pivot_counts_arr[i, j] += 1.0
     for i in range(N):
         for j in range(M):
             divisor = pivot_counts_arr[i, j]
@@ -296,57 +310,65 @@ cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] v
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
-        value = value_arr[k] - mean_arr[i, j]
-        pivot_arr[i, j] += (value*value)
+        if not isnan(value_arr[k]):
+            if not isnan(pivot_arr[i, j]):
+                value = value_arr[k] - mean_arr[i, j]
+                pivot_arr[i, j] += (value*value)
+            else:
+                value = value_arr[k] - mean_arr[i, j]
+                pivot_arr[i, j] = (value*value)
     for i in range(N):
         for j in range(M):
             divisor = pivot_counts_arr[i, j]
-            if divisor != 0.0 and divisor != 1.0:
+            if divisor != 0.0:# and divisor != 1.0:
                 pivot_arr[i, j] /= (divisor - 1)
                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
     return pivot_arr
 
 cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
-    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
-    cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)
+    nans = np.zeros((N, M), dtype=np.float64)
+    nans.fill(np.nan)
+    cdef double[:, :] pivot_arr = nans
     cdef int i, j, k
     cdef double value
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        if exists_arr[i, j]:
-            if pivot_arr[i, j] < value:
+        if not isnan(value):
+            if not isnan(pivot_arr[i, j]):
+                if pivot_arr[i, j] < value:
+                    pivot_arr[i, j] = value
+            else:
                 pivot_arr[i, j] = value
-        else:
-            pivot_arr[i, j] = value
-            exists_arr[i, j] = 1
     return pivot_arr
 
 cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
-    cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
-    cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)
+    nans = np.zeros((N, M), dtype=np.float64)
+    nans.fill(np.nan)
+    cdef double[:, :] pivot_arr = nans
     cdef int i, j, k
     cdef double value
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        if exists_arr[i, j]:
-            if pivot_arr[i, j] > value:
+        if not isnan(value):
+            if not isnan(pivot_arr[i, j]):
+                if pivot_arr[i, j] > value:
+                    pivot_arr[i, j] = value
+            else:
                 pivot_arr[i, j] = value
-        else:
-            pivot_arr[i, j] = value
-            exists_arr[i, j] = 1
     return pivot_arr
 
-cdef long[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M):
+cdef long[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr):
     cdef long[:, :] pivot_arr = np.zeros((N, M), dtype=np.int64)
     cdef int i, j, k
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
-        pivot_arr[i, j] += 1
+        if not nans_arr[k]:
+            pivot_arr[i, j] += 1
     return pivot_arr
 
 cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int M):
@@ -357,6 +379,17 @@ cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int
         i = idx_arr[k]
         j = col_arr[k]
         missing_arr[i, j] = 0
+    return missing_arr
+
+cdef bool[:, :] find_missing_cython_nan(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr):
+    cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)
+    cdef int i, j, k
+    cdef double value
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        if not nans_arr[k]:
+            missing_arr[i, j] = 0
     return missing_arr
 
 cdef bool[:, :] find_missing_std_cython(long[:] idx_arr, long[:] col_arr, int N, int M):
@@ -383,21 +416,6 @@ cdef double sum_cython(vector[double] &vec):
         value += vec[k]
     return value
 
-# cdef double median_cython(vector[double] &vec):
-#     cdef int k
-#     cdef int idx
-#     cdef double value = 0.0
-#     cdef double med
-#     stdsort(vec.begin(), vec.end())
-#     idx = vec.size() / 2
-#     if vec.size() % 2 == 1:
-#         med = vec[idx]
-#     elif vec.size() == 0:
-#         med = 0.0
-#     else:
-#         med = (vec[idx] + vec[idx-1]) / 2
-#     return med
-
 cdef double median_cython(vector[double] &vec):
     cdef int k = 0
     cdef int mid = vec.size() / 2
@@ -407,7 +425,7 @@ cdef double median_cython(vector[double] &vec):
     cdef double max_left
 
     if vec.size() == 0:
-        return 0.0
+        return np.nan
     
     while k != mid:
         k = partition(vec, mid, i, j)
@@ -458,48 +476,50 @@ cdef long nunique_cython(vector[double] &vec):
     return n
 
 cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):
-    tick = time.perf_counter()
+    #tick = time.perf_counter()
     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
     cdef vector[double].iterator it
     cdef double[:, :] pivot_arr_return = np.zeros((N, M), dtype=np.float64)
     cdef int i, j
     cdef double value
-    print('cdef and initialize', time.perf_counter() - tick)
-    tick = time.perf_counter()
+    #print('cdef and initialize', time.perf_counter() - tick)
+    #tick = time.perf_counter()
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        pivot_arr[i*M + j].push_back(value)
-    print('push_back', time.perf_counter() - tick)
-    tick = time.perf_counter()
+        if not isnan(value):
+            pivot_arr[i*M + j].push_back(value)
+    #print('push_back', time.perf_counter() - tick)
+    #tick = time.perf_counter()
     for i in range(N):
         for j in range(M):
                 value = agg(pivot_arr[i*M + j])
                 pivot_arr_return[i, j] = value
-    print('agg and assign', time.perf_counter() - tick)
+    #print('agg and assign', time.perf_counter() - tick)
     return pivot_arr_return
 
 cdef long[:, :] pivot_cython_agg_int(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_long agg):
-    tick = time.perf_counter()
+    #tick = time.perf_counter()
     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
     cdef vector[double].iterator it
     cdef long[:, :] pivot_arr_return = np.zeros((N, M), dtype=np.int64)
     cdef int i, j
     cdef double value
     cdef long value_int
-    print('cdef and initialize', time.perf_counter() - tick)
-    tick = time.perf_counter()
+    #print('cdef and initialize', time.perf_counter() - tick)
+    #tick = time.perf_counter()
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        pivot_arr[i*M + j].push_back(value)
-    print('push_back', time.perf_counter() - tick)
-    tick = time.perf_counter()
+        if not isnan(value):
+            pivot_arr[i*M + j].push_back(value)
+    #print('push_back', time.perf_counter() - tick)
+    #tick = time.perf_counter()
     for i in range(N):
         for j in range(M):
                 value_int = agg(pivot_arr[i*M + j])
                 pivot_arr_return[i, j] = value_int
-    print('agg and assign', time.perf_counter() - tick)
+    #print('agg and assign', time.perf_counter() - tick)
     return pivot_arr_return
