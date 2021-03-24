@@ -12,6 +12,10 @@ import time
 # N_COLS = 2
 # N_IDX = 2
 
+# N_ROWS = 4
+# N_COLS = 1
+# N_IDX = 1
+
 # N_ROWS = 1000000
 # N_COLS = 100
 # N_IDX = 10000
@@ -24,9 +28,9 @@ import time
 # N_COLS = 10
 # N_IDX = 10
 
-N_ROWS = 10000
-N_COLS = 100
-N_IDX = 100
+# N_ROWS = 10000
+# N_COLS = 100
+# N_IDX = 100
 
 # These values cause memory error (out of memory)
 # N_ROWS = 1000000
@@ -34,9 +38,9 @@ N_IDX = 100
 # N_IDX = 10000
 
 # Really good speed ups for these parameters
-# N_ROWS = 100000
-# N_COLS = 1000
-# N_IDX = 1000
+N_ROWS = 100000
+N_COLS = 1000
+N_IDX = 1000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
@@ -118,6 +122,68 @@ def gen_df_multiple_index():
     # print(df)
 
     return df
+
+def test_pivot_nan_value():
+
+    print()
+    print('test pivot nan value')
+
+    df = gen_df()
+
+    df.iloc[0, -1] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert is_equal_pd
+
+def test_pivot_nan_value_fillna0():
+
+    print()
+    print('test pivot nan value fillna=0')
+
+    df = gen_df()
+
+    df.iloc[0, -1] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert is_equal_pd
 
 def test_pivot_nan_index():
 

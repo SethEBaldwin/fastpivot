@@ -16,6 +16,8 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: allow NaNs in values - follow template for sum
+# TODO: better unit tests for NaNs
 # TODO: convenience like fill_value dict?
 # TODO: std is slow because of processing at the end
 # TODO: address type conversions: have example where column with type Datetime.date was converted to Timestamp
@@ -179,9 +181,11 @@ def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, co
 
 def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
 
+    nans_arr = values_series.isna().to_numpy()
+
     # handle types
     values_dtype = values_series.dtype
-    assert not values_series.isnull().to_numpy().any()
+    #assert not values_series.isnull().to_numpy().any()
     if values_dtype == np.float64 or values_dtype == np.int64:
         numeric = True
         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
@@ -194,7 +198,7 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
     # pivot and aggregate
     if numeric:
         if aggfunc == 'sum':
-            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nans_arr)
         elif aggfunc == 'mean':
             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         elif aggfunc == 'std':
@@ -240,7 +244,7 @@ def pivot_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, n_idx, n
         pivot_df[missing_arr] = fill_value
     return pivot_df
 
-cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool[:] nans_arr):
     cdef double[:, :] pivot_arr = np.zeros((N, M), dtype=np.float64)
     cdef int i, j, k
     cdef double value
@@ -248,7 +252,8 @@ cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] v
         i = idx_arr[k]
         j = col_arr[k]
         value = value_arr[k]
-        pivot_arr[i, j] += value
+        if not nans_arr[k]:
+            pivot_arr[i, j] += value
     return pivot_arr
 
 cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
