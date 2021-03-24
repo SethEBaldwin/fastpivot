@@ -2,6 +2,7 @@ import pivot
 import pandas as pd
 import numpy as np
 import time
+import datetime
 
 # NOTE on speed: 
 # this pivot tends to be faster than pandas when N_ROWS, N_COLS and N_IDX are large
@@ -127,6 +128,139 @@ def gen_df_multiple_index():
     # print(df)
 
     return df
+
+def test_pivot_datetime():
+
+    print()
+    print('test pivot datetime')
+
+    col1 = [x for x in np.random.randint(0, N_IDX, size=N_ROWS)]
+    col2 = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in np.random.choice(a=['2016-10-28', '2016-11-04', '2016-12-23', '2017-01-15', '2017-02-05', '2017-03-26'], size=N_ROWS)]
+    col3 = [x for x in np.random.normal(size=N_ROWS)]
+
+    data = np.transpose([col1, col2, col3])
+    df = pd.DataFrame(data, columns=[NAME_IDX, NAME_COL, NAME_VALUE], index=range(len(data)))
+    df[NAME_IDX] = df[NAME_IDX].astype('category')
+    df[NAME_VALUE] = df[NAME_VALUE].astype(np.float64)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+    # pivot_cython.info()
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+    # pivot_pandas.info()
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
+
+def test_pivot_date():
+
+    print()
+    print('test pivot date')
+
+    col1 = [x for x in np.random.randint(0, N_IDX, size=N_ROWS)]
+    col2 = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in np.random.choice(a=['2016-10-28', '2016-11-04', '2016-12-23', '2017-01-15', '2017-02-05', '2017-03-26'], size=N_ROWS)]
+    col3 = [x for x in np.random.normal(size=N_ROWS)]
+
+    data = np.transpose([col1, col2, col3])
+    df = pd.DataFrame(data, columns=[NAME_IDX, NAME_COL, NAME_VALUE], index=range(len(data)))
+    df[NAME_IDX] = df[NAME_IDX].astype('category')
+    df[NAME_COL] = df[NAME_COL].dt.date
+    df[NAME_VALUE] = df[NAME_VALUE].astype(np.float64)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+    # pivot_cython.info()
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+    # pivot_pandas.info()
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
+
+def test_pivot_cat_bool():
+
+    print()
+    print('test pivot cat bool')
+
+    col1 = ['idx{}'.format(x) for x in np.random.randint(0, N_IDX, size=N_ROWS)]
+    col2 = [x for x in np.random.choice(a=[False, True], size=N_ROWS)]
+    col3 = [x for x in np.random.normal(size=N_ROWS)]
+
+    data = np.transpose([col1, col2, col3])
+    df = pd.DataFrame(data, columns=[NAME_IDX, NAME_COL, NAME_VALUE], index=range(len(data)))
+    df[NAME_IDX] = df[NAME_IDX].astype('category')
+    df[NAME_VALUE] = df[NAME_VALUE].astype(np.float64)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+    # pivot_cython.info()
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=None, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+    # pivot_pandas.info()
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
 def test_pivot_nan_value():
 

@@ -22,9 +22,7 @@ import time
 # TODO: faster dropna, fillna?
 # TODO: faster std
 # TODO: why median still so slow?
-# TODO: further optimization... multithread / proc when values or aggfunc multiple?
-# TODO: unit tests for types object (string), bool, date, timestamp, categorical
-# TODO: make sure Datetime.date isn't converted to Timestamp
+# TODO: further optimization... multithread when values or aggfunc multiple?
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
     A very basic and limited, but hopefully fast implementation of pivot table.
