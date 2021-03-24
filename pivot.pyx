@@ -17,7 +17,6 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: difference between nunique of empty list vs (idx, col) doesn't exist... fix this
 # TODO: consider coding special case for fill_value=0
 # TODO: faster dropna, fillna?
 # TODO: faster std
@@ -221,7 +220,7 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
         elif aggfunc == 'median':
             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
         elif aggfunc == 'nunique':
-            pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
+            pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
     else:
         if aggfunc == 'count':
             nans_arr = values_series.isna().to_numpy()
@@ -229,7 +228,7 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
         elif aggfunc == 'nunique':
             values_arr, _ = values_series.factorize()
             values_arr = values_arr.astype(np.float64) # TODO: unit tests... careful with nans?
-            pivot_arr = pivot_cython_agg_int(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython)
+            pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython)
     arr = np.array(pivot_arr)
 
     return arr
@@ -563,10 +562,10 @@ cdef double max_left_cython(vector[double] & vec, int upper_idx):
             value = vec[i]
     return value
 
-cdef long nunique_cython(vector[double] &vec):
+cdef double nunique_cython(vector[double] &vec):
     cdef int k
     cdef cset[double] value_set
-    cdef long n
+    cdef double n
     for k in range(vec.size()):
         value_set.insert(vec[k])
     n = value_set.size()    
@@ -593,6 +592,34 @@ cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] v
         for j in range(M):
                 value = agg(pivot_arr[i*M + j])
                 pivot_arr_return[i, j] = value
+    #print('agg and assign', time.perf_counter() - tick)
+    return pivot_arr_return
+
+cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):
+    #tick = time.perf_counter()
+    cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
+    cdef vector[double].iterator it
+    nans = np.zeros((N, M), dtype=np.float64)
+    nans.fill(np.nan)
+    cdef double[:, :] pivot_arr_return = nans
+    cdef int i, j
+    cdef double value
+    #print('cdef and initialize', time.perf_counter() - tick)
+    #tick = time.perf_counter()
+    for k in range(idx_arr.shape[0]):
+        i = idx_arr[k]
+        j = col_arr[k]
+        value = value_arr[k]
+        if not isnan(value):
+            pivot_arr[i*M + j].push_back(value)
+            pivot_arr_return[i, j] = 0.0
+    #print('push_back', time.perf_counter() - tick)
+    #tick = time.perf_counter()
+    for i in range(N):
+        for j in range(M):
+                value = agg(pivot_arr[i*M + j])
+                if value != 0:
+                    pivot_arr_return[i, j] = value
     #print('agg and assign', time.perf_counter() - tick)
     return pivot_arr_return
 
