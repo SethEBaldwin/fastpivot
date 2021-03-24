@@ -16,17 +16,17 @@ import time
 # N_COLS = 100
 # N_IDX = 10000
 
-N_ROWS = 1000000
-N_COLS = 500  # note: pandas can't handle 10000 or even 1000... but this pivot can
-N_IDX = 100
+# N_ROWS = 1000000
+# N_COLS = 500  # note: pandas can't handle 10000 or even 1000... but this pivot can
+# N_IDX = 100
 
 # N_ROWS = 1000000
 # N_COLS = 10
 # N_IDX = 10
 
-# N_ROWS = 10000
-# N_COLS = 100
-# N_IDX = 100
+N_ROWS = 10000
+N_COLS = 100
+N_IDX = 100
 
 # These values cause memory error (out of memory)
 # N_ROWS = 1000000
@@ -118,6 +118,84 @@ def gen_df_multiple_index():
     # print(df)
 
     return df
+
+def test_pivot_nan_index():
+
+    print()
+    print('test pivot nan index')
+
+    df = gen_df()
+
+    df.iloc[0, 0] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
+
+def test_pivot_nan_column():
+
+    print()
+    print('test pivot nan column')
+
+    df = gen_df()
+
+    df.iloc[0, 1] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
 
 def test_pivot_values_list():
     # inexplicably, pandas does not sort here.

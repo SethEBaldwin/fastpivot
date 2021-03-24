@@ -63,13 +63,19 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     tick = time.perf_counter()
     assert isinstance(index, str) or isinstance(index, list)
     assert isinstance(columns, str) or isinstance(columns, list)
+    if isinstance(index, str):
+        df = df.dropna(subset=[index])
     if isinstance(index, list):
+        df = df.dropna(subset=index)
         if len(index) == 1:
             index = index[0]
+    if isinstance(columns, str):
+        df = df.dropna(subset=[columns])
     if isinstance(columns, list):
+        df = df.dropna(subset=columns)
         if len(columns) == 1:
             columns = columns[0]
-    
+
     if isinstance(index, str):
         #tick1 = time.perf_counter()
         idx_arr, idx_arr_unique = df[index].factorize(sort=True)
