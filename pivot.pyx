@@ -17,6 +17,8 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: compare speed of new version with nan handling to old version without
+# TODO: further optimization... multithread / proc when values or aggfunc multiple?
 # TODO: unit tests for types object (string), bool, date, timestamp, categorical
 # TODO: make sure Datetime.date isn't converted to Timestamp
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
