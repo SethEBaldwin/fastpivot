@@ -20,6 +20,7 @@ import time
 # N_COLS = 100
 # N_IDX = 10000
 
+# slower here for single col, idx. faster for double
 # N_ROWS = 1000000
 # N_COLS = 500  # note: pandas can't handle 10000 or even 1000... but this pivot can
 # N_IDX = 100
@@ -37,8 +38,12 @@ import time
 # N_COLS = 1000
 # N_IDX = 10000
 
-# Really good speed ups for these parameters
-N_ROWS = 100000
+# good speed ups for these parameters
+# N_ROWS = 100000
+# N_COLS = 1000
+# N_IDX = 1000
+
+N_ROWS = 500000
 N_COLS = 1000
 N_IDX = 1000
 
@@ -788,10 +793,16 @@ def test_pivot_mean_int():
 
     # check results are equal
 
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
     is_equal_pd = pivot_cython.equals(pivot_pandas)
     print('pd.equals: ', is_equal_pd)
 
-    assert is_equal_pd
+    assert within_epsilon
+    assert is_equal
 
 def test_pivot_std():
 
