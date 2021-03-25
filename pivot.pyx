@@ -17,7 +17,7 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: consider coding special case for fill_value=0
+# TODO: when N_COLS large, time pandas with tranpose, pivot, tranpose?
 # TODO: faster dropna, fillna?
 # TODO: faster std
 # TODO: why median still so slow?
@@ -25,8 +25,10 @@ import time
 # TODO: further optimization... multithread when values or aggfunc multiple?
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
     """
-    A very basic and limited, but hopefully fast implementation of pivot table.
-    The main limitation is that you must aggregate, and you must do so by a list of preconstructed functions:
+    A limited, but hopefully fast implementation of pivot table.
+    Tends to be faster than pandas.pivot_table when resulting pivot table is sparse.
+    The main limitation is that you must include index, columns, values and you must aggregate.
+    You also must aggregate by a list of preconstructed functions:
         For numerical values (np.float64 or np.int64), you can aggregate by any of 
            ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
         For other values, you can aggregate by any of 
@@ -40,23 +42,21 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     3) The following arguments are not supported here: margins, margins_name, observed.
 
     Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of this
-    pivot_tabel function beats pandas significantly, by a factor of 2 to 20.
+    pivot_table function beats pandas significantly, by a factor of 2 to 20.
     On a dataframe with many rows but few distinct values in the passed index and column, the speed of this pivot_table
-    tends to be roughly on par with pandas.
-    This pivot_table tends to be slower than pandas when there are many rows, multiple index or columns are passed,
-    and the index and columns passed have few distinct values. 
+    tends to be roughly on par with pandas, and in some cases can actually be slower.
 
     Arguments:
-    df: pandas dataframe
-    index: string or list, name(s) of column(s) that you want to become the index of the pivot table. 
-    columns: string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
-    values: string or list, name(s) of column(s) that contains as values the values of the pivot table.
-    aggfunc: string, list, or dict, name of aggregation function. must be on implemented list above.
+    df (required): pandas dataframe
+    index (required): string or list, name(s) of column(s) that you want to become the index of the pivot table. 
+    columns (required): string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
+    values (required): string or list, name(s) of column(s) that contains as values the values of the pivot table.
+    aggfunc (default 'mean'): string, list, or dict, name of aggregation function. must be on implemented list above.
         if aggfunc is a dict, the format must be as in the following example:
         values = ['column_name1', 'column_name2', 'column_name3']
         aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': ['count', 'nunique']}
-    fill_value: scalar, value to replace missing values with in the pivot table.
-    dropna: bool, if True rows and columns that are entirely NaN values will be dropped.
+    fill_value (default None): scalar, value to replace missing values with in the pivot table.
+    dropna (default True): bool, if True rows and columns that are entirely NaN values will be dropped.
 
     Returns:
     pivot_df: pandas dataframe
@@ -182,7 +182,7 @@ def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, co
 
     n_idx = idx_arr_unique.shape[0]
     n_col = col_arr_unique.shape[0]
-    pivot_arr = pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col)
+    pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
     pivot_df.index.rename(index, inplace=True)
@@ -190,7 +190,12 @@ def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, co
 
     return pivot_df
 
-def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
+def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):
+    # computes pivot table and aggregates.
+    # if fill_value is zero then sum, count, and nunique fill by zero right away since these aggfuncs never have
+    # to consider dropna. 
+    # in all other cases (other aggfuncs, or all other fill_value) NaNs are returned when appropriate and filled later
+    # after dropna has been called
 
     # handle types
     values_dtype = values_series.dtype
@@ -206,7 +211,7 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
     # pivot and aggregate
     if numeric:
         if aggfunc == 'sum':
-            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+            pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
         elif aggfunc == 'mean':
             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         elif aggfunc == 'std':
@@ -217,19 +222,19 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         elif aggfunc == 'count':
             nans_arr = values_series.isna().to_numpy()
-            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr)
+            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
         elif aggfunc == 'median':
             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
         elif aggfunc == 'nunique':
-            pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython)
+            pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
     else:
         if aggfunc == 'count':
             nans_arr = values_series.isna().to_numpy()
-            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr)
+            pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
         elif aggfunc == 'nunique':
             values_arr, _ = values_series.factorize()
             values_arr = values_arr.astype(np.float64) # TODO: unit tests... careful with nans?
-            pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython)
+            pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
     arr = np.array(pivot_arr)
 
     return arr
@@ -237,7 +242,8 @@ def pivot_compute_agg(aggfunc, idx_arr, col_arr, values_series, n_idx, n_col):
 def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
     if aggfunc in ['sum', 'count', 'nunique']:
         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
-        if fill_value is not None and fill_value is not np.nan:
+        # if fill_value == 0, NaNs have already been filled by pivot_compute_agg
+        if fill_value is not None and fill_value is not np.nan and fill_value != 0:
             tick = time.perf_counter()
             pivot_df = pivot_df.fillna(fill_value)
             print('fillna', time.perf_counter() - tick)
@@ -325,10 +331,11 @@ def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, val
     #     pivot_df[missing_arr] = fill_value
     # return pivot_df
 
-cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
-    nans = np.zeros((N, M), dtype=np.float64)
-    nans.fill(np.nan)
-    cdef double[:, :] pivot_arr = nans
+cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
+    init = np.zeros((N, M), dtype=np.float64)
+    if not fill_zero:
+        init.fill(np.nan)
+    cdef double[:, :] pivot_arr = init
     cdef int i, j, k
     cdef double value
     for k in range(idx_arr.shape[0]):
@@ -449,10 +456,11 @@ cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] v
                 pivot_arr[i, j] = value
     return pivot_arr
 
-cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr):
-    nans = np.zeros((N, M), dtype=np.float64)
-    nans.fill(np.nan)
-    cdef double[:, :] pivot_arr = nans
+cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
+    init = np.zeros((N, M), dtype=np.float64)
+    if not fill_zero:
+        init.fill(np.nan)
+    cdef double[:, :] pivot_arr = init
     cdef int i, j, k
     for k in range(idx_arr.shape[0]):
         i = idx_arr[k]
@@ -592,13 +600,14 @@ cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] v
     #print('agg and assign', time.perf_counter() - tick)
     return pivot_arr_return
 
-cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):
+cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):
     #tick = time.perf_counter()
     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
     cdef vector[double].iterator it
-    nans = np.zeros((N, M), dtype=np.float64)
-    nans.fill(np.nan)
-    cdef double[:, :] pivot_arr_return = nans
+    init = np.zeros((N, M), dtype=np.float64)
+    if not fill_zero:
+        init.fill(np.nan)
+    cdef double[:, :] pivot_arr_return = init
     cdef int i, j
     cdef double value
     #print('cdef and initialize', time.perf_counter() - tick)

@@ -40,17 +40,17 @@ import datetime
 # N_IDX = 10000
 
 # good speed ups for these parameters
-# N_ROWS = 100000
-# N_COLS = 1000
-# N_IDX = 1000
+N_ROWS = 100000
+N_COLS = 1000
+N_IDX = 1000
 
 # N_ROWS = 2000000
 # N_COLS = 1000
 # N_IDX = 50000
 
-N_ROWS = 1000000
-N_COLS = 2000
-N_IDX = 50000
+# N_ROWS = 1000000
+# N_COLS = 2000
+# N_IDX = 50000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
