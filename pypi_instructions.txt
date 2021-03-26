@@ -6,15 +6,12 @@ sudo docker images
 find image number
 sudo docker run -i [IMAGE NUMBER]
 
+inside the docker container:
+mv wheelhouse/fastpivot-0.1.7-cp37-cp37m-manylinux_2_24_x86_64.whl /tmp
+
 find docker container id:
 sudo docker ps
-
-inside the docker container:
-cd wheelhouse
-mv fastpivot-0.1.4-cp37-cp37m-manylinux_2_24_x86_64.whl /tmp
-
-from host:
-sudo docker cp [CONTAINER ID]:/tmp/fastpivot-0.1.4-cp37-cp37m-manylinux_2_24_x86_64.whl wheelhouse/
+sudo docker cp [CONTAINER ID]:/tmp/fastpivot-0.1.7-cp37-cp37m-manylinux_2_24_x86_64.whl wheelhouse/
 
 mv wheelhouse/* dist
 rm dist/*-cp37-cp37m-linux_x86_64.whl

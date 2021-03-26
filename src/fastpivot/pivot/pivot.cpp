@@ -5,12 +5,12 @@
     "distutils": {
         "depends": [],
         "language": "c++",
-        "name": "pivot",
+        "name": "fastpivot.pivot.pivot",
         "sources": [
             "src/fastpivot/pivot/pivot.pyx"
         ]
     },
-    "module_name": "pivot"
+    "module_name": "fastpivot.pivot.pivot"
 }
 END: Cython Metadata */
 
@@ -630,8 +630,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__pivot
-#define __PYX_HAVE_API__pivot
+#define __PYX_HAVE__fastpivot__pivot__pivot
+#define __PYX_HAVE_API__fastpivot__pivot__pivot
 /* Early includes */
 #include <string.h>
 #include "ios"
@@ -1013,7 +1013,7 @@ typedef struct {
 } __Pyx_BufFmt_Context;
 
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":690
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":690
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -1022,7 +1022,7 @@ typedef struct {
  */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":691
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":691
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1031,7 +1031,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
  */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":692
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":692
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1040,7 +1040,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
  */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":693
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":693
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1049,7 +1049,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
  */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":697
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":697
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1058,7 +1058,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
  */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":698
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":698
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1067,7 +1067,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
  */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":699
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":699
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1076,7 +1076,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
  */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":700
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":700
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1085,7 +1085,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
  */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":704
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":704
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1094,7 +1094,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
  */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":705
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":705
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1103,7 +1103,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
  */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":714
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":714
  * # The int types are mapped a bit surprising --
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t             # <<<<<<<<<<<<<<
@@ -1112,7 +1112,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
  */
 typedef npy_long __pyx_t_5numpy_int_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":715
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":715
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t             # <<<<<<<<<<<<<<
@@ -1121,7 +1121,7 @@ typedef npy_long __pyx_t_5numpy_int_t;
  */
 typedef npy_longlong __pyx_t_5numpy_long_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":716
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":716
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1130,7 +1130,7 @@ typedef npy_longlong __pyx_t_5numpy_long_t;
  */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":718
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":718
  * ctypedef npy_longlong   longlong_t
  * 
  * ctypedef npy_ulong      uint_t             # <<<<<<<<<<<<<<
@@ -1139,7 +1139,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
  */
 typedef npy_ulong __pyx_t_5numpy_uint_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":719
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":719
  * 
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t             # <<<<<<<<<<<<<<
@@ -1148,7 +1148,7 @@ typedef npy_ulong __pyx_t_5numpy_uint_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":720
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":720
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1157,7 +1157,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":722
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":722
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1166,7 +1166,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
  */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":723
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":723
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1175,7 +1175,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
  */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":725
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":725
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1184,7 +1184,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
  */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":726
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":726
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1193,7 +1193,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
  */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":727
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":727
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1232,7 +1232,7 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":729
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":729
  * ctypedef npy_longdouble longdouble_t
  * 
  * ctypedef npy_cfloat      cfloat_t             # <<<<<<<<<<<<<<
@@ -1241,7 +1241,7 @@ struct __pyx_memoryviewslice_obj;
  */
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":730
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":730
  * 
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t             # <<<<<<<<<<<<<<
@@ -1250,7 +1250,7 @@ typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":731
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":731
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t
  * ctypedef npy_clongdouble clongdouble_t             # <<<<<<<<<<<<<<
@@ -1259,7 +1259,7 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
  */
 typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":733
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":733
  * ctypedef npy_clongdouble clongdouble_t
  * 
  * ctypedef npy_cdouble     complex_t             # <<<<<<<<<<<<<<
@@ -1268,23 +1268,23 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "pivot.pyx":520
+/* "fastpivot/pivot/pivot.pyx":520
  *     return missing_arr
  * 
  * ctypedef double vec_to_double(vector[double] &)             # <<<<<<<<<<<<<<
  * ctypedef long vec_to_long(vector[double] &)
  * 
  */
-typedef double __pyx_t_5pivot_vec_to_double(std::vector<double>  &);
+typedef double __pyx_t_9fastpivot_5pivot_5pivot_vec_to_double(std::vector<double>  &);
 
-/* "pivot.pyx":521
+/* "fastpivot/pivot/pivot.pyx":521
  * 
  * ctypedef double vec_to_double(vector[double] &)
  * ctypedef long vec_to_long(vector[double] &)             # <<<<<<<<<<<<<<
  * 
  * cdef double sum_cython(vector[double] &vec):
  */
-typedef long __pyx_t_5pivot_vec_to_long(std::vector<double>  &);
+typedef long __pyx_t_9fastpivot_5pivot_5pivot_vec_to_long(std::vector<double>  &);
 
 /* "View.MemoryView":105
  * 
@@ -2372,7 +2372,7 @@ static PyTypeObject *__pyx_ptype_5numpy_flexible = 0;
 static PyTypeObject *__pyx_ptype_5numpy_character = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
-/* Module declarations from 'pivot' */
+/* Module declarations from 'fastpivot.pivot.pivot' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -2384,18 +2384,18 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, bool); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice, __Pyx_memviewslice, int, int, __Pyx_memviewslice, bool); /*proto*/
-static double __pyx_f_5pivot_median_cython(std::vector<double>  &); /*proto*/
-static int __pyx_f_5pivot_partition(std::vector<double>  &, int, int, int); /*proto*/
-static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &, int); /*proto*/
-static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, __pyx_t_5pivot_vec_to_double); /*proto*/
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, __pyx_t_5pivot_vec_to_double, bool); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_sum(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, bool); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_mean(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_std(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_max(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_min(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_count(__Pyx_memviewslice, __Pyx_memviewslice, int, int, __Pyx_memviewslice, bool); /*proto*/
+static double __pyx_f_9fastpivot_5pivot_5pivot_median_cython(std::vector<double>  &); /*proto*/
+static int __pyx_f_9fastpivot_5pivot_5pivot_partition(std::vector<double>  &, int, int, int); /*proto*/
+static double __pyx_f_9fastpivot_5pivot_5pivot_max_left_cython(std::vector<double>  &, int); /*proto*/
+static double __pyx_f_9fastpivot_5pivot_5pivot_nunique_cython(std::vector<double>  &); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, __pyx_t_9fastpivot_5pivot_5pivot_vec_to_double); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, __pyx_t_9fastpivot_5pivot_5pivot_vec_to_double, bool); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2432,11 +2432,11 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, 
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn_bool = { "bool", NULL, sizeof(bool), { 0 }, 0, IS_UNSIGNED(bool) ? 'U' : 'I', IS_UNSIGNED(bool), 0 };
-#define __Pyx_MODULE_NAME "pivot"
-extern int __pyx_module_is_main_pivot;
-int __pyx_module_is_main_pivot = 0;
+#define __Pyx_MODULE_NAME "fastpivot.pivot.pivot"
+extern int __pyx_module_is_main_fastpivot__pivot__pivot;
+int __pyx_module_is_main_fastpivot__pivot__pivot = 0;
 
-/* Implementation of 'pivot' */
+/* Implementation of 'fastpivot.pivot.pivot' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ImportError;
 static PyObject *__pyx_builtin_ValueError;
@@ -2499,7 +2499,6 @@ static const char __pyx_k_n_col[] = "n_col";
 static const char __pyx_k_n_idx[] = "n_idx";
 static const char __pyx_k_names[] = "names";
 static const char __pyx_k_numpy[] = "numpy";
-static const char __pyx_k_pivot[] = "pivot";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
@@ -2590,6 +2589,7 @@ static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_pivot_compute_table[] = "pivot_compute_table";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
+static const char __pyx_k_fastpivot_pivot_pivot[] = "fastpivot.pivot.pivot";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
 static const char __pyx_k_process_values_aggfunc[] = "process_values_aggfunc";
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
@@ -2678,6 +2678,7 @@ static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
 static PyObject *__pyx_n_s_factorize;
+static PyObject *__pyx_n_s_fastpivot_pivot_pivot;
 static PyObject *__pyx_n_s_fill;
 static PyObject *__pyx_n_s_fill_value;
 static PyObject *__pyx_n_s_fillna;
@@ -2732,7 +2733,6 @@ static PyObject *__pyx_n_s_pack;
 static PyObject *__pyx_n_s_pandas;
 static PyObject *__pyx_n_s_pd;
 static PyObject *__pyx_n_s_pickle;
-static PyObject *__pyx_n_s_pivot;
 static PyObject *__pyx_n_s_pivot_arr;
 static PyObject *__pyx_n_s_pivot_compute_agg;
 static PyObject *__pyx_n_s_pivot_compute_table;
@@ -2788,12 +2788,12 @@ static PyObject *__pyx_n_s_values_list;
 static PyObject *__pyx_n_s_values_series;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_df, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_dropna_idxcol); /* proto */
-static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
-static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc); /* proto */
-static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_idx_arr_unique, PyObject *__pyx_v_col_arr_unique); /* proto */
-static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_n_idx, PyObject *__pyx_v_n_col); /* proto */
-static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_pivot_df, CYTHON_UNUSED PyObject *__pyx_v_idx_arr, CYTHON_UNUSED PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, CYTHON_UNUSED PyObject *__pyx_v_n_idx, CYTHON_UNUSED PyObject *__pyx_v_n_col); /* proto */
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_df, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_dropna_idxcol); /* proto */
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc); /* proto */
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_idx_arr_unique, PyObject *__pyx_v_col_arr_unique); /* proto */
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_n_idx, PyObject *__pyx_v_n_col); /* proto */
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_pivot_df, CYTHON_UNUSED PyObject *__pyx_v_idx_arr, CYTHON_UNUSED PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, CYTHON_UNUSED PyObject *__pyx_v_n_idx, CYTHON_UNUSED PyObject *__pyx_v_n_col); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2885,7 +2885,7 @@ static PyObject *__pyx_codeobj__33;
 static PyObject *__pyx_codeobj__40;
 /* Late includes */
 
-/* "pivot.pyx":26
+/* "fastpivot/pivot/pivot.pyx":26
  * # TODO: nunique slow? maybe general agg slow? maybe factorize?
  * # TODO: further optimization... multithread when values or aggfunc multiple?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
@@ -2894,10 +2894,10 @@ static PyObject *__pyx_codeobj__40;
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5pivot_1pivot_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5pivot_pivot_table[] = "\n    A limited, but hopefully fast implementation of pivot table.\n    Tends to be faster than pandas.pivot_table when resulting pivot table is sparse.\n    The main limitation is that you must include index, columns, values and you must aggregate.\n    You also must aggregate by a list of preconstructed functions:\n        For numerical values (np.float64 or np.int64), you can aggregate by any of \n           ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']\n        For other values, you can aggregate by any of \n            ['count', 'nunique']\n\n    The arguments and return format mimic pandas very closely, with a few small differences:\n    1) Occasionaly the ordering of the columns will be different, such as when passing a list of aggfuncs \n        with a single value column\n    2) When passing values of type np.int64, values of type np.float64 will be returned. \n        Pandas returns np.int64 in some cases and np.float64 in others.\n    3) When passing multi index or column, pandas constructs the cartesion product space, whereas this pivot constructs the \n        subspace of the product space where the tuples exist in the passed dataframe.\n    4) The following arguments are not supported here: margins, margins_name, observed.\n\n    Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of this\n    pivot_table function beats pandas significantly, by a factor of 2 to 20.\n    On a dataframe with many rows but few distinct values in the passed index and column, the speed of this pivot_table\n    tends to be roughly on par with pandas, and in some cases can actually be slower.\n\n    Arguments:\n    df (required): pandas dataframe\n    index (required): string or list, name(s) of column(s) that you want to become the index of the pivot table. \n    columns (required): string or list, name(s) of column(s) that contains as values the columns of the pivot table. \n    values (requir""ed): string or list, name(s) of column(s) that contains as values the values of the pivot table.\n    aggfunc (default 'mean'): string, list, or dict, name of aggregation function. must be on implemented list above.\n        if aggfunc is a dict, the format must be as in the following example:\n        values = ['column_name1', 'column_name2', 'column_name3']\n        aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': ['count', 'nunique']}\n    fill_value (default None): scalar, value to replace missing values with in the pivot table.\n    dropna (default True): bool, if True rows and columns that are entirely NaN values will be dropped.\n    dropna_idxcol (default True): bool, if True rows where the passed index or column contain NaNs will be dropped.\n        if False, NaN will be given its own index or column when appropriate.\n\n    Returns:\n    pivot_df: pandas dataframe\n    ";
-static PyMethodDef __pyx_mdef_5pivot_1pivot_table = {"pivot_table", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pivot_1pivot_table, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5pivot_pivot_table};
-static PyObject *__pyx_pw_5pivot_1pivot_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_1pivot_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_9fastpivot_5pivot_5pivot_pivot_table[] = "\n    A limited, but hopefully fast implementation of pivot table.\n    Tends to be faster than pandas.pivot_table when resulting pivot table is sparse.\n    The main limitation is that you must include index, columns, values and you must aggregate.\n    You also must aggregate by a list of preconstructed functions:\n        For numerical values (np.float64 or np.int64), you can aggregate by any of \n           ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']\n        For other values, you can aggregate by any of \n            ['count', 'nunique']\n\n    The arguments and return format mimic pandas very closely, with a few small differences:\n    1) Occasionaly the ordering of the columns will be different, such as when passing a list of aggfuncs \n        with a single value column\n    2) When passing values of type np.int64, values of type np.float64 will be returned. \n        Pandas returns np.int64 in some cases and np.float64 in others.\n    3) When passing multi index or column, pandas constructs the cartesion product space, whereas this pivot constructs the \n        subspace of the product space where the tuples exist in the passed dataframe.\n    4) The following arguments are not supported here: margins, margins_name, observed.\n\n    Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of this\n    pivot_table function beats pandas significantly, by a factor of 2 to 20.\n    On a dataframe with many rows but few distinct values in the passed index and column, the speed of this pivot_table\n    tends to be roughly on par with pandas, and in some cases can actually be slower.\n\n    Arguments:\n    df (required): pandas dataframe\n    index (required): string or list, name(s) of column(s) that you want to become the index of the pivot table. \n    columns (required): string or list, name(s) of column(s) that contains as values the columns of the pivot table. \n    values (requir""ed): string or list, name(s) of column(s) that contains as values the values of the pivot table.\n    aggfunc (default 'mean'): string, list, or dict, name of aggregation function. must be on implemented list above.\n        if aggfunc is a dict, the format must be as in the following example:\n        values = ['column_name1', 'column_name2', 'column_name3']\n        aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': ['count', 'nunique']}\n    fill_value (default None): scalar, value to replace missing values with in the pivot table.\n    dropna (default True): bool, if True rows and columns that are entirely NaN values will be dropped.\n    dropna_idxcol (default True): bool, if True rows where the passed index or column contain NaNs will be dropped.\n        if False, NaN will be given its own index or column when appropriate.\n\n    Returns:\n    pivot_df: pandas dataframe\n    ";
+static PyMethodDef __pyx_mdef_9fastpivot_5pivot_5pivot_1pivot_table = {"pivot_table", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9fastpivot_5pivot_5pivot_1pivot_table, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9fastpivot_5pivot_5pivot_pivot_table};
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_1pivot_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_df = 0;
   PyObject *__pyx_v_index = 0;
   PyObject *__pyx_v_columns = 0;
@@ -3024,18 +3024,18 @@ static PyObject *__pyx_pw_5pivot_1pivot_table(PyObject *__pyx_self, PyObject *__
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 26, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("pivot.pivot_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5pivot_pivot_table(__pyx_self, __pyx_v_df, __pyx_v_index, __pyx_v_columns, __pyx_v_values, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_dropna_idxcol);
+  __pyx_r = __pyx_pf_9fastpivot_5pivot_5pivot_pivot_table(__pyx_self, __pyx_v_df, __pyx_v_index, __pyx_v_columns, __pyx_v_values, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_dropna_idxcol);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_df, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_dropna_idxcol) {
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_df, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_dropna_idxcol) {
   PyObject *__pyx_v_idx_arr = NULL;
   PyObject *__pyx_v_idx_arr_unique = NULL;
   PyObject *__pyx_v_col_arr = NULL;
@@ -3075,7 +3075,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __Pyx_INCREF(__pyx_v_index);
   __Pyx_INCREF(__pyx_v_columns);
 
-  /* "pivot.pyx":70
+  /* "fastpivot/pivot/pivot.pyx":70
  * 
  *     # tick = time.perf_counter()
  *     assert isinstance(index, str) or isinstance(index, list)             # <<<<<<<<<<<<<<
@@ -3102,7 +3102,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   }
   #endif
 
-  /* "pivot.pyx":71
+  /* "fastpivot/pivot/pivot.pyx":71
  *     # tick = time.perf_counter()
  *     assert isinstance(index, str) or isinstance(index, list)
  *     assert isinstance(columns, str) or isinstance(columns, list)             # <<<<<<<<<<<<<<
@@ -3129,7 +3129,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   }
   #endif
 
-  /* "pivot.pyx":72
+  /* "fastpivot/pivot/pivot.pyx":72
  *     assert isinstance(index, str) or isinstance(index, list)
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3140,7 +3140,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":73
+    /* "fastpivot/pivot/pivot.pyx":73
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3150,7 +3150,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 73, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":74
+      /* "fastpivot/pivot/pivot.pyx":74
  *     if isinstance(index, str):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[index])             # <<<<<<<<<<<<<<
@@ -3175,7 +3175,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "pivot.pyx":73
+      /* "fastpivot/pivot/pivot.pyx":73
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3184,7 +3184,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
     }
 
-    /* "pivot.pyx":72
+    /* "fastpivot/pivot/pivot.pyx":72
  *     assert isinstance(index, str) or isinstance(index, list)
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3193,7 +3193,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
   }
 
-  /* "pivot.pyx":75
+  /* "fastpivot/pivot/pivot.pyx":75
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):             # <<<<<<<<<<<<<<
@@ -3204,7 +3204,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":76
+    /* "fastpivot/pivot/pivot.pyx":76
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3214,7 +3214,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":77
+      /* "fastpivot/pivot/pivot.pyx":77
  *     if isinstance(index, list):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=index)             # <<<<<<<<<<<<<<
@@ -3233,7 +3233,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "pivot.pyx":76
+      /* "fastpivot/pivot/pivot.pyx":76
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3242,7 +3242,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
     }
 
-    /* "pivot.pyx":78
+    /* "fastpivot/pivot/pivot.pyx":78
  *         if dropna_idxcol:
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:             # <<<<<<<<<<<<<<
@@ -3253,7 +3253,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_t_1 = ((__pyx_t_7 == 1) != 0);
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":79
+      /* "fastpivot/pivot/pivot.pyx":79
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:
  *             index = index[0]             # <<<<<<<<<<<<<<
@@ -3265,7 +3265,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_DECREF_SET(__pyx_v_index, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "pivot.pyx":78
+      /* "fastpivot/pivot/pivot.pyx":78
  *         if dropna_idxcol:
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:             # <<<<<<<<<<<<<<
@@ -3274,7 +3274,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
     }
 
-    /* "pivot.pyx":75
+    /* "fastpivot/pivot/pivot.pyx":75
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):             # <<<<<<<<<<<<<<
@@ -3283,7 +3283,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
   }
 
-  /* "pivot.pyx":80
+  /* "fastpivot/pivot/pivot.pyx":80
  *         if len(index) == 1:
  *             index = index[0]
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3294,7 +3294,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":81
+    /* "fastpivot/pivot/pivot.pyx":81
  *             index = index[0]
  *     if isinstance(columns, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3304,7 +3304,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":82
+      /* "fastpivot/pivot/pivot.pyx":82
  *     if isinstance(columns, str):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[columns])             # <<<<<<<<<<<<<<
@@ -3329,7 +3329,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "pivot.pyx":81
+      /* "fastpivot/pivot/pivot.pyx":81
  *             index = index[0]
  *     if isinstance(columns, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3338,7 +3338,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
     }
 
-    /* "pivot.pyx":80
+    /* "fastpivot/pivot/pivot.pyx":80
  *         if len(index) == 1:
  *             index = index[0]
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3347,7 +3347,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
   }
 
-  /* "pivot.pyx":83
+  /* "fastpivot/pivot/pivot.pyx":83
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):             # <<<<<<<<<<<<<<
@@ -3358,7 +3358,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":84
+    /* "fastpivot/pivot/pivot.pyx":84
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3368,7 +3368,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":85
+      /* "fastpivot/pivot/pivot.pyx":85
  *     if isinstance(columns, list):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=columns)             # <<<<<<<<<<<<<<
@@ -3387,7 +3387,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "pivot.pyx":84
+      /* "fastpivot/pivot/pivot.pyx":84
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3396,7 +3396,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
     }
 
-    /* "pivot.pyx":86
+    /* "fastpivot/pivot/pivot.pyx":86
  *         if dropna_idxcol:
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:             # <<<<<<<<<<<<<<
@@ -3407,7 +3407,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_t_1 = ((__pyx_t_7 == 1) != 0);
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":87
+      /* "fastpivot/pivot/pivot.pyx":87
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:
  *             columns = columns[0]             # <<<<<<<<<<<<<<
@@ -3419,7 +3419,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_DECREF_SET(__pyx_v_columns, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "pivot.pyx":86
+      /* "fastpivot/pivot/pivot.pyx":86
  *         if dropna_idxcol:
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:             # <<<<<<<<<<<<<<
@@ -3428,7 +3428,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
     }
 
-    /* "pivot.pyx":83
+    /* "fastpivot/pivot/pivot.pyx":83
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):             # <<<<<<<<<<<<<<
@@ -3437,7 +3437,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
   }
 
-  /* "pivot.pyx":89
+  /* "fastpivot/pivot/pivot.pyx":89
  *             columns = columns[0]
  * 
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3448,7 +3448,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":91
+    /* "fastpivot/pivot/pivot.pyx":91
  *     if isinstance(index, str):
  *         #tick1 = time.perf_counter()
  *         idx_arr, idx_arr_unique = df[index].factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -3519,7 +3519,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_v_idx_arr_unique = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "pivot.pyx":89
+    /* "fastpivot/pivot/pivot.pyx":89
  *             columns = columns[0]
  * 
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3529,7 +3529,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     goto __pyx_L17;
   }
 
-  /* "pivot.pyx":95
+  /* "fastpivot/pivot/pivot.pyx":95
  *     else: #TODO: any speedup here?
  *         #tick1 = time.perf_counter()
  *         idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -3625,7 +3625,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_v_idx_arr_unique = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "pivot.pyx":96
+    /* "fastpivot/pivot/pivot.pyx":96
  *         #tick1 = time.perf_counter()
  *         idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)
  *         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)             # <<<<<<<<<<<<<<
@@ -3658,7 +3658,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   }
   __pyx_L17:;
 
-  /* "pivot.pyx":98
+  /* "fastpivot/pivot/pivot.pyx":98
  *         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
  *         #print('factorize idx', time.perf_counter() - tick1)
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3669,7 +3669,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":100
+    /* "fastpivot/pivot/pivot.pyx":100
  *     if isinstance(columns, str):
  *         #tick1 = time.perf_counter()
  *         col_arr, col_arr_unique = df[columns].factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -3740,7 +3740,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_v_col_arr_unique = __pyx_t_6;
     __pyx_t_6 = 0;
 
-    /* "pivot.pyx":98
+    /* "fastpivot/pivot/pivot.pyx":98
  *         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
  *         #print('factorize idx', time.perf_counter() - tick1)
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3750,7 +3750,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     goto __pyx_L22;
   }
 
-  /* "pivot.pyx":104
+  /* "fastpivot/pivot/pivot.pyx":104
  *     else: #TODO: any speedup here?
  *         #tick1 = time.perf_counter()
  *         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -3846,7 +3846,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __pyx_v_col_arr_unique = __pyx_t_6;
     __pyx_t_6 = 0;
 
-    /* "pivot.pyx":105
+    /* "fastpivot/pivot/pivot.pyx":105
  *         #tick1 = time.perf_counter()
  *         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
  *         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)             # <<<<<<<<<<<<<<
@@ -3879,7 +3879,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   }
   __pyx_L22:;
 
-  /* "pivot.pyx":110
+  /* "fastpivot/pivot/pivot.pyx":110
  * 
  *     # tick = time.perf_counter()
  *     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)             # <<<<<<<<<<<<<<
@@ -3993,7 +3993,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_v_keys = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "pivot.pyx":112
+  /* "fastpivot/pivot/pivot.pyx":112
  *     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)
  * 
  *     pivot_dfs = []             # <<<<<<<<<<<<<<
@@ -4005,7 +4005,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_v_pivot_dfs = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pivot.pyx":113
+  /* "fastpivot/pivot/pivot.pyx":113
  * 
  *     pivot_dfs = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -4054,7 +4054,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "pivot.pyx":114
+    /* "fastpivot/pivot/pivot.pyx":114
  *     pivot_dfs = []
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]             # <<<<<<<<<<<<<<
@@ -4066,7 +4066,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     __Pyx_XDECREF_SET(__pyx_v_agg_list, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "pivot.pyx":115
+    /* "fastpivot/pivot/pivot.pyx":115
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]
  *         for agg in agg_list:             # <<<<<<<<<<<<<<
@@ -4115,7 +4115,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_XDECREF_SET(__pyx_v_agg, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "pivot.pyx":116
+      /* "fastpivot/pivot/pivot.pyx":116
  *         agg_list = aggfunc_dict[value]
  *         for agg in agg_list:
  *             pivot_df = pivot_compute_table(             # <<<<<<<<<<<<<<
@@ -4125,7 +4125,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pivot_compute_table); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "pivot.pyx":124
+      /* "fastpivot/pivot/pivot.pyx":124
  *                 idx_arr,
  *                 col_arr,
  *                 df[value],             # <<<<<<<<<<<<<<
@@ -4135,7 +4135,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_value); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
 
-      /* "pivot.pyx":126
+      /* "fastpivot/pivot/pivot.pyx":126
  *                 df[value],
  *                 idx_arr_unique,
  *                 col_arr_unique             # <<<<<<<<<<<<<<
@@ -4216,7 +4216,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
       __Pyx_XDECREF_SET(__pyx_v_pivot_df, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "pivot.pyx":128
+      /* "fastpivot/pivot/pivot.pyx":128
  *                 col_arr_unique
  *             )
  *             pivot_dfs.append(pivot_df)             # <<<<<<<<<<<<<<
@@ -4225,7 +4225,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
       __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_pivot_dfs, __pyx_v_pivot_df); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
 
-      /* "pivot.pyx":115
+      /* "fastpivot/pivot/pivot.pyx":115
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]
  *         for agg in agg_list:             # <<<<<<<<<<<<<<
@@ -4235,7 +4235,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "pivot.pyx":113
+    /* "fastpivot/pivot/pivot.pyx":113
  * 
  *     pivot_dfs = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -4245,7 +4245,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "pivot.pyx":129
+  /* "fastpivot/pivot/pivot.pyx":129
  *             )
  *             pivot_dfs.append(pivot_df)
  *     pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)             # <<<<<<<<<<<<<<
@@ -4274,7 +4274,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __Pyx_XDECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":143
+  /* "fastpivot/pivot/pivot.pyx":143
  *     # print('fillna', time.perf_counter() - tick)
  * 
  *     return pivot_df             # <<<<<<<<<<<<<<
@@ -4286,7 +4286,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __pyx_r = __pyx_v_pivot_df;
   goto __pyx_L0;
 
-  /* "pivot.pyx":26
+  /* "fastpivot/pivot/pivot.pyx":26
  * # TODO: nunique slow? maybe general agg slow? maybe factorize?
  * # TODO: further optimization... multithread when values or aggfunc multiple?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
@@ -4303,7 +4303,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_15);
   __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_AddTraceback("pivot.pivot_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_idx_arr);
@@ -4326,7 +4326,7 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-/* "pivot.pyx":145
+/* "fastpivot/pivot/pivot.pyx":145
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -4335,9 +4335,9 @@ static PyObject *__pyx_pf_5pivot_pivot_table(CYTHON_UNUSED PyObject *__pyx_self,
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5pivot_3process_values_aggfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5pivot_3process_values_aggfunc = {"process_values_aggfunc", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pivot_3process_values_aggfunc, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5pivot_3process_values_aggfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_3process_values_aggfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_9fastpivot_5pivot_5pivot_3process_values_aggfunc = {"process_values_aggfunc", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9fastpivot_5pivot_5pivot_3process_values_aggfunc, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_3process_values_aggfunc(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_values = 0;
   PyObject *__pyx_v_aggfunc = 0;
   int __pyx_lineno = 0;
@@ -4388,18 +4388,18 @@ static PyObject *__pyx_pw_5pivot_3process_values_aggfunc(PyObject *__pyx_self, P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("process_values_aggfunc", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 145, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("pivot.process_values_aggfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.process_values_aggfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5pivot_2process_values_aggfunc(__pyx_self, __pyx_v_values, __pyx_v_aggfunc);
+  __pyx_r = __pyx_pf_9fastpivot_5pivot_5pivot_2process_values_aggfunc(__pyx_self, __pyx_v_values, __pyx_v_aggfunc);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pivot.pyx":166
+/* "fastpivot/pivot/pivot.pyx":166
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
@@ -4408,20 +4408,20 @@ static PyObject *__pyx_pw_5pivot_3process_values_aggfunc(PyObject *__pyx_self, P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5pivot_22process_values_aggfunc_1process(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
-static PyMethodDef __pyx_mdef_5pivot_22process_values_aggfunc_1process = {"process", (PyCFunction)__pyx_pw_5pivot_22process_values_aggfunc_1process, METH_O, 0};
-static PyObject *__pyx_pw_5pivot_22process_values_aggfunc_1process(PyObject *__pyx_self, PyObject *__pyx_v_x) {
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_22process_values_aggfunc_1process(PyObject *__pyx_self, PyObject *__pyx_v_x); /*proto*/
+static PyMethodDef __pyx_mdef_9fastpivot_5pivot_5pivot_22process_values_aggfunc_1process = {"process", (PyCFunction)__pyx_pw_9fastpivot_5pivot_5pivot_22process_values_aggfunc_1process, METH_O, 0};
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_22process_values_aggfunc_1process(PyObject *__pyx_self, PyObject *__pyx_v_x) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("process (wrapper)", 0);
-  __pyx_r = __pyx_pf_5pivot_22process_values_aggfunc_process(__pyx_self, ((PyObject *)__pyx_v_x));
+  __pyx_r = __pyx_pf_9fastpivot_5pivot_5pivot_22process_values_aggfunc_process(__pyx_self, ((PyObject *)__pyx_v_x));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x) {
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -4435,7 +4435,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process", 0);
 
-  /* "pivot.pyx":167
+  /* "fastpivot/pivot/pivot.pyx":167
  *     elif isinstance(aggfunc, dict):
  *         def process(x):
  *             assert isinstance(x, str) or isinstance(x, list)             # <<<<<<<<<<<<<<
@@ -4462,7 +4462,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
   }
   #endif
 
-  /* "pivot.pyx":168
+  /* "fastpivot/pivot/pivot.pyx":168
  *         def process(x):
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):             # <<<<<<<<<<<<<<
@@ -4473,7 +4473,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":169
+    /* "fastpivot/pivot/pivot.pyx":169
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):
  *                 return [x]             # <<<<<<<<<<<<<<
@@ -4490,7 +4490,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "pivot.pyx":168
+    /* "fastpivot/pivot/pivot.pyx":168
  *         def process(x):
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):             # <<<<<<<<<<<<<<
@@ -4499,7 +4499,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
  */
   }
 
-  /* "pivot.pyx":170
+  /* "fastpivot/pivot/pivot.pyx":170
  *             if isinstance(x, str):
  *                 return [x]
  *             elif isinstance(x, list):             # <<<<<<<<<<<<<<
@@ -4510,7 +4510,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":171
+    /* "fastpivot/pivot/pivot.pyx":171
  *                 return [x]
  *             elif isinstance(x, list):
  *                 return sorted(x)             # <<<<<<<<<<<<<<
@@ -4527,7 +4527,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "pivot.pyx":170
+    /* "fastpivot/pivot/pivot.pyx":170
  *             if isinstance(x, str):
  *                 return [x]
  *             elif isinstance(x, list):             # <<<<<<<<<<<<<<
@@ -4536,7 +4536,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
  */
   }
 
-  /* "pivot.pyx":166
+  /* "fastpivot/pivot/pivot.pyx":166
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
@@ -4550,7 +4550,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("pivot.process_values_aggfunc.process", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.process_values_aggfunc.process", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4558,7 +4558,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "pivot.pyx":145
+/* "fastpivot/pivot/pivot.pyx":145
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -4566,7 +4566,7 @@ static PyObject *__pyx_pf_5pivot_22process_values_aggfunc_process(CYTHON_UNUSED 
  *     # standardized means values is a sorted list of strings and
  */
 
-static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc) {
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_values, PyObject *__pyx_v_aggfunc) {
   PyObject *__pyx_v_values_list = NULL;
   PyObject *__pyx_v_aggfunc_dict = NULL;
   PyObject *__pyx_v_process = 0;
@@ -4594,7 +4594,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_values_aggfunc", 0);
 
-  /* "pivot.pyx":152
+  /* "fastpivot/pivot/pivot.pyx":152
  *     # keys gives the multicolumn keys for constructing pivot_df
  * 
  *     assert isinstance(values, str) or isinstance(values, list)             # <<<<<<<<<<<<<<
@@ -4621,7 +4621,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   }
   #endif
 
-  /* "pivot.pyx":154
+  /* "fastpivot/pivot/pivot.pyx":154
  *     assert isinstance(values, str) or isinstance(values, list)
  * 
  *     if isinstance(values, str):             # <<<<<<<<<<<<<<
@@ -4632,7 +4632,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":155
+    /* "fastpivot/pivot/pivot.pyx":155
  * 
  *     if isinstance(values, str):
  *         values_list = [values]             # <<<<<<<<<<<<<<
@@ -4647,7 +4647,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __pyx_v_values_list = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pivot.pyx":154
+    /* "fastpivot/pivot/pivot.pyx":154
  *     assert isinstance(values, str) or isinstance(values, list)
  * 
  *     if isinstance(values, str):             # <<<<<<<<<<<<<<
@@ -4657,7 +4657,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     goto __pyx_L5;
   }
 
-  /* "pivot.pyx":156
+  /* "fastpivot/pivot/pivot.pyx":156
  *     if isinstance(values, str):
  *         values_list = [values]
  *     elif isinstance(values, list):             # <<<<<<<<<<<<<<
@@ -4668,7 +4668,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":157
+    /* "fastpivot/pivot/pivot.pyx":157
  *         values_list = [values]
  *     elif isinstance(values, list):
  *         values_list = sorted(values)             # <<<<<<<<<<<<<<
@@ -4683,7 +4683,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __pyx_v_values_list = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pivot.pyx":156
+    /* "fastpivot/pivot/pivot.pyx":156
  *     if isinstance(values, str):
  *         values_list = [values]
  *     elif isinstance(values, list):             # <<<<<<<<<<<<<<
@@ -4693,7 +4693,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   }
   __pyx_L5:;
 
-  /* "pivot.pyx":159
+  /* "fastpivot/pivot/pivot.pyx":159
  *         values_list = sorted(values)
  * 
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)             # <<<<<<<<<<<<<<
@@ -4727,7 +4727,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   }
   #endif
 
-  /* "pivot.pyx":161
+  /* "fastpivot/pivot/pivot.pyx":161
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)
  * 
  *     if isinstance(aggfunc, str):             # <<<<<<<<<<<<<<
@@ -4738,7 +4738,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "pivot.pyx":162
+    /* "fastpivot/pivot/pivot.pyx":162
  * 
  *     if isinstance(aggfunc, str):
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}             # <<<<<<<<<<<<<<
@@ -4783,7 +4783,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __pyx_v_aggfunc_dict = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pivot.pyx":161
+    /* "fastpivot/pivot/pivot.pyx":161
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)
  * 
  *     if isinstance(aggfunc, str):             # <<<<<<<<<<<<<<
@@ -4793,7 +4793,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     goto __pyx_L9;
   }
 
-  /* "pivot.pyx":163
+  /* "fastpivot/pivot/pivot.pyx":163
  *     if isinstance(aggfunc, str):
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}
  *     elif isinstance(aggfunc, list):             # <<<<<<<<<<<<<<
@@ -4804,7 +4804,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_1 = (__pyx_t_3 != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":164
+    /* "fastpivot/pivot/pivot.pyx":164
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}
  *     elif isinstance(aggfunc, list):
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}             # <<<<<<<<<<<<<<
@@ -4849,7 +4849,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __pyx_v_aggfunc_dict = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pivot.pyx":163
+    /* "fastpivot/pivot/pivot.pyx":163
  *     if isinstance(aggfunc, str):
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}
  *     elif isinstance(aggfunc, list):             # <<<<<<<<<<<<<<
@@ -4859,7 +4859,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     goto __pyx_L9;
   }
 
-  /* "pivot.pyx":165
+  /* "fastpivot/pivot/pivot.pyx":165
  *     elif isinstance(aggfunc, list):
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):             # <<<<<<<<<<<<<<
@@ -4870,19 +4870,19 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "pivot.pyx":166
+    /* "fastpivot/pivot/pivot.pyx":166
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):
  */
-    __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5pivot_22process_values_aggfunc_1process, 0, __pyx_n_s_process_values_aggfunc_locals_pr, NULL, __pyx_n_s_pivot, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9fastpivot_5pivot_5pivot_22process_values_aggfunc_1process, 0, __pyx_n_s_process_values_aggfunc_locals_pr, NULL, __pyx_n_s_fastpivot_pivot_pivot, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_process = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "pivot.pyx":172
+    /* "fastpivot/pivot/pivot.pyx":172
  *             elif isinstance(x, list):
  *                 return sorted(x)
  *         aggfunc_dict = {value: process(aggfunc[value]) for value in values_list}             # <<<<<<<<<<<<<<
@@ -4910,7 +4910,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
         __pyx_t_8 = 0;
         __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_aggfunc, __pyx_8genexpr2__pyx_v_value); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 172, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __pyx_pf_5pivot_22process_values_aggfunc_process(__pyx_v_process, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 172, __pyx_L24_error)
+        __pyx_t_9 = __pyx_pf_9fastpivot_5pivot_5pivot_22process_values_aggfunc_process(__pyx_v_process, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 172, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_8genexpr2__pyx_v_value, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 172, __pyx_L24_error)
@@ -4927,7 +4927,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __pyx_v_aggfunc_dict = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pivot.pyx":165
+    /* "fastpivot/pivot/pivot.pyx":165
  *     elif isinstance(aggfunc, list):
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):             # <<<<<<<<<<<<<<
@@ -4937,7 +4937,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   }
   __pyx_L9:;
 
-  /* "pivot.pyx":175
+  /* "fastpivot/pivot/pivot.pyx":175
  * 
  *     # construct most general key
  *     keys = []             # <<<<<<<<<<<<<<
@@ -4949,7 +4949,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_v_keys = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "pivot.pyx":176
+  /* "fastpivot/pivot/pivot.pyx":176
  *     # construct most general key
  *     keys = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -4973,7 +4973,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "pivot.pyx":177
+    /* "fastpivot/pivot/pivot.pyx":177
  *     keys = []
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:             # <<<<<<<<<<<<<<
@@ -5026,7 +5026,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
       __Pyx_XDECREF_SET(__pyx_v_agg, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pivot.pyx":178
+      /* "fastpivot/pivot/pivot.pyx":178
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:
  *             keys.append((value, agg))             # <<<<<<<<<<<<<<
@@ -5044,7 +5044,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
       __pyx_t_6 = __Pyx_PyObject_Append(__pyx_v_keys, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "pivot.pyx":177
+      /* "fastpivot/pivot/pivot.pyx":177
  *     keys = []
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:             # <<<<<<<<<<<<<<
@@ -5054,7 +5054,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "pivot.pyx":176
+    /* "fastpivot/pivot/pivot.pyx":176
  *     # construct most general key
  *     keys = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -5064,7 +5064,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "pivot.pyx":180
+  /* "fastpivot/pivot/pivot.pyx":180
  *             keys.append((value, agg))
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:             # <<<<<<<<<<<<<<
@@ -5075,7 +5075,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_3 = ((__pyx_t_7 == 1) != 0);
   if (__pyx_t_3) {
 
-    /* "pivot.pyx":181
+    /* "fastpivot/pivot/pivot.pyx":181
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:
  *         keys = None             # <<<<<<<<<<<<<<
@@ -5085,7 +5085,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __Pyx_INCREF(Py_None);
     __Pyx_DECREF_SET(__pyx_v_keys, Py_None);
 
-    /* "pivot.pyx":180
+    /* "fastpivot/pivot/pivot.pyx":180
  *             keys.append((value, agg))
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:             # <<<<<<<<<<<<<<
@@ -5095,7 +5095,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     goto __pyx_L32;
   }
 
-  /* "pivot.pyx":182
+  /* "fastpivot/pivot/pivot.pyx":182
  *     if len(keys) == 1:
  *         keys = None
  *     elif len(values_list) == 1:             # <<<<<<<<<<<<<<
@@ -5111,7 +5111,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_3 = ((__pyx_t_7 == 1) != 0);
   if (__pyx_t_3) {
 
-    /* "pivot.pyx":183
+    /* "fastpivot/pivot/pivot.pyx":183
  *         keys = None
  *     elif len(values_list) == 1:
  *         keys = aggfunc_dict[values_list[0]]             # <<<<<<<<<<<<<<
@@ -5132,7 +5132,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __Pyx_DECREF_SET(__pyx_v_keys, __pyx_t_9);
     __pyx_t_9 = 0;
 
-    /* "pivot.pyx":182
+    /* "fastpivot/pivot/pivot.pyx":182
  *     if len(keys) == 1:
  *         keys = None
  *     elif len(values_list) == 1:             # <<<<<<<<<<<<<<
@@ -5142,7 +5142,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     goto __pyx_L32;
   }
 
-  /* "pivot.pyx":184
+  /* "fastpivot/pivot/pivot.pyx":184
  *     elif len(values_list) == 1:
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):             # <<<<<<<<<<<<<<
@@ -5159,7 +5159,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_3 = ((__pyx_t_7 == __pyx_t_10) != 0);
   if (__pyx_t_3) {
 
-    /* "pivot.pyx":185
+    /* "fastpivot/pivot/pivot.pyx":185
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):
  *         keys = values_list             # <<<<<<<<<<<<<<
@@ -5170,7 +5170,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
     __Pyx_INCREF(__pyx_v_values_list);
     __Pyx_DECREF_SET(__pyx_v_keys, __pyx_v_values_list);
 
-    /* "pivot.pyx":184
+    /* "fastpivot/pivot/pivot.pyx":184
  *     elif len(values_list) == 1:
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):             # <<<<<<<<<<<<<<
@@ -5180,7 +5180,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   }
   __pyx_L32:;
 
-  /* "pivot.pyx":187
+  /* "fastpivot/pivot/pivot.pyx":187
  *         keys = values_list
  * 
  *     return values_list, aggfunc_dict, keys             # <<<<<<<<<<<<<<
@@ -5205,7 +5205,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "pivot.pyx":145
+  /* "fastpivot/pivot/pivot.pyx":145
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -5219,7 +5219,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("pivot.process_values_aggfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.process_values_aggfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_values_list);
@@ -5236,7 +5236,7 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "pivot.pyx":189
+/* "fastpivot/pivot/pivot.pyx":189
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
@@ -5245,9 +5245,9 @@ static PyObject *__pyx_pf_5pivot_2process_values_aggfunc(CYTHON_UNUSED PyObject 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5pivot_5pivot_compute_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5pivot_5pivot_compute_table = {"pivot_compute_table", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pivot_5pivot_compute_table, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5pivot_5pivot_compute_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_5pivot_compute_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_9fastpivot_5pivot_5pivot_5pivot_compute_table = {"pivot_compute_table", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9fastpivot_5pivot_5pivot_5pivot_compute_table, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_5pivot_compute_table(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_aggfunc = 0;
   PyObject *__pyx_v_fill_value = 0;
   PyObject *__pyx_v_dropna = 0;
@@ -5386,18 +5386,18 @@ static PyObject *__pyx_pw_5pivot_5pivot_compute_table(PyObject *__pyx_self, PyOb
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 189, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("pivot.pivot_compute_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_compute_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5pivot_4pivot_compute_table(__pyx_self, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_index, __pyx_v_columns, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_idx_arr_unique, __pyx_v_col_arr_unique);
+  __pyx_r = __pyx_pf_9fastpivot_5pivot_5pivot_4pivot_compute_table(__pyx_self, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_index, __pyx_v_columns, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_idx_arr_unique, __pyx_v_col_arr_unique);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_idx_arr_unique, PyObject *__pyx_v_col_arr_unique) {
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_index, PyObject *__pyx_v_columns, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_idx_arr_unique, PyObject *__pyx_v_col_arr_unique) {
   PyObject *__pyx_v_n_idx = NULL;
   PyObject *__pyx_v_n_col = NULL;
   PyObject *__pyx_v_pivot_arr = NULL;
@@ -5414,7 +5414,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_compute_table", 0);
 
-  /* "pivot.pyx":191
+  /* "fastpivot/pivot/pivot.pyx":191
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):
  * 
  *     n_idx = idx_arr_unique.shape[0]             # <<<<<<<<<<<<<<
@@ -5429,7 +5429,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __pyx_v_n_idx = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pivot.pyx":192
+  /* "fastpivot/pivot/pivot.pyx":192
  * 
  *     n_idx = idx_arr_unique.shape[0]
  *     n_col = col_arr_unique.shape[0]             # <<<<<<<<<<<<<<
@@ -5444,7 +5444,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __pyx_v_n_col = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pivot.pyx":193
+  /* "fastpivot/pivot/pivot.pyx":193
  *     n_idx = idx_arr_unique.shape[0]
  *     n_col = col_arr_unique.shape[0]
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)             # <<<<<<<<<<<<<<
@@ -5516,7 +5516,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __pyx_v_pivot_arr = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pivot.pyx":194
+  /* "fastpivot/pivot/pivot.pyx":194
  *     n_col = col_arr_unique.shape[0]
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)             # <<<<<<<<<<<<<<
@@ -5545,7 +5545,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __pyx_v_pivot_df = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "pivot.pyx":195
+  /* "fastpivot/pivot/pivot.pyx":195
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)             # <<<<<<<<<<<<<<
@@ -5623,7 +5623,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pivot.pyx":196
+  /* "fastpivot/pivot/pivot.pyx":196
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df.index.rename(index, inplace=True)             # <<<<<<<<<<<<<<
@@ -5650,7 +5650,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":197
+  /* "fastpivot/pivot/pivot.pyx":197
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df.index.rename(index, inplace=True)
  *     pivot_df.columns.rename(columns, inplace=True)             # <<<<<<<<<<<<<<
@@ -5677,7 +5677,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pivot.pyx":199
+  /* "fastpivot/pivot/pivot.pyx":199
  *     pivot_df.columns.rename(columns, inplace=True)
  * 
  *     return pivot_df             # <<<<<<<<<<<<<<
@@ -5689,7 +5689,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __pyx_r = __pyx_v_pivot_df;
   goto __pyx_L0;
 
-  /* "pivot.pyx":189
+  /* "fastpivot/pivot/pivot.pyx":189
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
@@ -5703,7 +5703,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("pivot.pivot_compute_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_compute_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_n_idx);
@@ -5715,7 +5715,7 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "pivot.pyx":201
+/* "fastpivot/pivot/pivot.pyx":201
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -5724,9 +5724,9 @@ static PyObject *__pyx_pf_5pivot_4pivot_compute_table(CYTHON_UNUSED PyObject *__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5pivot_7pivot_compute_agg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5pivot_7pivot_compute_agg = {"pivot_compute_agg", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pivot_7pivot_compute_agg, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5pivot_7pivot_compute_agg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_7pivot_compute_agg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_9fastpivot_5pivot_5pivot_7pivot_compute_agg = {"pivot_compute_agg", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9fastpivot_5pivot_5pivot_7pivot_compute_agg, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_7pivot_compute_agg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_aggfunc = 0;
   PyObject *__pyx_v_fill_value = 0;
   PyObject *__pyx_v_idx_arr = 0;
@@ -5832,18 +5832,18 @@ static PyObject *__pyx_pw_5pivot_7pivot_compute_agg(PyObject *__pyx_self, PyObje
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 201, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("pivot.pivot_compute_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_compute_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5pivot_6pivot_compute_agg(__pyx_self, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col);
+  __pyx_r = __pyx_pf_9fastpivot_5pivot_5pivot_6pivot_compute_agg(__pyx_self, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_n_idx, PyObject *__pyx_v_n_col) {
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_idx_arr, PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, PyObject *__pyx_v_n_idx, PyObject *__pyx_v_n_col) {
   PyObject *__pyx_v_values_dtype = NULL;
   int __pyx_v_numeric;
   PyObject *__pyx_v_pivot_arr = NULL;
@@ -5874,7 +5874,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __Pyx_RefNannySetupContext("pivot_compute_agg", 0);
   __Pyx_INCREF(__pyx_v_values_series);
 
-  /* "pivot.pyx":209
+  /* "fastpivot/pivot/pivot.pyx":209
  * 
  *     # handle types
  *     values_dtype = values_series.dtype             # <<<<<<<<<<<<<<
@@ -5886,7 +5886,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __pyx_v_values_dtype = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pivot.pyx":210
+  /* "fastpivot/pivot/pivot.pyx":210
  *     # handle types
  *     values_dtype = values_series.dtype
  *     if values_dtype == np.float64 or values_dtype == np.int64:             # <<<<<<<<<<<<<<
@@ -5920,7 +5920,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":211
+    /* "fastpivot/pivot/pivot.pyx":211
  *     values_dtype = values_series.dtype
  *     if values_dtype == np.float64 or values_dtype == np.int64:
  *         numeric = True             # <<<<<<<<<<<<<<
@@ -5929,7 +5929,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
  */
     __pyx_v_numeric = 1;
 
-    /* "pivot.pyx":212
+    /* "fastpivot/pivot/pivot.pyx":212
  *     if values_dtype == np.float64 or values_dtype == np.int64:
  *         numeric = True
  *         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']             # <<<<<<<<<<<<<<
@@ -5993,7 +5993,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     }
     #endif
 
-    /* "pivot.pyx":213
+    /* "fastpivot/pivot/pivot.pyx":213
  *         numeric = True
  *         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
  *         values_series = values_series.astype(np.float64)             # <<<<<<<<<<<<<<
@@ -6026,7 +6026,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __Pyx_DECREF_SET(__pyx_v_values_series, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "pivot.pyx":210
+    /* "fastpivot/pivot/pivot.pyx":210
  *     # handle types
  *     values_dtype = values_series.dtype
  *     if values_dtype == np.float64 or values_dtype == np.int64:             # <<<<<<<<<<<<<<
@@ -6036,7 +6036,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     goto __pyx_L3;
   }
 
-  /* "pivot.pyx":215
+  /* "fastpivot/pivot/pivot.pyx":215
  *         values_series = values_series.astype(np.float64)
  *     else:
  *         numeric = False             # <<<<<<<<<<<<<<
@@ -6046,7 +6046,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   /*else*/ {
     __pyx_v_numeric = 0;
 
-    /* "pivot.pyx":216
+    /* "fastpivot/pivot/pivot.pyx":216
  *     else:
  *         numeric = False
  *         assert aggfunc in ['count', 'nunique']             # <<<<<<<<<<<<<<
@@ -6076,7 +6076,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   }
   __pyx_L3:;
 
-  /* "pivot.pyx":220
+  /* "fastpivot/pivot/pivot.pyx":220
  * 
  *     # pivot and aggregate
  *     if numeric:             # <<<<<<<<<<<<<<
@@ -6086,7 +6086,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __pyx_t_2 = (__pyx_v_numeric != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":221
+    /* "fastpivot/pivot/pivot.pyx":221
  *     # pivot and aggregate
  *     if numeric:
  *         if aggfunc == 'sum':             # <<<<<<<<<<<<<<
@@ -6096,7 +6096,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 221, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":222
+      /* "fastpivot/pivot/pivot.pyx":222
  *     if numeric:
  *         if aggfunc == 'sum':
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)             # <<<<<<<<<<<<<<
@@ -6130,7 +6130,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_sum(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_sum(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6148,7 +6148,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":221
+      /* "fastpivot/pivot/pivot.pyx":221
  *     # pivot and aggregate
  *     if numeric:
  *         if aggfunc == 'sum':             # <<<<<<<<<<<<<<
@@ -6158,7 +6158,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":223
+    /* "fastpivot/pivot/pivot.pyx":223
  *         if aggfunc == 'sum':
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':             # <<<<<<<<<<<<<<
@@ -6168,7 +6168,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":224
+      /* "fastpivot/pivot/pivot.pyx":224
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
@@ -6198,7 +6198,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
       __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_mean(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_mean(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 224, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6216,7 +6216,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":223
+      /* "fastpivot/pivot/pivot.pyx":223
  *         if aggfunc == 'sum':
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':             # <<<<<<<<<<<<<<
@@ -6226,7 +6226,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":225
+    /* "fastpivot/pivot/pivot.pyx":225
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':             # <<<<<<<<<<<<<<
@@ -6236,7 +6236,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 225, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":226
+      /* "fastpivot/pivot/pivot.pyx":226
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
@@ -6266,7 +6266,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
       __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_std(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_std(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 226, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6284,7 +6284,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":225
+      /* "fastpivot/pivot/pivot.pyx":225
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':             # <<<<<<<<<<<<<<
@@ -6294,7 +6294,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":227
+    /* "fastpivot/pivot/pivot.pyx":227
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':             # <<<<<<<<<<<<<<
@@ -6304,7 +6304,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 227, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":228
+      /* "fastpivot/pivot/pivot.pyx":228
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
@@ -6334,7 +6334,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L1_error)
       __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_max(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 228, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_max(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 228, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6352,7 +6352,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":227
+      /* "fastpivot/pivot/pivot.pyx":227
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':             # <<<<<<<<<<<<<<
@@ -6362,7 +6362,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":229
+    /* "fastpivot/pivot/pivot.pyx":229
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':             # <<<<<<<<<<<<<<
@@ -6372,7 +6372,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 229, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":230
+      /* "fastpivot/pivot/pivot.pyx":230
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
@@ -6402,7 +6402,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
       __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_min(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 230, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_min(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 230, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6420,7 +6420,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":229
+      /* "fastpivot/pivot/pivot.pyx":229
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':             # <<<<<<<<<<<<<<
@@ -6430,7 +6430,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":231
+    /* "fastpivot/pivot/pivot.pyx":231
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6440,7 +6440,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 231, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":232
+      /* "fastpivot/pivot/pivot.pyx":232
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()             # <<<<<<<<<<<<<<
@@ -6485,7 +6485,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_nans_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":233
+      /* "fastpivot/pivot/pivot.pyx":233
  *         elif aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)             # <<<<<<<<<<<<<<
@@ -6501,7 +6501,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_count(__pyx_t_8, __pyx_t_7, __pyx_t_11, __pyx_t_10, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 233, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_count(__pyx_t_8, __pyx_t_7, __pyx_t_11, __pyx_t_10, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 233, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6519,7 +6519,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":231
+      /* "fastpivot/pivot/pivot.pyx":231
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6529,7 +6529,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":234
+    /* "fastpivot/pivot/pivot.pyx":234
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':             # <<<<<<<<<<<<<<
@@ -6539,7 +6539,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 234, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":235
+      /* "fastpivot/pivot/pivot.pyx":235
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':
  *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)             # <<<<<<<<<<<<<<
@@ -6569,7 +6569,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L1_error)
       __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_agg(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_f_5pivot_median_cython); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 235, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_f_9fastpivot_5pivot_5pivot_median_cython); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 235, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6587,7 +6587,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":234
+      /* "fastpivot/pivot/pivot.pyx":234
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':             # <<<<<<<<<<<<<<
@@ -6597,7 +6597,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L17;
     }
 
-    /* "pivot.pyx":236
+    /* "fastpivot/pivot/pivot.pyx":236
  *         elif aggfunc == 'median':
  *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
@@ -6607,7 +6607,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":237
+      /* "fastpivot/pivot/pivot.pyx":237
  *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
  *         elif aggfunc == 'nunique':
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)             # <<<<<<<<<<<<<<
@@ -6641,7 +6641,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_9fastpivot_5pivot_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 237, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6659,7 +6659,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":236
+      /* "fastpivot/pivot/pivot.pyx":236
  *         elif aggfunc == 'median':
  *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
@@ -6669,7 +6669,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     }
     __pyx_L17:;
 
-    /* "pivot.pyx":220
+    /* "fastpivot/pivot/pivot.pyx":220
  * 
  *     # pivot and aggregate
  *     if numeric:             # <<<<<<<<<<<<<<
@@ -6679,7 +6679,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     goto __pyx_L16;
   }
 
-  /* "pivot.pyx":239
+  /* "fastpivot/pivot/pivot.pyx":239
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  *     else:
  *         if aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6690,7 +6690,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 239, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":240
+      /* "fastpivot/pivot/pivot.pyx":240
  *     else:
  *         if aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()             # <<<<<<<<<<<<<<
@@ -6735,7 +6735,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_nans_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":241
+      /* "fastpivot/pivot/pivot.pyx":241
  *         if aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)             # <<<<<<<<<<<<<<
@@ -6751,7 +6751,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 241, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_count(__pyx_t_7, __pyx_t_8, __pyx_t_10, __pyx_t_11, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_count(__pyx_t_7, __pyx_t_8, __pyx_t_10, __pyx_t_11, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 241, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6769,7 +6769,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":239
+      /* "fastpivot/pivot/pivot.pyx":239
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  *     else:
  *         if aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6779,7 +6779,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       goto __pyx_L18;
     }
 
-    /* "pivot.pyx":242
+    /* "fastpivot/pivot/pivot.pyx":242
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
@@ -6789,7 +6789,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":243
+      /* "fastpivot/pivot/pivot.pyx":243
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':
  *             nans_arr = values_series.isna().to_numpy()             # <<<<<<<<<<<<<<
@@ -6834,7 +6834,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_nans_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":244
+      /* "fastpivot/pivot/pivot.pyx":244
  *         elif aggfunc == 'nunique':
  *             nans_arr = values_series.isna().to_numpy()
  *             values_arr, _ = values_series.factorize(na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -6901,7 +6901,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v__ = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":245
+      /* "fastpivot/pivot/pivot.pyx":245
  *             nans_arr = values_series.isna().to_numpy()
  *             values_arr, _ = values_series.factorize(na_sentinel=None)
  *             values_arr = values_arr.astype(np.float64)             # <<<<<<<<<<<<<<
@@ -6934,7 +6934,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_DECREF_SET(__pyx_v_values_arr, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "pivot.pyx":246
+      /* "fastpivot/pivot/pivot.pyx":246
  *             values_arr, _ = values_series.factorize(na_sentinel=None)
  *             values_arr = values_arr.astype(np.float64)
  *             values_arr[nans_arr] = np.nan             # <<<<<<<<<<<<<<
@@ -6949,7 +6949,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       if (unlikely(PyObject_SetItem(__pyx_v_values_arr, __pyx_v_nans_arr, __pyx_t_1) < 0)) __PYX_ERR(0, 246, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "pivot.pyx":247
+      /* "fastpivot/pivot/pivot.pyx":247
  *             values_arr = values_arr.astype(np.float64)
  *             values_arr[nans_arr] = np.nan
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)             # <<<<<<<<<<<<<<
@@ -6965,7 +6965,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 247, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 247, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_9fastpivot_5pivot_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 247, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6983,7 +6983,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":242
+      /* "fastpivot/pivot/pivot.pyx":242
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
@@ -6995,7 +6995,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   }
   __pyx_L16:;
 
-  /* "pivot.pyx":248
+  /* "fastpivot/pivot/pivot.pyx":248
  *             values_arr[nans_arr] = np.nan
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
  *     arr = np.array(pivot_arr)             # <<<<<<<<<<<<<<
@@ -7026,7 +7026,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __pyx_v_arr = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pivot.pyx":250
+  /* "fastpivot/pivot/pivot.pyx":250
  *     arr = np.array(pivot_arr)
  * 
  *     return arr             # <<<<<<<<<<<<<<
@@ -7038,7 +7038,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __pyx_r = __pyx_v_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":201
+  /* "fastpivot/pivot/pivot.pyx":201
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -7057,7 +7057,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
   __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
-  __Pyx_AddTraceback("pivot.pivot_compute_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_compute_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_values_dtype);
@@ -7072,7 +7072,7 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
   return __pyx_r;
 }
 
-/* "pivot.pyx":252
+/* "fastpivot/pivot/pivot.pyx":252
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -7081,9 +7081,9 @@ static PyObject *__pyx_pf_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyObject *__py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5pivot_9pivot_drop_fill(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_5pivot_9pivot_drop_fill = {"pivot_drop_fill", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5pivot_9pivot_drop_fill, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_5pivot_9pivot_drop_fill(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_9pivot_drop_fill(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_9fastpivot_5pivot_5pivot_9pivot_drop_fill = {"pivot_drop_fill", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9fastpivot_5pivot_5pivot_9pivot_drop_fill, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_9pivot_drop_fill(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_aggfunc = 0;
   PyObject *__pyx_v_fill_value = 0;
   PyObject *__pyx_v_dropna = 0;
@@ -7211,18 +7211,18 @@ static PyObject *__pyx_pw_5pivot_9pivot_drop_fill(PyObject *__pyx_self, PyObject
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 252, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("pivot.pivot_drop_fill", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_drop_fill", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5pivot_8pivot_drop_fill(__pyx_self, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_pivot_df, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col);
+  __pyx_r = __pyx_pf_9fastpivot_5pivot_5pivot_8pivot_drop_fill(__pyx_self, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_pivot_df, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_pivot_df, CYTHON_UNUSED PyObject *__pyx_v_idx_arr, CYTHON_UNUSED PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, CYTHON_UNUSED PyObject *__pyx_v_n_idx, CYTHON_UNUSED PyObject *__pyx_v_n_col) {
+static PyObject *__pyx_pf_9fastpivot_5pivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_aggfunc, PyObject *__pyx_v_fill_value, PyObject *__pyx_v_dropna, PyObject *__pyx_v_pivot_df, CYTHON_UNUSED PyObject *__pyx_v_idx_arr, CYTHON_UNUSED PyObject *__pyx_v_col_arr, PyObject *__pyx_v_values_series, CYTHON_UNUSED PyObject *__pyx_v_n_idx, CYTHON_UNUSED PyObject *__pyx_v_n_col) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7239,7 +7239,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_RefNannySetupContext("pivot_drop_fill", 0);
   __Pyx_INCREF(__pyx_v_pivot_df);
 
-  /* "pivot.pyx":253
+  /* "fastpivot/pivot/pivot.pyx":253
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
  *     if aggfunc in ['sum', 'count', 'nunique']:             # <<<<<<<<<<<<<<
@@ -7267,7 +7267,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "pivot.pyx":256
+    /* "fastpivot/pivot/pivot.pyx":256
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  *         # if fill_value == 0, NaNs have already been filled by pivot_compute_agg
  *         if fill_value is not None and fill_value is not np.nan and fill_value != 0:             # <<<<<<<<<<<<<<
@@ -7302,7 +7302,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "pivot.pyx":258
+      /* "fastpivot/pivot/pivot.pyx":258
  *         if fill_value is not None and fill_value is not np.nan and fill_value != 0:
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.fillna(fill_value)             # <<<<<<<<<<<<<<
@@ -7329,7 +7329,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pivot.pyx":256
+      /* "fastpivot/pivot/pivot.pyx":256
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  *         # if fill_value == 0, NaNs have already been filled by pivot_compute_agg
  *         if fill_value is not None and fill_value is not np.nan and fill_value != 0:             # <<<<<<<<<<<<<<
@@ -7338,7 +7338,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
  */
     }
 
-    /* "pivot.pyx":253
+    /* "fastpivot/pivot/pivot.pyx":253
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
  *     if aggfunc in ['sum', 'count', 'nunique']:             # <<<<<<<<<<<<<<
@@ -7348,7 +7348,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     goto __pyx_L3;
   }
 
-  /* "pivot.pyx":263
+  /* "fastpivot/pivot/pivot.pyx":263
  *         # missing_arr = np.array(missing_arr_cython)
  *         # pivot_df[missing_arr] = fill_value
  *     elif aggfunc in ['mean', 'max', 'min', 'median']:             # <<<<<<<<<<<<<<
@@ -7382,7 +7382,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":266
+    /* "fastpivot/pivot/pivot.pyx":266
  *         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
  *         # must check dropping in this case
  *         if dropna and values_series.isna().to_numpy().any(): # TODO speedup             # <<<<<<<<<<<<<<
@@ -7454,7 +7454,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     __pyx_L16_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":268
+      /* "fastpivot/pivot/pivot.pyx":268
  *         if dropna and values_series.isna().to_numpy().any(): # TODO speedup
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')             # <<<<<<<<<<<<<<
@@ -7474,7 +7474,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":269
+      /* "fastpivot/pivot/pivot.pyx":269
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')
  *             pivot_df = pivot_df.dropna(axis=1, how='all')             # <<<<<<<<<<<<<<
@@ -7494,7 +7494,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pivot.pyx":266
+      /* "fastpivot/pivot/pivot.pyx":266
  *         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
  *         # must check dropping in this case
  *         if dropna and values_series.isna().to_numpy().any(): # TODO speedup             # <<<<<<<<<<<<<<
@@ -7503,7 +7503,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
  */
     }
 
-    /* "pivot.pyx":271
+    /* "fastpivot/pivot/pivot.pyx":271
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7529,7 +7529,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     __pyx_L19_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":273
+      /* "fastpivot/pivot/pivot.pyx":273
  *         if fill_value is not None and fill_value is not np.nan:
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.fillna(fill_value)             # <<<<<<<<<<<<<<
@@ -7556,7 +7556,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "pivot.pyx":271
+      /* "fastpivot/pivot/pivot.pyx":271
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7565,7 +7565,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
  */
     }
 
-    /* "pivot.pyx":263
+    /* "fastpivot/pivot/pivot.pyx":263
  *         # missing_arr = np.array(missing_arr_cython)
  *         # pivot_df[missing_arr] = fill_value
  *     elif aggfunc in ['mean', 'max', 'min', 'median']:             # <<<<<<<<<<<<<<
@@ -7575,7 +7575,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     goto __pyx_L3;
   }
 
-  /* "pivot.pyx":278
+  /* "fastpivot/pivot/pivot.pyx":278
  *         # missing_arr = np.array(missing_arr_cython)
  *         # pivot_df[missing_arr] = fill_value
  *     elif aggfunc == 'std':             # <<<<<<<<<<<<<<
@@ -7585,7 +7585,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 278, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "pivot.pyx":281
+    /* "fastpivot/pivot/pivot.pyx":281
  *         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
  *         # must check dropping in this case
  *         if dropna: # TODO speedup             # <<<<<<<<<<<<<<
@@ -7595,7 +7595,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 281, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":283
+      /* "fastpivot/pivot/pivot.pyx":283
  *         if dropna: # TODO speedup
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')             # <<<<<<<<<<<<<<
@@ -7615,7 +7615,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "pivot.pyx":284
+      /* "fastpivot/pivot/pivot.pyx":284
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')
  *             pivot_df = pivot_df.dropna(axis=1, how='all')             # <<<<<<<<<<<<<<
@@ -7635,7 +7635,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "pivot.pyx":281
+      /* "fastpivot/pivot/pivot.pyx":281
  *         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
  *         # must check dropping in this case
  *         if dropna: # TODO speedup             # <<<<<<<<<<<<<<
@@ -7644,7 +7644,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
  */
     }
 
-    /* "pivot.pyx":286
+    /* "fastpivot/pivot/pivot.pyx":286
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7670,7 +7670,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
     __pyx_L23_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "pivot.pyx":288
+      /* "fastpivot/pivot/pivot.pyx":288
  *         if fill_value is not None and fill_value is not np.nan:
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.fillna(fill_value)             # <<<<<<<<<<<<<<
@@ -7697,7 +7697,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pivot.pyx":286
+      /* "fastpivot/pivot/pivot.pyx":286
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7706,7 +7706,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
  */
     }
 
-    /* "pivot.pyx":278
+    /* "fastpivot/pivot/pivot.pyx":278
  *         # missing_arr = np.array(missing_arr_cython)
  *         # pivot_df[missing_arr] = fill_value
  *     elif aggfunc == 'std':             # <<<<<<<<<<<<<<
@@ -7716,7 +7716,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   }
   __pyx_L3:;
 
-  /* "pivot.pyx":294
+  /* "fastpivot/pivot/pivot.pyx":294
  *         # pivot_df[missing_arr] = fill_value
  * 
  *     return pivot_df             # <<<<<<<<<<<<<<
@@ -7728,7 +7728,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   __pyx_r = __pyx_v_pivot_df;
   goto __pyx_L0;
 
-  /* "pivot.pyx":252
+  /* "fastpivot/pivot/pivot.pyx":252
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -7743,7 +7743,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("pivot.pivot_drop_fill", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_drop_fill", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_pivot_df);
@@ -7752,7 +7752,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "pivot.pyx":344
+/* "fastpivot/pivot/pivot.pyx":344
  *     # return pivot_df
  * 
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -7760,7 +7760,7 @@ static PyObject *__pyx_pf_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObject *__pyx_
  *     if not fill_zero:
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, bool __pyx_v_fill_zero) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_sum(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, bool __pyx_v_fill_zero) {
   PyObject *__pyx_v_init = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -7787,7 +7787,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_sum", 0);
 
-  /* "pivot.pyx":345
+  /* "fastpivot/pivot/pivot.pyx":345
  * 
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -7833,7 +7833,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   __pyx_v_init = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":346
+  /* "fastpivot/pivot/pivot.pyx":346
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -7843,7 +7843,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   __pyx_t_6 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_6) {
 
-    /* "pivot.pyx":347
+    /* "fastpivot/pivot/pivot.pyx":347
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -7875,7 +7875,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "pivot.pyx":346
+    /* "fastpivot/pivot/pivot.pyx":346
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -7884,7 +7884,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
  */
   }
 
-  /* "pivot.pyx":348
+  /* "fastpivot/pivot/pivot.pyx":348
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr = init             # <<<<<<<<<<<<<<
@@ -7896,7 +7896,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "pivot.pyx":351
+  /* "fastpivot/pivot/pivot.pyx":351
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -7908,7 +7908,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "pivot.pyx":352
+    /* "fastpivot/pivot/pivot.pyx":352
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -7927,7 +7927,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":353
+    /* "fastpivot/pivot/pivot.pyx":353
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -7946,7 +7946,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":354
+    /* "fastpivot/pivot/pivot.pyx":354
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -7965,7 +7965,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_11 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":357
+    /* "fastpivot/pivot/pivot.pyx":357
  *         #####################################
  *         # pandas considers empty sums to be 0
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -7990,7 +7990,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     __pyx_t_6 = (isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0);
     if (__pyx_t_6) {
 
-      /* "pivot.pyx":358
+      /* "fastpivot/pivot/pivot.pyx":358
  *         # pandas considers empty sums to be 0
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -8014,7 +8014,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_11 * __pyx_v_pivot_arr.strides[1]) )) = 0.0;
 
-      /* "pivot.pyx":357
+      /* "fastpivot/pivot/pivot.pyx":357
  *         #####################################
  *         # pandas considers empty sums to be 0
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -8023,7 +8023,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
  */
     }
 
-    /* "pivot.pyx":360
+    /* "fastpivot/pivot/pivot.pyx":360
  *             pivot_arr[i, j] = 0.0
  *         #####################################
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8033,7 +8033,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     __pyx_t_6 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_6) {
 
-      /* "pivot.pyx":361
+      /* "fastpivot/pivot/pivot.pyx":361
  *         #####################################
  *         if not isnan(value):
  *             pivot_arr[i, j] += value             # <<<<<<<<<<<<<<
@@ -8057,7 +8057,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) += __pyx_v_value;
 
-      /* "pivot.pyx":360
+      /* "fastpivot/pivot/pivot.pyx":360
  *             pivot_arr[i, j] = 0.0
  *         #####################################
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8067,7 +8067,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":362
+  /* "fastpivot/pivot/pivot.pyx":362
  *         if not isnan(value):
  *             pivot_arr[i, j] += value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -8078,7 +8078,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":344
+  /* "fastpivot/pivot/pivot.pyx":344
  *     # return pivot_df
  * 
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -8096,7 +8096,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_sum", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_sum", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -8109,7 +8109,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
   return __pyx_r;
 }
 
-/* "pivot.pyx":364
+/* "fastpivot/pivot/pivot.pyx":364
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -8117,7 +8117,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_sum(__Pyx_memviewslice __p
  *     nans.fill(np.nan)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_mean(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   PyObject *__pyx_v_nans = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_pivot_counts_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -8151,7 +8151,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_mean", 0);
 
-  /* "pivot.pyx":365
+  /* "fastpivot/pivot/pivot.pyx":365
  * 
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -8197,7 +8197,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":366
+  /* "fastpivot/pivot/pivot.pyx":366
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -8229,7 +8229,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pivot.pyx":367
+  /* "fastpivot/pivot/pivot.pyx":367
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
@@ -8241,7 +8241,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":368
+  /* "fastpivot/pivot/pivot.pyx":368
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -8290,7 +8290,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":372
+  /* "fastpivot/pivot/pivot.pyx":372
  *     cdef double value
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -8302,7 +8302,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":373
+    /* "fastpivot/pivot/pivot.pyx":373
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -8321,7 +8321,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":374
+    /* "fastpivot/pivot/pivot.pyx":374
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -8340,7 +8340,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":375
+    /* "fastpivot/pivot/pivot.pyx":375
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -8359,7 +8359,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":376
+    /* "fastpivot/pivot/pivot.pyx":376
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8369,7 +8369,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":377
+      /* "fastpivot/pivot/pivot.pyx":377
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -8394,7 +8394,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":378
+        /* "fastpivot/pivot/pivot.pyx":378
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 pivot_arr[i, j] += value             # <<<<<<<<<<<<<<
@@ -8418,7 +8418,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) += __pyx_v_value;
 
-        /* "pivot.pyx":377
+        /* "fastpivot/pivot/pivot.pyx":377
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -8428,7 +8428,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
         goto __pyx_L6;
       }
 
-      /* "pivot.pyx":380
+      /* "fastpivot/pivot/pivot.pyx":380
  *                 pivot_arr[i, j] += value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -8455,7 +8455,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
       }
       __pyx_L6:;
 
-      /* "pivot.pyx":381
+      /* "fastpivot/pivot/pivot.pyx":381
  *             else:
  *                 pivot_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -8479,7 +8479,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[1]) )) += 1.0;
 
-      /* "pivot.pyx":376
+      /* "fastpivot/pivot/pivot.pyx":376
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8489,7 +8489,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     }
   }
 
-  /* "pivot.pyx":382
+  /* "fastpivot/pivot/pivot.pyx":382
  *                 pivot_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -8501,7 +8501,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_11; __pyx_t_14+=1) {
     __pyx_v_i = __pyx_t_14;
 
-    /* "pivot.pyx":383
+    /* "fastpivot/pivot/pivot.pyx":383
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -8513,7 +8513,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_j = __pyx_t_17;
 
-      /* "pivot.pyx":384
+      /* "fastpivot/pivot/pivot.pyx":384
  *     for i in range(N):
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
@@ -8537,7 +8537,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
       }
       __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
 
-      /* "pivot.pyx":385
+      /* "fastpivot/pivot/pivot.pyx":385
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -8547,7 +8547,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
       __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":386
+        /* "fastpivot/pivot/pivot.pyx":386
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:
  *                 pivot_arr[i, j] /= divisor             # <<<<<<<<<<<<<<
@@ -8571,7 +8571,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) /= __pyx_v_divisor;
 
-        /* "pivot.pyx":385
+        /* "fastpivot/pivot/pivot.pyx":385
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -8582,7 +8582,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
     }
   }
 
-  /* "pivot.pyx":387
+  /* "fastpivot/pivot/pivot.pyx":387
  *             if divisor != 0.0:
  *                 pivot_arr[i, j] /= divisor
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -8593,7 +8593,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":364
+  /* "fastpivot/pivot/pivot.pyx":364
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -8611,7 +8611,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_mean", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_mean", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -8625,7 +8625,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
   return __pyx_r;
 }
 
-/* "pivot.pyx":389
+/* "fastpivot/pivot/pivot.pyx":389
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -8633,7 +8633,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_mean(__Pyx_memviewslice __
  *     nans1.fill(np.nan)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_std(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   PyObject *__pyx_v_nans1 = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   PyObject *__pyx_v_nans2 = NULL;
@@ -8671,7 +8671,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_std", 0);
 
-  /* "pivot.pyx":390
+  /* "fastpivot/pivot/pivot.pyx":390
  * 
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans1 = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -8717,7 +8717,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __pyx_v_nans1 = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":391
+  /* "fastpivot/pivot/pivot.pyx":391
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans1 = np.zeros((N, M), dtype=np.float64)
  *     nans1.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -8749,7 +8749,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pivot.pyx":392
+  /* "fastpivot/pivot/pivot.pyx":392
  *     nans1 = np.zeros((N, M), dtype=np.float64)
  *     nans1.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans1             # <<<<<<<<<<<<<<
@@ -8761,7 +8761,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":393
+  /* "fastpivot/pivot/pivot.pyx":393
  *     nans1.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans1
  *     nans2 = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -8807,7 +8807,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __pyx_v_nans2 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pivot.pyx":394
+  /* "fastpivot/pivot/pivot.pyx":394
  *     cdef double[:, :] pivot_arr = nans1
  *     nans2 = np.zeros((N, M), dtype=np.float64)
  *     nans2.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -8839,7 +8839,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":395
+  /* "fastpivot/pivot/pivot.pyx":395
  *     nans2 = np.zeros((N, M), dtype=np.float64)
  *     nans2.fill(np.nan)
  *     cdef double[:, :] mean_arr = nans2             # <<<<<<<<<<<<<<
@@ -8851,7 +8851,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":396
+  /* "fastpivot/pivot/pivot.pyx":396
  *     nans2.fill(np.nan)
  *     cdef double[:, :] mean_arr = nans2
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -8900,7 +8900,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":400
+  /* "fastpivot/pivot/pivot.pyx":400
  *     cdef double value
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -8912,7 +8912,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":401
+    /* "fastpivot/pivot/pivot.pyx":401
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -8931,7 +8931,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":402
+    /* "fastpivot/pivot/pivot.pyx":402
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -8950,7 +8950,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":403
+    /* "fastpivot/pivot/pivot.pyx":403
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -8969,7 +8969,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":404
+    /* "fastpivot/pivot/pivot.pyx":404
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8979,7 +8979,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":405
+      /* "fastpivot/pivot/pivot.pyx":405
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(mean_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9004,7 +9004,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":406
+        /* "fastpivot/pivot/pivot.pyx":406
  *         if not isnan(value):
  *             if not isnan(mean_arr[i, j]):
  *                 mean_arr[i, j] += value             # <<<<<<<<<<<<<<
@@ -9028,7 +9028,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_13 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_mean_arr.strides[1]) )) += __pyx_v_value;
 
-        /* "pivot.pyx":405
+        /* "fastpivot/pivot/pivot.pyx":405
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(mean_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9038,7 +9038,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         goto __pyx_L6;
       }
 
-      /* "pivot.pyx":408
+      /* "fastpivot/pivot/pivot.pyx":408
  *                 mean_arr[i, j] += value
  *             else:
  *                 mean_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9065,7 +9065,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       }
       __pyx_L6:;
 
-      /* "pivot.pyx":409
+      /* "fastpivot/pivot/pivot.pyx":409
  *             else:
  *                 mean_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -9089,7 +9089,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[1]) )) += 1.0;
 
-      /* "pivot.pyx":404
+      /* "fastpivot/pivot/pivot.pyx":404
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9099,7 +9099,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":410
+  /* "fastpivot/pivot/pivot.pyx":410
  *                 mean_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -9111,7 +9111,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_11; __pyx_t_14+=1) {
     __pyx_v_i = __pyx_t_14;
 
-    /* "pivot.pyx":411
+    /* "fastpivot/pivot/pivot.pyx":411
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -9123,7 +9123,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_j = __pyx_t_17;
 
-      /* "pivot.pyx":412
+      /* "fastpivot/pivot/pivot.pyx":412
  *     for i in range(N):
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9147,7 +9147,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       }
       __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
 
-      /* "pivot.pyx":413
+      /* "fastpivot/pivot/pivot.pyx":413
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -9157,7 +9157,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":414
+        /* "fastpivot/pivot/pivot.pyx":414
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:
  *                 mean_arr[i, j] /= divisor             # <<<<<<<<<<<<<<
@@ -9181,7 +9181,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_13 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_mean_arr.strides[1]) )) /= __pyx_v_divisor;
 
-        /* "pivot.pyx":413
+        /* "fastpivot/pivot/pivot.pyx":413
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -9192,7 +9192,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":415
+  /* "fastpivot/pivot/pivot.pyx":415
  *             if divisor != 0.0:
  *                 mean_arr[i, j] /= divisor
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -9204,7 +9204,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":416
+    /* "fastpivot/pivot/pivot.pyx":416
  *                 mean_arr[i, j] /= divisor
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -9223,7 +9223,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":417
+    /* "fastpivot/pivot/pivot.pyx":417
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -9242,7 +9242,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":418
+    /* "fastpivot/pivot/pivot.pyx":418
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -9262,7 +9262,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )))) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":419
+      /* "fastpivot/pivot/pivot.pyx":419
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9287,7 +9287,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":420
+        /* "fastpivot/pivot/pivot.pyx":420
  *         if not isnan(value_arr[k]):
  *             if not isnan(pivot_arr[i, j]):
  *                 value = value_arr[k] - mean_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9321,7 +9321,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         __pyx_v_value = ((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_13 * __pyx_v_value_arr.strides[0]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_19 * __pyx_v_mean_arr.strides[1]) ))));
 
-        /* "pivot.pyx":421
+        /* "fastpivot/pivot/pivot.pyx":421
  *             if not isnan(pivot_arr[i, j]):
  *                 value = value_arr[k] - mean_arr[i, j]
  *                 pivot_arr[i, j] += (value*value)             # <<<<<<<<<<<<<<
@@ -9345,7 +9345,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_19 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) += (__pyx_v_value * __pyx_v_value);
 
-        /* "pivot.pyx":419
+        /* "fastpivot/pivot/pivot.pyx":419
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9355,7 +9355,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         goto __pyx_L15;
       }
 
-      /* "pivot.pyx":423
+      /* "fastpivot/pivot/pivot.pyx":423
  *                 pivot_arr[i, j] += (value*value)
  *             else:
  *                 value = value_arr[k] - mean_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9390,7 +9390,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         __pyx_v_value = ((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_19 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) ))));
 
-        /* "pivot.pyx":424
+        /* "fastpivot/pivot/pivot.pyx":424
  *             else:
  *                 value = value_arr[k] - mean_arr[i, j]
  *                 pivot_arr[i, j] = (value*value)             # <<<<<<<<<<<<<<
@@ -9416,7 +9416,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       }
       __pyx_L15:;
 
-      /* "pivot.pyx":418
+      /* "fastpivot/pivot/pivot.pyx":418
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -9426,7 +9426,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":425
+  /* "fastpivot/pivot/pivot.pyx":425
  *                 value = value_arr[k] - mean_arr[i, j]
  *                 pivot_arr[i, j] = (value*value)
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -9438,7 +9438,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_11; __pyx_t_14+=1) {
     __pyx_v_i = __pyx_t_14;
 
-    /* "pivot.pyx":426
+    /* "fastpivot/pivot/pivot.pyx":426
  *                 pivot_arr[i, j] = (value*value)
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -9450,7 +9450,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_j = __pyx_t_17;
 
-      /* "pivot.pyx":427
+      /* "fastpivot/pivot/pivot.pyx":427
  *     for i in range(N):
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9474,7 +9474,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       }
       __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_19 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
 
-      /* "pivot.pyx":428
+      /* "fastpivot/pivot/pivot.pyx":428
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:# and divisor != 1.0:             # <<<<<<<<<<<<<<
@@ -9484,7 +9484,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
       __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":429
+        /* "fastpivot/pivot/pivot.pyx":429
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:# and divisor != 1.0:
  *                 pivot_arr[i, j] /= (divisor - 1)             # <<<<<<<<<<<<<<
@@ -9508,7 +9508,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_19 * __pyx_v_pivot_arr.strides[1]) )) /= (__pyx_v_divisor - 1.0);
 
-        /* "pivot.pyx":430
+        /* "fastpivot/pivot/pivot.pyx":430
  *             if divisor != 0.0:# and divisor != 1.0:
  *                 pivot_arr[i, j] /= (divisor - 1)
  *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])             # <<<<<<<<<<<<<<
@@ -9547,7 +9547,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_20 * __pyx_v_pivot_arr.strides[1]) )) = sqrt((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_19 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) ))));
 
-        /* "pivot.pyx":428
+        /* "fastpivot/pivot/pivot.pyx":428
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:# and divisor != 1.0:             # <<<<<<<<<<<<<<
@@ -9558,7 +9558,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":431
+  /* "fastpivot/pivot/pivot.pyx":431
  *                 pivot_arr[i, j] /= (divisor - 1)
  *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -9569,7 +9569,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":389
+  /* "fastpivot/pivot/pivot.pyx":389
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9587,7 +9587,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_std", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_std", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -9603,7 +9603,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
   return __pyx_r;
 }
 
-/* "pivot.pyx":433
+/* "fastpivot/pivot/pivot.pyx":433
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9611,7 +9611,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_std(__Pyx_memviewslice __p
  *     nans.fill(np.nan)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_max(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   PyObject *__pyx_v_nans = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -9638,7 +9638,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_max", 0);
 
-  /* "pivot.pyx":434
+  /* "fastpivot/pivot/pivot.pyx":434
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -9684,7 +9684,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":435
+  /* "fastpivot/pivot/pivot.pyx":435
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -9716,7 +9716,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pivot.pyx":436
+  /* "fastpivot/pivot/pivot.pyx":436
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
@@ -9728,7 +9728,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":439
+  /* "fastpivot/pivot/pivot.pyx":439
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -9740,7 +9740,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":440
+    /* "fastpivot/pivot/pivot.pyx":440
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -9759,7 +9759,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":441
+    /* "fastpivot/pivot/pivot.pyx":441
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -9778,7 +9778,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":442
+    /* "fastpivot/pivot/pivot.pyx":442
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -9797,7 +9797,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":443
+    /* "fastpivot/pivot/pivot.pyx":443
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9807,7 +9807,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":444
+      /* "fastpivot/pivot/pivot.pyx":444
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9832,7 +9832,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":445
+        /* "fastpivot/pivot/pivot.pyx":445
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:             # <<<<<<<<<<<<<<
@@ -9857,7 +9857,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
         __pyx_t_12 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) ))) < __pyx_v_value) != 0);
         if (__pyx_t_12) {
 
-          /* "pivot.pyx":446
+          /* "fastpivot/pivot/pivot.pyx":446
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:
  *                     pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9881,7 +9881,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
           }
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
 
-          /* "pivot.pyx":445
+          /* "fastpivot/pivot/pivot.pyx":445
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:             # <<<<<<<<<<<<<<
@@ -9890,7 +9890,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
  */
         }
 
-        /* "pivot.pyx":444
+        /* "fastpivot/pivot/pivot.pyx":444
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9900,7 +9900,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
         goto __pyx_L6;
       }
 
-      /* "pivot.pyx":448
+      /* "fastpivot/pivot/pivot.pyx":448
  *                     pivot_arr[i, j] = value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9927,7 +9927,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
       }
       __pyx_L6:;
 
-      /* "pivot.pyx":443
+      /* "fastpivot/pivot/pivot.pyx":443
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9937,7 +9937,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":449
+  /* "fastpivot/pivot/pivot.pyx":449
  *             else:
  *                 pivot_arr[i, j] = value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -9948,7 +9948,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":433
+  /* "fastpivot/pivot/pivot.pyx":433
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9966,7 +9966,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_max", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_max", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -9979,7 +9979,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
   return __pyx_r;
 }
 
-/* "pivot.pyx":451
+/* "fastpivot/pivot/pivot.pyx":451
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9987,7 +9987,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_max(__Pyx_memviewslice __p
  *     nans.fill(np.nan)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_min(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   PyObject *__pyx_v_nans = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -10014,7 +10014,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_min", 0);
 
-  /* "pivot.pyx":452
+  /* "fastpivot/pivot/pivot.pyx":452
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -10060,7 +10060,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":453
+  /* "fastpivot/pivot/pivot.pyx":453
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -10092,7 +10092,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pivot.pyx":454
+  /* "fastpivot/pivot/pivot.pyx":454
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
@@ -10104,7 +10104,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":457
+  /* "fastpivot/pivot/pivot.pyx":457
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10116,7 +10116,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":458
+    /* "fastpivot/pivot/pivot.pyx":458
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10135,7 +10135,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":459
+    /* "fastpivot/pivot/pivot.pyx":459
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10154,7 +10154,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":460
+    /* "fastpivot/pivot/pivot.pyx":460
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -10173,7 +10173,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":461
+    /* "fastpivot/pivot/pivot.pyx":461
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -10183,7 +10183,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":462
+      /* "fastpivot/pivot/pivot.pyx":462
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10208,7 +10208,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":463
+        /* "fastpivot/pivot/pivot.pyx":463
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:             # <<<<<<<<<<<<<<
@@ -10233,7 +10233,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
         __pyx_t_12 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) ))) > __pyx_v_value) != 0);
         if (__pyx_t_12) {
 
-          /* "pivot.pyx":464
+          /* "fastpivot/pivot/pivot.pyx":464
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:
  *                     pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -10257,7 +10257,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
           }
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
 
-          /* "pivot.pyx":463
+          /* "fastpivot/pivot/pivot.pyx":463
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:             # <<<<<<<<<<<<<<
@@ -10266,7 +10266,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
  */
         }
 
-        /* "pivot.pyx":462
+        /* "fastpivot/pivot/pivot.pyx":462
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10276,7 +10276,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
         goto __pyx_L6;
       }
 
-      /* "pivot.pyx":466
+      /* "fastpivot/pivot/pivot.pyx":466
  *                     pivot_arr[i, j] = value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -10303,7 +10303,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
       }
       __pyx_L6:;
 
-      /* "pivot.pyx":461
+      /* "fastpivot/pivot/pivot.pyx":461
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -10313,7 +10313,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":467
+  /* "fastpivot/pivot/pivot.pyx":467
  *             else:
  *                 pivot_arr[i, j] = value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -10324,7 +10324,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":451
+  /* "fastpivot/pivot/pivot.pyx":451
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -10342,7 +10342,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_min", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_min", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -10355,7 +10355,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
   return __pyx_r;
 }
 
-/* "pivot.pyx":469
+/* "fastpivot/pivot/pivot.pyx":469
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -10363,7 +10363,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_min(__Pyx_memviewslice __p
  *     if not fill_zero:
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, int __pyx_v_N, int __pyx_v_M, __Pyx_memviewslice __pyx_v_nans_arr, bool __pyx_v_fill_zero) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_count(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, int __pyx_v_N, int __pyx_v_M, __Pyx_memviewslice __pyx_v_nans_arr, bool __pyx_v_fill_zero) {
   PyObject *__pyx_v_init = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -10389,7 +10389,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_count", 0);
 
-  /* "pivot.pyx":470
+  /* "fastpivot/pivot/pivot.pyx":470
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -10435,7 +10435,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   __pyx_v_init = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pivot.pyx":471
+  /* "fastpivot/pivot/pivot.pyx":471
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -10445,7 +10445,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   __pyx_t_6 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_6) {
 
-    /* "pivot.pyx":472
+    /* "fastpivot/pivot/pivot.pyx":472
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -10477,7 +10477,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "pivot.pyx":471
+    /* "fastpivot/pivot/pivot.pyx":471
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -10486,7 +10486,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
  */
   }
 
-  /* "pivot.pyx":473
+  /* "fastpivot/pivot/pivot.pyx":473
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr = init             # <<<<<<<<<<<<<<
@@ -10498,7 +10498,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "pivot.pyx":475
+  /* "fastpivot/pivot/pivot.pyx":475
  *     cdef double[:, :] pivot_arr = init
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10510,7 +10510,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "pivot.pyx":476
+    /* "fastpivot/pivot/pivot.pyx":476
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10529,7 +10529,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":477
+    /* "fastpivot/pivot/pivot.pyx":477
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10548,7 +10548,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":478
+    /* "fastpivot/pivot/pivot.pyx":478
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10573,7 +10573,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
     __pyx_t_6 = (isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0);
     if (__pyx_t_6) {
 
-      /* "pivot.pyx":479
+      /* "fastpivot/pivot/pivot.pyx":479
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -10597,7 +10597,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_11 * __pyx_v_pivot_arr.strides[1]) )) = 0.0;
 
-      /* "pivot.pyx":478
+      /* "fastpivot/pivot/pivot.pyx":478
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10606,7 +10606,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
  */
     }
 
-    /* "pivot.pyx":480
+    /* "fastpivot/pivot/pivot.pyx":480
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:             # <<<<<<<<<<<<<<
@@ -10626,7 +10626,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
     __pyx_t_6 = ((!((*((bool *) ( /* dim=0 */ (__pyx_v_nans_arr.data + __pyx_t_11 * __pyx_v_nans_arr.strides[0]) ))) != 0)) != 0);
     if (__pyx_t_6) {
 
-      /* "pivot.pyx":481
+      /* "fastpivot/pivot/pivot.pyx":481
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:
  *             pivot_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -10650,7 +10650,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) += 1.0;
 
-      /* "pivot.pyx":480
+      /* "fastpivot/pivot/pivot.pyx":480
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:             # <<<<<<<<<<<<<<
@@ -10660,7 +10660,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
     }
   }
 
-  /* "pivot.pyx":482
+  /* "fastpivot/pivot/pivot.pyx":482
  *         if not nans_arr[k]:
  *             pivot_arr[i, j] += 1.0
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -10671,7 +10671,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":469
+  /* "fastpivot/pivot/pivot.pyx":469
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -10689,7 +10689,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_count", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_count", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -10702,7 +10702,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
   return __pyx_r;
 }
 
-/* "pivot.pyx":484
+/* "fastpivot/pivot/pivot.pyx":484
  *     return pivot_arr
  * 
  * cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -10710,7 +10710,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_count(__Pyx_memviewslice _
  *     cdef int i, j, k
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_find_missing_cython(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, int __pyx_v_N, int __pyx_v_M) {
   __Pyx_memviewslice __pyx_v_missing_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
   int __pyx_v_j;
@@ -10734,7 +10734,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_missing_cython", 0);
 
-  /* "pivot.pyx":485
+  /* "fastpivot/pivot/pivot.pyx":485
  * 
  * cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int M):
  *     cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)             # <<<<<<<<<<<<<<
@@ -10783,7 +10783,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":488
+  /* "fastpivot/pivot/pivot.pyx":488
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10795,7 +10795,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":489
+    /* "fastpivot/pivot/pivot.pyx":489
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10814,7 +10814,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":490
+    /* "fastpivot/pivot/pivot.pyx":490
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10833,7 +10833,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":491
+    /* "fastpivot/pivot/pivot.pyx":491
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         missing_arr[i, j] = 0             # <<<<<<<<<<<<<<
@@ -10858,7 +10858,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
     *((bool *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_missing_arr.data + __pyx_t_10 * __pyx_v_missing_arr.strides[0]) ) + __pyx_t_12 * __pyx_v_missing_arr.strides[1]) )) = 0;
   }
 
-  /* "pivot.pyx":492
+  /* "fastpivot/pivot/pivot.pyx":492
  *         j = col_arr[k]
  *         missing_arr[i, j] = 0
  *     return missing_arr             # <<<<<<<<<<<<<<
@@ -10869,7 +10869,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
   __pyx_r = __pyx_v_missing_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":484
+  /* "fastpivot/pivot/pivot.pyx":484
  *     return pivot_arr
  * 
  * cdef bool[:, :] find_missing_cython(long[:] idx_arr, long[:] col_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -10887,7 +10887,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.find_missing_cython", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.find_missing_cython", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -10899,7 +10899,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
   return __pyx_r;
 }
 
-/* "pivot.pyx":494
+/* "fastpivot/pivot/pivot.pyx":494
  *     return missing_arr
  * 
  * cdef bool[:, :] find_missing_cython_0(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -10907,7 +10907,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython(__Pyx_memviewslice 
  *     cdef int i, j, k
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_find_missing_cython_0(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   __Pyx_memviewslice __pyx_v_missing_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
   int __pyx_v_j;
@@ -10932,7 +10932,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_missing_cython_0", 0);
 
-  /* "pivot.pyx":495
+  /* "fastpivot/pivot/pivot.pyx":495
  * 
  * cdef bool[:, :] find_missing_cython_0(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)             # <<<<<<<<<<<<<<
@@ -10981,7 +10981,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":498
+  /* "fastpivot/pivot/pivot.pyx":498
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10993,7 +10993,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":499
+    /* "fastpivot/pivot/pivot.pyx":499
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -11012,7 +11012,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":500
+    /* "fastpivot/pivot/pivot.pyx":500
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -11031,7 +11031,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":501
+    /* "fastpivot/pivot/pivot.pyx":501
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -11051,7 +11051,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
     __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )))) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":502
+      /* "fastpivot/pivot/pivot.pyx":502
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             missing_arr[i, j] = 0             # <<<<<<<<<<<<<<
@@ -11075,7 +11075,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
       }
       *((bool *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_missing_arr.data + __pyx_t_10 * __pyx_v_missing_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_missing_arr.strides[1]) )) = 0;
 
-      /* "pivot.pyx":501
+      /* "fastpivot/pivot/pivot.pyx":501
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -11085,7 +11085,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
     }
   }
 
-  /* "pivot.pyx":503
+  /* "fastpivot/pivot/pivot.pyx":503
  *         if not isnan(value_arr[k]):
  *             missing_arr[i, j] = 0
  *     return missing_arr             # <<<<<<<<<<<<<<
@@ -11096,7 +11096,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
   __pyx_r = __pyx_v_missing_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":494
+  /* "fastpivot/pivot/pivot.pyx":494
  *     return missing_arr
  * 
  * cdef bool[:, :] find_missing_cython_0(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -11114,7 +11114,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.find_missing_cython_0", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.find_missing_cython_0", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -11126,7 +11126,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
   return __pyx_r;
 }
 
-/* "pivot.pyx":505
+/* "fastpivot/pivot/pivot.pyx":505
  *     return missing_arr
  * 
  * cdef bool[:, :] find_missing_cython_1(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -11134,7 +11134,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_0(__Pyx_memviewslic
  *     cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_find_missing_cython_1(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   __Pyx_memviewslice __pyx_v_missing_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_exists_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -11160,7 +11160,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_missing_cython_1", 0);
 
-  /* "pivot.pyx":506
+  /* "fastpivot/pivot/pivot.pyx":506
  * 
  * cdef bool[:, :] find_missing_cython_1(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)             # <<<<<<<<<<<<<<
@@ -11209,7 +11209,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":507
+  /* "fastpivot/pivot/pivot.pyx":507
  * cdef bool[:, :] find_missing_cython_1(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     cdef bool[:, :] missing_arr = np.ones((N, M), dtype=np.bool)
  *     cdef bool[:, :] exists_arr = np.zeros((N, M), dtype=np.bool)             # <<<<<<<<<<<<<<
@@ -11258,7 +11258,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pivot.pyx":510
+  /* "fastpivot/pivot/pivot.pyx":510
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -11270,7 +11270,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "pivot.pyx":511
+    /* "fastpivot/pivot/pivot.pyx":511
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -11289,7 +11289,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":512
+    /* "fastpivot/pivot/pivot.pyx":512
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -11308,7 +11308,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":513
+    /* "fastpivot/pivot/pivot.pyx":513
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -11328,7 +11328,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
     __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )))) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "pivot.pyx":514
+      /* "fastpivot/pivot/pivot.pyx":514
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             if exists_arr[i, j]:             # <<<<<<<<<<<<<<
@@ -11353,7 +11353,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
       __pyx_t_12 = ((*((bool *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_exists_arr.data + __pyx_t_10 * __pyx_v_exists_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_exists_arr.strides[1]) ))) != 0);
       if (__pyx_t_12) {
 
-        /* "pivot.pyx":515
+        /* "fastpivot/pivot/pivot.pyx":515
  *         if not isnan(value_arr[k]):
  *             if exists_arr[i, j]:
  *                 missing_arr[i, j] = 0             # <<<<<<<<<<<<<<
@@ -11377,7 +11377,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
         }
         *((bool *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_missing_arr.data + __pyx_t_13 * __pyx_v_missing_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_missing_arr.strides[1]) )) = 0;
 
-        /* "pivot.pyx":514
+        /* "fastpivot/pivot/pivot.pyx":514
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             if exists_arr[i, j]:             # <<<<<<<<<<<<<<
@@ -11387,7 +11387,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
         goto __pyx_L6;
       }
 
-      /* "pivot.pyx":517
+      /* "fastpivot/pivot/pivot.pyx":517
  *                 missing_arr[i, j] = 0
  *             else:
  *                 exists_arr[i, j] = 1             # <<<<<<<<<<<<<<
@@ -11414,7 +11414,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
       }
       __pyx_L6:;
 
-      /* "pivot.pyx":513
+      /* "fastpivot/pivot/pivot.pyx":513
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -11424,7 +11424,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
     }
   }
 
-  /* "pivot.pyx":518
+  /* "fastpivot/pivot/pivot.pyx":518
  *             else:
  *                 exists_arr[i, j] = 1
  *     return missing_arr             # <<<<<<<<<<<<<<
@@ -11435,7 +11435,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   __pyx_r = __pyx_v_missing_arr;
   goto __pyx_L0;
 
-  /* "pivot.pyx":505
+  /* "fastpivot/pivot/pivot.pyx":505
  *     return missing_arr
  * 
  * cdef bool[:, :] find_missing_cython_1(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -11453,7 +11453,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.find_missing_cython_1", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.find_missing_cython_1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -11466,7 +11466,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
   return __pyx_r;
 }
 
-/* "pivot.pyx":523
+/* "fastpivot/pivot/pivot.pyx":523
  * ctypedef long vec_to_long(vector[double] &)
  * 
  * cdef double sum_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11474,7 +11474,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_find_missing_cython_1(__Pyx_memviewslic
  *     cdef double value = 0.0
  */
 
-static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
+static double __pyx_f_9fastpivot_5pivot_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
   int __pyx_v_k;
   double __pyx_v_value;
   double __pyx_r;
@@ -11484,7 +11484,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
   int __pyx_t_3;
   __Pyx_RefNannySetupContext("sum_cython", 0);
 
-  /* "pivot.pyx":525
+  /* "fastpivot/pivot/pivot.pyx":525
  * cdef double sum_cython(vector[double] &vec):
  *     cdef int k
  *     cdef double value = 0.0             # <<<<<<<<<<<<<<
@@ -11493,7 +11493,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
  */
   __pyx_v_value = 0.0;
 
-  /* "pivot.pyx":526
+  /* "fastpivot/pivot/pivot.pyx":526
  *     cdef int k
  *     cdef double value = 0.0
  *     for k in range(vec.size()):             # <<<<<<<<<<<<<<
@@ -11505,7 +11505,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "pivot.pyx":527
+    /* "fastpivot/pivot/pivot.pyx":527
  *     cdef double value = 0.0
  *     for k in range(vec.size()):
  *         value += vec[k]             # <<<<<<<<<<<<<<
@@ -11515,7 +11515,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
     __pyx_v_value = (__pyx_v_value + (__pyx_v_vec[__pyx_v_k]));
   }
 
-  /* "pivot.pyx":528
+  /* "fastpivot/pivot/pivot.pyx":528
  *     for k in range(vec.size()):
  *         value += vec[k]
  *     return value             # <<<<<<<<<<<<<<
@@ -11525,7 +11525,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "pivot.pyx":523
+  /* "fastpivot/pivot/pivot.pyx":523
  * ctypedef long vec_to_long(vector[double] &)
  * 
  * cdef double sum_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11539,7 +11539,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
   return __pyx_r;
 }
 
-/* "pivot.pyx":530
+/* "fastpivot/pivot/pivot.pyx":530
  *     return value
  * 
  * cdef double median_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11547,7 +11547,7 @@ static double __pyx_f_5pivot_sum_cython(std::vector<double>  &__pyx_v_vec) {
  *     cdef int mid = vec.size() / 2
  */
 
-static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
+static double __pyx_f_9fastpivot_5pivot_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   int __pyx_v_k;
   int __pyx_v_mid;
   double __pyx_v_med;
@@ -11565,7 +11565,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("median_cython", 0);
 
-  /* "pivot.pyx":531
+  /* "fastpivot/pivot/pivot.pyx":531
  * 
  * cdef double median_cython(vector[double] &vec):
  *     cdef int k = 0             # <<<<<<<<<<<<<<
@@ -11574,7 +11574,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
   __pyx_v_k = 0;
 
-  /* "pivot.pyx":532
+  /* "fastpivot/pivot/pivot.pyx":532
  * cdef double median_cython(vector[double] &vec):
  *     cdef int k = 0
  *     cdef int mid = vec.size() / 2             # <<<<<<<<<<<<<<
@@ -11583,7 +11583,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
   __pyx_v_mid = (__pyx_v_vec.size() / 2);
 
-  /* "pivot.pyx":534
+  /* "fastpivot/pivot/pivot.pyx":534
  *     cdef int mid = vec.size() / 2
  *     cdef double med
  *     cdef int i = 0             # <<<<<<<<<<<<<<
@@ -11592,7 +11592,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
   __pyx_v_i = 0;
 
-  /* "pivot.pyx":535
+  /* "fastpivot/pivot/pivot.pyx":535
  *     cdef double med
  *     cdef int i = 0
  *     cdef int j = vec.size() - 1             # <<<<<<<<<<<<<<
@@ -11601,7 +11601,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
   __pyx_v_j = (__pyx_v_vec.size() - 1);
 
-  /* "pivot.pyx":538
+  /* "fastpivot/pivot/pivot.pyx":538
  *     cdef double max_left
  * 
  *     if vec.size() == 0:             # <<<<<<<<<<<<<<
@@ -11611,7 +11611,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   __pyx_t_1 = ((__pyx_v_vec.size() == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":539
+    /* "fastpivot/pivot/pivot.pyx":539
  * 
  *     if vec.size() == 0:
  *         return np.nan             # <<<<<<<<<<<<<<
@@ -11628,7 +11628,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
     __pyx_r = __pyx_t_4;
     goto __pyx_L0;
 
-    /* "pivot.pyx":538
+    /* "fastpivot/pivot/pivot.pyx":538
  *     cdef double max_left
  * 
  *     if vec.size() == 0:             # <<<<<<<<<<<<<<
@@ -11637,7 +11637,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
   }
 
-  /* "pivot.pyx":541
+  /* "fastpivot/pivot/pivot.pyx":541
  *         return np.nan
  * 
  *     while k != mid:             # <<<<<<<<<<<<<<
@@ -11648,16 +11648,16 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
     __pyx_t_1 = ((__pyx_v_k != __pyx_v_mid) != 0);
     if (!__pyx_t_1) break;
 
-    /* "pivot.pyx":542
+    /* "fastpivot/pivot/pivot.pyx":542
  * 
  *     while k != mid:
  *         k = partition(vec, mid, i, j)             # <<<<<<<<<<<<<<
  *         if k < mid:
  *             i = k
  */
-    __pyx_v_k = __pyx_f_5pivot_partition(__pyx_v_vec, __pyx_v_mid, __pyx_v_i, __pyx_v_j);
+    __pyx_v_k = __pyx_f_9fastpivot_5pivot_5pivot_partition(__pyx_v_vec, __pyx_v_mid, __pyx_v_i, __pyx_v_j);
 
-    /* "pivot.pyx":543
+    /* "fastpivot/pivot/pivot.pyx":543
  *     while k != mid:
  *         k = partition(vec, mid, i, j)
  *         if k < mid:             # <<<<<<<<<<<<<<
@@ -11667,7 +11667,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
     __pyx_t_1 = ((__pyx_v_k < __pyx_v_mid) != 0);
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":544
+      /* "fastpivot/pivot/pivot.pyx":544
  *         k = partition(vec, mid, i, j)
  *         if k < mid:
  *             i = k             # <<<<<<<<<<<<<<
@@ -11676,7 +11676,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
       __pyx_v_i = __pyx_v_k;
 
-      /* "pivot.pyx":543
+      /* "fastpivot/pivot/pivot.pyx":543
  *     while k != mid:
  *         k = partition(vec, mid, i, j)
  *         if k < mid:             # <<<<<<<<<<<<<<
@@ -11686,7 +11686,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
       goto __pyx_L6;
     }
 
-    /* "pivot.pyx":545
+    /* "fastpivot/pivot/pivot.pyx":545
  *         if k < mid:
  *             i = k
  *         elif k > mid:             # <<<<<<<<<<<<<<
@@ -11696,7 +11696,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
     __pyx_t_1 = ((__pyx_v_k > __pyx_v_mid) != 0);
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":546
+      /* "fastpivot/pivot/pivot.pyx":546
  *             i = k
  *         elif k > mid:
  *             j = k             # <<<<<<<<<<<<<<
@@ -11705,7 +11705,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
       __pyx_v_j = __pyx_v_k;
 
-      /* "pivot.pyx":545
+      /* "fastpivot/pivot/pivot.pyx":545
  *         if k < mid:
  *             i = k
  *         elif k > mid:             # <<<<<<<<<<<<<<
@@ -11716,7 +11716,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
     __pyx_L6:;
   }
 
-  /* "pivot.pyx":547
+  /* "fastpivot/pivot/pivot.pyx":547
  *         elif k > mid:
  *             j = k
  *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
@@ -11726,7 +11726,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   __pyx_t_1 = (((__pyx_v_vec.size() % 2) == 1) != 0);
   if (__pyx_t_1) {
 
-    /* "pivot.pyx":548
+    /* "fastpivot/pivot/pivot.pyx":548
  *             j = k
  *     if vec.size() % 2 == 1:
  *         med = vec[mid]             # <<<<<<<<<<<<<<
@@ -11735,7 +11735,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  */
     __pyx_v_med = (__pyx_v_vec[__pyx_v_mid]);
 
-    /* "pivot.pyx":547
+    /* "fastpivot/pivot/pivot.pyx":547
  *         elif k > mid:
  *             j = k
  *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
@@ -11745,7 +11745,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
     goto __pyx_L7;
   }
 
-  /* "pivot.pyx":550
+  /* "fastpivot/pivot/pivot.pyx":550
  *         med = vec[mid]
  *     else:
  *         max_left = max_left_cython(vec, mid - 1)             # <<<<<<<<<<<<<<
@@ -11753,9 +11753,9 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  * 
  */
   /*else*/ {
-    __pyx_v_max_left = __pyx_f_5pivot_max_left_cython(__pyx_v_vec, (__pyx_v_mid - 1));
+    __pyx_v_max_left = __pyx_f_9fastpivot_5pivot_5pivot_max_left_cython(__pyx_v_vec, (__pyx_v_mid - 1));
 
-    /* "pivot.pyx":551
+    /* "fastpivot/pivot/pivot.pyx":551
  *     else:
  *         max_left = max_left_cython(vec, mid - 1)
  *         med = (vec[mid] + max_left) / 2             # <<<<<<<<<<<<<<
@@ -11766,7 +11766,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   }
   __pyx_L7:;
 
-  /* "pivot.pyx":553
+  /* "fastpivot/pivot/pivot.pyx":553
  *         med = (vec[mid] + max_left) / 2
  * 
  *     return med             # <<<<<<<<<<<<<<
@@ -11776,7 +11776,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   __pyx_r = __pyx_v_med;
   goto __pyx_L0;
 
-  /* "pivot.pyx":530
+  /* "fastpivot/pivot/pivot.pyx":530
  *     return value
  * 
  * cdef double median_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11788,14 +11788,14 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_WriteUnraisable("pivot.median_cython", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("fastpivot.pivot.pivot.median_cython", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pivot.pyx":555
+/* "fastpivot/pivot/pivot.pyx":555
  *     return med
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):             # <<<<<<<<<<<<<<
@@ -11803,7 +11803,7 @@ static double __pyx_f_5pivot_median_cython(std::vector<double>  &__pyx_v_vec) {
  *     cdef double temp
  */
 
-static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx_v_mid, int __pyx_v_i, int __pyx_v_j) {
+static int __pyx_f_9fastpivot_5pivot_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx_v_mid, int __pyx_v_i, int __pyx_v_j) {
   double __pyx_v_x;
   double __pyx_v_temp;
   int __pyx_r;
@@ -11811,7 +11811,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("partition", 0);
 
-  /* "pivot.pyx":556
+  /* "fastpivot/pivot/pivot.pyx":556
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):
  *     cdef double x = vec[mid]             # <<<<<<<<<<<<<<
@@ -11820,7 +11820,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
  */
   __pyx_v_x = (__pyx_v_vec[__pyx_v_mid]);
 
-  /* "pivot.pyx":558
+  /* "fastpivot/pivot/pivot.pyx":558
  *     cdef double x = vec[mid]
  *     cdef double temp
  *     while True:             # <<<<<<<<<<<<<<
@@ -11829,7 +11829,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
  */
   while (1) {
 
-    /* "pivot.pyx":559
+    /* "fastpivot/pivot/pivot.pyx":559
  *     cdef double temp
  *     while True:
  *         while vec[i] < x:             # <<<<<<<<<<<<<<
@@ -11840,7 +11840,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_i]) < __pyx_v_x) != 0);
       if (!__pyx_t_1) break;
 
-      /* "pivot.pyx":560
+      /* "fastpivot/pivot/pivot.pyx":560
  *     while True:
  *         while vec[i] < x:
  *             i += 1             # <<<<<<<<<<<<<<
@@ -11850,7 +11850,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
       __pyx_v_i = (__pyx_v_i + 1);
     }
 
-    /* "pivot.pyx":561
+    /* "fastpivot/pivot/pivot.pyx":561
  *         while vec[i] < x:
  *             i += 1
  *         while vec[j] > x:             # <<<<<<<<<<<<<<
@@ -11861,7 +11861,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_j]) > __pyx_v_x) != 0);
       if (!__pyx_t_1) break;
 
-      /* "pivot.pyx":562
+      /* "fastpivot/pivot/pivot.pyx":562
  *             i += 1
  *         while vec[j] > x:
  *             j -= 1             # <<<<<<<<<<<<<<
@@ -11871,7 +11871,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
       __pyx_v_j = (__pyx_v_j - 1);
     }
 
-    /* "pivot.pyx":563
+    /* "fastpivot/pivot/pivot.pyx":563
  *         while vec[j] > x:
  *             j -= 1
  *         if i == j:             # <<<<<<<<<<<<<<
@@ -11881,7 +11881,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
     __pyx_t_1 = ((__pyx_v_i == __pyx_v_j) != 0);
     if (__pyx_t_1) {
 
-      /* "pivot.pyx":564
+      /* "fastpivot/pivot/pivot.pyx":564
  *             j -= 1
  *         if i == j:
  *             return j             # <<<<<<<<<<<<<<
@@ -11891,7 +11891,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
       __pyx_r = __pyx_v_j;
       goto __pyx_L0;
 
-      /* "pivot.pyx":563
+      /* "fastpivot/pivot/pivot.pyx":563
  *         while vec[j] > x:
  *             j -= 1
  *         if i == j:             # <<<<<<<<<<<<<<
@@ -11900,7 +11900,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
  */
     }
 
-    /* "pivot.pyx":566
+    /* "fastpivot/pivot/pivot.pyx":566
  *             return j
  *         else:
  *             temp = vec[i]             # <<<<<<<<<<<<<<
@@ -11910,7 +11910,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
     /*else*/ {
       __pyx_v_temp = (__pyx_v_vec[__pyx_v_i]);
 
-      /* "pivot.pyx":567
+      /* "fastpivot/pivot/pivot.pyx":567
  *         else:
  *             temp = vec[i]
  *             vec[i] = vec[j]             # <<<<<<<<<<<<<<
@@ -11919,7 +11919,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
  */
       (__pyx_v_vec[__pyx_v_i]) = (__pyx_v_vec[__pyx_v_j]);
 
-      /* "pivot.pyx":568
+      /* "fastpivot/pivot/pivot.pyx":568
  *             temp = vec[i]
  *             vec[i] = vec[j]
  *             vec[j] = temp             # <<<<<<<<<<<<<<
@@ -11930,7 +11930,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
     }
   }
 
-  /* "pivot.pyx":555
+  /* "fastpivot/pivot/pivot.pyx":555
  *     return med
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):             # <<<<<<<<<<<<<<
@@ -11945,7 +11945,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
   return __pyx_r;
 }
 
-/* "pivot.pyx":570
+/* "fastpivot/pivot/pivot.pyx":570
  *             vec[j] = temp
  * 
  * cdef double max_left_cython(vector[double] & vec, int upper_idx):             # <<<<<<<<<<<<<<
@@ -11953,7 +11953,7 @@ static int __pyx_f_5pivot_partition(std::vector<double>  &__pyx_v_vec, int __pyx
  *     cdef int i
  */
 
-static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, int __pyx_v_upper_idx) {
+static double __pyx_f_9fastpivot_5pivot_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, int __pyx_v_upper_idx) {
   int __pyx_v_i;
   double __pyx_v_value;
   double __pyx_r;
@@ -11964,7 +11964,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("max_left_cython", 0);
 
-  /* "pivot.pyx":574
+  /* "fastpivot/pivot/pivot.pyx":574
  *     cdef int i
  *     cdef double value
  *     value = vec[0]             # <<<<<<<<<<<<<<
@@ -11973,7 +11973,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
  */
   __pyx_v_value = (__pyx_v_vec[0]);
 
-  /* "pivot.pyx":575
+  /* "fastpivot/pivot/pivot.pyx":575
  *     cdef double value
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):             # <<<<<<<<<<<<<<
@@ -11985,7 +11985,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
   for (__pyx_t_3 = 1; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "pivot.pyx":576
+    /* "fastpivot/pivot/pivot.pyx":576
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:             # <<<<<<<<<<<<<<
@@ -11995,7 +11995,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
     __pyx_t_4 = ((__pyx_v_value < (__pyx_v_vec[__pyx_v_i])) != 0);
     if (__pyx_t_4) {
 
-      /* "pivot.pyx":577
+      /* "fastpivot/pivot/pivot.pyx":577
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:
  *             value = vec[i]             # <<<<<<<<<<<<<<
@@ -12004,7 +12004,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
  */
       __pyx_v_value = (__pyx_v_vec[__pyx_v_i]);
 
-      /* "pivot.pyx":576
+      /* "fastpivot/pivot/pivot.pyx":576
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:             # <<<<<<<<<<<<<<
@@ -12014,7 +12014,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
     }
   }
 
-  /* "pivot.pyx":578
+  /* "fastpivot/pivot/pivot.pyx":578
  *         if value < vec[i]:
  *             value = vec[i]
  *     return value             # <<<<<<<<<<<<<<
@@ -12024,7 +12024,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "pivot.pyx":570
+  /* "fastpivot/pivot/pivot.pyx":570
  *             vec[j] = temp
  * 
  * cdef double max_left_cython(vector[double] & vec, int upper_idx):             # <<<<<<<<<<<<<<
@@ -12038,7 +12038,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
   return __pyx_r;
 }
 
-/* "pivot.pyx":580
+/* "fastpivot/pivot/pivot.pyx":580
  *     return value
  * 
  * cdef double nunique_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -12046,7 +12046,7 @@ static double __pyx_f_5pivot_max_left_cython(std::vector<double>  &__pyx_v_vec, 
  *     cdef cset[double] value_set
  */
 
-static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
+static double __pyx_f_9fastpivot_5pivot_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
   int __pyx_v_k;
   std::set<double>  __pyx_v_value_set;
   double __pyx_v_n;
@@ -12060,7 +12060,7 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nunique_cython", 0);
 
-  /* "pivot.pyx":584
+  /* "fastpivot/pivot/pivot.pyx":584
  *     cdef cset[double] value_set
  *     cdef double n
  *     for k in range(vec.size()):             # <<<<<<<<<<<<<<
@@ -12072,7 +12072,7 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "pivot.pyx":585
+    /* "fastpivot/pivot/pivot.pyx":585
  *     cdef double n
  *     for k in range(vec.size()):
  *         value_set.insert(vec[k])             # <<<<<<<<<<<<<<
@@ -12087,7 +12087,7 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
     }
   }
 
-  /* "pivot.pyx":586
+  /* "fastpivot/pivot/pivot.pyx":586
  *     for k in range(vec.size()):
  *         value_set.insert(vec[k])
  *     n = value_set.size()             # <<<<<<<<<<<<<<
@@ -12096,7 +12096,7 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
  */
   __pyx_v_n = __pyx_v_value_set.size();
 
-  /* "pivot.pyx":587
+  /* "fastpivot/pivot/pivot.pyx":587
  *         value_set.insert(vec[k])
  *     n = value_set.size()
  *     return n             # <<<<<<<<<<<<<<
@@ -12106,7 +12106,7 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
   __pyx_r = __pyx_v_n;
   goto __pyx_L0;
 
-  /* "pivot.pyx":580
+  /* "fastpivot/pivot/pivot.pyx":580
  *     return value
  * 
  * cdef double nunique_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -12116,14 +12116,14 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_WriteUnraisable("pivot.nunique_cython", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("fastpivot.pivot.pivot.nunique_cython", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pivot.pyx":589
+/* "fastpivot/pivot/pivot.pyx":589
  *     return n
  * 
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):             # <<<<<<<<<<<<<<
@@ -12131,7 +12131,7 @@ static double __pyx_f_5pivot_nunique_cython(std::vector<double>  &__pyx_v_vec) {
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, __pyx_t_5pivot_vec_to_double __pyx_v_agg) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, __pyx_t_9fastpivot_5pivot_5pivot_vec_to_double __pyx_v_agg) {
   std::vector<std::vector<double> >  __pyx_v_pivot_arr;
   __Pyx_memviewslice __pyx_v_pivot_arr_return = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -12165,7 +12165,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg", 0);
 
-  /* "pivot.pyx":591
+  /* "fastpivot/pivot/pivot.pyx":591
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -12180,7 +12180,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "pivot.pyx":593
+  /* "fastpivot/pivot/pivot.pyx":593
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     cdef double[:, :] pivot_arr_return = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -12229,7 +12229,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "pivot.pyx":598
+  /* "fastpivot/pivot/pivot.pyx":598
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -12241,7 +12241,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "pivot.pyx":599
+    /* "fastpivot/pivot/pivot.pyx":599
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -12260,7 +12260,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":600
+    /* "fastpivot/pivot/pivot.pyx":600
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -12279,7 +12279,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":601
+    /* "fastpivot/pivot/pivot.pyx":601
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -12298,7 +12298,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_11 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":602
+    /* "fastpivot/pivot/pivot.pyx":602
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -12308,7 +12308,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     __pyx_t_13 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_13) {
 
-      /* "pivot.pyx":603
+      /* "fastpivot/pivot/pivot.pyx":603
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -12322,7 +12322,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
         __PYX_ERR(0, 603, __pyx_L1_error)
       }
 
-      /* "pivot.pyx":602
+      /* "fastpivot/pivot/pivot.pyx":602
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -12332,7 +12332,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":606
+  /* "fastpivot/pivot/pivot.pyx":606
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -12344,7 +12344,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "pivot.pyx":607
+    /* "fastpivot/pivot/pivot.pyx":607
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -12356,7 +12356,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_j = __pyx_t_18;
 
-      /* "pivot.pyx":608
+      /* "fastpivot/pivot/pivot.pyx":608
  *     for i in range(N):
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -12365,7 +12365,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
  */
       __pyx_v_value = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "pivot.pyx":609
+      /* "fastpivot/pivot/pivot.pyx":609
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 pivot_arr_return[i, j] = value             # <<<<<<<<<<<<<<
@@ -12391,7 +12391,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
     }
   }
 
-  /* "pivot.pyx":611
+  /* "fastpivot/pivot/pivot.pyx":611
  *                 pivot_arr_return[i, j] = value
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -12402,7 +12402,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "pivot.pyx":589
+  /* "fastpivot/pivot/pivot.pyx":589
  *     return n
  * 
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):             # <<<<<<<<<<<<<<
@@ -12420,7 +12420,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -12432,7 +12432,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
   return __pyx_r;
 }
 
-/* "pivot.pyx":613
+/* "fastpivot/pivot/pivot.pyx":613
  *     return pivot_arr_return
  * 
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -12440,7 +12440,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg(__Pyx_memviewslice __p
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, __pyx_t_5pivot_vec_to_double __pyx_v_agg, bool __pyx_v_fill_zero) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, __pyx_t_9fastpivot_5pivot_5pivot_vec_to_double __pyx_v_agg, bool __pyx_v_fill_zero) {
   std::vector<std::vector<double> >  __pyx_v_pivot_arr;
   PyObject *__pyx_v_init = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr_return = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -12475,7 +12475,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg_nan", 0);
 
-  /* "pivot.pyx":615
+  /* "fastpivot/pivot/pivot.pyx":615
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -12490,7 +12490,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "pivot.pyx":617
+  /* "fastpivot/pivot/pivot.pyx":617
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
@@ -12536,7 +12536,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   __pyx_v_init = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "pivot.pyx":618
+  /* "fastpivot/pivot/pivot.pyx":618
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -12546,7 +12546,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   __pyx_t_7 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_7) {
 
-    /* "pivot.pyx":619
+    /* "fastpivot/pivot/pivot.pyx":619
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
@@ -12578,7 +12578,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "pivot.pyx":618
+    /* "fastpivot/pivot/pivot.pyx":618
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -12587,7 +12587,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
  */
   }
 
-  /* "pivot.pyx":620
+  /* "fastpivot/pivot/pivot.pyx":620
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr_return = init             # <<<<<<<<<<<<<<
@@ -12599,7 +12599,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "pivot.pyx":625
+  /* "fastpivot/pivot/pivot.pyx":625
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -12611,7 +12611,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_k = __pyx_t_11;
 
-    /* "pivot.pyx":626
+    /* "fastpivot/pivot/pivot.pyx":626
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -12630,7 +12630,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_12 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":627
+    /* "fastpivot/pivot/pivot.pyx":627
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -12649,7 +12649,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_12 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":628
+    /* "fastpivot/pivot/pivot.pyx":628
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -12668,7 +12668,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_12 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":629
+    /* "fastpivot/pivot/pivot.pyx":629
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -12678,7 +12678,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     __pyx_t_7 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_7) {
 
-      /* "pivot.pyx":630
+      /* "fastpivot/pivot/pivot.pyx":630
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -12692,7 +12692,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
         __PYX_ERR(0, 630, __pyx_L1_error)
       }
 
-      /* "pivot.pyx":631
+      /* "fastpivot/pivot/pivot.pyx":631
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)
  *             pivot_arr_return[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -12716,7 +12716,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_12 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_14 * __pyx_v_pivot_arr_return.strides[1]) )) = 0.0;
 
-      /* "pivot.pyx":629
+      /* "fastpivot/pivot/pivot.pyx":629
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -12726,7 +12726,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     }
   }
 
-  /* "pivot.pyx":634
+  /* "fastpivot/pivot/pivot.pyx":634
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -12738,7 +12738,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
     __pyx_v_i = __pyx_t_16;
 
-    /* "pivot.pyx":635
+    /* "fastpivot/pivot/pivot.pyx":635
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -12750,7 +12750,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
       __pyx_v_j = __pyx_t_19;
 
-      /* "pivot.pyx":636
+      /* "fastpivot/pivot/pivot.pyx":636
  *     for i in range(N):
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -12759,7 +12759,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
  */
       __pyx_v_value = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "pivot.pyx":637
+      /* "fastpivot/pivot/pivot.pyx":637
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:             # <<<<<<<<<<<<<<
@@ -12769,7 +12769,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
       __pyx_t_7 = ((__pyx_v_value != 0.0) != 0);
       if (__pyx_t_7) {
 
-        /* "pivot.pyx":638
+        /* "fastpivot/pivot/pivot.pyx":638
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:
  *                     pivot_arr_return[i, j] = value             # <<<<<<<<<<<<<<
@@ -12793,7 +12793,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_14 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_12 * __pyx_v_pivot_arr_return.strides[1]) )) = __pyx_v_value;
 
-        /* "pivot.pyx":637
+        /* "fastpivot/pivot/pivot.pyx":637
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:             # <<<<<<<<<<<<<<
@@ -12804,7 +12804,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
     }
   }
 
-  /* "pivot.pyx":640
+  /* "fastpivot/pivot/pivot.pyx":640
  *                     pivot_arr_return[i, j] = value
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -12815,7 +12815,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "pivot.pyx":613
+  /* "fastpivot/pivot/pivot.pyx":613
  *     return pivot_arr_return
  * 
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -12833,7 +12833,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_agg_nan", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_agg_nan", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -12846,7 +12846,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
   return __pyx_r;
 }
 
-/* "pivot.pyx":642
+/* "fastpivot/pivot/pivot.pyx":642
  *     return pivot_arr_return
  * 
  * cdef long[:, :] pivot_cython_agg_int(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_long agg):             # <<<<<<<<<<<<<<
@@ -12854,7 +12854,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_nan(__Pyx_memviewslice
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  */
 
-static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, __pyx_t_5pivot_vec_to_long __pyx_v_agg) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_5pivot_pivot_cython_agg_int(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M, __pyx_t_9fastpivot_5pivot_5pivot_vec_to_long __pyx_v_agg) {
   std::vector<std::vector<double> >  __pyx_v_pivot_arr;
   __Pyx_memviewslice __pyx_v_pivot_arr_return = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
@@ -12889,7 +12889,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg_int", 0);
 
-  /* "pivot.pyx":644
+  /* "fastpivot/pivot/pivot.pyx":644
  * cdef long[:, :] pivot_cython_agg_int(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_long agg):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -12904,7 +12904,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "pivot.pyx":646
+  /* "fastpivot/pivot/pivot.pyx":646
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     cdef long[:, :] pivot_arr_return = np.zeros((N, M), dtype=np.int64)             # <<<<<<<<<<<<<<
@@ -12953,7 +12953,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "pivot.pyx":652
+  /* "fastpivot/pivot/pivot.pyx":652
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -12965,7 +12965,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "pivot.pyx":653
+    /* "fastpivot/pivot/pivot.pyx":653
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -12984,7 +12984,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "pivot.pyx":654
+    /* "fastpivot/pivot/pivot.pyx":654
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -13003,7 +13003,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "pivot.pyx":655
+    /* "fastpivot/pivot/pivot.pyx":655
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -13022,7 +13022,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_11 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "pivot.pyx":656
+    /* "fastpivot/pivot/pivot.pyx":656
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -13032,7 +13032,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     __pyx_t_13 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_13) {
 
-      /* "pivot.pyx":657
+      /* "fastpivot/pivot/pivot.pyx":657
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -13046,7 +13046,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
         __PYX_ERR(0, 657, __pyx_L1_error)
       }
 
-      /* "pivot.pyx":656
+      /* "fastpivot/pivot/pivot.pyx":656
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -13056,7 +13056,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     }
   }
 
-  /* "pivot.pyx":660
+  /* "fastpivot/pivot/pivot.pyx":660
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -13068,7 +13068,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "pivot.pyx":661
+    /* "fastpivot/pivot/pivot.pyx":661
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -13080,7 +13080,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_j = __pyx_t_18;
 
-      /* "pivot.pyx":662
+      /* "fastpivot/pivot/pivot.pyx":662
  *     for i in range(N):
  *         for j in range(M):
  *                 value_int = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -13089,7 +13089,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
  */
       __pyx_v_value_int = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "pivot.pyx":663
+      /* "fastpivot/pivot/pivot.pyx":663
  *         for j in range(M):
  *                 value_int = agg(pivot_arr[i*M + j])
  *                 pivot_arr_return[i, j] = value_int             # <<<<<<<<<<<<<<
@@ -13115,7 +13115,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
     }
   }
 
-  /* "pivot.pyx":665
+  /* "fastpivot/pivot/pivot.pyx":665
  *                 pivot_arr_return[i, j] = value_int
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -13124,7 +13124,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "pivot.pyx":642
+  /* "fastpivot/pivot/pivot.pyx":642
  *     return pivot_arr_return
  * 
  * cdef long[:, :] pivot_cython_agg_int(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_long agg):             # <<<<<<<<<<<<<<
@@ -13142,7 +13142,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
   __pyx_r.data = NULL;
   __pyx_r.memview = NULL;
-  __Pyx_AddTraceback("pivot.pivot_cython_agg_int", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("fastpivot.pivot.pivot.pivot_cython_agg_int", __pyx_clineno, __pyx_lineno, __pyx_filename);
   goto __pyx_L2;
   __pyx_L0:;
   if (unlikely(!__pyx_r.memview)) {
@@ -13154,7 +13154,7 @@ static __Pyx_memviewslice __pyx_f_5pivot_pivot_cython_agg_int(__Pyx_memviewslice
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":735
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":735
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -13171,7 +13171,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":736
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":736
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -13185,7 +13185,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":735
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":735
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -13204,7 +13204,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":738
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":738
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -13221,7 +13221,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":739
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":739
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -13235,7 +13235,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":738
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":738
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -13254,7 +13254,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":741
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":741
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -13271,7 +13271,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":742
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":742
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -13285,7 +13285,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":741
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":741
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -13304,7 +13304,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":744
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":744
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -13321,7 +13321,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":745
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":745
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -13335,7 +13335,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":744
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":744
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -13354,7 +13354,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":747
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":747
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -13371,7 +13371,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":748
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":748
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -13385,7 +13385,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":747
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":747
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -13404,7 +13404,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":750
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":750
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -13418,7 +13418,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":751
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":751
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -13428,7 +13428,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = (PyDataType_HASSUBARRAY(__pyx_v_d) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":752
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":752
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -13440,7 +13440,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_v_d->subarray->shape);
     goto __pyx_L0;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":751
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":751
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -13449,7 +13449,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
   }
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":754
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":754
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -13463,7 +13463,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":750
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":750
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -13478,7 +13478,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":931
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -13490,7 +13490,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":932
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":932
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -13499,7 +13499,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":933
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":933
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -13508,7 +13508,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":931
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -13520,7 +13520,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":935
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -13535,7 +13535,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":936
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":936
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -13544,7 +13544,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":937
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -13554,7 +13554,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":938
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":938
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -13565,7 +13565,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":937
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -13574,7 +13574,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":939
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":939
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -13586,7 +13586,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":935
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -13601,7 +13601,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":943
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -13625,7 +13625,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":944
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13641,7 +13641,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":945
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":945
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -13650,7 +13650,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 945, __pyx_L3_error)
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":944
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13664,7 +13664,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":946
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":946
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -13679,7 +13679,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":947
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -13695,7 +13695,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":944
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13710,7 +13710,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":943
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -13733,7 +13733,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":949
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -13757,7 +13757,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":950
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13773,7 +13773,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":951
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":951
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -13782,7 +13782,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 951, __pyx_L3_error)
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":950
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13796,7 +13796,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":952
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":952
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -13811,7 +13811,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":953
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -13827,7 +13827,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":950
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13842,7 +13842,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":949
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -13865,7 +13865,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":955
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -13889,7 +13889,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":956
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13905,7 +13905,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":957
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":957
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -13914,7 +13914,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 957, __pyx_L3_error)
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":956
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13928,7 +13928,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":958
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":958
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -13943,7 +13943,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":959
+      /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":959
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -13959,7 +13959,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":956
+    /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -13974,7 +13974,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":955
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -13997,7 +13997,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":969
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -14010,7 +14010,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_timedelta64_object", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":981
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":981
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -14020,7 +14020,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":969
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -14034,7 +14034,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":984
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -14047,7 +14047,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_datetime64_object", 0);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":996
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":996
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -14057,7 +14057,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":984
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -14071,7 +14071,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":999
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -14082,7 +14082,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1006
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1006
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -14092,7 +14092,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":999
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -14105,7 +14105,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1009
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -14116,7 +14116,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1013
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1013
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -14126,7 +14126,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1009
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -14139,7 +14139,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1016
+/* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -14150,7 +14150,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1020
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1020
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -14158,7 +14158,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":1016
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -27311,7 +27311,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "pivot.array", /*tp_name*/
+  "fastpivot.pivot.pivot.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -27430,7 +27430,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "pivot.Enum", /*tp_name*/
+  "fastpivot.pivot.pivot.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -27691,7 +27691,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "pivot.memoryview", /*tp_name*/
+  "fastpivot.pivot.pivot.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -27829,7 +27829,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "pivot._memoryviewslice", /*tp_name*/
+  "fastpivot.pivot.pivot._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -28012,6 +28012,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
   {&__pyx_n_s_factorize, __pyx_k_factorize, sizeof(__pyx_k_factorize), 0, 0, 1, 1},
+  {&__pyx_n_s_fastpivot_pivot_pivot, __pyx_k_fastpivot_pivot_pivot, sizeof(__pyx_k_fastpivot_pivot_pivot), 0, 0, 1, 1},
   {&__pyx_n_s_fill, __pyx_k_fill, sizeof(__pyx_k_fill), 0, 0, 1, 1},
   {&__pyx_n_s_fill_value, __pyx_k_fill_value, sizeof(__pyx_k_fill_value), 0, 0, 1, 1},
   {&__pyx_n_s_fillna, __pyx_k_fillna, sizeof(__pyx_k_fillna), 0, 0, 1, 1},
@@ -28066,7 +28067,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pandas, __pyx_k_pandas, sizeof(__pyx_k_pandas), 0, 0, 1, 1},
   {&__pyx_n_s_pd, __pyx_k_pd, sizeof(__pyx_k_pd), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
-  {&__pyx_n_s_pivot, __pyx_k_pivot, sizeof(__pyx_k_pivot), 0, 0, 1, 1},
   {&__pyx_n_s_pivot_arr, __pyx_k_pivot_arr, sizeof(__pyx_k_pivot_arr), 0, 0, 1, 1},
   {&__pyx_n_s_pivot_compute_agg, __pyx_k_pivot_compute_agg, sizeof(__pyx_k_pivot_compute_agg), 0, 0, 1, 1},
   {&__pyx_n_s_pivot_compute_table, __pyx_k_pivot_compute_table, sizeof(__pyx_k_pivot_compute_table), 0, 0, 1, 1},
@@ -28143,7 +28143,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pivot.pyx":166
+  /* "fastpivot/pivot/pivot.pyx":166
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
@@ -28155,7 +28155,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple_);
   __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_fastpivot_pivot_pivot_pyx, __pyx_n_s_process, 166, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 166, __pyx_L1_error)
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":947
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -28166,7 +28166,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "../../../../../tmp/build-env-r1i3w9z9/lib/python3.7/site-packages/numpy/__init__.pxd":953
+  /* "../../../../../tmp/build-env-qgklyw5k/lib/python3.7/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -28369,7 +28369,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "pivot.pyx":26
+  /* "fastpivot/pivot/pivot.pyx":26
  * # TODO: nunique slow? maybe general agg slow? maybe factorize?
  * # TODO: further optimization... multithread when values or aggfunc multiple?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
@@ -28381,7 +28381,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__23);
   __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(8, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_fastpivot_pivot_pivot_pyx, __pyx_n_s_pivot_table, 26, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 26, __pyx_L1_error)
 
-  /* "pivot.pyx":145
+  /* "fastpivot/pivot/pivot.pyx":145
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -28393,7 +28393,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__25);
   __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_fastpivot_pivot_pivot_pyx, __pyx_n_s_process_values_aggfunc, 145, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 145, __pyx_L1_error)
 
-  /* "pivot.pyx":189
+  /* "fastpivot/pivot/pivot.pyx":189
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
@@ -28405,7 +28405,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__27);
   __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(10, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_fastpivot_pivot_pivot_pyx, __pyx_n_s_pivot_compute_table, 189, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 189, __pyx_L1_error)
 
-  /* "pivot.pyx":201
+  /* "fastpivot/pivot/pivot.pyx":201
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -28417,7 +28417,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__30);
   __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(7, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_fastpivot_pivot_pivot_pyx, __pyx_n_s_pivot_compute_agg, 201, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 201, __pyx_L1_error)
 
-  /* "pivot.pyx":252
+  /* "fastpivot/pivot/pivot.pyx":252
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -28864,14 +28864,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_pivot) {
+  if (__pyx_module_is_main_fastpivot__pivot__pivot) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "pivot")) {
-      if (unlikely(PyDict_SetItemString(modules, "pivot", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "fastpivot.pivot.pivot")) {
+      if (unlikely(PyDict_SetItemString(modules, "fastpivot.pivot.pivot", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -28892,7 +28892,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "pivot.pyx":15
+  /* "fastpivot/pivot/pivot.pyx":15
  * from libc.stdlib cimport malloc
  * from libcpp.algorithm cimport sort as stdsort
  * import pandas as pd             # <<<<<<<<<<<<<<
@@ -28904,7 +28904,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pd, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":16
+  /* "fastpivot/pivot/pivot.pyx":16
  * from libcpp.algorithm cimport sort as stdsort
  * import pandas as pd
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -28916,7 +28916,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":18
+  /* "fastpivot/pivot/pivot.pyx":18
  * import numpy as np
  * cimport numpy as np
  * import time             # <<<<<<<<<<<<<<
@@ -28928,67 +28928,67 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":26
+  /* "fastpivot/pivot/pivot.pyx":26
  * # TODO: nunique slow? maybe general agg slow? maybe factorize?
  * # TODO: further optimization... multithread when values or aggfunc multiple?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
  *     """
  *     A limited, but hopefully fast implementation of pivot table.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pivot_1pivot_table, NULL, __pyx_n_s_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_1pivot_table, NULL, __pyx_n_s_fastpivot_pivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_table, __pyx_t_1) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":145
+  /* "fastpivot/pivot/pivot.pyx":145
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
  *     # standardize format of values, aggfunc.
  *     # standardized means values is a sorted list of strings and
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pivot_3process_values_aggfunc, NULL, __pyx_n_s_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_3process_values_aggfunc, NULL, __pyx_n_s_fastpivot_pivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_values_aggfunc, __pyx_t_1) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":189
+  /* "fastpivot/pivot/pivot.pyx":189
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
  * 
  *     n_idx = idx_arr_unique.shape[0]
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pivot_5pivot_compute_table, NULL, __pyx_n_s_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_5pivot_compute_table, NULL, __pyx_n_s_fastpivot_pivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_compute_table, __pyx_t_1) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":201
+  /* "fastpivot/pivot/pivot.pyx":201
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
  *     # computes pivot table and aggregates.
  *     # if fill_value is zero then sum, count, and nunique fill by zero right away since these aggfuncs never have
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pivot_7pivot_compute_agg, NULL, __pyx_n_s_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_7pivot_compute_agg, NULL, __pyx_n_s_fastpivot_pivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_compute_agg, __pyx_t_1) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":252
+  /* "fastpivot/pivot/pivot.pyx":252
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
  *     if aggfunc in ['sum', 'count', 'nunique']:
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5pivot_9pivot_drop_fill, NULL, __pyx_n_s_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_9pivot_drop_fill, NULL, __pyx_n_s_fastpivot_pivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_drop_fill, __pyx_t_1) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pivot.pyx":1
+  /* "fastpivot/pivot/pivot.pyx":1
  * # cython: c_string_type=unicode, c_string_encoding=utf8             # <<<<<<<<<<<<<<
  * 
  * from libcpp.string cimport string
@@ -29158,11 +29158,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init pivot", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init fastpivot.pivot.pivot", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init pivot");
+    PyErr_SetString(PyExc_ImportError, "init fastpivot.pivot.pivot");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
