@@ -150,7 +150,43 @@ def test_pivot_nan_index_dropnacolidx():
     tick = time.perf_counter()
     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna_idxcol=False)
     print(msg, time.perf_counter() - tick)
-    print(pivot_cython)
+    # print(pivot_cython)
+
+def test_pivot_multiple_values_string_nunique_nan():
+
+    print()
+    print('test pivot multiple values string nunique_nan')
+
+    df = gen_df_multiple_columns()
+    df[NAME_COL2][np.random.choice(a=[False, True], size=N_ROWS)] = np.nan
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_COL2, fill_value=0, aggfunc='nunique')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=NAME_COL, values=NAME_COL2, fill_value=0, aggfunc='nunique')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    #assert is_equal
+    #assert is_equal_pd
 
 def test_pivot_nan_column_dropnacolidx():
 

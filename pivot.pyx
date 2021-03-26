@@ -17,6 +17,8 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: when value dtype not numeric calling factorize may drop NaNs which may cause errors... 
+# look into this andwrite unit tests
 # TODO: when N_COLS large, time pandas with transpose, pivot, transpose?
 # TODO: faster dropna, fillna?
 # TODO: faster std
@@ -240,8 +242,10 @@ def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_id
             nans_arr = values_series.isna().to_numpy()
             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
         elif aggfunc == 'nunique':
-            values_arr, _ = values_series.factorize()
-            values_arr = values_arr.astype(np.float64) # TODO: unit tests... careful with nans?
+            nans_arr = values_series.isna().to_numpy()
+            values_arr, _ = values_series.factorize(na_sentinel=None)
+            values_arr = values_arr.astype(np.float64)
+            values_arr[nans_arr] = np.nan
             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
     arr = np.array(pivot_arr)
 
