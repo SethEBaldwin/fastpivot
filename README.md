@@ -1,5 +1,6 @@
 # FastPivot
 A basic but fast reconstruction of pandas.pivot_table
+
 Contains two functions: fastpivot.pivot_table and fastpivot.pivot_sparse
 
 # Installation
@@ -7,6 +8,8 @@ Contains two functions: fastpivot.pivot_table and fastpivot.pivot_sparse
 pip install -i https://pypi.org/simple/ fastpivot==0.1.0
 
 # Example
+
+~~~text
 
 import pandas as pd
 import numpy as np
@@ -47,6 +50,8 @@ tick = time.perf_counter()
 pivot_sparse_df = pivot_sparse(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0)
 print(msg, time.perf_counter() - tick)
 print(pivot_sparse_df)
+
+~~~
 
 # Benchmarks
 
