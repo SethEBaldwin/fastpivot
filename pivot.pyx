@@ -17,8 +17,6 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: when value dtype not numeric calling factorize may drop NaNs which may cause errors... 
-# look into this andwrite unit tests
 # TODO: when N_COLS large, time pandas with transpose, pivot, transpose?
 # TODO: faster dropna, fillna?
 # TODO: faster std

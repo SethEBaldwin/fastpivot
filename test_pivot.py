@@ -205,7 +205,7 @@ def test_pivot_nan_column_dropnacolidx():
     tick = time.perf_counter()
     pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna_idxcol=False)
     print(msg, time.perf_counter() - tick)
-    print(pivot_cython)
+    # print(pivot_cython)
 
 def test_pivot_nan_column_nodrop():
 
