@@ -11,19 +11,19 @@ TODO
 
 # Benchmarks
 
+Computed using AMD Ryzen 5 2600 CPU and 16 GB RAM.  
+Time is in denoted in seconds.  
+NaN indicates either the function is not capable of doing the computation or the function ran out of memory.  
+
+N_ROWS denotes the number of rows in the input dataframe.  
+N_COLS denotes the number of distinct values in the column which is passed as the columns argument.  
+N_IDX denotes the number of distinct values in the column which is passed as the index argument.  
+
+For multicol and multiidx, both columns for the columns or index argument have N_COLS or N_IDX distinct values respectively.  
+All examples use dtype np.float64 and fill_value = 0.  
+All arguments except for df, index, column, values, aggfunc, and fill_value are default.  
+
 ~~~text
-
-Computed using AMD Ryzen 5 2600 CPU and 16 GB RAM
-Time is in denoted in seconds
-NaN indicates either the function is not capable of doing the computation or the function ran out of memory.
-
-N_ROWS denotes the number of rows in the input dataframe
-N_COLS denotes the number of distinct values in the column which is passed as the columns argument
-N_IDX denotes the number of distinct values in the column which is passed as the index argument
-
-For multicol and multiidx, both columns for the columns or index argument have N_COLS or N_IDX distinct values respectively
-All examples use dtype np.float64 and fill_value = 0
-All arguments except for df, index, column, values, aggfunc, and fill_value are default
 
 Test 1:
 
@@ -125,10 +125,12 @@ multiidx sum                    Nan                 NaN                4.907232
 
 Winners: fastpivot.pivot_sparse (when applicable), fastpivot.pivot_table
 
+~~~
+
 Takeaway:
 
-pandas.pivot_table is highly flexible and optimized for input with a large number of rows but few distinct values in the index and column, so that the resulting pivot table is small and each value results from aggregating a large number of values in the original dataframe.
-fastpivot.pivot_table is reasonably flexible (though not as flexible as pandas) and outperforms pandas when there are a large number of distinct values in the index and column. It outperforms pandas especially for multi column and mutli index input.
-fastpivot.pivot_sparse is very limited but faster and much more memory efficient than pandas when there is an extremely large number of distinct values in the index and column, so that the resulting dataframe is extremely sparse.
+pandas.pivot_table is highly flexible and optimized for input with a large number of rows but few distinct values in the index and column, so that the resulting pivot table is small and each value results from aggregating a large number of values in the original dataframe.  
 
-~~~
+fastpivot.pivot_table is reasonably flexible (though not as flexible as pandas) and outperforms pandas when there are a large number of distinct values in the index and column. It outperforms pandas especially for multi column and mutli index input.  
+
+fastpivot.pivot_sparse is very limited but faster and much more memory efficient than pandas when there is an extremely large number of distinct values in the index and column, so that the resulting dataframe is extremely sparse.  
