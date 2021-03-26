@@ -20,19 +20,19 @@ df = pd.DataFrame(data, columns=[NAME_IDX, NAME_COL, NAME_VALUE], index=range(le
 df[NAME_VALUE] = df[NAME_VALUE].astype(np.float64)
 print(df)
 
-msg = 'cython'
+msg = 'fastpivot.pivot_table'
 tick = time.perf_counter()
-pivot_cython = pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+pivot_fast = pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
 print(msg, time.perf_counter() - tick)
-print(pivot_cython)
+print(pivot_fast)
 
-msg = 'pandas'
+msg = 'pandas.pivot_table'
 tick = time.perf_counter()
 pivot_pandas = df.pivot_table(index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
 print(msg, time.perf_counter() - tick)
 print(pivot_pandas)
 
-msg = 'sparse'
+msg = 'fastpivot.pivot_sparse'
 tick = time.perf_counter()
 pivot_sparse_df = pivot_sparse(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0)
 print(msg, time.perf_counter() - tick)
