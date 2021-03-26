@@ -1,10 +1,10 @@
-set version number in pyproject.toml
+set version number in setup.cfg
 set version number in Dockerfile
 python3 -m build
 sudo docker build .
 sudo docker images
 find image number
-sudo docker run [IMAGE NUMBER]
+sudo docker run -i [IMAGE NUMBER]
 
 find docker container id:
 sudo docker ps
