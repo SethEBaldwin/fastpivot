@@ -22,7 +22,7 @@ def pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True
     pivot_df: pandas dataframe
     """
     
-    tick = time.perf_counter()
+    # tick = time.perf_counter()
     assert isinstance(index, str) or isinstance(index, list)
     assert isinstance(columns, str) or isinstance(columns, list)
     if isinstance(index, str):
@@ -60,25 +60,25 @@ def pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True
         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
-    print('prepare index and columns', time.perf_counter() - tick)
+    # print('prepare index and columns', time.perf_counter() - tick)
 
-    tick = time.perf_counter()
+    # tick = time.perf_counter()
     coo = coo_matrix((df[values], (idx_arr, col_arr)), shape=(idx_arr_unique.shape[0], col_arr_unique.shape[0]))
-    print('coo', time.perf_counter() - tick)
+    # print('coo', time.perf_counter() - tick)
 
     #print(coo.toarray().shape)
     #print(coo.toarray())
 
-    tick = time.perf_counter()
+    # tick = time.perf_counter()
     pivot_df = pd.DataFrame.sparse.from_spmatrix(coo, index=idx_arr_unique, columns=col_arr_unique)
     pivot_df.index.rename(index, inplace=True)
     pivot_df.columns.rename(columns, inplace=True)
     #pivot_df = pd.DataFrame(coo.toarray(), index=idx_arr_unique, columns=col_arr_unique)
-    print('from_spmatrix', time.perf_counter() - tick)
+    # print('from_spmatrix', time.perf_counter() - tick)
 
     if fill_value is not None and fill_value is not np.nan:
-        tick = time.perf_counter()
+        # tick = time.perf_counter()
         pivot_df = pivot_df.fillna(fill_value)
-        print('fillna', time.perf_counter() - tick)
+        # print('fillna', time.perf_counter() - tick)
 
     return pivot_df

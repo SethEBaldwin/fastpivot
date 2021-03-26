@@ -66,7 +66,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     pivot_df: pandas dataframe
     """
     
-    tick = time.perf_counter()
+    # tick = time.perf_counter()
     assert isinstance(index, str) or isinstance(index, list)
     assert isinstance(columns, str) or isinstance(columns, list)
     if isinstance(index, str):
@@ -104,9 +104,9 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
-    print('prepare index and columns', time.perf_counter() - tick)
+    # print('prepare index and columns', time.perf_counter() - tick)
 
-    tick = time.perf_counter()
+    # tick = time.perf_counter()
     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)
 
     pivot_dfs = []
@@ -127,7 +127,7 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
             )
             pivot_dfs.append(pivot_df)
     pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)
-    print('compute pivot table', time.perf_counter() - tick)
+    # print('compute pivot table', time.perf_counter() - tick)
     
     # This was too slow
     # tick = time.perf_counter()
@@ -254,9 +254,9 @@ def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, val
         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
         # if fill_value == 0, NaNs have already been filled by pivot_compute_agg
         if fill_value is not None and fill_value is not np.nan and fill_value != 0:
-            tick = time.perf_counter()
+            #tick = time.perf_counter()
             pivot_df = pivot_df.fillna(fill_value)
-            print('fillna', time.perf_counter() - tick)
+            #print('fillna', time.perf_counter() - tick)
         # missing_arr_cython = find_missing_cython(idx_arr, col_arr, n_idx, n_col)
         # missing_arr = np.array(missing_arr_cython)
         # pivot_df[missing_arr] = fill_value
@@ -264,14 +264,14 @@ def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, val
         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
         # must check dropping in this case
         if dropna and values_series.isna().to_numpy().any(): # TODO speedup
-            tick = time.perf_counter()
+            #tick = time.perf_counter()
             pivot_df = pivot_df.dropna(axis=0, how='all')
             pivot_df = pivot_df.dropna(axis=1, how='all')
-            print('dropna', time.perf_counter() - tick)
+            #print('dropna', time.perf_counter() - tick)
         if fill_value is not None and fill_value is not np.nan:
-            tick = time.perf_counter()
+            #tick = time.perf_counter()
             pivot_df = pivot_df.fillna(fill_value)
-            print('fillna', time.perf_counter() - tick)
+            #print('fillna', time.perf_counter() - tick)
         # missing_arr_cython = find_missing_cython_0(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         # missing_arr = np.array(missing_arr_cython)
         # pivot_df[missing_arr] = fill_value
@@ -279,14 +279,14 @@ def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, val
         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
         # must check dropping in this case
         if dropna: # TODO speedup
-            tick = time.perf_counter()
+            #tick = time.perf_counter()
             pivot_df = pivot_df.dropna(axis=0, how='all')
             pivot_df = pivot_df.dropna(axis=1, how='all')
-            print('dropna', time.perf_counter() - tick)
+            #print('dropna', time.perf_counter() - tick)
         if fill_value is not None and fill_value is not np.nan:
-            tick = time.perf_counter()
+            #tick = time.perf_counter()
             pivot_df = pivot_df.fillna(fill_value)
-        print('fillna', time.perf_counter() - tick)
+            #print('fillna', time.perf_counter() - tick)
         # missing_arr_cython = find_missing_cython_1(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
         # missing_arr = np.array(missing_arr_cython)
         # pivot_df[missing_arr] = fill_value
