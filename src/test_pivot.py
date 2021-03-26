@@ -1,8 +1,8 @@
-import pivot
 import pandas as pd
 import numpy as np
 import time
 import datetime
+import pivot
 
 # NOTE on speed: 
 # this pivot tends to be faster than pandas when N_ROWS, N_COLS and N_IDX are large
