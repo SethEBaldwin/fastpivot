@@ -133,6 +133,83 @@ def gen_df_multiple_index():
 
     return df
 
+def test_pivot_nan_index_dropnacolidx():
+
+    print()
+    print('test pivot nan index dropna_colidx=False')
+
+    df = gen_df()
+
+    df[NAME_IDX][np.random.choice(a=[False, True], size=N_ROWS)] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna_idxcol=False)
+    print(msg, time.perf_counter() - tick)
+    print(pivot_cython)
+
+def test_pivot_nan_column_dropnacolidx():
+
+    print()
+    print('test pivot nan column dropna_colidx=False')
+
+    df = gen_df()
+
+    df[NAME_COL][np.random.choice(a=[False, True], size=N_ROWS)] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna_idxcol=False)
+    print(msg, time.perf_counter() - tick)
+    print(pivot_cython)
+
+def test_pivot_nan_column_nodrop():
+
+    print()
+    print('test pivot nan column nodrop')
+
+    df = gen_df()
+
+    df[NAME_COL][np.random.choice(a=[False, True], size=N_ROWS)] = np.nan
+
+    # print(df)
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna=False)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna=False)
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    assert is_equal_pd
+
 def test_pivot_datetime():
     # pandas fills sum with 0.0 automatically? huh? that is silly. what is going on?
 

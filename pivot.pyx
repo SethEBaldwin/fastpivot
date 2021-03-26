@@ -17,13 +17,13 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: when N_COLS large, time pandas with tranpose, pivot, tranpose?
+# TODO: when N_COLS large, time pandas with transpose, pivot, transpose?
 # TODO: faster dropna, fillna?
 # TODO: faster std
 # TODO: why median still so slow?
 # TODO: nunique slow? maybe general agg slow? maybe factorize?
 # TODO: further optimization... multithread when values or aggfunc multiple?
-def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True):
+def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):
     """
     A limited, but hopefully fast implementation of pivot table.
     Tends to be faster than pandas.pivot_table when resulting pivot table is sparse.
@@ -39,7 +39,9 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         with a single value column
     2) When passing values of type np.int64, values of type np.float64 will be returned. 
         Pandas returns np.int64 in some cases and np.float64 in others.
-    3) The following arguments are not supported here: margins, margins_name, observed.
+    3) When passing multi index or column, pandas constructs the cartesion product space, whereas this pivot constructs the 
+        subspace of the product space where the tuples exist in the passed dataframe.
+    4) The following arguments are not supported here: margins, margins_name, observed.
 
     Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of this
     pivot_table function beats pandas significantly, by a factor of 2 to 20.
@@ -57,6 +59,8 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
         aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': ['count', 'nunique']}
     fill_value (default None): scalar, value to replace missing values with in the pivot table.
     dropna (default True): bool, if True rows and columns that are entirely NaN values will be dropped.
+    dropna_idxcol (default True): bool, if True rows where the passed index or column contain NaNs will be dropped.
+        if False, NaN will be given its own index or column when appropriate.
 
     Returns:
     pivot_df: pandas dataframe
@@ -66,34 +70,38 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
     assert isinstance(index, str) or isinstance(index, list)
     assert isinstance(columns, str) or isinstance(columns, list)
     if isinstance(index, str):
-        df = df.dropna(subset=[index])
+        if dropna_idxcol:
+            df = df.dropna(subset=[index])
     if isinstance(index, list):
-        df = df.dropna(subset=index)
+        if dropna_idxcol:
+            df = df.dropna(subset=index)
         if len(index) == 1:
             index = index[0]
     if isinstance(columns, str):
-        df = df.dropna(subset=[columns])
+        if dropna_idxcol:
+            df = df.dropna(subset=[columns])
     if isinstance(columns, list):
-        df = df.dropna(subset=columns)
+        if dropna_idxcol:
+            df = df.dropna(subset=columns)
         if len(columns) == 1:
             columns = columns[0]
 
     if isinstance(index, str):
         #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = df[index].factorize(sort=True)
+        idx_arr, idx_arr_unique = df[index].factorize(sort=True, na_sentinel=None)
         #print('factorize idx', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True)
+        idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)
         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
         #print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
         #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = df[columns].factorize(sort=True)
+        col_arr, col_arr_unique = df[columns].factorize(sort=True, na_sentinel=None)
         #print('tuple conversion col', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True)
+        col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
     print('prepare index and columns', time.perf_counter() - tick)
