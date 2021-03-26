@@ -1,0 +1,23 @@
+set version number in pyproject.toml
+set version number in Dockerfile
+python3 -m build
+sudo docker build .
+sudo docker images
+find image number
+sudo docker run [IMAGE NUMBER]
+
+find docker container id:
+sudo docker ps
+
+inside the docker container:
+cd wheelhouse
+mv fastpivot-0.1.4-cp37-cp37m-manylinux_2_24_x86_64.whl /tmp
+
+from host:
+sudo docker cp [CONTAINER ID]:/tmp/fastpivot-0.1.4-cp37-cp37m-manylinux_2_24_x86_64.whl wheelhouse/
+
+mv wheelhouse/* dist
+rm dist/*-cp37-cp37m-linux_x86_64.whl
+python3 -m twine upload --skip-existing --repository pypi dist/*
+enter username __token__
+enter token as password

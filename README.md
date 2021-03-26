@@ -5,9 +5,9 @@ Contains two functions: fastpivot.pivot_table and fastpivot.pivot_sparse
 
 # Installation
 
-pip install -i https://pypi.org/simple/ fastpivot==0.1.0
+pip install fastpivot
 
-Latest version: 0.1.0
+Latest version: 0.1.4
 
 # Documentation
 

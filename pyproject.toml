@@ -8,3 +8,10 @@ requires = [
     "cython"
 ]
 build-backend = "setuptools.build_meta"
+
+[tool.poetry.dependencies]
+python = '^3.7'
+numpy = '^1.19.0'
+pandas = '^1.0.0'
+scipy = '^1.6.0'
+cython = '^0.29.0'
