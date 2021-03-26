@@ -10,9 +10,9 @@ from pivot_sparse import pivot_sparse
 # N_IDX = 10000
 
 # slower here for single col, idx. faster for double
-N_ROWS = 1000000
-N_COLS = 1000  # note: pandas can't handle 10000 or even 1000... but this pivot can
-N_IDX = 100
+# N_ROWS = 1000000
+# N_COLS = 1000  # note: pandas can't handle 10000 or even 1000... but this pivot can
+# N_IDX = 100
 
 # N_ROWS = 1000000
 # N_COLS = 10
@@ -28,9 +28,9 @@ N_IDX = 100
 # N_COLS = 1000
 # N_IDX = 1000
 
-# N_ROWS = 2000000
-# N_COLS = 1000
-# N_IDX = 50000
+N_ROWS = 2000000
+N_COLS = 1000
+N_IDX = 50000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
