@@ -7,7 +7,7 @@ Contains two functions: fastpivot.pivot_table and fastpivot.pivot_sparse
 
 pip install fastpivot
 
-Latest version: 0.1.8
+Latest version: 0.1.10
 
 # Documentation
 

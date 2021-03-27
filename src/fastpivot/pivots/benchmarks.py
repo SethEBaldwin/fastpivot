@@ -24,13 +24,13 @@ from pivot_sparse import pivot_sparse
 # N_IDX = 10000
 
 # good speed ups for these parameters
-# N_ROWS = 100000
-# N_COLS = 1000
-# N_IDX = 1000
-
-N_ROWS = 2000000
+N_ROWS = 100000
 N_COLS = 1000
-N_IDX = 50000
+N_IDX = 1000
+
+# N_ROWS = 2000000
+# N_COLS = 1000
+# N_IDX = 50000
 
 NAME_IDX = 'to_be_idx'
 NAME_IDX2 = 'to_be_idx2'
@@ -366,6 +366,8 @@ def test_multiple_columns():
         msg = 'pandas'
         tick = time.perf_counter()
         pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL, NAME_COL2], values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+        #pivot_pandas = df.pivot_table(index=[NAME_COL, NAME_COL2], columns=NAME_IDX, values=NAME_VALUE, fill_value=0.0, aggfunc='sum')
+        #pivot_pandas = pivot_pandas.transpose()
         ptime = time.perf_counter() - tick
     except:
         ptime = None

@@ -1,3 +1,4 @@
+# distutils: language = c++
 # cython: c_string_type=unicode, c_string_encoding=utf8
 
 from libcpp.string cimport string
@@ -17,11 +18,11 @@ import numpy as np
 cimport numpy as np
 import time
 
-# TODO: when N_COLS large, time pandas with transpose, pivot, transpose?
 # TODO: faster dropna, fillna?
 # TODO: faster std
 # TODO: why median still so slow?
 # TODO: nunique slow? maybe general agg slow? maybe factorize?
+# TODO: product function?
 # TODO: further optimization... multithread when values or aggfunc multiple?
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):
     """
