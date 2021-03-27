@@ -1,6 +1,13 @@
 set version number in setup.cfg
 set version number in Dockerfile
+set version in Makefile
 set version in README.md
+make deploy
+enter username __token__
+enter token as password
+
+old instructions:
+
 set version number in instructions (below)
 python3 -m build
 sudo docker build .
