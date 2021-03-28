@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import time
-import pivot
-from pivot_sparse import pivot_sparse
+import fastpivot.pivot as pivot
+from fastpivot.pivot_sparse import pivot_sparse
 
 # N_ROWS = 4
 # N_COLS = 2
