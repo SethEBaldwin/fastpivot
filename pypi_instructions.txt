@@ -1,29 +1,7 @@
 set version number in setup.cfg
 set version number in Dockerfile
 set version number in Makefile
-set version in README.md
+set version number in README.md
 make deploy
-enter username __token__
-enter token as password
-
-old instructions:
-
-set version number in instructions (below)
-python3 -m build
-sudo docker build .
-sudo docker images
-find image number
-sudo docker run -i [IMAGE NUMBER]
-
-inside the docker container:
-mv wheelhouse/fastpivot-0.1.10-cp37-cp37m-manylinux_2_24_x86_64.whl /tmp
-
-find docker container id:
-sudo docker ps
-sudo docker cp [CONTAINER ID]:/tmp/fastpivot-0.1.10-cp37-cp37m-manylinux_2_24_x86_64.whl wheelhouse/
-
-mv wheelhouse/* dist
-rm dist/*-cp37-cp37m-linux_x86_64.whl
-python3 -m twine upload --skip-existing --repository pypi dist/*
 enter username __token__
 enter token as password
