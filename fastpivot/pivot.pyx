@@ -19,11 +19,9 @@ cimport numpy as np
 import time
 
 # TODO: faster dropna, fillna?
-# TODO: faster std
-# TODO: why median still so slow?
-# TODO: nunique slow? maybe general agg slow? maybe factorize?
 # TODO: product function?
-# TODO: further optimization... multithread when values or aggfunc multiple?
+# TODO: further optimization?
+# TODO: try multithread when values or aggfunc multiple? or even in general?
 def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):
     """
     Summary:
@@ -363,6 +361,41 @@ cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] v
                 pivot_arr[i, j] /= (divisor - 1)
                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
     return pivot_arr
+
+# cdef double[:, :] pivot_cython_std_welford(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+#     nans = np.zeros((N, M), dtype=np.float64)
+#     nans.fill(np.nan)
+#     cdef double[:, :] pivot_arr = nans
+#     cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)
+#     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
+#     cdef int i, j, k
+#     cdef double value
+#     cdef double new_mean
+#     cdef double divisor
+#     for k in range(idx_arr.shape[0]):
+#         i = idx_arr[k]
+#         j = col_arr[k]
+#         if not isnan(value_arr[k]):
+#             if not isnan(pivot_arr[i, j]):
+#                 value = value_arr[k]
+#                 pivot_counts_arr[i, j] += 1.0
+#                 new_mean = mean_arr[i, j] + (value - mean_arr[i, j]) / pivot_counts_arr[i, j]
+#                 pivot_arr[i, j] += (value - mean_arr[i, j]) * (value - new_mean)
+#                 mean_arr[i, j] = new_mean
+#             else:
+#                 value = value_arr[k]
+#                 pivot_counts_arr[i, j] += 1.0
+#                 pivot_arr[i, j] = 0
+#                 mean_arr[i, j] = value                
+#     for i in range(N):
+#         for j in range(M):
+#             divisor = pivot_counts_arr[i, j]
+#             if divisor != 0.0:
+#                 pivot_arr[i, j] /= (divisor - 1)
+#                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
+#             else:
+#                 pivot_arr[i, j] = np.nan
+#     return pivot_arr
 
 cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
     nans = np.zeros((N, M), dtype=np.float64)

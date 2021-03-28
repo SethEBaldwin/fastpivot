@@ -1274,7 +1274,7 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "fastpivot/pivot.pyx":454
+/* "fastpivot/pivot.pyx":489
  * #     return missing_arr
  * 
  * ctypedef double vec_to_double(vector[double] &)             # <<<<<<<<<<<<<<
@@ -2365,7 +2365,7 @@ static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int, bool); /*proto*/
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
-static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std_welford(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_memviewslice, __Pyx_memviewslice, int, int, __Pyx_memviewslice, bool); /*proto*/
@@ -6148,7 +6148,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'std':
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  */
       __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
       __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
@@ -6205,7 +6205,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':             # <<<<<<<<<<<<<<
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':
  */
     __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 216, __pyx_L1_error)
@@ -6214,7 +6214,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       /* "fastpivot/pivot.pyx":217
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  */
@@ -6241,7 +6241,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
       __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_std(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_std_welford(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6263,7 +6263,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':             # <<<<<<<<<<<<<<
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':
  */
       goto __pyx_L17;
@@ -6271,7 +6271,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
 
     /* "fastpivot/pivot.pyx":218
  *         elif aggfunc == 'std':
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':
@@ -6280,7 +6280,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     if (__pyx_t_2) {
 
       /* "fastpivot/pivot.pyx":219
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'min':
@@ -6329,7 +6329,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
 
       /* "fastpivot/pivot.pyx":218
  *         elif aggfunc == 'std':
- *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
+ *             pivot_arr = pivot_cython_std_welford(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':
@@ -9538,7 +9538,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
  *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
  *     return pivot_arr             # <<<<<<<<<<<<<<
  * 
- * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+ * cdef double[:, :] pivot_cython_std_welford(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  */
   __PYX_INC_MEMVIEW(&__pyx_v_pivot_arr, 0);
   __pyx_r = __pyx_v_pivot_arr;
@@ -9581,18 +9581,22 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
 /* "fastpivot/pivot.pyx":367
  *     return pivot_arr
  * 
- * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
+ * cdef double[:, :] pivot_cython_std_welford(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  */
 
-static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std_welford(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
   PyObject *__pyx_v_nans = NULL;
   __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_mean_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_pivot_counts_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
   double __pyx_v_value;
+  double __pyx_v_new_mean;
+  double __pyx_v_divisor;
   __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -9608,14 +9612,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   int __pyx_t_11;
   int __pyx_t_12;
   Py_ssize_t __pyx_t_13;
+  Py_ssize_t __pyx_t_14;
+  Py_ssize_t __pyx_t_15;
+  double __pyx_t_16;
+  double __pyx_t_17;
+  int __pyx_t_18;
+  int __pyx_t_19;
+  int __pyx_t_20;
+  int __pyx_t_21;
+  int __pyx_t_22;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("pivot_cython_max", 0);
+  __Pyx_RefNannySetupContext("pivot_cython_std_welford", 0);
 
   /* "fastpivot/pivot.pyx":368
  * 
- * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+ * cdef double[:, :] pivot_cython_std_welford(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
@@ -9660,11 +9673,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   __pyx_t_5 = 0;
 
   /* "fastpivot/pivot.pyx":369
- * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+ * cdef double[:, :] pivot_cython_std_welford(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = nans
- *     cdef int i, j, k
+ *     cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -9695,15 +9708,824 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
- *     cdef int i, j, k
- *     cdef double value
+ *     cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)
+ *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
  */
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 370, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":373
+  /* "fastpivot/pivot.pyx":371
+ *     nans.fill(np.nan)
+ *     cdef double[:, :] pivot_arr = nans
+ *     cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
+ *     cdef int i, j, k
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+  __pyx_t_5 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
+  __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 371, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_mean_arr = __pyx_t_6;
+  __pyx_t_6.memview = NULL;
+  __pyx_t_6.data = NULL;
+
+  /* "fastpivot/pivot.pyx":372
+ *     cdef double[:, :] pivot_arr = nans
+ *     cdef double[:, :] mean_arr = np.zeros((N, M), dtype=np.float64)
+ *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     cdef int i, j, k
+ *     cdef double value
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_2);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_pivot_counts_arr = __pyx_t_6;
+  __pyx_t_6.memview = NULL;
+  __pyx_t_6.data = NULL;
+
+  /* "fastpivot/pivot.pyx":377
+ *     cdef double new_mean
+ *     cdef double divisor
+ *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
+ *         i = idx_arr[k]
+ *         j = col_arr[k]
+ */
+  __pyx_t_7 = (__pyx_v_idx_arr.shape[0]);
+  __pyx_t_8 = __pyx_t_7;
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_k = __pyx_t_9;
+
+    /* "fastpivot/pivot.pyx":378
+ *     cdef double divisor
+ *     for k in range(idx_arr.shape[0]):
+ *         i = idx_arr[k]             # <<<<<<<<<<<<<<
+ *         j = col_arr[k]
+ *         if not isnan(value_arr[k]):
+ */
+    __pyx_t_10 = __pyx_v_k;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_v_idx_arr.shape[0];
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 378, __pyx_L1_error)
+    }
+    __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
+
+    /* "fastpivot/pivot.pyx":379
+ *     for k in range(idx_arr.shape[0]):
+ *         i = idx_arr[k]
+ *         j = col_arr[k]             # <<<<<<<<<<<<<<
+ *         if not isnan(value_arr[k]):
+ *             if not isnan(pivot_arr[i, j]):
+ */
+    __pyx_t_10 = __pyx_v_k;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_v_col_arr.shape[0];
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 379, __pyx_L1_error)
+    }
+    __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
+
+    /* "fastpivot/pivot.pyx":380
+ *         i = idx_arr[k]
+ *         j = col_arr[k]
+ *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
+ *             if not isnan(pivot_arr[i, j]):
+ *                 value = value_arr[k]
+ */
+    __pyx_t_10 = __pyx_v_k;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_v_value_arr.shape[0];
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
+      __PYX_ERR(0, 380, __pyx_L1_error)
+    }
+    __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )))) != 0)) != 0);
+    if (__pyx_t_12) {
+
+      /* "fastpivot/pivot.pyx":381
+ *         j = col_arr[k]
+ *         if not isnan(value_arr[k]):
+ *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
+ *                 value = value_arr[k]
+ *                 pivot_counts_arr[i, j] += 1.0
+ */
+      __pyx_t_10 = __pyx_v_i;
+      __pyx_t_13 = __pyx_v_j;
+      __pyx_t_11 = -1;
+      if (__pyx_t_10 < 0) {
+        __pyx_t_10 += __pyx_v_pivot_arr.shape[0];
+        if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+      } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_11 = 0;
+      if (__pyx_t_13 < 0) {
+        __pyx_t_13 += __pyx_v_pivot_arr.shape[1];
+        if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 1;
+      } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
+      if (unlikely(__pyx_t_11 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_11);
+        __PYX_ERR(0, 381, __pyx_L1_error)
+      }
+      __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
+      if (__pyx_t_12) {
+
+        /* "fastpivot/pivot.pyx":382
+ *         if not isnan(value_arr[k]):
+ *             if not isnan(pivot_arr[i, j]):
+ *                 value = value_arr[k]             # <<<<<<<<<<<<<<
+ *                 pivot_counts_arr[i, j] += 1.0
+ *                 new_mean = mean_arr[i, j] + (value - mean_arr[i, j]) / pivot_counts_arr[i, j]
+ */
+        __pyx_t_13 = __pyx_v_k;
+        __pyx_t_11 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_value_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 382, __pyx_L1_error)
+        }
+        __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_13 * __pyx_v_value_arr.strides[0]) )));
+
+        /* "fastpivot/pivot.pyx":383
+ *             if not isnan(pivot_arr[i, j]):
+ *                 value = value_arr[k]
+ *                 pivot_counts_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
+ *                 new_mean = mean_arr[i, j] + (value - mean_arr[i, j]) / pivot_counts_arr[i, j]
+ *                 pivot_arr[i, j] += (value - mean_arr[i, j]) * (value - new_mean)
+ */
+        __pyx_t_13 = __pyx_v_i;
+        __pyx_t_10 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_pivot_counts_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_counts_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_pivot_counts_arr.shape[1];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 383, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[1]) )) += 1.0;
+
+        /* "fastpivot/pivot.pyx":384
+ *                 value = value_arr[k]
+ *                 pivot_counts_arr[i, j] += 1.0
+ *                 new_mean = mean_arr[i, j] + (value - mean_arr[i, j]) / pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
+ *                 pivot_arr[i, j] += (value - mean_arr[i, j]) * (value - new_mean)
+ *                 mean_arr[i, j] = new_mean
+ */
+        __pyx_t_10 = __pyx_v_i;
+        __pyx_t_13 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_mean_arr.shape[0];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_mean_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_mean_arr.shape[1];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 384, __pyx_L1_error)
+        }
+        __pyx_t_14 = __pyx_v_i;
+        __pyx_t_15 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_14 < 0) {
+          __pyx_t_14 += __pyx_v_mean_arr.shape[0];
+          if (unlikely(__pyx_t_14 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_14 >= __pyx_v_mean_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_15 < 0) {
+          __pyx_t_15 += __pyx_v_mean_arr.shape[1];
+          if (unlikely(__pyx_t_15 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_15 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 384, __pyx_L1_error)
+        }
+        __pyx_t_16 = (__pyx_v_value - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_14 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_15 * __pyx_v_mean_arr.strides[1]) ))));
+        __pyx_t_15 = __pyx_v_i;
+        __pyx_t_14 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_15 < 0) {
+          __pyx_t_15 += __pyx_v_pivot_counts_arr.shape[0];
+          if (unlikely(__pyx_t_15 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_15 >= __pyx_v_pivot_counts_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_14 < 0) {
+          __pyx_t_14 += __pyx_v_pivot_counts_arr.shape[1];
+          if (unlikely(__pyx_t_14 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_14 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 384, __pyx_L1_error)
+        }
+        __pyx_t_17 = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_15 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_14 * __pyx_v_pivot_counts_arr.strides[1]) )));
+        if (unlikely(__pyx_t_17 == 0)) {
+          PyErr_SetString(PyExc_ZeroDivisionError, "float division");
+          __PYX_ERR(0, 384, __pyx_L1_error)
+        }
+        __pyx_v_new_mean = ((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) ))) + (__pyx_t_16 / __pyx_t_17));
+
+        /* "fastpivot/pivot.pyx":385
+ *                 pivot_counts_arr[i, j] += 1.0
+ *                 new_mean = mean_arr[i, j] + (value - mean_arr[i, j]) / pivot_counts_arr[i, j]
+ *                 pivot_arr[i, j] += (value - mean_arr[i, j]) * (value - new_mean)             # <<<<<<<<<<<<<<
+ *                 mean_arr[i, j] = new_mean
+ *             else:
+ */
+        __pyx_t_13 = __pyx_v_i;
+        __pyx_t_10 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_mean_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_mean_arr.shape[1];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 385, __pyx_L1_error)
+        }
+        __pyx_t_14 = __pyx_v_i;
+        __pyx_t_15 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_14 < 0) {
+          __pyx_t_14 += __pyx_v_pivot_arr.shape[0];
+          if (unlikely(__pyx_t_14 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_14 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_15 < 0) {
+          __pyx_t_15 += __pyx_v_pivot_arr.shape[1];
+          if (unlikely(__pyx_t_15 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_15 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 385, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_14 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_15 * __pyx_v_pivot_arr.strides[1]) )) += ((__pyx_v_value - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_13 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_mean_arr.strides[1]) )))) * (__pyx_v_value - __pyx_v_new_mean));
+
+        /* "fastpivot/pivot.pyx":386
+ *                 new_mean = mean_arr[i, j] + (value - mean_arr[i, j]) / pivot_counts_arr[i, j]
+ *                 pivot_arr[i, j] += (value - mean_arr[i, j]) * (value - new_mean)
+ *                 mean_arr[i, j] = new_mean             # <<<<<<<<<<<<<<
+ *             else:
+ *                 value = value_arr[k]
+ */
+        __pyx_t_10 = __pyx_v_i;
+        __pyx_t_13 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_mean_arr.shape[0];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_mean_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_mean_arr.shape[1];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 386, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) )) = __pyx_v_new_mean;
+
+        /* "fastpivot/pivot.pyx":381
+ *         j = col_arr[k]
+ *         if not isnan(value_arr[k]):
+ *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
+ *                 value = value_arr[k]
+ *                 pivot_counts_arr[i, j] += 1.0
+ */
+        goto __pyx_L6;
+      }
+
+      /* "fastpivot/pivot.pyx":388
+ *                 mean_arr[i, j] = new_mean
+ *             else:
+ *                 value = value_arr[k]             # <<<<<<<<<<<<<<
+ *                 pivot_counts_arr[i, j] += 1.0
+ *                 pivot_arr[i, j] = 0
+ */
+      /*else*/ {
+        __pyx_t_13 = __pyx_v_k;
+        __pyx_t_11 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_value_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 388, __pyx_L1_error)
+        }
+        __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_13 * __pyx_v_value_arr.strides[0]) )));
+
+        /* "fastpivot/pivot.pyx":389
+ *             else:
+ *                 value = value_arr[k]
+ *                 pivot_counts_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
+ *                 pivot_arr[i, j] = 0
+ *                 mean_arr[i, j] = value
+ */
+        __pyx_t_13 = __pyx_v_i;
+        __pyx_t_10 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_pivot_counts_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_counts_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_pivot_counts_arr.shape[1];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 389, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[1]) )) += 1.0;
+
+        /* "fastpivot/pivot.pyx":390
+ *                 value = value_arr[k]
+ *                 pivot_counts_arr[i, j] += 1.0
+ *                 pivot_arr[i, j] = 0             # <<<<<<<<<<<<<<
+ *                 mean_arr[i, j] = value
+ *     for i in range(N):
+ */
+        __pyx_t_10 = __pyx_v_i;
+        __pyx_t_13 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_pivot_arr.shape[0];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_pivot_arr.shape[1];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 390, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = 0.0;
+
+        /* "fastpivot/pivot.pyx":391
+ *                 pivot_counts_arr[i, j] += 1.0
+ *                 pivot_arr[i, j] = 0
+ *                 mean_arr[i, j] = value             # <<<<<<<<<<<<<<
+ *     for i in range(N):
+ *         for j in range(M):
+ */
+        __pyx_t_13 = __pyx_v_i;
+        __pyx_t_10 = __pyx_v_j;
+        __pyx_t_11 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_mean_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_11 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[0])) __pyx_t_11 = 0;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_mean_arr.shape[1];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 1;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
+        if (unlikely(__pyx_t_11 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_11);
+          __PYX_ERR(0, 391, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_13 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_mean_arr.strides[1]) )) = __pyx_v_value;
+      }
+      __pyx_L6:;
+
+      /* "fastpivot/pivot.pyx":380
+ *         i = idx_arr[k]
+ *         j = col_arr[k]
+ *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
+ *             if not isnan(pivot_arr[i, j]):
+ *                 value = value_arr[k]
+ */
+    }
+  }
+
+  /* "fastpivot/pivot.pyx":392
+ *                 pivot_arr[i, j] = 0
+ *                 mean_arr[i, j] = value
+ *     for i in range(N):             # <<<<<<<<<<<<<<
+ *         for j in range(M):
+ *             divisor = pivot_counts_arr[i, j]
+ */
+  __pyx_t_9 = __pyx_v_N;
+  __pyx_t_11 = __pyx_t_9;
+  for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_11; __pyx_t_18+=1) {
+    __pyx_v_i = __pyx_t_18;
+
+    /* "fastpivot/pivot.pyx":393
+ *                 mean_arr[i, j] = value
+ *     for i in range(N):
+ *         for j in range(M):             # <<<<<<<<<<<<<<
+ *             divisor = pivot_counts_arr[i, j]
+ *             if divisor != 0.0:
+ */
+    __pyx_t_19 = __pyx_v_M;
+    __pyx_t_20 = __pyx_t_19;
+    for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
+      __pyx_v_j = __pyx_t_21;
+
+      /* "fastpivot/pivot.pyx":394
+ *     for i in range(N):
+ *         for j in range(M):
+ *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
+ *             if divisor != 0.0:
+ *                 pivot_arr[i, j] /= (divisor - 1)
+ */
+      __pyx_t_10 = __pyx_v_i;
+      __pyx_t_13 = __pyx_v_j;
+      __pyx_t_22 = -1;
+      if (__pyx_t_10 < 0) {
+        __pyx_t_10 += __pyx_v_pivot_counts_arr.shape[0];
+        if (unlikely(__pyx_t_10 < 0)) __pyx_t_22 = 0;
+      } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_counts_arr.shape[0])) __pyx_t_22 = 0;
+      if (__pyx_t_13 < 0) {
+        __pyx_t_13 += __pyx_v_pivot_counts_arr.shape[1];
+        if (unlikely(__pyx_t_13 < 0)) __pyx_t_22 = 1;
+      } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_22 = 1;
+      if (unlikely(__pyx_t_22 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_22);
+        __PYX_ERR(0, 394, __pyx_L1_error)
+      }
+      __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
+
+      /* "fastpivot/pivot.pyx":395
+ *         for j in range(M):
+ *             divisor = pivot_counts_arr[i, j]
+ *             if divisor != 0.0:             # <<<<<<<<<<<<<<
+ *                 pivot_arr[i, j] /= (divisor - 1)
+ *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
+ */
+      __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
+      if (__pyx_t_12) {
+
+        /* "fastpivot/pivot.pyx":396
+ *             divisor = pivot_counts_arr[i, j]
+ *             if divisor != 0.0:
+ *                 pivot_arr[i, j] /= (divisor - 1)             # <<<<<<<<<<<<<<
+ *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
+ *             else:
+ */
+        __pyx_t_13 = __pyx_v_i;
+        __pyx_t_10 = __pyx_v_j;
+        __pyx_t_22 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_pivot_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_22 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_22 = 0;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_pivot_arr.shape[1];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_22 = 1;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_22 = 1;
+        if (unlikely(__pyx_t_22 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_22);
+          __PYX_ERR(0, 396, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) /= (__pyx_v_divisor - 1.0);
+
+        /* "fastpivot/pivot.pyx":397
+ *             if divisor != 0.0:
+ *                 pivot_arr[i, j] /= (divisor - 1)
+ *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])             # <<<<<<<<<<<<<<
+ *             else:
+ *                 pivot_arr[i, j] = np.nan
+ */
+        __pyx_t_10 = __pyx_v_i;
+        __pyx_t_13 = __pyx_v_j;
+        __pyx_t_22 = -1;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_pivot_arr.shape[0];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_22 = 0;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_22 = 0;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_pivot_arr.shape[1];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_22 = 1;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_22 = 1;
+        if (unlikely(__pyx_t_22 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_22);
+          __PYX_ERR(0, 397, __pyx_L1_error)
+        }
+        __pyx_t_15 = __pyx_v_i;
+        __pyx_t_14 = __pyx_v_j;
+        __pyx_t_22 = -1;
+        if (__pyx_t_15 < 0) {
+          __pyx_t_15 += __pyx_v_pivot_arr.shape[0];
+          if (unlikely(__pyx_t_15 < 0)) __pyx_t_22 = 0;
+        } else if (unlikely(__pyx_t_15 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_22 = 0;
+        if (__pyx_t_14 < 0) {
+          __pyx_t_14 += __pyx_v_pivot_arr.shape[1];
+          if (unlikely(__pyx_t_14 < 0)) __pyx_t_22 = 1;
+        } else if (unlikely(__pyx_t_14 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_22 = 1;
+        if (unlikely(__pyx_t_22 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_22);
+          __PYX_ERR(0, 397, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_15 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_14 * __pyx_v_pivot_arr.strides[1]) )) = sqrt((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) ))));
+
+        /* "fastpivot/pivot.pyx":395
+ *         for j in range(M):
+ *             divisor = pivot_counts_arr[i, j]
+ *             if divisor != 0.0:             # <<<<<<<<<<<<<<
+ *                 pivot_arr[i, j] /= (divisor - 1)
+ *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
+ */
+        goto __pyx_L11;
+      }
+
+      /* "fastpivot/pivot.pyx":399
+ *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
+ *             else:
+ *                 pivot_arr[i, j] = np.nan             # <<<<<<<<<<<<<<
+ *     return pivot_arr
+ * 
+ */
+      /*else*/ {
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __pyx_t_17 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_17 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 399, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_13 = __pyx_v_i;
+        __pyx_t_10 = __pyx_v_j;
+        __pyx_t_22 = -1;
+        if (__pyx_t_13 < 0) {
+          __pyx_t_13 += __pyx_v_pivot_arr.shape[0];
+          if (unlikely(__pyx_t_13 < 0)) __pyx_t_22 = 0;
+        } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[0])) __pyx_t_22 = 0;
+        if (__pyx_t_10 < 0) {
+          __pyx_t_10 += __pyx_v_pivot_arr.shape[1];
+          if (unlikely(__pyx_t_10 < 0)) __pyx_t_22 = 1;
+        } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_22 = 1;
+        if (unlikely(__pyx_t_22 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_22);
+          __PYX_ERR(0, 399, __pyx_L1_error)
+        }
+        *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_t_17;
+      }
+      __pyx_L11:;
+    }
+  }
+
+  /* "fastpivot/pivot.pyx":400
+ *             else:
+ *                 pivot_arr[i, j] = np.nan
+ *     return pivot_arr             # <<<<<<<<<<<<<<
+ * 
+ * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+ */
+  __PYX_INC_MEMVIEW(&__pyx_v_pivot_arr, 0);
+  __pyx_r = __pyx_v_pivot_arr;
+  goto __pyx_L0;
+
+  /* "fastpivot/pivot.pyx":367
+ *     return pivot_arr
+ * 
+ * cdef double[:, :] pivot_cython_std_welford(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
+ *     nans = np.zeros((N, M), dtype=np.float64)
+ *     nans.fill(np.nan)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
+  __pyx_r.data = NULL;
+  __pyx_r.memview = NULL;
+  __Pyx_AddTraceback("fastpivot.pivot.pivot_cython_std_welford", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  goto __pyx_L2;
+  __pyx_L0:;
+  if (unlikely(!__pyx_r.memview)) {
+    PyErr_SetString(PyExc_TypeError, "Memoryview return value is not initialized");
+  }
+  __pyx_L2:;
+  __Pyx_XDECREF(__pyx_v_nans);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_pivot_arr, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_mean_arr, 1);
+  __PYX_XDEC_MEMVIEW(&__pyx_v_pivot_counts_arr, 1);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fastpivot/pivot.pyx":402
+ *     return pivot_arr
+ * 
+ * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
+ *     nans = np.zeros((N, M), dtype=np.float64)
+ *     nans.fill(np.nan)
+ */
+
+static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memviewslice __pyx_v_idx_arr, __Pyx_memviewslice __pyx_v_col_arr, __Pyx_memviewslice __pyx_v_value_arr, int __pyx_v_N, int __pyx_v_M) {
+  PyObject *__pyx_v_nans = NULL;
+  __Pyx_memviewslice __pyx_v_pivot_arr = { 0, 0, { 0 }, { 0 }, { 0 } };
+  int __pyx_v_i;
+  int __pyx_v_j;
+  int __pyx_v_k;
+  double __pyx_v_value;
+  __Pyx_memviewslice __pyx_r = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  __Pyx_memviewslice __pyx_t_6 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
+  int __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
+  int __pyx_t_11;
+  int __pyx_t_12;
+  Py_ssize_t __pyx_t_13;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("pivot_cython_max", 0);
+
+  /* "fastpivot/pivot.pyx":403
+ * 
+ * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+ *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
+ *     nans.fill(np.nan)
+ *     cdef double[:, :] pivot_arr = nans
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
+  __pyx_t_1 = 0;
+  __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_nans = __pyx_t_5;
+  __pyx_t_5 = 0;
+
+  /* "fastpivot/pivot.pyx":404
+ * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
+ *     nans = np.zeros((N, M), dtype=np.float64)
+ *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
+ *     cdef double[:, :] pivot_arr = nans
+ *     cdef int i, j, k
+ */
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "fastpivot/pivot.pyx":405
+ *     nans = np.zeros((N, M), dtype=np.float64)
+ *     nans.fill(np.nan)
+ *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
+ *     cdef int i, j, k
+ *     cdef double value
+ */
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 405, __pyx_L1_error)
+  __pyx_v_pivot_arr = __pyx_t_6;
+  __pyx_t_6.memview = NULL;
+  __pyx_t_6.data = NULL;
+
+  /* "fastpivot/pivot.pyx":408
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -9715,7 +10537,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":374
+    /* "fastpivot/pivot.pyx":409
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -9730,11 +10552,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 374, __pyx_L1_error)
+      __PYX_ERR(0, 409, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":375
+    /* "fastpivot/pivot.pyx":410
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -9749,11 +10571,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 375, __pyx_L1_error)
+      __PYX_ERR(0, 410, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":376
+    /* "fastpivot/pivot.pyx":411
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -9768,11 +10590,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 376, __pyx_L1_error)
+      __PYX_ERR(0, 411, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":377
+    /* "fastpivot/pivot.pyx":412
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9782,7 +10604,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":378
+      /* "fastpivot/pivot.pyx":413
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9802,12 +10624,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 378, __pyx_L1_error)
+        __PYX_ERR(0, 413, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":379
+        /* "fastpivot/pivot.pyx":414
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:             # <<<<<<<<<<<<<<
@@ -9827,12 +10649,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 379, __pyx_L1_error)
+          __PYX_ERR(0, 414, __pyx_L1_error)
         }
         __pyx_t_12 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) ))) < __pyx_v_value) != 0);
         if (__pyx_t_12) {
 
-          /* "fastpivot/pivot.pyx":380
+          /* "fastpivot/pivot.pyx":415
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:
  *                     pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9852,11 +10674,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
           } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
           if (unlikely(__pyx_t_11 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_11);
-            __PYX_ERR(0, 380, __pyx_L1_error)
+            __PYX_ERR(0, 415, __pyx_L1_error)
           }
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
 
-          /* "fastpivot/pivot.pyx":379
+          /* "fastpivot/pivot.pyx":414
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:             # <<<<<<<<<<<<<<
@@ -9865,7 +10687,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
  */
         }
 
-        /* "fastpivot/pivot.pyx":378
+        /* "fastpivot/pivot.pyx":413
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9875,7 +10697,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
         goto __pyx_L6;
       }
 
-      /* "fastpivot/pivot.pyx":382
+      /* "fastpivot/pivot.pyx":417
  *                     pivot_arr[i, j] = value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9896,13 +10718,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 382, __pyx_L1_error)
+          __PYX_ERR(0, 417, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
       }
       __pyx_L6:;
 
-      /* "fastpivot/pivot.pyx":377
+      /* "fastpivot/pivot.pyx":412
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9912,7 +10734,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":383
+  /* "fastpivot/pivot.pyx":418
  *             else:
  *                 pivot_arr[i, j] = value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -9923,7 +10745,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":367
+  /* "fastpivot/pivot.pyx":402
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9954,7 +10776,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":385
+/* "fastpivot/pivot.pyx":420
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9989,23 +10811,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_min", 0);
 
-  /* "fastpivot/pivot.pyx":386
+  /* "fastpivot/pivot.pyx":421
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -10013,21 +10835,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 386, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10035,18 +10857,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":387
+  /* "fastpivot/pivot.pyx":422
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = nans
  *     cdef int i, j, k
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 387, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 387, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -10062,24 +10884,24 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 387, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 422, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":388
+  /* "fastpivot/pivot.pyx":423
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     cdef double value
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 423, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":391
+  /* "fastpivot/pivot.pyx":426
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10091,7 +10913,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":392
+    /* "fastpivot/pivot.pyx":427
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10106,11 +10928,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 392, __pyx_L1_error)
+      __PYX_ERR(0, 427, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":393
+    /* "fastpivot/pivot.pyx":428
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10125,11 +10947,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 393, __pyx_L1_error)
+      __PYX_ERR(0, 428, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":394
+    /* "fastpivot/pivot.pyx":429
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -10144,11 +10966,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 394, __pyx_L1_error)
+      __PYX_ERR(0, 429, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":395
+    /* "fastpivot/pivot.pyx":430
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -10158,7 +10980,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":396
+      /* "fastpivot/pivot.pyx":431
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10178,12 +11000,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 396, __pyx_L1_error)
+        __PYX_ERR(0, 431, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":397
+        /* "fastpivot/pivot.pyx":432
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:             # <<<<<<<<<<<<<<
@@ -10203,12 +11025,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 397, __pyx_L1_error)
+          __PYX_ERR(0, 432, __pyx_L1_error)
         }
         __pyx_t_12 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) ))) > __pyx_v_value) != 0);
         if (__pyx_t_12) {
 
-          /* "fastpivot/pivot.pyx":398
+          /* "fastpivot/pivot.pyx":433
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:
  *                     pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -10228,11 +11050,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
           } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
           if (unlikely(__pyx_t_11 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_11);
-            __PYX_ERR(0, 398, __pyx_L1_error)
+            __PYX_ERR(0, 433, __pyx_L1_error)
           }
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
 
-          /* "fastpivot/pivot.pyx":397
+          /* "fastpivot/pivot.pyx":432
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:             # <<<<<<<<<<<<<<
@@ -10241,7 +11063,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
  */
         }
 
-        /* "fastpivot/pivot.pyx":396
+        /* "fastpivot/pivot.pyx":431
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10251,7 +11073,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
         goto __pyx_L6;
       }
 
-      /* "fastpivot/pivot.pyx":400
+      /* "fastpivot/pivot.pyx":435
  *                     pivot_arr[i, j] = value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -10272,13 +11094,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 400, __pyx_L1_error)
+          __PYX_ERR(0, 435, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
       }
       __pyx_L6:;
 
-      /* "fastpivot/pivot.pyx":395
+      /* "fastpivot/pivot.pyx":430
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -10288,7 +11110,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":401
+  /* "fastpivot/pivot.pyx":436
  *             else:
  *                 pivot_arr[i, j] = value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -10299,7 +11121,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":385
+  /* "fastpivot/pivot.pyx":420
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -10330,7 +11152,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":403
+/* "fastpivot/pivot.pyx":438
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -10364,23 +11186,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_count", 0);
 
-  /* "fastpivot/pivot.pyx":404
+  /* "fastpivot/pivot.pyx":439
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     if not fill_zero:
  *         init.fill(np.nan)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -10388,21 +11210,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 404, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 404, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 439, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10410,7 +11232,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   __pyx_v_init = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":405
+  /* "fastpivot/pivot.pyx":440
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -10420,18 +11242,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   __pyx_t_6 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_6) {
 
-    /* "fastpivot/pivot.pyx":406
+    /* "fastpivot/pivot.pyx":441
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = init
  *     cdef int i, j, k
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 406, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 441, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 406, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 406, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 441, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -10447,12 +11269,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 406, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 441, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "fastpivot/pivot.pyx":405
+    /* "fastpivot/pivot.pyx":440
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -10461,19 +11283,19 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
  */
   }
 
-  /* "fastpivot/pivot.pyx":407
+  /* "fastpivot/pivot.pyx":442
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr = init             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):
  */
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 407, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 442, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "fastpivot/pivot.pyx":409
+  /* "fastpivot/pivot.pyx":444
  *     cdef double[:, :] pivot_arr = init
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10485,7 +11307,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "fastpivot/pivot.pyx":410
+    /* "fastpivot/pivot.pyx":445
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10500,11 +11322,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_11 >= __pyx_v_idx_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 410, __pyx_L1_error)
+      __PYX_ERR(0, 445, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":411
+    /* "fastpivot/pivot.pyx":446
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10519,11 +11341,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_11 >= __pyx_v_col_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 411, __pyx_L1_error)
+      __PYX_ERR(0, 446, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":412
+    /* "fastpivot/pivot.pyx":447
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10543,12 +11365,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 412, __pyx_L1_error)
+      __PYX_ERR(0, 447, __pyx_L1_error)
     }
     __pyx_t_6 = (isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0);
     if (__pyx_t_6) {
 
-      /* "fastpivot/pivot.pyx":413
+      /* "fastpivot/pivot.pyx":448
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -10568,11 +11390,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
       } else if (unlikely(__pyx_t_11 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 413, __pyx_L1_error)
+        __PYX_ERR(0, 448, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_11 * __pyx_v_pivot_arr.strides[1]) )) = 0.0;
 
-      /* "fastpivot/pivot.pyx":412
+      /* "fastpivot/pivot.pyx":447
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10581,7 +11403,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
  */
     }
 
-    /* "fastpivot/pivot.pyx":414
+    /* "fastpivot/pivot.pyx":449
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:             # <<<<<<<<<<<<<<
@@ -10596,12 +11418,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_11 >= __pyx_v_nans_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 414, __pyx_L1_error)
+      __PYX_ERR(0, 449, __pyx_L1_error)
     }
     __pyx_t_6 = ((!((*((bool *) ( /* dim=0 */ (__pyx_v_nans_arr.data + __pyx_t_11 * __pyx_v_nans_arr.strides[0]) ))) != 0)) != 0);
     if (__pyx_t_6) {
 
-      /* "fastpivot/pivot.pyx":415
+      /* "fastpivot/pivot.pyx":450
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:
  *             pivot_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -10621,11 +11443,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 415, __pyx_L1_error)
+        __PYX_ERR(0, 450, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) += 1.0;
 
-      /* "fastpivot/pivot.pyx":414
+      /* "fastpivot/pivot.pyx":449
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:             # <<<<<<<<<<<<<<
@@ -10635,7 +11457,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     }
   }
 
-  /* "fastpivot/pivot.pyx":416
+  /* "fastpivot/pivot.pyx":451
  *         if not nans_arr[k]:
  *             pivot_arr[i, j] += 1.0
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -10646,7 +11468,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":403
+  /* "fastpivot/pivot.pyx":438
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -10677,7 +11499,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":457
+/* "fastpivot/pivot.pyx":492
  * #ctypedef long vec_to_long(vector[double] &)
  * 
  * cdef double sum_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -10695,7 +11517,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
   int __pyx_t_3;
   __Pyx_RefNannySetupContext("sum_cython", 0);
 
-  /* "fastpivot/pivot.pyx":459
+  /* "fastpivot/pivot.pyx":494
  * cdef double sum_cython(vector[double] &vec):
  *     cdef int k
  *     cdef double value = 0.0             # <<<<<<<<<<<<<<
@@ -10704,7 +11526,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
  */
   __pyx_v_value = 0.0;
 
-  /* "fastpivot/pivot.pyx":460
+  /* "fastpivot/pivot.pyx":495
  *     cdef int k
  *     cdef double value = 0.0
  *     for k in range(vec.size()):             # <<<<<<<<<<<<<<
@@ -10716,7 +11538,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "fastpivot/pivot.pyx":461
+    /* "fastpivot/pivot.pyx":496
  *     cdef double value = 0.0
  *     for k in range(vec.size()):
  *         value += vec[k]             # <<<<<<<<<<<<<<
@@ -10726,7 +11548,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
     __pyx_v_value = (__pyx_v_value + (__pyx_v_vec[__pyx_v_k]));
   }
 
-  /* "fastpivot/pivot.pyx":462
+  /* "fastpivot/pivot.pyx":497
  *     for k in range(vec.size()):
  *         value += vec[k]
  *     return value             # <<<<<<<<<<<<<<
@@ -10736,7 +11558,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":457
+  /* "fastpivot/pivot.pyx":492
  * #ctypedef long vec_to_long(vector[double] &)
  * 
  * cdef double sum_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -10750,7 +11572,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":464
+/* "fastpivot/pivot.pyx":499
  *     return value
  * 
  * cdef double median_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -10776,7 +11598,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("median_cython", 0);
 
-  /* "fastpivot/pivot.pyx":465
+  /* "fastpivot/pivot.pyx":500
  * 
  * cdef double median_cython(vector[double] &vec):
  *     cdef int k = 0             # <<<<<<<<<<<<<<
@@ -10785,7 +11607,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_k = 0;
 
-  /* "fastpivot/pivot.pyx":466
+  /* "fastpivot/pivot.pyx":501
  * cdef double median_cython(vector[double] &vec):
  *     cdef int k = 0
  *     cdef int mid = vec.size() / 2             # <<<<<<<<<<<<<<
@@ -10794,7 +11616,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_mid = (__pyx_v_vec.size() / 2);
 
-  /* "fastpivot/pivot.pyx":468
+  /* "fastpivot/pivot.pyx":503
  *     cdef int mid = vec.size() / 2
  *     cdef double med
  *     cdef int i = 0             # <<<<<<<<<<<<<<
@@ -10803,7 +11625,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_i = 0;
 
-  /* "fastpivot/pivot.pyx":469
+  /* "fastpivot/pivot.pyx":504
  *     cdef double med
  *     cdef int i = 0
  *     cdef int j = vec.size() - 1             # <<<<<<<<<<<<<<
@@ -10812,7 +11634,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_j = (__pyx_v_vec.size() - 1);
 
-  /* "fastpivot/pivot.pyx":472
+  /* "fastpivot/pivot.pyx":507
  *     cdef double max_left
  * 
  *     if vec.size() == 0:             # <<<<<<<<<<<<<<
@@ -10822,24 +11644,24 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   __pyx_t_1 = ((__pyx_v_vec.size() == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":473
+    /* "fastpivot/pivot.pyx":508
  * 
  *     if vec.size() == 0:
  *         return np.nan             # <<<<<<<<<<<<<<
  * 
  *     while k != mid:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 473, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 508, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 473, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 508, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 473, __pyx_L1_error)
+    __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_4;
     goto __pyx_L0;
 
-    /* "fastpivot/pivot.pyx":472
+    /* "fastpivot/pivot.pyx":507
  *     cdef double max_left
  * 
  *     if vec.size() == 0:             # <<<<<<<<<<<<<<
@@ -10848,7 +11670,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   }
 
-  /* "fastpivot/pivot.pyx":475
+  /* "fastpivot/pivot.pyx":510
  *         return np.nan
  * 
  *     while k != mid:             # <<<<<<<<<<<<<<
@@ -10859,7 +11681,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_t_1 = ((__pyx_v_k != __pyx_v_mid) != 0);
     if (!__pyx_t_1) break;
 
-    /* "fastpivot/pivot.pyx":476
+    /* "fastpivot/pivot.pyx":511
  * 
  *     while k != mid:
  *         k = partition(vec, mid, i, j)             # <<<<<<<<<<<<<<
@@ -10868,7 +11690,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
     __pyx_v_k = __pyx_f_9fastpivot_5pivot_partition(__pyx_v_vec, __pyx_v_mid, __pyx_v_i, __pyx_v_j);
 
-    /* "fastpivot/pivot.pyx":477
+    /* "fastpivot/pivot.pyx":512
  *     while k != mid:
  *         k = partition(vec, mid, i, j)
  *         if k < mid:             # <<<<<<<<<<<<<<
@@ -10878,7 +11700,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_t_1 = ((__pyx_v_k < __pyx_v_mid) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":478
+      /* "fastpivot/pivot.pyx":513
  *         k = partition(vec, mid, i, j)
  *         if k < mid:
  *             i = k             # <<<<<<<<<<<<<<
@@ -10887,7 +11709,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
       __pyx_v_i = __pyx_v_k;
 
-      /* "fastpivot/pivot.pyx":477
+      /* "fastpivot/pivot.pyx":512
  *     while k != mid:
  *         k = partition(vec, mid, i, j)
  *         if k < mid:             # <<<<<<<<<<<<<<
@@ -10897,7 +11719,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
       goto __pyx_L6;
     }
 
-    /* "fastpivot/pivot.pyx":479
+    /* "fastpivot/pivot.pyx":514
  *         if k < mid:
  *             i = k
  *         elif k > mid:             # <<<<<<<<<<<<<<
@@ -10907,7 +11729,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_t_1 = ((__pyx_v_k > __pyx_v_mid) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":480
+      /* "fastpivot/pivot.pyx":515
  *             i = k
  *         elif k > mid:
  *             j = k             # <<<<<<<<<<<<<<
@@ -10916,7 +11738,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
       __pyx_v_j = __pyx_v_k;
 
-      /* "fastpivot/pivot.pyx":479
+      /* "fastpivot/pivot.pyx":514
  *         if k < mid:
  *             i = k
  *         elif k > mid:             # <<<<<<<<<<<<<<
@@ -10927,7 +11749,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_L6:;
   }
 
-  /* "fastpivot/pivot.pyx":481
+  /* "fastpivot/pivot.pyx":516
  *         elif k > mid:
  *             j = k
  *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
@@ -10937,7 +11759,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   __pyx_t_1 = (((__pyx_v_vec.size() % 2) == 1) != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":482
+    /* "fastpivot/pivot.pyx":517
  *             j = k
  *     if vec.size() % 2 == 1:
  *         med = vec[mid]             # <<<<<<<<<<<<<<
@@ -10946,7 +11768,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
     __pyx_v_med = (__pyx_v_vec[__pyx_v_mid]);
 
-    /* "fastpivot/pivot.pyx":481
+    /* "fastpivot/pivot.pyx":516
  *         elif k > mid:
  *             j = k
  *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
@@ -10956,7 +11778,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     goto __pyx_L7;
   }
 
-  /* "fastpivot/pivot.pyx":484
+  /* "fastpivot/pivot.pyx":519
  *         med = vec[mid]
  *     else:
  *         max_left = max_left_cython(vec, mid - 1)             # <<<<<<<<<<<<<<
@@ -10966,7 +11788,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   /*else*/ {
     __pyx_v_max_left = __pyx_f_9fastpivot_5pivot_max_left_cython(__pyx_v_vec, (__pyx_v_mid - 1));
 
-    /* "fastpivot/pivot.pyx":485
+    /* "fastpivot/pivot.pyx":520
  *     else:
  *         max_left = max_left_cython(vec, mid - 1)
  *         med = (vec[mid] + max_left) / 2             # <<<<<<<<<<<<<<
@@ -10977,7 +11799,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   }
   __pyx_L7:;
 
-  /* "fastpivot/pivot.pyx":487
+  /* "fastpivot/pivot.pyx":522
  *         med = (vec[mid] + max_left) / 2
  * 
  *     return med             # <<<<<<<<<<<<<<
@@ -10987,7 +11809,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   __pyx_r = __pyx_v_med;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":464
+  /* "fastpivot/pivot.pyx":499
  *     return value
  * 
  * cdef double median_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11006,7 +11828,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":489
+/* "fastpivot/pivot.pyx":524
  *     return med
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):             # <<<<<<<<<<<<<<
@@ -11022,7 +11844,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("partition", 0);
 
-  /* "fastpivot/pivot.pyx":490
+  /* "fastpivot/pivot.pyx":525
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):
  *     cdef double x = vec[mid]             # <<<<<<<<<<<<<<
@@ -11031,7 +11853,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
   __pyx_v_x = (__pyx_v_vec[__pyx_v_mid]);
 
-  /* "fastpivot/pivot.pyx":492
+  /* "fastpivot/pivot.pyx":527
  *     cdef double x = vec[mid]
  *     cdef double temp
  *     while True:             # <<<<<<<<<<<<<<
@@ -11040,7 +11862,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
   while (1) {
 
-    /* "fastpivot/pivot.pyx":493
+    /* "fastpivot/pivot.pyx":528
  *     cdef double temp
  *     while True:
  *         while vec[i] < x:             # <<<<<<<<<<<<<<
@@ -11051,7 +11873,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_i]) < __pyx_v_x) != 0);
       if (!__pyx_t_1) break;
 
-      /* "fastpivot/pivot.pyx":494
+      /* "fastpivot/pivot.pyx":529
  *     while True:
  *         while vec[i] < x:
  *             i += 1             # <<<<<<<<<<<<<<
@@ -11061,7 +11883,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_v_i = (__pyx_v_i + 1);
     }
 
-    /* "fastpivot/pivot.pyx":495
+    /* "fastpivot/pivot.pyx":530
  *         while vec[i] < x:
  *             i += 1
  *         while vec[j] > x:             # <<<<<<<<<<<<<<
@@ -11072,7 +11894,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_j]) > __pyx_v_x) != 0);
       if (!__pyx_t_1) break;
 
-      /* "fastpivot/pivot.pyx":496
+      /* "fastpivot/pivot.pyx":531
  *             i += 1
  *         while vec[j] > x:
  *             j -= 1             # <<<<<<<<<<<<<<
@@ -11082,7 +11904,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_v_j = (__pyx_v_j - 1);
     }
 
-    /* "fastpivot/pivot.pyx":497
+    /* "fastpivot/pivot.pyx":532
  *         while vec[j] > x:
  *             j -= 1
  *         if i == j:             # <<<<<<<<<<<<<<
@@ -11092,7 +11914,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
     __pyx_t_1 = ((__pyx_v_i == __pyx_v_j) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":498
+      /* "fastpivot/pivot.pyx":533
  *             j -= 1
  *         if i == j:
  *             return j             # <<<<<<<<<<<<<<
@@ -11102,7 +11924,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_r = __pyx_v_j;
       goto __pyx_L0;
 
-      /* "fastpivot/pivot.pyx":497
+      /* "fastpivot/pivot.pyx":532
  *         while vec[j] > x:
  *             j -= 1
  *         if i == j:             # <<<<<<<<<<<<<<
@@ -11111,7 +11933,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
     }
 
-    /* "fastpivot/pivot.pyx":500
+    /* "fastpivot/pivot.pyx":535
  *             return j
  *         else:
  *             temp = vec[i]             # <<<<<<<<<<<<<<
@@ -11121,7 +11943,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
     /*else*/ {
       __pyx_v_temp = (__pyx_v_vec[__pyx_v_i]);
 
-      /* "fastpivot/pivot.pyx":501
+      /* "fastpivot/pivot.pyx":536
  *         else:
  *             temp = vec[i]
  *             vec[i] = vec[j]             # <<<<<<<<<<<<<<
@@ -11130,7 +11952,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
       (__pyx_v_vec[__pyx_v_i]) = (__pyx_v_vec[__pyx_v_j]);
 
-      /* "fastpivot/pivot.pyx":502
+      /* "fastpivot/pivot.pyx":537
  *             temp = vec[i]
  *             vec[i] = vec[j]
  *             vec[j] = temp             # <<<<<<<<<<<<<<
@@ -11141,7 +11963,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
     }
   }
 
-  /* "fastpivot/pivot.pyx":489
+  /* "fastpivot/pivot.pyx":524
  *     return med
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):             # <<<<<<<<<<<<<<
@@ -11156,7 +11978,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":504
+/* "fastpivot/pivot.pyx":539
  *             vec[j] = temp
  * 
  * cdef double max_left_cython(vector[double] & vec, int upper_idx):             # <<<<<<<<<<<<<<
@@ -11175,7 +11997,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("max_left_cython", 0);
 
-  /* "fastpivot/pivot.pyx":508
+  /* "fastpivot/pivot.pyx":543
  *     cdef int i
  *     cdef double value
  *     value = vec[0]             # <<<<<<<<<<<<<<
@@ -11184,7 +12006,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
  */
   __pyx_v_value = (__pyx_v_vec[0]);
 
-  /* "fastpivot/pivot.pyx":509
+  /* "fastpivot/pivot.pyx":544
  *     cdef double value
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):             # <<<<<<<<<<<<<<
@@ -11196,7 +12018,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   for (__pyx_t_3 = 1; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fastpivot/pivot.pyx":510
+    /* "fastpivot/pivot.pyx":545
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:             # <<<<<<<<<<<<<<
@@ -11206,7 +12028,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
     __pyx_t_4 = ((__pyx_v_value < (__pyx_v_vec[__pyx_v_i])) != 0);
     if (__pyx_t_4) {
 
-      /* "fastpivot/pivot.pyx":511
+      /* "fastpivot/pivot.pyx":546
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:
  *             value = vec[i]             # <<<<<<<<<<<<<<
@@ -11215,7 +12037,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
  */
       __pyx_v_value = (__pyx_v_vec[__pyx_v_i]);
 
-      /* "fastpivot/pivot.pyx":510
+      /* "fastpivot/pivot.pyx":545
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:             # <<<<<<<<<<<<<<
@@ -11225,7 +12047,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
     }
   }
 
-  /* "fastpivot/pivot.pyx":512
+  /* "fastpivot/pivot.pyx":547
  *         if value < vec[i]:
  *             value = vec[i]
  *     return value             # <<<<<<<<<<<<<<
@@ -11235,7 +12057,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":504
+  /* "fastpivot/pivot.pyx":539
  *             vec[j] = temp
  * 
  * cdef double max_left_cython(vector[double] & vec, int upper_idx):             # <<<<<<<<<<<<<<
@@ -11249,7 +12071,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":514
+/* "fastpivot/pivot.pyx":549
  *     return value
  * 
  * cdef double nunique_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11271,7 +12093,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nunique_cython", 0);
 
-  /* "fastpivot/pivot.pyx":518
+  /* "fastpivot/pivot.pyx":553
  *     cdef cset[double] value_set
  *     cdef double n
  *     for k in range(vec.size()):             # <<<<<<<<<<<<<<
@@ -11283,7 +12105,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "fastpivot/pivot.pyx":519
+    /* "fastpivot/pivot.pyx":554
  *     cdef double n
  *     for k in range(vec.size()):
  *         value_set.insert(vec[k])             # <<<<<<<<<<<<<<
@@ -11294,11 +12116,11 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
       __pyx_v_value_set.insert((__pyx_v_vec[__pyx_v_k]));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 519, __pyx_L1_error)
+      __PYX_ERR(0, 554, __pyx_L1_error)
     }
   }
 
-  /* "fastpivot/pivot.pyx":520
+  /* "fastpivot/pivot.pyx":555
  *     for k in range(vec.size()):
  *         value_set.insert(vec[k])
  *     n = value_set.size()             # <<<<<<<<<<<<<<
@@ -11307,7 +12129,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
  */
   __pyx_v_n = __pyx_v_value_set.size();
 
-  /* "fastpivot/pivot.pyx":521
+  /* "fastpivot/pivot.pyx":556
  *         value_set.insert(vec[k])
  *     n = value_set.size()
  *     return n             # <<<<<<<<<<<<<<
@@ -11317,7 +12139,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   __pyx_r = __pyx_v_n;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":514
+  /* "fastpivot/pivot.pyx":549
  *     return value
  * 
  * cdef double nunique_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11334,7 +12156,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":523
+/* "fastpivot/pivot.pyx":558
  *     return n
  * 
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):             # <<<<<<<<<<<<<<
@@ -11376,7 +12198,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg", 0);
 
-  /* "fastpivot/pivot.pyx":525
+  /* "fastpivot/pivot.pyx":560
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -11387,27 +12209,27 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     __pyx_t_1 = std::vector<std::vector<double> > ((__pyx_v_N * __pyx_v_M));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 525, __pyx_L1_error)
+    __PYX_ERR(0, 560, __pyx_L1_error)
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "fastpivot/pivot.pyx":527
+  /* "fastpivot/pivot.pyx":562
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     cdef double[:, :] pivot_arr_return = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef int i, j
  *     cdef double value
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -11415,32 +12237,32 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 527, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_6, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 527, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_6, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 562, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_pivot_arr_return = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "fastpivot/pivot.pyx":532
+  /* "fastpivot/pivot.pyx":567
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -11452,7 +12274,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "fastpivot/pivot.pyx":533
+    /* "fastpivot/pivot.pyx":568
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -11467,11 +12289,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_idx_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 533, __pyx_L1_error)
+      __PYX_ERR(0, 568, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":534
+    /* "fastpivot/pivot.pyx":569
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -11486,11 +12308,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_col_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 534, __pyx_L1_error)
+      __PYX_ERR(0, 569, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":535
+    /* "fastpivot/pivot.pyx":570
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -11505,11 +12327,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_value_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 535, __pyx_L1_error)
+      __PYX_ERR(0, 570, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_11 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":536
+    /* "fastpivot/pivot.pyx":571
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11519,7 +12341,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     __pyx_t_13 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_13) {
 
-      /* "fastpivot/pivot.pyx":537
+      /* "fastpivot/pivot.pyx":572
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -11530,10 +12352,10 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
         (__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]).push_back(__pyx_v_value);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 537, __pyx_L1_error)
+        __PYX_ERR(0, 572, __pyx_L1_error)
       }
 
-      /* "fastpivot/pivot.pyx":536
+      /* "fastpivot/pivot.pyx":571
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11543,7 +12365,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":540
+  /* "fastpivot/pivot.pyx":575
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -11555,7 +12377,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "fastpivot/pivot.pyx":541
+    /* "fastpivot/pivot.pyx":576
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -11567,7 +12389,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_j = __pyx_t_18;
 
-      /* "fastpivot/pivot.pyx":542
+      /* "fastpivot/pivot.pyx":577
  *     for i in range(N):
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -11576,7 +12398,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
  */
       __pyx_v_value = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "fastpivot/pivot.pyx":543
+      /* "fastpivot/pivot.pyx":578
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 pivot_arr_return[i, j] = value             # <<<<<<<<<<<<<<
@@ -11596,13 +12418,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
       } else if (unlikely(__pyx_t_19 >= __pyx_v_pivot_arr_return.shape[1])) __pyx_t_20 = 1;
       if (unlikely(__pyx_t_20 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_20);
-        __PYX_ERR(0, 543, __pyx_L1_error)
+        __PYX_ERR(0, 578, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_11 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_19 * __pyx_v_pivot_arr_return.strides[1]) )) = __pyx_v_value;
     }
   }
 
-  /* "fastpivot/pivot.pyx":545
+  /* "fastpivot/pivot.pyx":580
  *                 pivot_arr_return[i, j] = value
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -11613,7 +12435,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":523
+  /* "fastpivot/pivot.pyx":558
  *     return n
  * 
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):             # <<<<<<<<<<<<<<
@@ -11643,7 +12465,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":547
+/* "fastpivot/pivot.pyx":582
  *     return pivot_arr_return
  * 
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -11686,7 +12508,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg_nan", 0);
 
-  /* "fastpivot/pivot.pyx":549
+  /* "fastpivot/pivot.pyx":584
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -11697,27 +12519,27 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     __pyx_t_1 = std::vector<std::vector<double> > ((__pyx_v_N * __pyx_v_M));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 549, __pyx_L1_error)
+    __PYX_ERR(0, 584, __pyx_L1_error)
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "fastpivot/pivot.pyx":551
+  /* "fastpivot/pivot.pyx":586
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     if not fill_zero:
  *         init.fill(np.nan)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -11725,21 +12547,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 551, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 551, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 586, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -11747,7 +12569,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   __pyx_v_init = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "fastpivot/pivot.pyx":552
+  /* "fastpivot/pivot.pyx":587
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -11757,18 +12579,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   __pyx_t_7 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_7) {
 
-    /* "fastpivot/pivot.pyx":553
+    /* "fastpivot/pivot.pyx":588
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr_return = init
  *     cdef int i, j
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 553, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 553, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 553, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -11784,12 +12606,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     __pyx_t_6 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 553, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":552
+    /* "fastpivot/pivot.pyx":587
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -11798,19 +12620,19 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
  */
   }
 
-  /* "fastpivot/pivot.pyx":554
+  /* "fastpivot/pivot.pyx":589
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr_return = init             # <<<<<<<<<<<<<<
  *     cdef int i, j
  *     cdef double value
  */
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 554, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 589, __pyx_L1_error)
   __pyx_v_pivot_arr_return = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "fastpivot/pivot.pyx":559
+  /* "fastpivot/pivot.pyx":594
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -11822,7 +12644,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_k = __pyx_t_11;
 
-    /* "fastpivot/pivot.pyx":560
+    /* "fastpivot/pivot.pyx":595
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -11837,11 +12659,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     } else if (unlikely(__pyx_t_12 >= __pyx_v_idx_arr.shape[0])) __pyx_t_13 = 0;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
-      __PYX_ERR(0, 560, __pyx_L1_error)
+      __PYX_ERR(0, 595, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_12 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":561
+    /* "fastpivot/pivot.pyx":596
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -11856,11 +12678,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     } else if (unlikely(__pyx_t_12 >= __pyx_v_col_arr.shape[0])) __pyx_t_13 = 0;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
-      __PYX_ERR(0, 561, __pyx_L1_error)
+      __PYX_ERR(0, 596, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_12 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":562
+    /* "fastpivot/pivot.pyx":597
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -11875,11 +12697,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     } else if (unlikely(__pyx_t_12 >= __pyx_v_value_arr.shape[0])) __pyx_t_13 = 0;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
-      __PYX_ERR(0, 562, __pyx_L1_error)
+      __PYX_ERR(0, 597, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_12 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":563
+    /* "fastpivot/pivot.pyx":598
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11889,7 +12711,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     __pyx_t_7 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_7) {
 
-      /* "fastpivot/pivot.pyx":564
+      /* "fastpivot/pivot.pyx":599
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -11900,10 +12722,10 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
         (__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]).push_back(__pyx_v_value);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 564, __pyx_L1_error)
+        __PYX_ERR(0, 599, __pyx_L1_error)
       }
 
-      /* "fastpivot/pivot.pyx":565
+      /* "fastpivot/pivot.pyx":600
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)
  *             pivot_arr_return[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -11923,11 +12745,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
       } else if (unlikely(__pyx_t_14 >= __pyx_v_pivot_arr_return.shape[1])) __pyx_t_13 = 1;
       if (unlikely(__pyx_t_13 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_13);
-        __PYX_ERR(0, 565, __pyx_L1_error)
+        __PYX_ERR(0, 600, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_12 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_14 * __pyx_v_pivot_arr_return.strides[1]) )) = 0.0;
 
-      /* "fastpivot/pivot.pyx":563
+      /* "fastpivot/pivot.pyx":598
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11937,7 +12759,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     }
   }
 
-  /* "fastpivot/pivot.pyx":568
+  /* "fastpivot/pivot.pyx":603
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -11949,7 +12771,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
     __pyx_v_i = __pyx_t_16;
 
-    /* "fastpivot/pivot.pyx":569
+    /* "fastpivot/pivot.pyx":604
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -11961,7 +12783,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
       __pyx_v_j = __pyx_t_19;
 
-      /* "fastpivot/pivot.pyx":570
+      /* "fastpivot/pivot.pyx":605
  *     for i in range(N):
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -11970,7 +12792,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
  */
       __pyx_v_value = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "fastpivot/pivot.pyx":571
+      /* "fastpivot/pivot.pyx":606
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:             # <<<<<<<<<<<<<<
@@ -11980,7 +12802,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
       __pyx_t_7 = ((__pyx_v_value != 0.0) != 0);
       if (__pyx_t_7) {
 
-        /* "fastpivot/pivot.pyx":572
+        /* "fastpivot/pivot.pyx":607
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:
  *                     pivot_arr_return[i, j] = value             # <<<<<<<<<<<<<<
@@ -12000,11 +12822,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
         } else if (unlikely(__pyx_t_12 >= __pyx_v_pivot_arr_return.shape[1])) __pyx_t_20 = 1;
         if (unlikely(__pyx_t_20 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_20);
-          __PYX_ERR(0, 572, __pyx_L1_error)
+          __PYX_ERR(0, 607, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_14 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_12 * __pyx_v_pivot_arr_return.strides[1]) )) = __pyx_v_value;
 
-        /* "fastpivot/pivot.pyx":571
+        /* "fastpivot/pivot.pyx":606
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:             # <<<<<<<<<<<<<<
@@ -12015,7 +12837,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     }
   }
 
-  /* "fastpivot/pivot.pyx":574
+  /* "fastpivot/pivot.pyx":609
  *                     pivot_arr_return[i, j] = value
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -12026,7 +12848,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":547
+  /* "fastpivot/pivot.pyx":582
  *     return pivot_arr_return
  * 
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):             # <<<<<<<<<<<<<<
