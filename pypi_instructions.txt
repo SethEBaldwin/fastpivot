@@ -1,6 +1,6 @@
 set version number in setup.cfg
 set version number in Dockerfile
-set version in Makefile
+set version number in Makefile
 set version in README.md
 make deploy
 enter username __token__
