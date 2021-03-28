@@ -29,14 +29,14 @@ from pivot_sparse import pivot_sparse
 # N_COLS = 1000
 # N_IDX = 1000
 
-N_ROWS = 100000
-N_COLS = 100
-N_IDX = 100
+# N_ROWS = 100000
+# N_COLS = 100
+# N_IDX = 100
 
 # These values cause memory error (out of memory)
-# N_ROWS = 1000000
-# N_COLS = 1000
-# N_IDX = 10000
+N_ROWS = 1000000
+N_COLS = 1000
+N_IDX = 10000
 
 # N_ROWS = 10000
 # N_COLS = 100
@@ -106,6 +106,23 @@ def gen_df_multiple_index():
     # print(df)
 
     return df
+
+def test_pivot_sum_aspdfalse():
+
+    print()
+    print('test pivot sum as_pd=False')
+
+    df = gen_df()
+
+    # time
+
+    msg = 'sparse'
+    tick = time.perf_counter()
+    coo, idx_arr_unique, col_arr_unique = pivot_sparse(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, as_pd=False)
+    print(msg, time.perf_counter() - tick)
+    #print(coo)
+    #print(idx_arr_unique)
+    #print(col_arr_unique)
 
 def test_pivot_sum():
 
@@ -384,3 +401,6 @@ def test_pivot_sum_nofill():
 #     pivot_pandas = df.pivot_table(index=[NAME_IDX, NAME_IDX2], columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='sum', dropna=False)
 #     print(msg, time.perf_counter() - tick)
 #     print(pivot_pandas)
+
+#test_pivot_sum_aspdfalse()
+#test_pivot_sum()

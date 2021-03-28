@@ -1,7 +1,11 @@
 # FastPivot
 A basic but fast reconstruction of pandas.pivot_table
 
-Contains two functions: fastpivot.pivot_table and fastpivot.pivot_sparse
+Contains two functions (see documentation below):
+
+fastpivot.pivot_table 
+
+fastpivot.pivot_sparse
 
 # Installation
 
@@ -73,9 +77,7 @@ def fastpivot.pivot_sparse(df, index, columns, values, fill_value=None, dropna_i
 ~~~
 
 # Example
-
 ~~~text
-
 import pandas as pd
 import numpy as np
 import time
@@ -115,14 +117,12 @@ tick = time.perf_counter()
 pivot_sparse_df = pivot_sparse(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0)
 print(msg, time.perf_counter() - tick)
 print(pivot_sparse_df)
-
 ~~~
-
 # Benchmarks
 
 Computed using AMD Ryzen 5 2600 CPU and 16 GB RAM.  
 Time is in denoted in seconds.  
-NaN indicates either the function is not capable of doing the computation or the function ran out of memory.  
+NaN indicates that the function is not capable of doing the computation. OOM indicates that the function ran out of memory.  
 
 N_ROWS denotes the number of rows in the input dataframe.  
 N_COLS denotes the number of distinct values in the column which is passed as the columns argument.  
@@ -189,8 +189,8 @@ min                        1.288993            3.868061                     NaN
 count                      1.117461            3.870997                     NaN
 nunique                    3.148521            4.536493                     NaN
 median                     3.951064            3.971369                     NaN
-multicol sum                    NaN                 NaN               38.984358
-multiidx sum                    NaN                 NaN               12.011507
+multicol sum                    OOM                 OOM               38.984358
+multiidx sum                    OOM                 OOM               12.011507
 
 Winners: fastpivot.pivot_sparse (when applicable), fastpivot.pivot_table
 
@@ -229,8 +229,8 @@ min                        0.414011            1.186172                     NaN
 count                      0.379848            1.199575                     NaN
 nunique                    1.043115            1.473638                     NaN
 median                     1.177022            1.258532                     NaN
-multicol sum                    NaN                 NaN               30.198564
-multiidx sum                    Nan                 NaN                4.907232
+multicol sum                    OOM                 OOM               30.198564
+multiidx sum                    OOM                 OOM                4.907232
 
 Winners: fastpivot.pivot_sparse (when applicable), fastpivot.pivot_table
 
