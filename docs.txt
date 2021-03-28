@@ -1,0 +1,68 @@
+fastpivot.pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):
+    Summary:
+        A limited, but hopefully fast implementation of pivot table.
+        Tends to be faster than pandas.pivot_table when resulting pivot table is sparse.
+        The main limitation is that you must include index, columns, values and you must aggregate.
+        You also must aggregate by a list of preconstructed functions:
+            For numerical values (np.float64 or np.int64), you can aggregate by any of 
+                ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
+            For other values, you can aggregate by any of 
+                ['count', 'nunique']
+    
+        The arguments and return format mimic pandas very closely, with a few small differences:
+        1) Occasionaly the ordering of the columns will be different, such as when passing a list of aggfuncs 
+            with a single value column
+        2) When passing values of type np.int64, values of type np.float64 will be returned. 
+            Pandas returns np.int64 in some cases and np.float64 in others.
+        3) When passing multi index or column, pandas constructs the cartesion product space, whereas this pivot constructs the 
+            subspace of the product space where the tuples exist in the passed dataframe.
+        4) The following arguments are not supported here: margins, margins_name, observed.
+    
+        Generally on a dataframe with many rows and many distinct values in the passed index and column, the performance of 
+            this pivot_table function beats pandas significantly, by a factor of 2 to 20.
+        On a dataframe with many rows but few distinct values in the passed index and column, the speed of this pivot_table
+            tends to be roughly on par with pandas, and in some cases can actually be slower.
+    
+    Arguments:
+        df (pandas dataframe)
+        index (string or list): name(s) of column(s) that you want to become the index of the pivot table. 
+        columns (string or list): name(s) of column(s) that contains as values the columns of the pivot table. 
+        values (string or list): name(s) of column(s) that contains as values the values of the pivot table.
+        aggfunc (string, list, or dict, default 'mean'): name of aggregation function. must be on implemented list above.
+            if aggfunc is a dict, the format must be as in the following example:
+            values = ['column_name1', 'column_name2', 'column_name3']
+            aggfunc = {'column_name1': 'mean', 'column_name2': 'median', 'column_name3': ['count', 'nunique']}
+        fill_value (scalar, default None): value to replace missing values with in the pivot table.
+        dropna (bool, default True): if True rows and columns that are entirely NaN values will be dropped.
+        dropna_idxcol (bool, default True): if True rows where the passed index or column contain NaNs will be dropped.
+            if False, NaN will be given its own index or column when appropriate.
+    
+    Returns:
+        pivot_df (pandas dataframe)
+
+fastpivot.pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True, as_pd=True)
+    Summary:
+        Uses scipy.sparse.coo_matrix to construct a pivot table.
+        This uses less memory and is faster in most cases when the resulting pivot_table will be sparse.
+        Aggregates by sum. Less functionality overall, but efficient for its usecase.
+    
+    Arguments:
+        df (pandas dataframe)
+        index (string or list): name(s) of column(s) that you want to become the index of the pivot table. 
+        columns (string or list): name(s) of column(s) that contains as values the columns of the pivot table. 
+        values (string): name of column that contains as values the values of the pivot table.
+        fill_value (scalar, default None): value to replace missing values with in the pivot table.
+        dropna_idxcol (bool, default True): if True rows where the passed index or column contain NaNs will be dropped. 
+            if False, NaN will be given its own index or column when appropriate.
+        as_pd (bool, default True): if True returns pandas dataframe. if false, returns the scipy coo matrix (unaggregated), 
+            the index array, and the column array separately. In this case, fill_value is ignored
+    
+    Returns:
+        pivot_df (pandas dataframe)
+        ---OR---
+        coo (scipy coo matrix): unaggregated.
+        idx_labels (pandas index or multiindex): contains distinct index values for pivot table.
+        col_labels (pandas index or multiindex): contains distinct column values for pivot table.
+            if the coo matrix contains a value at pair (i, j) then the index label is idx_labels[i] and the column label 
+            is col_labels[j].
+

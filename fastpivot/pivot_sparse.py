@@ -6,27 +6,30 @@ import time
 # cython version actual beats this in many cases, surprisingly
 def pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True, as_pd=True):
     """
-    Uses scipy.sparse.coo_matrix to construct a pivot table.
-    This uses less memory and is faster in most cases when the resulting pivot_table will be sparse.
-    Aggregates by sum. Less functionality overall, but efficient for its usecase.
+    Summary:
+        Uses scipy.sparse.coo_matrix to construct a pivot table.
+        This uses less memory and is faster in most cases when the resulting pivot_table will be sparse.
+        Aggregates by sum. Less functionality overall, but efficient for its usecase.
+
     Arguments:
-    df (required): pandas dataframe
-    index (required): string or list, name(s) of column(s) that you want to become the index of the pivot table. 
-    columns (required): string or list, name(s) of column(s) that contains as values the columns of the pivot table. 
-    values (required): string, name of column that contains as values the values of the pivot table.
-    fill_value (default None): scalar, value to replace missing values with in the pivot table.
-    dropna_idxcol (default True): bool, if True rows where the passed index or column contain NaNs will be dropped. 
-        if False, NaN will be given its own index or column when appropriate.
-    as_pd (default True): bool, if True returns pandas dataframe. if false, returns the scipy coo matrix (unaggregated), 
-        the index array, and the column array separately. In this case, fill_value is ignored
+        df (pandas dataframe)
+        index (string or list): name(s) of column(s) that you want to become the index of the pivot table. 
+        columns (string or list): name(s) of column(s) that contains as values the columns of the pivot table. 
+        values (string): name of column that contains as values the values of the pivot table.
+        fill_value (scalar, default None): value to replace missing values with in the pivot table.
+        dropna_idxcol (bool, default True): if True rows where the passed index or column contain NaNs will be dropped. 
+            if False, NaN will be given its own index or column when appropriate.
+        as_pd (bool, default True): if True returns pandas dataframe. if false, returns the scipy coo matrix (unaggregated), 
+            the index array, and the column array separately. In this case, fill_value is ignored
     
     Returns:
-    pivot_df: pandas dataframe
-    ---or---
-    coo: scipy coo matrix, unaggregated
-    idx_labels: pandas index or multiindex containing distinct index values for pivot table
-    col_labels: pandas index or multiindex containing distinct column values for pivot table
-    if the coo matrix contains a value at pair (i, j) then the index label is idx_labels[i] and the column label is col_labels[j]
+        pivot_df (pandas dataframe)
+        ---OR---
+        coo (scipy coo matrix): unaggregated.
+        idx_labels (pandas index or multiindex): contains distinct index values for pivot table.
+        col_labels (pandas index or multiindex): contains distinct column values for pivot table.
+            if the coo matrix contains a value at pair (i, j) then the index label is idx_labels[i] and the column label 
+            is col_labels[j].
     """
     
     # tick = time.perf_counter()

@@ -12,7 +12,6 @@ clean:
 	rm -r fastpivot.egg-info
 	rm ./fastpivot/pivot.cpython-37m-x86_64-linux-gnu.so
 	rm -r ./fastpivot/__pycache__
-	rm ./fastpivot/pivot.cpp
 
 devbuild:
 	python3 setup.py build_ext --inplace
