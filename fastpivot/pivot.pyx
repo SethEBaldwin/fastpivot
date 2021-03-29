@@ -18,6 +18,7 @@ import numpy as np
 cimport numpy as np
 import time
 
+# TODO: median slow when dupes
 # TODO: faster dropna, fillna?
 # TODO: product function?
 # TODO: further optimization?
@@ -494,6 +495,7 @@ cdef double sum_cython(vector[double] &vec):
         value += vec[k]
     return value
 
+# very slow on duplicates
 cdef double median_cython(vector[double] &vec):
     cdef int k = 0
     cdef int mid = vec.size() / 2
@@ -507,10 +509,11 @@ cdef double median_cython(vector[double] &vec):
     
     while k != mid:
         k = partition(vec, mid, i, j)
+        #print(k)
         if k < mid:
-            i = k
+            i = k + 1
         elif k > mid:
-            j = k
+            j = k - 1
     if vec.size() % 2 == 1:
         med = vec[mid]
     else:
@@ -533,6 +536,8 @@ cdef int partition(vector[double] &vec, int mid, int i, int j):
             temp = vec[i]
             vec[i] = vec[j]
             vec[j] = temp
+            if vec[j] == x:
+                i += 1
 
 cdef double max_left_cython(vector[double] & vec, int upper_idx):
     # never called on empty vec

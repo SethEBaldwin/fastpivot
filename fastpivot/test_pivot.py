@@ -80,7 +80,7 @@ def gen_df():
 def gen_df_int():
     col1 = ['idx{}'.format(x) for x in np.random.randint(0, N_IDX, size=N_ROWS)]
     col2 = ['col{}'.format(x) for x in np.random.randint(0, N_COLS, size=N_ROWS)]
-    col3 = [x for x in np.random.randint(-10000, 10000, size=N_ROWS)]
+    col3 = [x for x in np.random.randint(-10, 10, size=N_ROWS)]
 
     data = np.transpose([col1, col2, col3])
     df = pd.DataFrame(data, columns=[NAME_IDX, NAME_COL, NAME_VALUE], index=range(len(data)))
@@ -132,6 +132,41 @@ def gen_df_multiple_index():
     # print(df)
 
     return df
+
+def test_pivot_median_int():
+
+    print()
+    print('test pivot median int')
+
+    df = gen_df_int()
+
+    # time
+
+    msg = 'cython'
+    tick = time.perf_counter()
+    pivot_cython = pivot.pivot_table(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0, aggfunc='median')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_cython)
+
+    msg = 'pandas'
+    tick = time.perf_counter()
+    pivot_pandas = df.pivot_table(index=NAME_IDX, columns=[NAME_COL], values=NAME_VALUE, fill_value=0.0, aggfunc='median')
+    print(msg, time.perf_counter() - tick)
+    # print(pivot_pandas)
+
+    # check results are equal
+
+    is_equal = (pivot_cython.to_numpy() == pivot_pandas.to_numpy()).all()
+    print('componentwise equal: ', is_equal)
+    epsilon = 1e-8
+    within_epsilon = (np.absolute(pivot_cython.to_numpy() - pivot_pandas.to_numpy()) < epsilon).all()
+    print('componentwise within {} :'.format(epsilon), within_epsilon)
+    is_equal_pd = pivot_cython.equals(pivot_pandas)
+    print('pd.equals: ', is_equal_pd)
+
+    assert within_epsilon
+    assert is_equal
+    #assert is_equal_pd
 
 def test_pivot_nan_index_dropnacolidx():
 
