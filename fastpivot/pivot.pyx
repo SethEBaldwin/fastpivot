@@ -12,7 +12,7 @@ from libc.math cimport sqrt
 from libc.math cimport isnan
 #from cython.operator import dereference, postincrement
 #from libc.stdlib cimport malloc
-#from libcpp.algorithm cimport sort as stdsort
+from libcpp.algorithm cimport sort as stdsort
 import pandas as pd
 import numpy as np
 cimport numpy as np
@@ -222,7 +222,7 @@ def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_id
             nans_arr = values_series.isna().to_numpy()
             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
         elif aggfunc == 'median':
-            pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+            pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
         elif aggfunc == 'nunique':
             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
     else:
@@ -494,6 +494,21 @@ cdef double sum_cython(vector[double] &vec):
     for k in range(vec.size()):
         value += vec[k]
     return value
+
+cdef double median_cython_sort(vector[double] &vec):
+    cdef int k
+    cdef int idx
+    cdef double value = 0.0
+    cdef double med
+    stdsort(vec.begin(), vec.end())
+    idx = vec.size() / 2
+    if vec.size() % 2 == 1:
+        med = vec[idx]
+    elif vec.size() == 0:
+        med = np.nan
+    else:
+        med = (vec[idx] + vec[idx-1]) / 2
+    return med
 
 # very slow on duplicates
 cdef double median_cython(vector[double] &vec):

@@ -662,6 +662,7 @@ static CYTHON_INLINE float __PYX_NAN() {
     
 #include <set>
 #include <math.h>
+#include <algorithm>
 #include <string.h>
 #include <stdio.h>
 #include "numpy/arrayobject.h"
@@ -1274,7 +1275,7 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "fastpivot/pivot.pyx":487
+/* "fastpivot/pivot.pyx":488
  * #     return missing_arr
  * 
  * ctypedef double vec_to_double(vector[double] &)             # <<<<<<<<<<<<<<
@@ -2313,6 +2314,8 @@ static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memo
 
 /* Module declarations from 'libc.math' */
 
+/* Module declarations from 'libcpp.algorithm' */
+
 /* Module declarations from 'cpython.buffer' */
 
 /* Module declarations from 'libc.string' */
@@ -2369,7 +2372,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int, int); /*proto*/
 static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_memviewslice, __Pyx_memviewslice, int, int, __Pyx_memviewslice, bool); /*proto*/
-static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &); /*proto*/
+static double __pyx_f_9fastpivot_5pivot_median_cython_sort(std::vector<double>  &); /*proto*/
 static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &, int, int, int); /*proto*/
 static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &, int); /*proto*/
 static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &); /*proto*/
@@ -2860,7 +2863,7 @@ static PyObject *__pyx_codeobj__33;
 static PyObject *__pyx_codeobj__40;
 /* Late includes */
 
-/* "fastpivot/pivot.pyx":25
+/* "fastpivot/pivot.pyx":26
  * # TODO: further optimization?
  * # TODO: try multithread when values or aggfunc multiple? or even in general?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
@@ -2926,19 +2929,19 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_1pivot_table(PyObject *__pyx_self, P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_index)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, 1); __PYX_ERR(0, 25, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, 1); __PYX_ERR(0, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_columns)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, 2); __PYX_ERR(0, 25, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, 2); __PYX_ERR(0, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_values)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, 3); __PYX_ERR(0, 25, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, 3); __PYX_ERR(0, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -2966,7 +2969,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_1pivot_table(PyObject *__pyx_self, P
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_table") < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_table") < 0)) __PYX_ERR(0, 26, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2997,7 +3000,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_1pivot_table(PyObject *__pyx_self, P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pivot_table", 0, 4, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 26, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastpivot.pivot.pivot_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3050,7 +3053,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __Pyx_INCREF(__pyx_v_index);
   __Pyx_INCREF(__pyx_v_columns);
 
-  /* "fastpivot/pivot.pyx":70
+  /* "fastpivot/pivot.pyx":71
  * 
  *     # tick = time.perf_counter()
  *     assert isinstance(index, str) or isinstance(index, list)             # <<<<<<<<<<<<<<
@@ -3072,12 +3075,12 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 70, __pyx_L1_error)
+      __PYX_ERR(0, 71, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "fastpivot/pivot.pyx":71
+  /* "fastpivot/pivot.pyx":72
  *     # tick = time.perf_counter()
  *     assert isinstance(index, str) or isinstance(index, list)
  *     assert isinstance(columns, str) or isinstance(columns, list)             # <<<<<<<<<<<<<<
@@ -3099,12 +3102,12 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_L5_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 71, __pyx_L1_error)
+      __PYX_ERR(0, 72, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "fastpivot/pivot.pyx":72
+  /* "fastpivot/pivot.pyx":73
  *     assert isinstance(index, str) or isinstance(index, list)
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3115,42 +3118,42 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":73
+    /* "fastpivot/pivot.pyx":74
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):
  */
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 73, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":74
+      /* "fastpivot/pivot.pyx":75
  *     if isinstance(index, str):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[index])             # <<<<<<<<<<<<<<
  *     if isinstance(index, list):
  *         if dropna_idxcol:
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_v_index);
       __Pyx_GIVEREF(__pyx_v_index);
       PyList_SET_ITEM(__pyx_t_6, 0, __pyx_v_index);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_t_6) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_t_6) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "fastpivot/pivot.pyx":73
+      /* "fastpivot/pivot.pyx":74
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3159,7 +3162,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "fastpivot/pivot.pyx":72
+    /* "fastpivot/pivot.pyx":73
  *     assert isinstance(index, str) or isinstance(index, list)
  *     assert isinstance(columns, str) or isinstance(columns, list)
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3168,7 +3171,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "fastpivot/pivot.pyx":75
+  /* "fastpivot/pivot.pyx":76
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):             # <<<<<<<<<<<<<<
@@ -3179,36 +3182,36 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":76
+    /* "fastpivot/pivot.pyx":77
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:
  */
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":77
+      /* "fastpivot/pivot.pyx":78
  *     if isinstance(index, list):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=index)             # <<<<<<<<<<<<<<
  *         if len(index) == 1:
  *             index = index[0]
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 77, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 77, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_v_index) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 77, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_v_index) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "fastpivot/pivot.pyx":76
+      /* "fastpivot/pivot.pyx":77
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3217,30 +3220,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "fastpivot/pivot.pyx":78
+    /* "fastpivot/pivot.pyx":79
  *         if dropna_idxcol:
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:             # <<<<<<<<<<<<<<
  *             index = index[0]
  *     if isinstance(columns, str):
  */
-    __pyx_t_7 = PyObject_Length(__pyx_v_index); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_7 = PyObject_Length(__pyx_v_index); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 79, __pyx_L1_error)
     __pyx_t_1 = ((__pyx_t_7 == 1) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":79
+      /* "fastpivot/pivot.pyx":80
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:
  *             index = index[0]             # <<<<<<<<<<<<<<
  *     if isinstance(columns, str):
  *         if dropna_idxcol:
  */
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_index, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_index, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 80, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_index, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "fastpivot/pivot.pyx":78
+      /* "fastpivot/pivot.pyx":79
  *         if dropna_idxcol:
  *             df = df.dropna(subset=index)
  *         if len(index) == 1:             # <<<<<<<<<<<<<<
@@ -3249,7 +3252,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "fastpivot/pivot.pyx":75
+    /* "fastpivot/pivot.pyx":76
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[index])
  *     if isinstance(index, list):             # <<<<<<<<<<<<<<
@@ -3258,7 +3261,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "fastpivot/pivot.pyx":80
+  /* "fastpivot/pivot.pyx":81
  *         if len(index) == 1:
  *             index = index[0]
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3269,42 +3272,42 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":81
+    /* "fastpivot/pivot.pyx":82
  *             index = index[0]
  *     if isinstance(columns, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):
  */
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 82, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":82
+      /* "fastpivot/pivot.pyx":83
  *     if isinstance(columns, str):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[columns])             # <<<<<<<<<<<<<<
  *     if isinstance(columns, list):
  *         if dropna_idxcol:
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_v_columns);
       __Pyx_GIVEREF(__pyx_v_columns);
       PyList_SET_ITEM(__pyx_t_6, 0, __pyx_v_columns);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_t_6) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_t_6) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 82, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_6);
       __pyx_t_6 = 0;
 
-      /* "fastpivot/pivot.pyx":81
+      /* "fastpivot/pivot.pyx":82
  *             index = index[0]
  *     if isinstance(columns, str):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3313,7 +3316,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "fastpivot/pivot.pyx":80
+    /* "fastpivot/pivot.pyx":81
  *         if len(index) == 1:
  *             index = index[0]
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3322,7 +3325,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "fastpivot/pivot.pyx":83
+  /* "fastpivot/pivot.pyx":84
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):             # <<<<<<<<<<<<<<
@@ -3333,36 +3336,36 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":84
+    /* "fastpivot/pivot.pyx":85
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:
  */
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_dropna_idxcol); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":85
+      /* "fastpivot/pivot.pyx":86
  *     if isinstance(columns, list):
  *         if dropna_idxcol:
  *             df = df.dropna(subset=columns)             # <<<<<<<<<<<<<<
  *         if len(columns) == 1:
  *             columns = columns[0]
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_v_columns) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_subset, __pyx_v_columns) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_df, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "fastpivot/pivot.pyx":84
+      /* "fastpivot/pivot.pyx":85
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):
  *         if dropna_idxcol:             # <<<<<<<<<<<<<<
@@ -3371,30 +3374,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "fastpivot/pivot.pyx":86
+    /* "fastpivot/pivot.pyx":87
  *         if dropna_idxcol:
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:             # <<<<<<<<<<<<<<
  *             columns = columns[0]
  * 
  */
-    __pyx_t_7 = PyObject_Length(__pyx_v_columns); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_7 = PyObject_Length(__pyx_v_columns); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
     __pyx_t_1 = ((__pyx_t_7 == 1) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":87
+      /* "fastpivot/pivot.pyx":88
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:
  *             columns = columns[0]             # <<<<<<<<<<<<<<
  * 
  *     if isinstance(index, str):
  */
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_columns, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_columns, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_columns, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "fastpivot/pivot.pyx":86
+      /* "fastpivot/pivot.pyx":87
  *         if dropna_idxcol:
  *             df = df.dropna(subset=columns)
  *         if len(columns) == 1:             # <<<<<<<<<<<<<<
@@ -3403,7 +3406,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
     }
 
-    /* "fastpivot/pivot.pyx":83
+    /* "fastpivot/pivot.pyx":84
  *         if dropna_idxcol:
  *             df = df.dropna(subset=[columns])
  *     if isinstance(columns, list):             # <<<<<<<<<<<<<<
@@ -3412,7 +3415,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  */
   }
 
-  /* "fastpivot/pivot.pyx":89
+  /* "fastpivot/pivot.pyx":90
  *             columns = columns[0]
  * 
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3423,23 +3426,23 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":91
+    /* "fastpivot/pivot.pyx":92
  *     if isinstance(index, str):
  *         #tick1 = time.perf_counter()
  *         idx_arr, idx_arr_unique = df[index].factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
  *         #print('factorize idx', time.perf_counter() - tick1)
  *     else: #TODO: any speedup here?
  */
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_factorize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_factorize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 91, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3449,7 +3452,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 91, __pyx_L1_error)
+        __PYX_ERR(0, 92, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -3462,15 +3465,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_5);
       #else
-      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 92, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -3478,7 +3481,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_GOTREF(__pyx_t_4);
       index = 1; __pyx_t_5 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_5)) goto __pyx_L18_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_5);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 91, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L19_unpacking_done;
@@ -3486,7 +3489,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 91, __pyx_L1_error)
+      __PYX_ERR(0, 92, __pyx_L1_error)
       __pyx_L19_unpacking_done:;
     }
     __pyx_v_idx_arr = __pyx_t_4;
@@ -3494,7 +3497,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_v_idx_arr_unique = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastpivot/pivot.pyx":89
+    /* "fastpivot/pivot.pyx":90
  *             columns = columns[0]
  * 
  *     if isinstance(index, str):             # <<<<<<<<<<<<<<
@@ -3504,7 +3507,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     goto __pyx_L17;
   }
 
-  /* "fastpivot/pivot.pyx":95
+  /* "fastpivot/pivot.pyx":96
  *     else: #TODO: any speedup here?
  *         #tick1 = time.perf_counter()
  *         idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -3512,15 +3515,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  *         #print('factorize idx', time.perf_counter() - tick1)
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pd); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_from_frame); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_from_frame); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -3535,17 +3538,17 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_t_6 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_factorize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_factorize); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3555,7 +3558,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 95, __pyx_L1_error)
+        __PYX_ERR(0, 96, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -3568,15 +3571,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_5);
       #else
-      __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 95, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -3584,7 +3587,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_GOTREF(__pyx_t_6);
       index = 1; __pyx_t_5 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_5)) goto __pyx_L20_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_5);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L21_unpacking_done;
@@ -3592,7 +3595,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 95, __pyx_L1_error)
+      __PYX_ERR(0, 96, __pyx_L1_error)
       __pyx_L21_unpacking_done:;
     }
     __pyx_v_idx_arr = __pyx_t_6;
@@ -3600,30 +3603,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_v_idx_arr_unique = __pyx_t_5;
     __pyx_t_5 = 0;
 
-    /* "fastpivot/pivot.pyx":96
+    /* "fastpivot/pivot.pyx":97
  *         #tick1 = time.perf_counter()
  *         idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)
  *         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)             # <<<<<<<<<<<<<<
  *         #print('factorize idx', time.perf_counter() - tick1)
  *     if isinstance(columns, str):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_tuples); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_from_tuples); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_INCREF(__pyx_v_idx_arr_unique);
     __Pyx_GIVEREF(__pyx_v_idx_arr_unique);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_idx_arr_unique);
-    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_names, __pyx_v_index) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 96, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_names, __pyx_v_index) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3633,7 +3636,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   }
   __pyx_L17:;
 
-  /* "fastpivot/pivot.pyx":98
+  /* "fastpivot/pivot.pyx":99
  *         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
  *         #print('factorize idx', time.perf_counter() - tick1)
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3644,23 +3647,23 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":100
+    /* "fastpivot/pivot.pyx":101
  *     if isinstance(columns, str):
  *         #tick1 = time.perf_counter()
  *         col_arr, col_arr_unique = df[columns].factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
  *         #print('tuple conversion col', time.perf_counter() - tick1)
  *     else: #TODO: any speedup here?
  */
-    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_columns); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_columns); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_factorize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_factorize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -3670,7 +3673,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 100, __pyx_L1_error)
+        __PYX_ERR(0, 101, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -3683,15 +3686,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 100, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 101, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 100, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 101, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_4 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+      __pyx_t_4 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext;
@@ -3699,7 +3702,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_GOTREF(__pyx_t_8);
       index = 1; __pyx_t_6 = __pyx_t_9(__pyx_t_4); if (unlikely(!__pyx_t_6)) goto __pyx_L23_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_4), 2) < 0) __PYX_ERR(0, 100, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_4), 2) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       goto __pyx_L24_unpacking_done;
@@ -3707,7 +3710,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 100, __pyx_L1_error)
+      __PYX_ERR(0, 101, __pyx_L1_error)
       __pyx_L24_unpacking_done:;
     }
     __pyx_v_col_arr = __pyx_t_8;
@@ -3715,7 +3718,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_v_col_arr_unique = __pyx_t_6;
     __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":98
+    /* "fastpivot/pivot.pyx":99
  *         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
  *         #print('factorize idx', time.perf_counter() - tick1)
  *     if isinstance(columns, str):             # <<<<<<<<<<<<<<
@@ -3725,7 +3728,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     goto __pyx_L22;
   }
 
-  /* "fastpivot/pivot.pyx":104
+  /* "fastpivot/pivot.pyx":105
  *     else: #TODO: any speedup here?
  *         #tick1 = time.perf_counter()
  *         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)             # <<<<<<<<<<<<<<
@@ -3733,15 +3736,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
  *         #print('factorize col', time.perf_counter() - tick1)
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_pd); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_pd); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_from_frame); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_from_frame); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_columns); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_columns); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_4 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3756,17 +3759,17 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_8);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_factorize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_factorize); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_sort, Py_True) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3776,7 +3779,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 104, __pyx_L1_error)
+        __PYX_ERR(0, 105, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -3789,15 +3792,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_4 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_4 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext;
@@ -3805,7 +3808,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_GOTREF(__pyx_t_5);
       index = 1; __pyx_t_6 = __pyx_t_9(__pyx_t_4); if (unlikely(!__pyx_t_6)) goto __pyx_L25_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_4), 2) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_4), 2) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       goto __pyx_L26_unpacking_done;
@@ -3813,7 +3816,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 104, __pyx_L1_error)
+      __PYX_ERR(0, 105, __pyx_L1_error)
       __pyx_L26_unpacking_done:;
     }
     __pyx_v_col_arr = __pyx_t_5;
@@ -3821,30 +3824,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_v_col_arr_unique = __pyx_t_6;
     __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":105
+    /* "fastpivot/pivot.pyx":106
  *         #tick1 = time.perf_counter()
  *         col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
  *         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)             # <<<<<<<<<<<<<<
  *         #print('factorize col', time.perf_counter() - tick1)
  *     # print('prepare index and columns', time.perf_counter() - tick)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_pd); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_pd); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_MultiIndex); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_from_tuples); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_from_tuples); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_v_col_arr_unique);
     __Pyx_GIVEREF(__pyx_v_col_arr_unique);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_v_col_arr_unique);
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_names, __pyx_v_columns) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_names, __pyx_v_columns) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_6, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3854,14 +3857,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   }
   __pyx_L22:;
 
-  /* "fastpivot/pivot.pyx":110
+  /* "fastpivot/pivot.pyx":111
  * 
  *     # tick = time.perf_counter()
  *     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)             # <<<<<<<<<<<<<<
  * 
  *     pivot_dfs = []
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_process_values_aggfunc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_process_values_aggfunc); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_10 = 0;
@@ -3878,7 +3881,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_values, __pyx_v_aggfunc};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
@@ -3886,13 +3889,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_values, __pyx_v_aggfunc};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -3903,7 +3906,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __Pyx_INCREF(__pyx_v_aggfunc);
     __Pyx_GIVEREF(__pyx_v_aggfunc);
     PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_10, __pyx_v_aggfunc);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
@@ -3914,7 +3917,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 110, __pyx_L1_error)
+      __PYX_ERR(0, 111, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -3930,17 +3933,17 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __Pyx_INCREF(__pyx_t_8);
     __Pyx_INCREF(__pyx_t_6);
     #else
-    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_6 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     #endif
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_11 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_11 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_9 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -3950,7 +3953,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __Pyx_GOTREF(__pyx_t_8);
     index = 2; __pyx_t_6 = __pyx_t_9(__pyx_t_11); if (unlikely(!__pyx_t_6)) goto __pyx_L27_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_6);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_11), 3) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_11), 3) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
     __pyx_t_9 = NULL;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     goto __pyx_L28_unpacking_done;
@@ -3958,7 +3961,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __pyx_t_9 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 110, __pyx_L1_error)
+    __PYX_ERR(0, 111, __pyx_L1_error)
     __pyx_L28_unpacking_done:;
   }
   __pyx_v_values_list = __pyx_t_5;
@@ -3968,19 +3971,19 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_v_keys = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "fastpivot/pivot.pyx":112
+  /* "fastpivot/pivot.pyx":113
  *     values_list, aggfunc_dict, keys = process_values_aggfunc(values, aggfunc)
  * 
  *     pivot_dfs = []             # <<<<<<<<<<<<<<
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_pivot_dfs = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "fastpivot/pivot.pyx":113
+  /* "fastpivot/pivot.pyx":114
  * 
  *     pivot_dfs = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -3991,26 +3994,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __pyx_t_4 = __pyx_v_values_list; __Pyx_INCREF(__pyx_t_4); __pyx_t_7 = 0;
     __pyx_t_12 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_values_list); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_12 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_12 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 114, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_12)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_6 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 114, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
       } else {
         if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 114, __pyx_L1_error)
         #else
-        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         #endif
       }
@@ -4020,7 +4023,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 113, __pyx_L1_error)
+          else __PYX_ERR(0, 114, __pyx_L1_error)
         }
         break;
       }
@@ -4029,19 +4032,19 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":114
+    /* "fastpivot/pivot.pyx":115
  *     pivot_dfs = []
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]             # <<<<<<<<<<<<<<
  *         for agg in agg_list:
  *             pivot_df = pivot_compute_table(
  */
-    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_aggfunc_dict, __pyx_v_value); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_aggfunc_dict, __pyx_v_value); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_XDECREF_SET(__pyx_v_agg_list, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":115
+    /* "fastpivot/pivot.pyx":116
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]
  *         for agg in agg_list:             # <<<<<<<<<<<<<<
@@ -4052,26 +4055,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __pyx_t_6 = __pyx_v_agg_list; __Pyx_INCREF(__pyx_t_6); __pyx_t_13 = 0;
       __pyx_t_14 = NULL;
     } else {
-      __pyx_t_13 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_v_agg_list); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_13 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_v_agg_list); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_14 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_14 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 116, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_14)) {
         if (likely(PyList_CheckExact(__pyx_t_6))) {
           if (__pyx_t_13 >= PyList_GET_SIZE(__pyx_t_6)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_13); __Pyx_INCREF(__pyx_t_8); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_13); __Pyx_INCREF(__pyx_t_8); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_6, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_6, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         } else {
           if (__pyx_t_13 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_13); __Pyx_INCREF(__pyx_t_8); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_13); __Pyx_INCREF(__pyx_t_8); __pyx_t_13++; if (unlikely(0 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_6, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_6, __pyx_t_13); __pyx_t_13++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         }
@@ -4081,7 +4084,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 115, __pyx_L1_error)
+            else __PYX_ERR(0, 116, __pyx_L1_error)
           }
           break;
         }
@@ -4090,27 +4093,27 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_XDECREF_SET(__pyx_v_agg, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "fastpivot/pivot.pyx":116
+      /* "fastpivot/pivot.pyx":117
  *         agg_list = aggfunc_dict[value]
  *         for agg in agg_list:
  *             pivot_df = pivot_compute_table(             # <<<<<<<<<<<<<<
  *                 agg,
  *                 fill_value,
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pivot_compute_table); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pivot_compute_table); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "fastpivot/pivot.pyx":124
+      /* "fastpivot/pivot.pyx":125
  *                 idx_arr,
  *                 col_arr,
  *                 df[value],             # <<<<<<<<<<<<<<
  *                 idx_arr_unique,
  *                 col_arr_unique
  */
-      __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_value); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_df, __pyx_v_value); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
 
-      /* "fastpivot/pivot.pyx":126
+      /* "fastpivot/pivot.pyx":127
  *                 df[value],
  *                 idx_arr_unique,
  *                 col_arr_unique             # <<<<<<<<<<<<<<
@@ -4132,7 +4135,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[11] = {__pyx_t_15, __pyx_v_agg, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_index, __pyx_v_columns, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_t_11, __pyx_v_idx_arr_unique, __pyx_v_col_arr_unique};
-        __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 10+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 10+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -4141,14 +4144,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[11] = {__pyx_t_15, __pyx_v_agg, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_index, __pyx_v_columns, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_t_11, __pyx_v_idx_arr_unique, __pyx_v_col_arr_unique};
-        __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 10+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_10, 10+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       } else
       #endif
       {
-        __pyx_t_16 = PyTuple_New(10+__pyx_t_10); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_16 = PyTuple_New(10+__pyx_t_10); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_16);
         if (__pyx_t_15) {
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -4183,7 +4186,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
         __Pyx_GIVEREF(__pyx_v_col_arr_unique);
         PyTuple_SET_ITEM(__pyx_t_16, 9+__pyx_t_10, __pyx_v_col_arr_unique);
         __pyx_t_11 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_16, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_16, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       }
@@ -4191,16 +4194,16 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
       __Pyx_XDECREF_SET(__pyx_v_pivot_df, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "fastpivot/pivot.pyx":128
+      /* "fastpivot/pivot.pyx":129
  *                 col_arr_unique
  *             )
  *             pivot_dfs.append(pivot_df)             # <<<<<<<<<<<<<<
  *     pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)
  *     # print('compute pivot table', time.perf_counter() - tick)
  */
-      __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_pivot_dfs, __pyx_v_pivot_df); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_17 = __Pyx_PyList_Append(__pyx_v_pivot_dfs, __pyx_v_pivot_df); if (unlikely(__pyx_t_17 == ((int)-1))) __PYX_ERR(0, 129, __pyx_L1_error)
 
-      /* "fastpivot/pivot.pyx":115
+      /* "fastpivot/pivot.pyx":116
  *     for value in values_list:
  *         agg_list = aggfunc_dict[value]
  *         for agg in agg_list:             # <<<<<<<<<<<<<<
@@ -4210,7 +4213,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":113
+    /* "fastpivot/pivot.pyx":114
  * 
  *     pivot_dfs = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -4220,28 +4223,28 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fastpivot/pivot.pyx":129
+  /* "fastpivot/pivot.pyx":130
  *             )
  *             pivot_dfs.append(pivot_df)
  *     pivot_df = pd.concat(pivot_dfs, axis=1, keys=keys)             # <<<<<<<<<<<<<<
  *     # print('compute pivot table', time.perf_counter() - tick)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_pd); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concat); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concat); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_pivot_dfs);
   __Pyx_GIVEREF(__pyx_v_pivot_dfs);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_pivot_dfs);
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_keys, __pyx_v_keys) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_keys, __pyx_v_keys) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4249,7 +4252,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __Pyx_XDECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":132
+  /* "fastpivot/pivot.pyx":133
  *     # print('compute pivot table', time.perf_counter() - tick)
  * 
  *     return pivot_df             # <<<<<<<<<<<<<<
@@ -4261,7 +4264,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   __pyx_r = __pyx_v_pivot_df;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":25
+  /* "fastpivot/pivot.pyx":26
  * # TODO: further optimization?
  * # TODO: try multithread when values or aggfunc multiple? or even in general?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
@@ -4301,7 +4304,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_pivot_table(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":134
+/* "fastpivot/pivot.pyx":135
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -4344,11 +4347,11 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_3process_values_aggfunc(PyObject *__
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_aggfunc)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("process_values_aggfunc", 1, 2, 2, 1); __PYX_ERR(0, 134, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("process_values_aggfunc", 1, 2, 2, 1); __PYX_ERR(0, 135, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "process_values_aggfunc") < 0)) __PYX_ERR(0, 134, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "process_values_aggfunc") < 0)) __PYX_ERR(0, 135, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4361,7 +4364,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_3process_values_aggfunc(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("process_values_aggfunc", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 134, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("process_values_aggfunc", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 135, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastpivot.pivot.process_values_aggfunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4374,7 +4377,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_3process_values_aggfunc(PyObject *__
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":155
+/* "fastpivot/pivot.pyx":156
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
@@ -4410,7 +4413,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process", 0);
 
-  /* "fastpivot/pivot.pyx":156
+  /* "fastpivot/pivot.pyx":157
  *     elif isinstance(aggfunc, dict):
  *         def process(x):
  *             assert isinstance(x, str) or isinstance(x, list)             # <<<<<<<<<<<<<<
@@ -4432,12 +4435,12 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 156, __pyx_L1_error)
+      __PYX_ERR(0, 157, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "fastpivot/pivot.pyx":157
+  /* "fastpivot/pivot.pyx":158
  *         def process(x):
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):             # <<<<<<<<<<<<<<
@@ -4448,7 +4451,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":158
+    /* "fastpivot/pivot.pyx":159
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):
  *                 return [x]             # <<<<<<<<<<<<<<
@@ -4456,7 +4459,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
  *                 return sorted(x)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_x);
     __Pyx_GIVEREF(__pyx_v_x);
@@ -4465,7 +4468,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "fastpivot/pivot.pyx":157
+    /* "fastpivot/pivot.pyx":158
  *         def process(x):
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):             # <<<<<<<<<<<<<<
@@ -4474,7 +4477,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
  */
   }
 
-  /* "fastpivot/pivot.pyx":159
+  /* "fastpivot/pivot.pyx":160
  *             if isinstance(x, str):
  *                 return [x]
  *             elif isinstance(x, list):             # <<<<<<<<<<<<<<
@@ -4485,7 +4488,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":160
+    /* "fastpivot/pivot.pyx":161
  *                 return [x]
  *             elif isinstance(x, list):
  *                 return sorted(x)             # <<<<<<<<<<<<<<
@@ -4493,16 +4496,16 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
  * 
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = PySequence_List(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_5 = PySequence_List(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_4 = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_6 = PyList_Sort(__pyx_t_4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_6 = PyList_Sort(__pyx_t_4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
     __pyx_r = __pyx_t_4;
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "fastpivot/pivot.pyx":159
+    /* "fastpivot/pivot.pyx":160
  *             if isinstance(x, str):
  *                 return [x]
  *             elif isinstance(x, list):             # <<<<<<<<<<<<<<
@@ -4511,7 +4514,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
  */
   }
 
-  /* "fastpivot/pivot.pyx":155
+  /* "fastpivot/pivot.pyx":156
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
@@ -4533,7 +4536,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(CYT
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":134
+/* "fastpivot/pivot.pyx":135
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -4569,7 +4572,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("process_values_aggfunc", 0);
 
-  /* "fastpivot/pivot.pyx":141
+  /* "fastpivot/pivot.pyx":142
  *     # keys gives the multicolumn keys for constructing pivot_df
  * 
  *     assert isinstance(values, str) or isinstance(values, list)             # <<<<<<<<<<<<<<
@@ -4591,12 +4594,12 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __pyx_L3_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 141, __pyx_L1_error)
+      __PYX_ERR(0, 142, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "fastpivot/pivot.pyx":143
+  /* "fastpivot/pivot.pyx":144
  *     assert isinstance(values, str) or isinstance(values, list)
  * 
  *     if isinstance(values, str):             # <<<<<<<<<<<<<<
@@ -4607,14 +4610,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":144
+    /* "fastpivot/pivot.pyx":145
  * 
  *     if isinstance(values, str):
  *         values_list = [values]             # <<<<<<<<<<<<<<
  *     elif isinstance(values, list):
  *         values_list = sorted(values)
  */
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_values);
     __Pyx_GIVEREF(__pyx_v_values);
@@ -4622,7 +4625,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __pyx_v_values_list = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "fastpivot/pivot.pyx":143
+    /* "fastpivot/pivot.pyx":144
  *     assert isinstance(values, str) or isinstance(values, list)
  * 
  *     if isinstance(values, str):             # <<<<<<<<<<<<<<
@@ -4632,7 +4635,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     goto __pyx_L5;
   }
 
-  /* "fastpivot/pivot.pyx":145
+  /* "fastpivot/pivot.pyx":146
  *     if isinstance(values, str):
  *         values_list = [values]
  *     elif isinstance(values, list):             # <<<<<<<<<<<<<<
@@ -4643,22 +4646,22 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":146
+    /* "fastpivot/pivot.pyx":147
  *         values_list = [values]
  *     elif isinstance(values, list):
  *         values_list = sorted(values)             # <<<<<<<<<<<<<<
  * 
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)
  */
-    __pyx_t_5 = PySequence_List(__pyx_v_values); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_5 = PySequence_List(__pyx_v_values); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_4 = ((PyObject*)__pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_6 = PyList_Sort(__pyx_t_4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_6 = PyList_Sort(__pyx_t_4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 147, __pyx_L1_error)
     __pyx_v_values_list = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "fastpivot/pivot.pyx":145
+    /* "fastpivot/pivot.pyx":146
  *     if isinstance(values, str):
  *         values_list = [values]
  *     elif isinstance(values, list):             # <<<<<<<<<<<<<<
@@ -4668,7 +4671,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   }
   __pyx_L5:;
 
-  /* "fastpivot/pivot.pyx":148
+  /* "fastpivot/pivot.pyx":149
  *         values_list = sorted(values)
  * 
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)             # <<<<<<<<<<<<<<
@@ -4697,12 +4700,12 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __pyx_L6_bool_binop_done:;
     if (unlikely(!__pyx_t_1)) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 148, __pyx_L1_error)
+      __PYX_ERR(0, 149, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "fastpivot/pivot.pyx":150
+  /* "fastpivot/pivot.pyx":151
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)
  * 
  *     if isinstance(aggfunc, str):             # <<<<<<<<<<<<<<
@@ -4713,7 +4716,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "fastpivot/pivot.pyx":151
+    /* "fastpivot/pivot.pyx":152
  * 
  *     if isinstance(aggfunc, str):
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}             # <<<<<<<<<<<<<<
@@ -4721,30 +4724,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L12_error)
+      __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L12_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 151, __pyx_L12_error) }
+      if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 152, __pyx_L12_error) }
       if (unlikely(__pyx_v_values_list == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 151, __pyx_L12_error)
+        __PYX_ERR(0, 152, __pyx_L12_error)
       }
       __pyx_t_5 = __pyx_v_values_list; __Pyx_INCREF(__pyx_t_5); __pyx_t_7 = 0;
       for (;;) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 151, __pyx_L12_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 152, __pyx_L12_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 151, __pyx_L12_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 152, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
         __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_value, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 151, __pyx_L12_error)
+        __pyx_t_8 = PyList_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 152, __pyx_L12_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_v_aggfunc);
         __Pyx_GIVEREF(__pyx_v_aggfunc);
         PyList_SET_ITEM(__pyx_t_8, 0, __pyx_v_aggfunc);
-        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_7genexpr__pyx_v_value, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 151, __pyx_L12_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_7genexpr__pyx_v_value, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 152, __pyx_L12_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4758,7 +4761,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __pyx_v_aggfunc_dict = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "fastpivot/pivot.pyx":150
+    /* "fastpivot/pivot.pyx":151
  *     assert isinstance(aggfunc, str) or isinstance(aggfunc, list) or isinstance(aggfunc, dict)
  * 
  *     if isinstance(aggfunc, str):             # <<<<<<<<<<<<<<
@@ -4768,7 +4771,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     goto __pyx_L9;
   }
 
-  /* "fastpivot/pivot.pyx":152
+  /* "fastpivot/pivot.pyx":153
  *     if isinstance(aggfunc, str):
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}
  *     elif isinstance(aggfunc, list):             # <<<<<<<<<<<<<<
@@ -4779,7 +4782,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   __pyx_t_1 = (__pyx_t_3 != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":153
+    /* "fastpivot/pivot.pyx":154
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}
  *     elif isinstance(aggfunc, list):
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}             # <<<<<<<<<<<<<<
@@ -4787,30 +4790,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
  *         def process(x):
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L18_error)
+      __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L18_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 153, __pyx_L18_error) }
+      if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 154, __pyx_L18_error) }
       if (unlikely(__pyx_v_values_list == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 153, __pyx_L18_error)
+        __PYX_ERR(0, 154, __pyx_L18_error)
       }
       __pyx_t_5 = __pyx_v_values_list; __Pyx_INCREF(__pyx_t_5); __pyx_t_7 = 0;
       for (;;) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 153, __pyx_L18_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 154, __pyx_L18_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 153, __pyx_L18_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 154, __pyx_L18_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
         __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_value, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_9 = PySequence_List(__pyx_v_aggfunc); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 153, __pyx_L18_error)
+        __pyx_t_9 = PySequence_List(__pyx_v_aggfunc); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 154, __pyx_L18_error)
         __Pyx_GOTREF(__pyx_t_9);
         __pyx_t_8 = ((PyObject*)__pyx_t_9);
         __pyx_t_9 = 0;
-        __pyx_t_6 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 153, __pyx_L18_error)
-        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_8genexpr1__pyx_v_value, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 153, __pyx_L18_error)
+        __pyx_t_6 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 154, __pyx_L18_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_8genexpr1__pyx_v_value, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 154, __pyx_L18_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4824,7 +4827,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __pyx_v_aggfunc_dict = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "fastpivot/pivot.pyx":152
+    /* "fastpivot/pivot.pyx":153
  *     if isinstance(aggfunc, str):
  *         aggfunc_dict = {value: [aggfunc] for value in values_list}
  *     elif isinstance(aggfunc, list):             # <<<<<<<<<<<<<<
@@ -4834,7 +4837,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     goto __pyx_L9;
   }
 
-  /* "fastpivot/pivot.pyx":154
+  /* "fastpivot/pivot.pyx":155
  *     elif isinstance(aggfunc, list):
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):             # <<<<<<<<<<<<<<
@@ -4845,19 +4848,19 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "fastpivot/pivot.pyx":155
+    /* "fastpivot/pivot.pyx":156
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):
  */
-    __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9fastpivot_5pivot_22process_values_aggfunc_1process, 0, __pyx_n_s_process_values_aggfunc_locals_pr, NULL, __pyx_n_s_fastpivot_pivot, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_9fastpivot_5pivot_22process_values_aggfunc_1process, 0, __pyx_n_s_process_values_aggfunc_locals_pr, NULL, __pyx_n_s_fastpivot_pivot, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_process = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "fastpivot/pivot.pyx":161
+    /* "fastpivot/pivot.pyx":162
  *             elif isinstance(x, list):
  *                 return sorted(x)
  *         aggfunc_dict = {value: process(aggfunc[value]) for value in values_list}             # <<<<<<<<<<<<<<
@@ -4865,30 +4868,30 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
  *     # construct most general key
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L24_error)
+      __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L24_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 161, __pyx_L24_error) }
+      if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 162, __pyx_L24_error) }
       if (unlikely(__pyx_v_values_list == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 161, __pyx_L24_error)
+        __PYX_ERR(0, 162, __pyx_L24_error)
       }
       __pyx_t_5 = __pyx_v_values_list; __Pyx_INCREF(__pyx_t_5); __pyx_t_7 = 0;
       for (;;) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 161, __pyx_L24_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_8); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 162, __pyx_L24_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L24_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
         __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_value, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_aggfunc, __pyx_8genexpr2__pyx_v_value); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L24_error)
+        __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_v_aggfunc, __pyx_8genexpr2__pyx_v_value); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(__pyx_v_process, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 161, __pyx_L24_error)
+        __pyx_t_9 = __pyx_pf_9fastpivot_5pivot_22process_values_aggfunc_process(__pyx_v_process, __pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 162, __pyx_L24_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_8genexpr2__pyx_v_value, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 161, __pyx_L24_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_4, (PyObject*)__pyx_8genexpr2__pyx_v_value, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 162, __pyx_L24_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4902,7 +4905,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __pyx_v_aggfunc_dict = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "fastpivot/pivot.pyx":154
+    /* "fastpivot/pivot.pyx":155
  *     elif isinstance(aggfunc, list):
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):             # <<<<<<<<<<<<<<
@@ -4912,59 +4915,59 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   }
   __pyx_L9:;
 
-  /* "fastpivot/pivot.pyx":164
+  /* "fastpivot/pivot.pyx":165
  * 
  *     # construct most general key
  *     keys = []             # <<<<<<<<<<<<<<
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_keys = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "fastpivot/pivot.pyx":165
+  /* "fastpivot/pivot.pyx":166
  *     # construct most general key
  *     keys = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
  *         for agg in aggfunc_dict[value]:
  *             keys.append((value, agg))
  */
-  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 165, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 166, __pyx_L1_error) }
   if (unlikely(__pyx_v_values_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 165, __pyx_L1_error)
+    __PYX_ERR(0, 166, __pyx_L1_error)
   }
   __pyx_t_4 = __pyx_v_values_list; __Pyx_INCREF(__pyx_t_4); __pyx_t_7 = 0;
   for (;;) {
     if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_4)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_5 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_5 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
     #else
-    __pyx_t_5 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "fastpivot/pivot.pyx":166
+    /* "fastpivot/pivot.pyx":167
  *     keys = []
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:             # <<<<<<<<<<<<<<
  *             keys.append((value, agg))
  *     # if we don't need most general key, reduce layers of multicolumn
  */
-    if (unlikely(!__pyx_v_aggfunc_dict)) { __Pyx_RaiseUnboundLocalError("aggfunc_dict"); __PYX_ERR(0, 166, __pyx_L1_error) }
-    __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_aggfunc_dict, __pyx_v_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+    if (unlikely(!__pyx_v_aggfunc_dict)) { __Pyx_RaiseUnboundLocalError("aggfunc_dict"); __PYX_ERR(0, 167, __pyx_L1_error) }
+    __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_aggfunc_dict, __pyx_v_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
       __pyx_t_9 = __pyx_t_5; __Pyx_INCREF(__pyx_t_9); __pyx_t_10 = 0;
       __pyx_t_11 = NULL;
     } else {
-      __pyx_t_10 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_10 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 167, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 166, __pyx_L1_error)
+      __pyx_t_11 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 167, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     for (;;) {
@@ -4972,17 +4975,17 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
         if (likely(PyList_CheckExact(__pyx_t_9))) {
           if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_10); __Pyx_INCREF(__pyx_t_5); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_10); __Pyx_INCREF(__pyx_t_5); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           if (__pyx_t_10 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_10); __Pyx_INCREF(__pyx_t_5); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_10); __Pyx_INCREF(__pyx_t_5); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -4992,7 +4995,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 166, __pyx_L1_error)
+            else __PYX_ERR(0, 167, __pyx_L1_error)
           }
           break;
         }
@@ -5001,14 +5004,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
       __Pyx_XDECREF_SET(__pyx_v_agg, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "fastpivot/pivot.pyx":167
+      /* "fastpivot/pivot.pyx":168
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:
  *             keys.append((value, agg))             # <<<<<<<<<<<<<<
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:
  */
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_v_value);
       __Pyx_GIVEREF(__pyx_v_value);
@@ -5016,10 +5019,10 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
       __Pyx_INCREF(__pyx_v_agg);
       __Pyx_GIVEREF(__pyx_v_agg);
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_v_agg);
-      __pyx_t_6 = __Pyx_PyObject_Append(__pyx_v_keys, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Append(__pyx_v_keys, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 168, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "fastpivot/pivot.pyx":166
+      /* "fastpivot/pivot.pyx":167
  *     keys = []
  *     for value in values_list:
  *         for agg in aggfunc_dict[value]:             # <<<<<<<<<<<<<<
@@ -5029,7 +5032,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "fastpivot/pivot.pyx":165
+    /* "fastpivot/pivot.pyx":166
  *     # construct most general key
  *     keys = []
  *     for value in values_list:             # <<<<<<<<<<<<<<
@@ -5039,18 +5042,18 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "fastpivot/pivot.pyx":169
+  /* "fastpivot/pivot.pyx":170
  *             keys.append((value, agg))
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:             # <<<<<<<<<<<<<<
  *         keys = None
  *     elif len(values_list) == 1:
  */
-  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
   __pyx_t_3 = ((__pyx_t_7 == 1) != 0);
   if (__pyx_t_3) {
 
-    /* "fastpivot/pivot.pyx":170
+    /* "fastpivot/pivot.pyx":171
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:
  *         keys = None             # <<<<<<<<<<<<<<
@@ -5060,7 +5063,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     __Pyx_INCREF(Py_None);
     __Pyx_DECREF_SET(__pyx_v_keys, Py_None);
 
-    /* "fastpivot/pivot.pyx":169
+    /* "fastpivot/pivot.pyx":170
  *             keys.append((value, agg))
  *     # if we don't need most general key, reduce layers of multicolumn
  *     if len(keys) == 1:             # <<<<<<<<<<<<<<
@@ -5070,44 +5073,44 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     goto __pyx_L32;
   }
 
-  /* "fastpivot/pivot.pyx":171
+  /* "fastpivot/pivot.pyx":172
  *     if len(keys) == 1:
  *         keys = None
  *     elif len(values_list) == 1:             # <<<<<<<<<<<<<<
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):
  */
-  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 171, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 172, __pyx_L1_error) }
   if (unlikely(__pyx_v_values_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 171, __pyx_L1_error)
+    __PYX_ERR(0, 172, __pyx_L1_error)
   }
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_values_list); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_values_list); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 172, __pyx_L1_error)
   __pyx_t_3 = ((__pyx_t_7 == 1) != 0);
   if (__pyx_t_3) {
 
-    /* "fastpivot/pivot.pyx":172
+    /* "fastpivot/pivot.pyx":173
  *         keys = None
  *     elif len(values_list) == 1:
  *         keys = aggfunc_dict[values_list[0]]             # <<<<<<<<<<<<<<
  *     elif len(keys) == len(values_list):
  *         keys = values_list
  */
-    if (unlikely(!__pyx_v_aggfunc_dict)) { __Pyx_RaiseUnboundLocalError("aggfunc_dict"); __PYX_ERR(0, 172, __pyx_L1_error) }
-    if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 172, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_aggfunc_dict)) { __Pyx_RaiseUnboundLocalError("aggfunc_dict"); __PYX_ERR(0, 173, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 173, __pyx_L1_error) }
     if (unlikely(__pyx_v_values_list == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 172, __pyx_L1_error)
+      __PYX_ERR(0, 173, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_values_list, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_values_list, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_aggfunc_dict, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 172, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_aggfunc_dict, __pyx_t_4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_keys, __pyx_t_9);
     __pyx_t_9 = 0;
 
-    /* "fastpivot/pivot.pyx":171
+    /* "fastpivot/pivot.pyx":172
  *     if len(keys) == 1:
  *         keys = None
  *     elif len(values_list) == 1:             # <<<<<<<<<<<<<<
@@ -5117,35 +5120,35 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
     goto __pyx_L32;
   }
 
-  /* "fastpivot/pivot.pyx":173
+  /* "fastpivot/pivot.pyx":174
  *     elif len(values_list) == 1:
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):             # <<<<<<<<<<<<<<
  *         keys = values_list
  * 
  */
-  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 173, __pyx_L1_error)
-  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 173, __pyx_L1_error) }
+  __pyx_t_7 = PyObject_Length(__pyx_v_keys); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 174, __pyx_L1_error)
+  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 174, __pyx_L1_error) }
   if (unlikely(__pyx_v_values_list == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 173, __pyx_L1_error)
+    __PYX_ERR(0, 174, __pyx_L1_error)
   }
-  __pyx_t_10 = PyList_GET_SIZE(__pyx_v_values_list); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_10 = PyList_GET_SIZE(__pyx_v_values_list); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 174, __pyx_L1_error)
   __pyx_t_3 = ((__pyx_t_7 == __pyx_t_10) != 0);
   if (__pyx_t_3) {
 
-    /* "fastpivot/pivot.pyx":174
+    /* "fastpivot/pivot.pyx":175
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):
  *         keys = values_list             # <<<<<<<<<<<<<<
  * 
  *     return values_list, aggfunc_dict, keys
  */
-    if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 174, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 175, __pyx_L1_error) }
     __Pyx_INCREF(__pyx_v_values_list);
     __Pyx_DECREF_SET(__pyx_v_keys, __pyx_v_values_list);
 
-    /* "fastpivot/pivot.pyx":173
+    /* "fastpivot/pivot.pyx":174
  *     elif len(values_list) == 1:
  *         keys = aggfunc_dict[values_list[0]]
  *     elif len(keys) == len(values_list):             # <<<<<<<<<<<<<<
@@ -5155,7 +5158,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   }
   __pyx_L32:;
 
-  /* "fastpivot/pivot.pyx":176
+  /* "fastpivot/pivot.pyx":177
  *         keys = values_list
  * 
  *     return values_list, aggfunc_dict, keys             # <<<<<<<<<<<<<<
@@ -5163,9 +5166,9 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 176, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_aggfunc_dict)) { __Pyx_RaiseUnboundLocalError("aggfunc_dict"); __PYX_ERR(0, 176, __pyx_L1_error) }
-  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (unlikely(!__pyx_v_values_list)) { __Pyx_RaiseUnboundLocalError("values_list"); __PYX_ERR(0, 177, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_aggfunc_dict)) { __Pyx_RaiseUnboundLocalError("aggfunc_dict"); __PYX_ERR(0, 177, __pyx_L1_error) }
+  __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_v_values_list);
   __Pyx_GIVEREF(__pyx_v_values_list);
@@ -5180,7 +5183,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":134
+  /* "fastpivot/pivot.pyx":135
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
@@ -5211,7 +5214,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_2process_values_aggfunc(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":178
+/* "fastpivot/pivot.pyx":179
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
@@ -5278,59 +5281,59 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_compute_table(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fill_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 1); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 1); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dropna)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 2); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 2); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_index)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 3); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 3); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_columns)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 4); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 4); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 5); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 5); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_col_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 6); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 6); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_values_series)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 7); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 7); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx_arr_unique)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 8); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 8); __PYX_ERR(0, 179, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_col_arr_unique)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 9); __PYX_ERR(0, 178, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, 9); __PYX_ERR(0, 179, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_compute_table") < 0)) __PYX_ERR(0, 178, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_compute_table") < 0)) __PYX_ERR(0, 179, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 10) {
       goto __pyx_L5_argtuple_error;
@@ -5359,7 +5362,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_5pivot_compute_table(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 178, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pivot_compute_table", 1, 10, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 179, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastpivot.pivot.pivot_compute_table", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5389,44 +5392,44 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_compute_table", 0);
 
-  /* "fastpivot/pivot.pyx":180
+  /* "fastpivot/pivot.pyx":181
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):
  * 
  *     n_idx = idx_arr_unique.shape[0]             # <<<<<<<<<<<<<<
  *     n_col = col_arr_unique.shape[0]
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_idx_arr_unique, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_idx_arr_unique, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_n_idx = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "fastpivot/pivot.pyx":181
+  /* "fastpivot/pivot.pyx":182
  * 
  *     n_idx = idx_arr_unique.shape[0]
  *     n_col = col_arr_unique.shape[0]             # <<<<<<<<<<<<<<
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_col_arr_unique, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_col_arr_unique, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_n_col = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":182
+  /* "fastpivot/pivot.pyx":183
  *     n_idx = idx_arr_unique.shape[0]
  *     n_col = col_arr_unique.shape[0]
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)             # <<<<<<<<<<<<<<
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pivot_compute_agg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pivot_compute_agg); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5443,7 +5446,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_3, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 7+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 7+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -5451,13 +5454,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[8] = {__pyx_t_3, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 7+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 7+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(7+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(7+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5483,7 +5486,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
     __Pyx_INCREF(__pyx_v_n_col);
     __Pyx_GIVEREF(__pyx_v_n_col);
     PyTuple_SET_ITEM(__pyx_t_5, 6+__pyx_t_4, __pyx_v_n_col);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -5491,28 +5494,28 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   __pyx_v_pivot_arr = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":183
+  /* "fastpivot/pivot.pyx":184
  *     n_col = col_arr_unique.shape[0]
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)             # <<<<<<<<<<<<<<
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df.index.rename(index, inplace=True)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_pd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_DataFrame); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_pivot_arr);
   __Pyx_GIVEREF(__pyx_v_pivot_arr);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_pivot_arr);
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_index, __pyx_v_idx_arr_unique) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_columns, __pyx_v_col_arr_unique) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_index, __pyx_v_idx_arr_unique) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_columns, __pyx_v_col_arr_unique) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5520,14 +5523,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   __pyx_v_pivot_df = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "fastpivot/pivot.pyx":184
+  /* "fastpivot/pivot.pyx":185
  *     pivot_arr = pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)             # <<<<<<<<<<<<<<
  *     pivot_df.index.rename(index, inplace=True)
  *     pivot_df.columns.rename(columns, inplace=True)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pivot_drop_fill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_pivot_drop_fill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_1 = NULL;
   __pyx_t_4 = 0;
@@ -5544,7 +5547,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[10] = {__pyx_t_1, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_pivot_df, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_4, 9+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_4, 9+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
@@ -5552,13 +5555,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[10] = {__pyx_t_1, __pyx_v_aggfunc, __pyx_v_fill_value, __pyx_v_dropna, __pyx_v_pivot_df, __pyx_v_idx_arr, __pyx_v_col_arr, __pyx_v_values_series, __pyx_v_n_idx, __pyx_v_n_col};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_4, 9+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_4, 9+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(9+__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(9+__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_1) {
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -5590,7 +5593,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
     __Pyx_INCREF(__pyx_v_n_col);
     __Pyx_GIVEREF(__pyx_v_n_col);
     PyTuple_SET_ITEM(__pyx_t_2, 8+__pyx_t_4, __pyx_v_n_col);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -5598,61 +5601,61 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "fastpivot/pivot.pyx":185
+  /* "fastpivot/pivot.pyx":186
  *     pivot_df = pd.DataFrame(pivot_arr, index=idx_arr_unique, columns=col_arr_unique)
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df.index.rename(index, inplace=True)             # <<<<<<<<<<<<<<
  *     pivot_df.columns.rename(columns, inplace=True)
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rename); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_index);
   __Pyx_GIVEREF(__pyx_v_index);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_index);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_inplace, Py_True) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_inplace, Py_True) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":186
+  /* "fastpivot/pivot.pyx":187
  *     pivot_df = pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col)
  *     pivot_df.index.rename(index, inplace=True)
  *     pivot_df.columns.rename(columns, inplace=True)             # <<<<<<<<<<<<<<
  * 
  *     return pivot_df
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_columns); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_columns); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rename); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_columns);
   __Pyx_GIVEREF(__pyx_v_columns);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_columns);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_inplace, Py_True) < 0) __PYX_ERR(0, 186, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_inplace, Py_True) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":188
+  /* "fastpivot/pivot.pyx":189
  *     pivot_df.columns.rename(columns, inplace=True)
  * 
  *     return pivot_df             # <<<<<<<<<<<<<<
@@ -5664,7 +5667,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   __pyx_r = __pyx_v_pivot_df;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":178
+  /* "fastpivot/pivot.pyx":179
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
@@ -5690,7 +5693,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_4pivot_compute_table(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":190
+/* "fastpivot/pivot.pyx":191
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -5748,41 +5751,41 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_7pivot_compute_agg(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fill_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 1); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 1); __PYX_ERR(0, 191, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 2); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 2); __PYX_ERR(0, 191, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_col_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 3); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 3); __PYX_ERR(0, 191, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_values_series)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 4); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 4); __PYX_ERR(0, 191, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 5); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 5); __PYX_ERR(0, 191, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n_col)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 6); __PYX_ERR(0, 190, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, 6); __PYX_ERR(0, 191, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_compute_agg") < 0)) __PYX_ERR(0, 190, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_compute_agg") < 0)) __PYX_ERR(0, 191, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 7) {
       goto __pyx_L5_argtuple_error;
@@ -5805,7 +5808,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_7pivot_compute_agg(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 190, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pivot_compute_agg", 1, 7, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 191, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastpivot.pivot.pivot_compute_agg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5849,53 +5852,53 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   __Pyx_RefNannySetupContext("pivot_compute_agg", 0);
   __Pyx_INCREF(__pyx_v_values_series);
 
-  /* "fastpivot/pivot.pyx":198
+  /* "fastpivot/pivot.pyx":199
  * 
  *     # handle types
  *     values_dtype = values_series.dtype             # <<<<<<<<<<<<<<
  *     if values_dtype == np.float64 or values_dtype == np.int64:
  *         numeric = True
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_dtype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_dtype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_values_dtype = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":199
+  /* "fastpivot/pivot.pyx":200
  *     # handle types
  *     values_dtype = values_series.dtype
  *     if values_dtype == np.float64 or values_dtype == np.int64:             # <<<<<<<<<<<<<<
  *         numeric = True
  *         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_values_dtype, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_values_dtype, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!__pyx_t_4) {
   } else {
     __pyx_t_2 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_values_dtype, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_values_dtype, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_2 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":200
+    /* "fastpivot/pivot.pyx":201
  *     values_dtype = values_series.dtype
  *     if values_dtype == np.float64 or values_dtype == np.int64:
  *         numeric = True             # <<<<<<<<<<<<<<
@@ -5904,7 +5907,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
  */
     __pyx_v_numeric = 1;
 
-    /* "fastpivot/pivot.pyx":201
+    /* "fastpivot/pivot.pyx":202
  *     if values_dtype == np.float64 or values_dtype == np.int64:
  *         numeric = True
  *         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']             # <<<<<<<<<<<<<<
@@ -5915,71 +5918,71 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     if (unlikely(!Py_OptimizeFlag)) {
       __Pyx_INCREF(__pyx_v_aggfunc);
       __pyx_t_1 = __pyx_v_aggfunc;
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L6_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 202, __pyx_L1_error)
       __pyx_t_2 = __pyx_t_4;
       __pyx_L6_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (unlikely(!(__pyx_t_2 != 0))) {
         PyErr_SetNone(PyExc_AssertionError);
-        __PYX_ERR(0, 201, __pyx_L1_error)
+        __PYX_ERR(0, 202, __pyx_L1_error)
       }
     }
     #endif
 
-    /* "fastpivot/pivot.pyx":202
+    /* "fastpivot/pivot.pyx":203
  *         numeric = True
  *         assert aggfunc in ['sum', 'mean', 'std', 'max', 'min', 'count', 'median', 'nunique']
  *         values_series = values_series.astype(np.float64)             # <<<<<<<<<<<<<<
  *     else:
  *         numeric = False
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_astype); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_astype); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -5995,13 +5998,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_values_series, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "fastpivot/pivot.pyx":199
+    /* "fastpivot/pivot.pyx":200
  *     # handle types
  *     values_dtype = values_series.dtype
  *     if values_dtype == np.float64 or values_dtype == np.int64:             # <<<<<<<<<<<<<<
@@ -6011,7 +6014,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     goto __pyx_L3;
   }
 
-  /* "fastpivot/pivot.pyx":204
+  /* "fastpivot/pivot.pyx":205
  *         values_series = values_series.astype(np.float64)
  *     else:
  *         numeric = False             # <<<<<<<<<<<<<<
@@ -6021,7 +6024,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   /*else*/ {
     __pyx_v_numeric = 0;
 
-    /* "fastpivot/pivot.pyx":205
+    /* "fastpivot/pivot.pyx":206
  *     else:
  *         numeric = False
  *         assert aggfunc in ['count', 'nunique']             # <<<<<<<<<<<<<<
@@ -6032,26 +6035,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     if (unlikely(!Py_OptimizeFlag)) {
       __Pyx_INCREF(__pyx_v_aggfunc);
       __pyx_t_1 = __pyx_v_aggfunc;
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
       if (!__pyx_t_4) {
       } else {
         __pyx_t_2 = __pyx_t_4;
         goto __pyx_L14_bool_binop_done;
       }
-      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+      __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
       __pyx_t_2 = __pyx_t_4;
       __pyx_L14_bool_binop_done:;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (unlikely(!(__pyx_t_2 != 0))) {
         PyErr_SetNone(PyExc_AssertionError);
-        __PYX_ERR(0, 205, __pyx_L1_error)
+        __PYX_ERR(0, 206, __pyx_L1_error)
       }
     }
     #endif
   }
   __pyx_L3:;
 
-  /* "fastpivot/pivot.pyx":209
+  /* "fastpivot/pivot.pyx":210
  * 
  *     # pivot and aggregate
  *     if numeric:             # <<<<<<<<<<<<<<
@@ -6061,26 +6064,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   __pyx_t_2 = (__pyx_v_numeric != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":210
+    /* "fastpivot/pivot.pyx":211
  *     # pivot and aggregate
  *     if numeric:
  *         if aggfunc == 'sum':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 210, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 211, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":211
+      /* "fastpivot/pivot.pyx":212
  *     if numeric:
  *         if aggfunc == 'sum':
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  */
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 211, __pyx_L1_error)
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 211, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6094,18 +6097,18 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 212, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6115,7 +6118,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6123,7 +6126,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":210
+      /* "fastpivot/pivot.pyx":211
  *     # pivot and aggregate
  *     if numeric:
  *         if aggfunc == 'sum':             # <<<<<<<<<<<<<<
@@ -6133,26 +6136,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":212
+    /* "fastpivot/pivot.pyx":213
  *         if aggfunc == 'sum':
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 212, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 213, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":213
+      /* "fastpivot/pivot.pyx":214
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  */
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6166,14 +6169,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 214, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6183,7 +6186,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6191,7 +6194,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":212
+      /* "fastpivot/pivot.pyx":213
  *         if aggfunc == 'sum':
  *             pivot_arr = pivot_cython_sum(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, fill_value == 0)
  *         elif aggfunc == 'mean':             # <<<<<<<<<<<<<<
@@ -6201,26 +6204,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":214
+    /* "fastpivot/pivot.pyx":215
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 215, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":215
+      /* "fastpivot/pivot.pyx":216
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  */
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 216, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 216, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6234,14 +6237,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_std(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 215, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 216, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 216, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_std(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 216, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6251,7 +6254,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6259,7 +6262,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":214
+      /* "fastpivot/pivot.pyx":215
  *         elif aggfunc == 'mean':
  *             pivot_arr = pivot_cython_mean(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'std':             # <<<<<<<<<<<<<<
@@ -6269,26 +6272,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":216
+    /* "fastpivot/pivot.pyx":217
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 216, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 217, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":217
+      /* "fastpivot/pivot.pyx":218
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  */
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 217, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6302,14 +6305,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_max(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 217, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_max(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 218, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6319,7 +6322,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6327,7 +6330,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":216
+      /* "fastpivot/pivot.pyx":217
  *         elif aggfunc == 'std':
  *             pivot_arr = pivot_cython_std(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'max':             # <<<<<<<<<<<<<<
@@ -6337,26 +6340,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":218
+    /* "fastpivot/pivot.pyx":219
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 219, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":219
+      /* "fastpivot/pivot.pyx":220
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()
  */
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 219, __pyx_L1_error)
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 219, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 220, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 220, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 220, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6370,14 +6373,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 220, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 219, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 219, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_min(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 220, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_min(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 220, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6387,7 +6390,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6395,7 +6398,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":218
+      /* "fastpivot/pivot.pyx":219
  *         elif aggfunc == 'max':
  *             pivot_arr = pivot_cython_max(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'min':             # <<<<<<<<<<<<<<
@@ -6405,24 +6408,24 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":220
+    /* "fastpivot/pivot.pyx":221
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':             # <<<<<<<<<<<<<<
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 221, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":221
+      /* "fastpivot/pivot.pyx":222
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_5 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -6436,10 +6439,10 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 221, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 221, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -6454,29 +6457,29 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 221, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_nans_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":222
+      /* "fastpivot/pivot.pyx":223
  *         elif aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'median':
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
  */
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_bool(__pyx_v_nans_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_bool(__pyx_v_nans_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 223, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 223, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_count(__pyx_t_8, __pyx_t_7, __pyx_t_11, __pyx_t_10, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_count(__pyx_t_8, __pyx_t_7, __pyx_t_11, __pyx_t_10, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 223, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6486,7 +6489,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
       __pyx_t_14.memview = NULL;
       __pyx_t_14.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6494,7 +6497,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":220
+      /* "fastpivot/pivot.pyx":221
  *         elif aggfunc == 'min':
  *             pivot_arr = pivot_cython_min(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col)
  *         elif aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6504,26 +6507,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":223
+    /* "fastpivot/pivot.pyx":224
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':             # <<<<<<<<<<<<<<
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
  *         elif aggfunc == 'nunique':
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 224, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":224
+      /* "fastpivot/pivot.pyx":225
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)             # <<<<<<<<<<<<<<
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'nunique':
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  */
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 224, __pyx_L1_error)
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 224, __pyx_L1_error)
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -6537,14 +6540,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_f_9fastpivot_5pivot_median_cython); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__pyx_t_7, __pyx_t_8, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_f_9fastpivot_5pivot_median_cython_sort); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 225, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6554,7 +6557,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6562,36 +6565,36 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":223
+      /* "fastpivot/pivot.pyx":224
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'median':             # <<<<<<<<<<<<<<
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
  *         elif aggfunc == 'nunique':
  */
       goto __pyx_L17;
     }
 
-    /* "fastpivot/pivot.pyx":225
+    /* "fastpivot/pivot.pyx":226
  *         elif aggfunc == 'median':
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  *     else:
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 226, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":226
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+      /* "fastpivot/pivot.pyx":227
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
  *         elif aggfunc == 'nunique':
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)             # <<<<<<<<<<<<<<
  *     else:
  *         if aggfunc == 'count':
  */
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 226, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 226, __pyx_L1_error)
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -6605,18 +6608,18 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_9fastpivot_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_9fastpivot_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 227, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6626,7 +6629,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6634,9 +6637,9 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":225
+      /* "fastpivot/pivot.pyx":226
  *         elif aggfunc == 'median':
- *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython)
+ *             pivot_arr = pivot_cython_agg(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, median_cython_sort)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  *     else:
@@ -6644,7 +6647,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     }
     __pyx_L17:;
 
-    /* "fastpivot/pivot.pyx":209
+    /* "fastpivot/pivot.pyx":210
  * 
  *     # pivot and aggregate
  *     if numeric:             # <<<<<<<<<<<<<<
@@ -6654,7 +6657,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
     goto __pyx_L16;
   }
 
-  /* "fastpivot/pivot.pyx":228
+  /* "fastpivot/pivot.pyx":229
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  *     else:
  *         if aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6662,17 +6665,17 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  */
   /*else*/ {
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 228, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 229, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":229
+      /* "fastpivot/pivot.pyx":230
  *     else:
  *         if aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_5 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6686,10 +6689,10 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_6 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 229, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -6704,29 +6707,29 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_nans_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":230
+      /* "fastpivot/pivot.pyx":231
  *         if aggfunc == 'count':
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)             # <<<<<<<<<<<<<<
  *         elif aggfunc == 'nunique':
  *             nans_arr = values_series.isna().to_numpy()
  */
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_bool(__pyx_v_nans_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 230, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 231, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 231, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_bool(__pyx_v_nans_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 231, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_count(__pyx_t_7, __pyx_t_8, __pyx_t_10, __pyx_t_11, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 230, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_count(__pyx_t_7, __pyx_t_8, __pyx_t_10, __pyx_t_11, __pyx_t_14, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 231, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
       __pyx_t_7.memview = NULL;
       __pyx_t_7.data = NULL;
@@ -6736,7 +6739,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
       __pyx_t_14.memview = NULL;
       __pyx_t_14.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6744,7 +6747,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":228
+      /* "fastpivot/pivot.pyx":229
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_series.to_numpy(), n_idx, n_col, nunique_cython, fill_value == 0)
  *     else:
  *         if aggfunc == 'count':             # <<<<<<<<<<<<<<
@@ -6754,24 +6757,24 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       goto __pyx_L18;
     }
 
-    /* "fastpivot/pivot.pyx":231
+    /* "fastpivot/pivot.pyx":232
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
  *             nans_arr = values_series.isna().to_numpy()
  *             values_arr, _ = values_series.factorize(na_sentinel=None)
  */
-    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 232, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":232
+      /* "fastpivot/pivot.pyx":233
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':
  *             nans_arr = values_series.isna().to_numpy()             # <<<<<<<<<<<<<<
  *             values_arr, _ = values_series.factorize(na_sentinel=None)
  *             values_arr = values_arr.astype(np.float64)
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 232, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_5 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -6785,10 +6788,10 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 232, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_3 = NULL;
@@ -6803,25 +6806,25 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       }
       __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_v_nans_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":233
+      /* "fastpivot/pivot.pyx":234
  *         elif aggfunc == 'nunique':
  *             nans_arr = values_series.isna().to_numpy()
  *             values_arr, _ = values_series.factorize(na_sentinel=None)             # <<<<<<<<<<<<<<
  *             values_arr = values_arr.astype(np.float64)
  *             values_arr[nans_arr] = np.nan
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_factorize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_factorize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 233, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_na_sentinel, Py_None) < 0) __PYX_ERR(0, 234, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -6831,7 +6834,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 233, __pyx_L1_error)
+          __PYX_ERR(0, 234, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -6844,15 +6847,15 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
         __Pyx_INCREF(__pyx_t_6);
         __Pyx_INCREF(__pyx_t_1);
         #else
-        __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
+        __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_5 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
+        __pyx_t_5 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_15 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -6860,7 +6863,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
         __Pyx_GOTREF(__pyx_t_6);
         index = 1; __pyx_t_1 = __pyx_t_15(__pyx_t_5); if (unlikely(!__pyx_t_1)) goto __pyx_L19_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_1);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_5), 2) < 0) __PYX_ERR(0, 233, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_5), 2) < 0) __PYX_ERR(0, 234, __pyx_L1_error)
         __pyx_t_15 = NULL;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         goto __pyx_L20_unpacking_done;
@@ -6868,7 +6871,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_t_15 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 233, __pyx_L1_error)
+        __PYX_ERR(0, 234, __pyx_L1_error)
         __pyx_L20_unpacking_done:;
       }
       __pyx_v_values_arr = __pyx_t_6;
@@ -6876,18 +6879,18 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v__ = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":234
+      /* "fastpivot/pivot.pyx":235
  *             nans_arr = values_series.isna().to_numpy()
  *             values_arr, _ = values_series.factorize(na_sentinel=None)
  *             values_arr = values_arr.astype(np.float64)             # <<<<<<<<<<<<<<
  *             values_arr[nans_arr] = np.nan
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_arr, __pyx_n_s_astype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_arr, __pyx_n_s_astype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 234, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 235, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -6903,44 +6906,44 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_values_arr, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "fastpivot/pivot.pyx":235
+      /* "fastpivot/pivot.pyx":236
  *             values_arr, _ = values_series.factorize(na_sentinel=None)
  *             values_arr = values_arr.astype(np.float64)
  *             values_arr[nans_arr] = np.nan             # <<<<<<<<<<<<<<
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
  *     arr = np.array(pivot_arr)
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 236, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_values_arr, __pyx_v_nans_arr, __pyx_t_1) < 0)) __PYX_ERR(0, 235, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_values_arr, __pyx_v_nans_arr, __pyx_t_1) < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":236
+      /* "fastpivot/pivot.pyx":237
  *             values_arr = values_arr.astype(np.float64)
  *             values_arr[nans_arr] = np.nan
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)             # <<<<<<<<<<<<<<
  *     arr = np.array(pivot_arr)
  * 
  */
-      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 236, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 236, __pyx_L1_error)
-      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_values_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 236, __pyx_L1_error)
-      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_idx_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_ds_long(__pyx_v_col_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_ds_double(__pyx_v_values_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_n_idx); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_As_int(__pyx_v_n_col); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_12 == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_9fastpivot_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 236, __pyx_L1_error)
+      __pyx_t_13 = __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__pyx_t_8, __pyx_t_7, __pyx_t_9, __pyx_t_11, __pyx_t_10, __pyx_f_9fastpivot_5pivot_nunique_cython, __pyx_t_12); if (unlikely(!__pyx_t_13.memview)) __PYX_ERR(0, 237, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_8, 1);
       __pyx_t_8.memview = NULL;
       __pyx_t_8.data = NULL;
@@ -6950,7 +6953,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __PYX_XDEC_MEMVIEW(&__pyx_t_9, 1);
       __pyx_t_9.memview = NULL;
       __pyx_t_9.data = NULL;
-      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
+      __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_13, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __PYX_XDEC_MEMVIEW(&__pyx_t_13, 1);
       __pyx_t_13.memview = NULL;
@@ -6958,7 +6961,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
       __pyx_v_pivot_arr = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":231
+      /* "fastpivot/pivot.pyx":232
  *             nans_arr = values_series.isna().to_numpy()
  *             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
  *         elif aggfunc == 'nunique':             # <<<<<<<<<<<<<<
@@ -6970,19 +6973,19 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   }
   __pyx_L16:;
 
-  /* "fastpivot/pivot.pyx":237
+  /* "fastpivot/pivot.pyx":238
  *             values_arr[nans_arr] = np.nan
  *             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
  *     arr = np.array(pivot_arr)             # <<<<<<<<<<<<<<
  * 
  *     return arr
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_v_pivot_arr)) { __Pyx_RaiseUnboundLocalError("pivot_arr"); __PYX_ERR(0, 237, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_pivot_arr)) { __Pyx_RaiseUnboundLocalError("pivot_arr"); __PYX_ERR(0, 238, __pyx_L1_error) }
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
     __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_5);
@@ -6995,13 +6998,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_3, __pyx_v_pivot_arr) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_pivot_arr);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_arr = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":239
+  /* "fastpivot/pivot.pyx":240
  *     arr = np.array(pivot_arr)
  * 
  *     return arr             # <<<<<<<<<<<<<<
@@ -7013,7 +7016,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   __pyx_r = __pyx_v_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":190
+  /* "fastpivot/pivot.pyx":191
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -7047,7 +7050,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_6pivot_compute_agg(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":241
+/* "fastpivot/pivot.pyx":242
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -7111,53 +7114,53 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_9pivot_drop_fill(PyObject *__pyx_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fill_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 1); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 1); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dropna)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 2); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 2); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pivot_df)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 3); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 3); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 4); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 4); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_col_arr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 5); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 5); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_values_series)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 6); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 6); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 7); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 7); __PYX_ERR(0, 242, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_n_col)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 8); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, 8); __PYX_ERR(0, 242, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_drop_fill") < 0)) __PYX_ERR(0, 241, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pivot_drop_fill") < 0)) __PYX_ERR(0, 242, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 9) {
       goto __pyx_L5_argtuple_error;
@@ -7184,7 +7187,7 @@ static PyObject *__pyx_pw_9fastpivot_5pivot_9pivot_drop_fill(PyObject *__pyx_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 241, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pivot_drop_fill", 1, 9, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 242, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("fastpivot.pivot.pivot_drop_fill", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7214,7 +7217,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
   __Pyx_RefNannySetupContext("pivot_drop_fill", 0);
   __Pyx_INCREF(__pyx_v_pivot_df);
 
-  /* "fastpivot/pivot.pyx":242
+  /* "fastpivot/pivot.pyx":243
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
  *     if aggfunc in ['sum', 'count', 'nunique']:             # <<<<<<<<<<<<<<
@@ -7223,26 +7226,26 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
   __Pyx_INCREF(__pyx_v_aggfunc);
   __pyx_t_1 = __pyx_v_aggfunc;
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_sum, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_count, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_nunique, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "fastpivot/pivot.pyx":245
+    /* "fastpivot/pivot.pyx":246
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  *         # if fill_value == 0, NaNs have already been filled by pivot_compute_agg
  *         if fill_value is not None and fill_value is not np.nan and fill_value != 0:             # <<<<<<<<<<<<<<
@@ -7256,9 +7259,9 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       __pyx_t_3 = __pyx_t_4;
       goto __pyx_L8_bool_binop_done;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_4 = (__pyx_v_fill_value != __pyx_t_5);
@@ -7269,22 +7272,22 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       __pyx_t_3 = __pyx_t_2;
       goto __pyx_L8_bool_binop_done;
     }
-    __pyx_t_5 = __Pyx_PyInt_NeObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_NeObjC(__pyx_v_fill_value, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_3 = __pyx_t_2;
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_3) {
 
-      /* "fastpivot/pivot.pyx":247
+      /* "fastpivot/pivot.pyx":248
  *         if fill_value is not None and fill_value is not np.nan and fill_value != 0:
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.fillna(fill_value)             # <<<<<<<<<<<<<<
  *             #print('fillna', time.perf_counter() - tick)
  *     elif aggfunc in ['mean', 'max', 'min', 'median']:
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_fillna); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_fillna); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -7298,13 +7301,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       }
       __pyx_t_5 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_6, __pyx_v_fill_value) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_fill_value);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 247, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "fastpivot/pivot.pyx":245
+      /* "fastpivot/pivot.pyx":246
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  *         # if fill_value == 0, NaNs have already been filled by pivot_compute_agg
  *         if fill_value is not None and fill_value is not np.nan and fill_value != 0:             # <<<<<<<<<<<<<<
@@ -7313,7 +7316,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "fastpivot/pivot.pyx":242
+    /* "fastpivot/pivot.pyx":243
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):
  *     if aggfunc in ['sum', 'count', 'nunique']:             # <<<<<<<<<<<<<<
@@ -7323,7 +7326,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "fastpivot/pivot.pyx":249
+  /* "fastpivot/pivot.pyx":250
  *             pivot_df = pivot_df.fillna(fill_value)
  *             #print('fillna', time.perf_counter() - tick)
  *     elif aggfunc in ['mean', 'max', 'min', 'median']:             # <<<<<<<<<<<<<<
@@ -7332,45 +7335,45 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
   __Pyx_INCREF(__pyx_v_aggfunc);
   __pyx_t_5 = __pyx_v_aggfunc;
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_mean, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_max, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_min, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_median, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
   __pyx_L11_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":252
+    /* "fastpivot/pivot.pyx":253
  *         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
  *         # must check dropping in this case
  *         if dropna and values_series.isna().to_numpy().any(): # TODO speedup             # <<<<<<<<<<<<<<
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')
  */
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_dropna); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_dropna); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
     if (__pyx_t_3) {
     } else {
       __pyx_t_2 = __pyx_t_3;
       goto __pyx_L16_bool_binop_done;
     }
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_values_series, __pyx_n_s_isna); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -7384,10 +7387,10 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     }
     __pyx_t_6 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_to_numpy); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
@@ -7402,10 +7405,10 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     }
     __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_any); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -7420,56 +7423,56 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     }
     __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 252, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_2 = __pyx_t_3;
     __pyx_L16_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":254
+      /* "fastpivot/pivot.pyx":255
  *         if dropna and values_series.isna().to_numpy().any(): # TODO speedup
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')             # <<<<<<<<<<<<<<
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 255, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 254, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 254, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":255
+      /* "fastpivot/pivot.pyx":256
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')
  *             pivot_df = pivot_df.dropna(axis=1, how='all')             # <<<<<<<<<<<<<<
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 255, __pyx_L1_error)
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 255, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "fastpivot/pivot.pyx":252
+      /* "fastpivot/pivot.pyx":253
  *         # these functions can have nans if (idx, col) doesn't exist or if (idx, col) has only NaNs.
  *         # must check dropping in this case
  *         if dropna and values_series.isna().to_numpy().any(): # TODO speedup             # <<<<<<<<<<<<<<
@@ -7478,7 +7481,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "fastpivot/pivot.pyx":257
+    /* "fastpivot/pivot.pyx":258
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7492,9 +7495,9 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       __pyx_t_2 = __pyx_t_4;
       goto __pyx_L19_bool_binop_done;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nan); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nan); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 258, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_4 = (__pyx_v_fill_value != __pyx_t_7);
@@ -7504,14 +7507,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     __pyx_L19_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":259
+      /* "fastpivot/pivot.pyx":260
  *         if fill_value is not None and fill_value is not np.nan:
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.fillna(fill_value)             # <<<<<<<<<<<<<<
  *             #print('fillna', time.perf_counter() - tick)
  *     elif aggfunc == 'std':
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_fillna); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_fillna); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -7525,13 +7528,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       }
       __pyx_t_7 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_1, __pyx_v_fill_value) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_fill_value);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 259, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "fastpivot/pivot.pyx":257
+      /* "fastpivot/pivot.pyx":258
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7540,7 +7543,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "fastpivot/pivot.pyx":249
+    /* "fastpivot/pivot.pyx":250
  *             pivot_df = pivot_df.fillna(fill_value)
  *             #print('fillna', time.perf_counter() - tick)
  *     elif aggfunc in ['mean', 'max', 'min', 'median']:             # <<<<<<<<<<<<<<
@@ -7550,67 +7553,67 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "fastpivot/pivot.pyx":261
+  /* "fastpivot/pivot.pyx":262
  *             pivot_df = pivot_df.fillna(fill_value)
  *             #print('fillna', time.perf_counter() - tick)
  *     elif aggfunc == 'std':             # <<<<<<<<<<<<<<
  *         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
  *         # must check dropping in this case
  */
-  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyString_Equals(__pyx_v_aggfunc, __pyx_n_s_std, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "fastpivot/pivot.pyx":264
+    /* "fastpivot/pivot.pyx":265
  *         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
  *         # must check dropping in this case
  *         if dropna: # TODO speedup             # <<<<<<<<<<<<<<
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')
  */
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_dropna); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":266
+      /* "fastpivot/pivot.pyx":267
  *         if dropna: # TODO speedup
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')             # <<<<<<<<<<<<<<
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 266, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "fastpivot/pivot.pyx":267
+      /* "fastpivot/pivot.pyx":268
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.dropna(axis=0, how='all')
  *             pivot_df = pivot_df.dropna(axis=1, how='all')             # <<<<<<<<<<<<<<
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_dropna); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 268, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 268, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_how, __pyx_n_s_all) < 0) __PYX_ERR(0, 268, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_5); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 268, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "fastpivot/pivot.pyx":264
+      /* "fastpivot/pivot.pyx":265
  *         # this function can have nans if (idx, col) doesn't exist or if (idx, col) has only 0 or 1 non NaN value.
  *         # must check dropping in this case
  *         if dropna: # TODO speedup             # <<<<<<<<<<<<<<
@@ -7619,7 +7622,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "fastpivot/pivot.pyx":269
+    /* "fastpivot/pivot.pyx":270
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7633,9 +7636,9 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       __pyx_t_2 = __pyx_t_4;
       goto __pyx_L23_bool_binop_done;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 270, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_nan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_nan); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_4 = (__pyx_v_fill_value != __pyx_t_5);
@@ -7645,14 +7648,14 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
     __pyx_L23_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "fastpivot/pivot.pyx":271
+      /* "fastpivot/pivot.pyx":272
  *         if fill_value is not None and fill_value is not np.nan:
  *             #tick = time.perf_counter()
  *             pivot_df = pivot_df.fillna(fill_value)             # <<<<<<<<<<<<<<
  *             #print('fillna', time.perf_counter() - tick)
  * 
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_fillna); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_pivot_df, __pyx_n_s_fillna); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -7666,13 +7669,13 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
       }
       __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, __pyx_v_fill_value) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_fill_value);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_pivot_df, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "fastpivot/pivot.pyx":269
+      /* "fastpivot/pivot.pyx":270
  *             pivot_df = pivot_df.dropna(axis=1, how='all')
  *             #print('dropna', time.perf_counter() - tick)
  *         if fill_value is not None and fill_value is not np.nan:             # <<<<<<<<<<<<<<
@@ -7681,7 +7684,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "fastpivot/pivot.pyx":261
+    /* "fastpivot/pivot.pyx":262
  *             pivot_df = pivot_df.fillna(fill_value)
  *             #print('fillna', time.perf_counter() - tick)
  *     elif aggfunc == 'std':             # <<<<<<<<<<<<<<
@@ -7691,7 +7694,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
   }
   __pyx_L3:;
 
-  /* "fastpivot/pivot.pyx":274
+  /* "fastpivot/pivot.pyx":275
  *             #print('fillna', time.perf_counter() - tick)
  * 
  *     return pivot_df             # <<<<<<<<<<<<<<
@@ -7703,7 +7706,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
   __pyx_r = __pyx_v_pivot_df;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":241
+  /* "fastpivot/pivot.pyx":242
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
@@ -7727,7 +7730,7 @@ static PyObject *__pyx_pf_9fastpivot_5pivot_8pivot_drop_fill(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":276
+/* "fastpivot/pivot.pyx":277
  *     return pivot_df
  * 
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -7762,23 +7765,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_sum", 0);
 
-  /* "fastpivot/pivot.pyx":277
+  /* "fastpivot/pivot.pyx":278
  * 
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     if not fill_zero:
  *         init.fill(np.nan)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -7786,21 +7789,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7808,7 +7811,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   __pyx_v_init = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":278
+  /* "fastpivot/pivot.pyx":279
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -7818,18 +7821,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   __pyx_t_6 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_6) {
 
-    /* "fastpivot/pivot.pyx":279
+    /* "fastpivot/pivot.pyx":280
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = init
  *     cdef int i, j, k
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 279, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -7845,12 +7848,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "fastpivot/pivot.pyx":278
+    /* "fastpivot/pivot.pyx":279
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -7859,19 +7862,19 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
  */
   }
 
-  /* "fastpivot/pivot.pyx":280
+  /* "fastpivot/pivot.pyx":281
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr = init             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     cdef double value
  */
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 280, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 281, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "fastpivot/pivot.pyx":283
+  /* "fastpivot/pivot.pyx":284
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -7883,7 +7886,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "fastpivot/pivot.pyx":284
+    /* "fastpivot/pivot.pyx":285
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -7898,11 +7901,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_idx_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 284, __pyx_L1_error)
+      __PYX_ERR(0, 285, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":285
+    /* "fastpivot/pivot.pyx":286
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -7917,11 +7920,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_col_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 285, __pyx_L1_error)
+      __PYX_ERR(0, 286, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":286
+    /* "fastpivot/pivot.pyx":287
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -7936,11 +7939,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_value_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 286, __pyx_L1_error)
+      __PYX_ERR(0, 287, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_11 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":289
+    /* "fastpivot/pivot.pyx":290
  *         #####################################
  *         # pandas considers empty sums to be 0
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -7960,12 +7963,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 289, __pyx_L1_error)
+      __PYX_ERR(0, 290, __pyx_L1_error)
     }
     __pyx_t_6 = (isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0);
     if (__pyx_t_6) {
 
-      /* "fastpivot/pivot.pyx":290
+      /* "fastpivot/pivot.pyx":291
  *         # pandas considers empty sums to be 0
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -7985,11 +7988,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
       } else if (unlikely(__pyx_t_11 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 290, __pyx_L1_error)
+        __PYX_ERR(0, 291, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_11 * __pyx_v_pivot_arr.strides[1]) )) = 0.0;
 
-      /* "fastpivot/pivot.pyx":289
+      /* "fastpivot/pivot.pyx":290
  *         #####################################
  *         # pandas considers empty sums to be 0
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -7998,7 +8001,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
  */
     }
 
-    /* "fastpivot/pivot.pyx":292
+    /* "fastpivot/pivot.pyx":293
  *             pivot_arr[i, j] = 0.0
  *         #####################################
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8008,7 +8011,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     __pyx_t_6 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_6) {
 
-      /* "fastpivot/pivot.pyx":293
+      /* "fastpivot/pivot.pyx":294
  *         #####################################
  *         if not isnan(value):
  *             pivot_arr[i, j] += value             # <<<<<<<<<<<<<<
@@ -8028,11 +8031,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 293, __pyx_L1_error)
+        __PYX_ERR(0, 294, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) += __pyx_v_value;
 
-      /* "fastpivot/pivot.pyx":292
+      /* "fastpivot/pivot.pyx":293
  *             pivot_arr[i, j] = 0.0
  *         #####################################
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8042,7 +8045,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":294
+  /* "fastpivot/pivot.pyx":295
  *         if not isnan(value):
  *             pivot_arr[i, j] += value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -8053,7 +8056,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":276
+  /* "fastpivot/pivot.pyx":277
  *     return pivot_df
  * 
  * cdef double[:, :] pivot_cython_sum(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -8084,7 +8087,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_sum(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":296
+/* "fastpivot/pivot.pyx":297
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -8126,23 +8129,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_mean", 0);
 
-  /* "fastpivot/pivot.pyx":297
+  /* "fastpivot/pivot.pyx":298
  * 
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -8150,21 +8153,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 297, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8172,18 +8175,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":298
+  /* "fastpivot/pivot.pyx":299
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = nans
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8199,40 +8202,40 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":299
+  /* "fastpivot/pivot.pyx":300
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
  *     cdef int i, j, k
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 299, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 300, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":300
+  /* "fastpivot/pivot.pyx":301
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     cdef double value
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
@@ -8240,32 +8243,32 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_5 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_pivot_counts_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":304
+  /* "fastpivot/pivot.pyx":305
  *     cdef double value
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -8277,7 +8280,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":305
+    /* "fastpivot/pivot.pyx":306
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -8292,11 +8295,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 305, __pyx_L1_error)
+      __PYX_ERR(0, 306, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":306
+    /* "fastpivot/pivot.pyx":307
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -8311,11 +8314,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 306, __pyx_L1_error)
+      __PYX_ERR(0, 307, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":307
+    /* "fastpivot/pivot.pyx":308
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -8330,11 +8333,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 307, __pyx_L1_error)
+      __PYX_ERR(0, 308, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":308
+    /* "fastpivot/pivot.pyx":309
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8344,7 +8347,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":309
+      /* "fastpivot/pivot.pyx":310
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -8364,12 +8367,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 309, __pyx_L1_error)
+        __PYX_ERR(0, 310, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":310
+        /* "fastpivot/pivot.pyx":311
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 pivot_arr[i, j] += value             # <<<<<<<<<<<<<<
@@ -8389,11 +8392,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 310, __pyx_L1_error)
+          __PYX_ERR(0, 311, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) += __pyx_v_value;
 
-        /* "fastpivot/pivot.pyx":309
+        /* "fastpivot/pivot.pyx":310
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -8403,7 +8406,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
         goto __pyx_L6;
       }
 
-      /* "fastpivot/pivot.pyx":312
+      /* "fastpivot/pivot.pyx":313
  *                 pivot_arr[i, j] += value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -8424,13 +8427,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
         } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 312, __pyx_L1_error)
+          __PYX_ERR(0, 313, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
       }
       __pyx_L6:;
 
-      /* "fastpivot/pivot.pyx":313
+      /* "fastpivot/pivot.pyx":314
  *             else:
  *                 pivot_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -8450,11 +8453,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
       } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 313, __pyx_L1_error)
+        __PYX_ERR(0, 314, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[1]) )) += 1.0;
 
-      /* "fastpivot/pivot.pyx":308
+      /* "fastpivot/pivot.pyx":309
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8464,7 +8467,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     }
   }
 
-  /* "fastpivot/pivot.pyx":314
+  /* "fastpivot/pivot.pyx":315
  *                 pivot_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -8476,7 +8479,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_11; __pyx_t_14+=1) {
     __pyx_v_i = __pyx_t_14;
 
-    /* "fastpivot/pivot.pyx":315
+    /* "fastpivot/pivot.pyx":316
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -8488,7 +8491,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_j = __pyx_t_17;
 
-      /* "fastpivot/pivot.pyx":316
+      /* "fastpivot/pivot.pyx":317
  *     for i in range(N):
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
@@ -8508,11 +8511,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_18 = 1;
       if (unlikely(__pyx_t_18 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_18);
-        __PYX_ERR(0, 316, __pyx_L1_error)
+        __PYX_ERR(0, 317, __pyx_L1_error)
       }
       __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
 
-      /* "fastpivot/pivot.pyx":317
+      /* "fastpivot/pivot.pyx":318
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -8522,7 +8525,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
       __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":318
+        /* "fastpivot/pivot.pyx":319
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:
  *                 pivot_arr[i, j] /= divisor             # <<<<<<<<<<<<<<
@@ -8542,11 +8545,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_18 = 1;
         if (unlikely(__pyx_t_18 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_18);
-          __PYX_ERR(0, 318, __pyx_L1_error)
+          __PYX_ERR(0, 319, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) /= __pyx_v_divisor;
 
-        /* "fastpivot/pivot.pyx":317
+        /* "fastpivot/pivot.pyx":318
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -8557,7 +8560,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
     }
   }
 
-  /* "fastpivot/pivot.pyx":319
+  /* "fastpivot/pivot.pyx":320
  *             if divisor != 0.0:
  *                 pivot_arr[i, j] /= divisor
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -8568,7 +8571,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":296
+  /* "fastpivot/pivot.pyx":297
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_mean(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -8600,7 +8603,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_mean(__Pyx_memv
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":321
+/* "fastpivot/pivot.pyx":322
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -8646,23 +8649,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_std", 0);
 
-  /* "fastpivot/pivot.pyx":322
+  /* "fastpivot/pivot.pyx":323
  * 
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans1 = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans1.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans1
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -8670,21 +8673,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 322, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8692,18 +8695,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   __pyx_v_nans1 = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":323
+  /* "fastpivot/pivot.pyx":324
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans1 = np.zeros((N, M), dtype=np.float64)
  *     nans1.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = nans1
  *     nans2 = np.zeros((N, M), dtype=np.float64)
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans1, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans1, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 323, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -8719,40 +8722,40 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":324
+  /* "fastpivot/pivot.pyx":325
  *     nans1 = np.zeros((N, M), dtype=np.float64)
  *     nans1.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans1             # <<<<<<<<<<<<<<
  *     nans2 = np.zeros((N, M), dtype=np.float64)
  *     nans2.fill(np.nan)
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 325, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":325
+  /* "fastpivot/pivot.pyx":326
  *     nans1.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans1
  *     nans2 = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans2.fill(np.nan)
  *     cdef double[:, :] mean_arr = nans2
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
@@ -8760,21 +8763,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
   __pyx_t_5 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_float64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 325, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8782,18 +8785,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   __pyx_v_nans2 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":326
+  /* "fastpivot/pivot.pyx":327
  *     cdef double[:, :] pivot_arr = nans1
  *     nans2 = np.zeros((N, M), dtype=np.float64)
  *     nans2.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] mean_arr = nans2
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans2, __pyx_n_s_fill); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans2, __pyx_n_s_fill); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -8809,40 +8812,40 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":327
+  /* "fastpivot/pivot.pyx":328
  *     nans2 = np.zeros((N, M), dtype=np.float64)
  *     nans2.fill(np.nan)
  *     cdef double[:, :] mean_arr = nans2             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)
  *     cdef int i, j, k
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 328, __pyx_L1_error)
   __pyx_v_mean_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":328
+  /* "fastpivot/pivot.pyx":329
  *     nans2.fill(np.nan)
  *     cdef double[:, :] mean_arr = nans2
  *     cdef double[:, :] pivot_counts_arr = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     cdef double value
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
@@ -8850,32 +8853,32 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4);
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 328, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_pivot_counts_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":332
+  /* "fastpivot/pivot.pyx":333
  *     cdef double value
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -8887,7 +8890,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":333
+    /* "fastpivot/pivot.pyx":334
  *     cdef double divisor
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -8902,11 +8905,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 333, __pyx_L1_error)
+      __PYX_ERR(0, 334, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":334
+    /* "fastpivot/pivot.pyx":335
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -8921,11 +8924,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 334, __pyx_L1_error)
+      __PYX_ERR(0, 335, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":335
+    /* "fastpivot/pivot.pyx":336
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -8940,11 +8943,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 335, __pyx_L1_error)
+      __PYX_ERR(0, 336, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":336
+    /* "fastpivot/pivot.pyx":337
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -8954,7 +8957,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":337
+      /* "fastpivot/pivot.pyx":338
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(mean_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -8974,12 +8977,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 337, __pyx_L1_error)
+        __PYX_ERR(0, 338, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":338
+        /* "fastpivot/pivot.pyx":339
  *         if not isnan(value):
  *             if not isnan(mean_arr[i, j]):
  *                 mean_arr[i, j] += value             # <<<<<<<<<<<<<<
@@ -8999,11 +9002,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 338, __pyx_L1_error)
+          __PYX_ERR(0, 339, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_13 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_mean_arr.strides[1]) )) += __pyx_v_value;
 
-        /* "fastpivot/pivot.pyx":337
+        /* "fastpivot/pivot.pyx":338
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(mean_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9013,7 +9016,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         goto __pyx_L6;
       }
 
-      /* "fastpivot/pivot.pyx":340
+      /* "fastpivot/pivot.pyx":341
  *                 mean_arr[i, j] += value
  *             else:
  *                 mean_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9034,13 +9037,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 340, __pyx_L1_error)
+          __PYX_ERR(0, 341, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) )) = __pyx_v_value;
       }
       __pyx_L6:;
 
-      /* "fastpivot/pivot.pyx":341
+      /* "fastpivot/pivot.pyx":342
  *             else:
  *                 mean_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -9060,11 +9063,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 341, __pyx_L1_error)
+        __PYX_ERR(0, 342, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[1]) )) += 1.0;
 
-      /* "fastpivot/pivot.pyx":336
+      /* "fastpivot/pivot.pyx":337
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9074,7 +9077,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":342
+  /* "fastpivot/pivot.pyx":343
  *                 mean_arr[i, j] = value
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -9086,7 +9089,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_11; __pyx_t_14+=1) {
     __pyx_v_i = __pyx_t_14;
 
-    /* "fastpivot/pivot.pyx":343
+    /* "fastpivot/pivot.pyx":344
  *             pivot_counts_arr[i, j] += 1.0
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -9098,7 +9101,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_j = __pyx_t_17;
 
-      /* "fastpivot/pivot.pyx":344
+      /* "fastpivot/pivot.pyx":345
  *     for i in range(N):
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9118,11 +9121,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_18 = 1;
       if (unlikely(__pyx_t_18 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_18);
-        __PYX_ERR(0, 344, __pyx_L1_error)
+        __PYX_ERR(0, 345, __pyx_L1_error)
       }
       __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_10 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
 
-      /* "fastpivot/pivot.pyx":345
+      /* "fastpivot/pivot.pyx":346
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -9132,7 +9135,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":346
+        /* "fastpivot/pivot.pyx":347
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:
  *                 mean_arr[i, j] /= divisor             # <<<<<<<<<<<<<<
@@ -9152,11 +9155,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_mean_arr.shape[1])) __pyx_t_18 = 1;
         if (unlikely(__pyx_t_18 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_18);
-          __PYX_ERR(0, 346, __pyx_L1_error)
+          __PYX_ERR(0, 347, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_13 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_mean_arr.strides[1]) )) /= __pyx_v_divisor;
 
-        /* "fastpivot/pivot.pyx":345
+        /* "fastpivot/pivot.pyx":346
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:             # <<<<<<<<<<<<<<
@@ -9167,7 +9170,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":347
+  /* "fastpivot/pivot.pyx":348
  *             if divisor != 0.0:
  *                 mean_arr[i, j] /= divisor
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -9179,7 +9182,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":348
+    /* "fastpivot/pivot.pyx":349
  *                 mean_arr[i, j] /= divisor
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -9194,11 +9197,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 348, __pyx_L1_error)
+      __PYX_ERR(0, 349, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":349
+    /* "fastpivot/pivot.pyx":350
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -9213,11 +9216,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 349, __pyx_L1_error)
+      __PYX_ERR(0, 350, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":350
+    /* "fastpivot/pivot.pyx":351
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -9232,12 +9235,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 350, __pyx_L1_error)
+      __PYX_ERR(0, 351, __pyx_L1_error)
     }
     __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )))) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":351
+      /* "fastpivot/pivot.pyx":352
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9257,12 +9260,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 351, __pyx_L1_error)
+        __PYX_ERR(0, 352, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":352
+        /* "fastpivot/pivot.pyx":353
  *         if not isnan(value_arr[k]):
  *             if not isnan(pivot_arr[i, j]):
  *                 value = value_arr[k] - mean_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9277,7 +9280,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_13 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 352, __pyx_L1_error)
+          __PYX_ERR(0, 353, __pyx_L1_error)
         }
         __pyx_t_10 = __pyx_v_i;
         __pyx_t_19 = __pyx_v_j;
@@ -9292,11 +9295,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_19 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 352, __pyx_L1_error)
+          __PYX_ERR(0, 353, __pyx_L1_error)
         }
         __pyx_v_value = ((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_13 * __pyx_v_value_arr.strides[0]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_10 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_19 * __pyx_v_mean_arr.strides[1]) ))));
 
-        /* "fastpivot/pivot.pyx":353
+        /* "fastpivot/pivot.pyx":354
  *             if not isnan(pivot_arr[i, j]):
  *                 value = value_arr[k] - mean_arr[i, j]
  *                 pivot_arr[i, j] += (value*value)             # <<<<<<<<<<<<<<
@@ -9316,11 +9319,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 353, __pyx_L1_error)
+          __PYX_ERR(0, 354, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_19 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) += (__pyx_v_value * __pyx_v_value);
 
-        /* "fastpivot/pivot.pyx":351
+        /* "fastpivot/pivot.pyx":352
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9330,7 +9333,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         goto __pyx_L15;
       }
 
-      /* "fastpivot/pivot.pyx":355
+      /* "fastpivot/pivot.pyx":356
  *                 pivot_arr[i, j] += (value*value)
  *             else:
  *                 value = value_arr[k] - mean_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9346,7 +9349,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 355, __pyx_L1_error)
+          __PYX_ERR(0, 356, __pyx_L1_error)
         }
         __pyx_t_19 = __pyx_v_i;
         __pyx_t_13 = __pyx_v_j;
@@ -9361,11 +9364,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_13 >= __pyx_v_mean_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 355, __pyx_L1_error)
+          __PYX_ERR(0, 356, __pyx_L1_error)
         }
         __pyx_v_value = ((*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) ))) - (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_mean_arr.data + __pyx_t_19 * __pyx_v_mean_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_mean_arr.strides[1]) ))));
 
-        /* "fastpivot/pivot.pyx":356
+        /* "fastpivot/pivot.pyx":357
  *             else:
  *                 value = value_arr[k] - mean_arr[i, j]
  *                 pivot_arr[i, j] = (value*value)             # <<<<<<<<<<<<<<
@@ -9385,13 +9388,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_19 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 356, __pyx_L1_error)
+          __PYX_ERR(0, 357, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_19 * __pyx_v_pivot_arr.strides[1]) )) = (__pyx_v_value * __pyx_v_value);
       }
       __pyx_L15:;
 
-      /* "fastpivot/pivot.pyx":350
+      /* "fastpivot/pivot.pyx":351
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if not isnan(value_arr[k]):             # <<<<<<<<<<<<<<
@@ -9401,7 +9404,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":357
+  /* "fastpivot/pivot.pyx":358
  *                 value = value_arr[k] - mean_arr[i, j]
  *                 pivot_arr[i, j] = (value*value)
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -9413,7 +9416,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_11; __pyx_t_14+=1) {
     __pyx_v_i = __pyx_t_14;
 
-    /* "fastpivot/pivot.pyx":358
+    /* "fastpivot/pivot.pyx":359
  *                 pivot_arr[i, j] = (value*value)
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -9425,7 +9428,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_j = __pyx_t_17;
 
-      /* "fastpivot/pivot.pyx":359
+      /* "fastpivot/pivot.pyx":360
  *     for i in range(N):
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]             # <<<<<<<<<<<<<<
@@ -9445,11 +9448,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_counts_arr.shape[1])) __pyx_t_18 = 1;
       if (unlikely(__pyx_t_18 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_18);
-        __PYX_ERR(0, 359, __pyx_L1_error)
+        __PYX_ERR(0, 360, __pyx_L1_error)
       }
       __pyx_v_divisor = (*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_counts_arr.data + __pyx_t_19 * __pyx_v_pivot_counts_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_counts_arr.strides[1]) )));
 
-      /* "fastpivot/pivot.pyx":360
+      /* "fastpivot/pivot.pyx":361
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:# and divisor != 1.0:             # <<<<<<<<<<<<<<
@@ -9459,7 +9462,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
       __pyx_t_12 = ((__pyx_v_divisor != 0.0) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":361
+        /* "fastpivot/pivot.pyx":362
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:# and divisor != 1.0:
  *                 pivot_arr[i, j] /= (divisor - 1)             # <<<<<<<<<<<<<<
@@ -9479,11 +9482,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_19 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_18 = 1;
         if (unlikely(__pyx_t_18 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_18);
-          __PYX_ERR(0, 361, __pyx_L1_error)
+          __PYX_ERR(0, 362, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_19 * __pyx_v_pivot_arr.strides[1]) )) /= (__pyx_v_divisor - 1.0);
 
-        /* "fastpivot/pivot.pyx":362
+        /* "fastpivot/pivot.pyx":363
  *             if divisor != 0.0:# and divisor != 1.0:
  *                 pivot_arr[i, j] /= (divisor - 1)
  *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])             # <<<<<<<<<<<<<<
@@ -9503,7 +9506,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_18 = 1;
         if (unlikely(__pyx_t_18 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_18);
-          __PYX_ERR(0, 362, __pyx_L1_error)
+          __PYX_ERR(0, 363, __pyx_L1_error)
         }
         __pyx_t_10 = __pyx_v_i;
         __pyx_t_20 = __pyx_v_j;
@@ -9518,11 +9521,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
         } else if (unlikely(__pyx_t_20 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_18 = 1;
         if (unlikely(__pyx_t_18 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_18);
-          __PYX_ERR(0, 362, __pyx_L1_error)
+          __PYX_ERR(0, 363, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_20 * __pyx_v_pivot_arr.strides[1]) )) = sqrt((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_19 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) ))));
 
-        /* "fastpivot/pivot.pyx":360
+        /* "fastpivot/pivot.pyx":361
  *         for j in range(M):
  *             divisor = pivot_counts_arr[i, j]
  *             if divisor != 0.0:# and divisor != 1.0:             # <<<<<<<<<<<<<<
@@ -9533,7 +9536,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":363
+  /* "fastpivot/pivot.pyx":364
  *                 pivot_arr[i, j] /= (divisor - 1)
  *                 pivot_arr[i, j] = sqrt(pivot_arr[i, j])
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -9544,7 +9547,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":321
+  /* "fastpivot/pivot.pyx":322
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_std(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9578,7 +9581,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_std(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":400
+/* "fastpivot/pivot.pyx":401
  * #     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9613,23 +9616,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_max", 0);
 
-  /* "fastpivot/pivot.pyx":401
+  /* "fastpivot/pivot.pyx":402
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -9637,21 +9640,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 401, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 401, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 402, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9659,18 +9662,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":402
+  /* "fastpivot/pivot.pyx":403
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = nans
  *     cdef int i, j, k
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 403, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -9686,24 +9689,24 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 402, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":403
+  /* "fastpivot/pivot.pyx":404
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     cdef double value
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 403, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 404, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":406
+  /* "fastpivot/pivot.pyx":407
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -9715,7 +9718,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":407
+    /* "fastpivot/pivot.pyx":408
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -9730,11 +9733,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 407, __pyx_L1_error)
+      __PYX_ERR(0, 408, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":408
+    /* "fastpivot/pivot.pyx":409
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -9749,11 +9752,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 408, __pyx_L1_error)
+      __PYX_ERR(0, 409, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":409
+    /* "fastpivot/pivot.pyx":410
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -9768,11 +9771,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 409, __pyx_L1_error)
+      __PYX_ERR(0, 410, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":410
+    /* "fastpivot/pivot.pyx":411
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9782,7 +9785,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":411
+      /* "fastpivot/pivot.pyx":412
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9802,12 +9805,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 411, __pyx_L1_error)
+        __PYX_ERR(0, 412, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":412
+        /* "fastpivot/pivot.pyx":413
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:             # <<<<<<<<<<<<<<
@@ -9827,12 +9830,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 412, __pyx_L1_error)
+          __PYX_ERR(0, 413, __pyx_L1_error)
         }
         __pyx_t_12 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) ))) < __pyx_v_value) != 0);
         if (__pyx_t_12) {
 
-          /* "fastpivot/pivot.pyx":413
+          /* "fastpivot/pivot.pyx":414
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:
  *                     pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9852,11 +9855,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
           } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
           if (unlikely(__pyx_t_11 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_11);
-            __PYX_ERR(0, 413, __pyx_L1_error)
+            __PYX_ERR(0, 414, __pyx_L1_error)
           }
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
 
-          /* "fastpivot/pivot.pyx":412
+          /* "fastpivot/pivot.pyx":413
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] < value:             # <<<<<<<<<<<<<<
@@ -9865,7 +9868,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
  */
         }
 
-        /* "fastpivot/pivot.pyx":411
+        /* "fastpivot/pivot.pyx":412
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -9875,7 +9878,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
         goto __pyx_L6;
       }
 
-      /* "fastpivot/pivot.pyx":415
+      /* "fastpivot/pivot.pyx":416
  *                     pivot_arr[i, j] = value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -9896,13 +9899,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 415, __pyx_L1_error)
+          __PYX_ERR(0, 416, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
       }
       __pyx_L6:;
 
-      /* "fastpivot/pivot.pyx":410
+      /* "fastpivot/pivot.pyx":411
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -9912,7 +9915,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":416
+  /* "fastpivot/pivot.pyx":417
  *             else:
  *                 pivot_arr[i, j] = value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -9923,7 +9926,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":400
+  /* "fastpivot/pivot.pyx":401
  * #     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_max(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9954,7 +9957,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_max(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":418
+/* "fastpivot/pivot.pyx":419
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -9989,23 +9992,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_min", 0);
 
-  /* "fastpivot/pivot.pyx":419
+  /* "fastpivot/pivot.pyx":420
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -10013,21 +10016,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 419, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 420, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10035,18 +10038,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   __pyx_v_nans = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":420
+  /* "fastpivot/pivot.pyx":421
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = nans
  *     cdef int i, j, k
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_nans, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -10062,24 +10065,24 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 420, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":421
+  /* "fastpivot/pivot.pyx":422
  *     nans = np.zeros((N, M), dtype=np.float64)
  *     nans.fill(np.nan)
  *     cdef double[:, :] pivot_arr = nans             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     cdef double value
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_nans, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 422, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "fastpivot/pivot.pyx":424
+  /* "fastpivot/pivot.pyx":425
  *     cdef int i, j, k
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10091,7 +10094,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "fastpivot/pivot.pyx":425
+    /* "fastpivot/pivot.pyx":426
  *     cdef double value
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10106,11 +10109,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_idx_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 425, __pyx_L1_error)
+      __PYX_ERR(0, 426, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_10 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":426
+    /* "fastpivot/pivot.pyx":427
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10125,11 +10128,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_col_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 426, __pyx_L1_error)
+      __PYX_ERR(0, 427, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_10 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":427
+    /* "fastpivot/pivot.pyx":428
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -10144,11 +10147,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     } else if (unlikely(__pyx_t_10 >= __pyx_v_value_arr.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 427, __pyx_L1_error)
+      __PYX_ERR(0, 428, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_10 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":428
+    /* "fastpivot/pivot.pyx":429
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -10158,7 +10161,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     __pyx_t_12 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_12) {
 
-      /* "fastpivot/pivot.pyx":429
+      /* "fastpivot/pivot.pyx":430
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10178,12 +10181,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
       if (unlikely(__pyx_t_11 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_11);
-        __PYX_ERR(0, 429, __pyx_L1_error)
+        __PYX_ERR(0, 430, __pyx_L1_error)
       }
       __pyx_t_12 = ((!(isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0)) != 0);
       if (__pyx_t_12) {
 
-        /* "fastpivot/pivot.pyx":430
+        /* "fastpivot/pivot.pyx":431
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:             # <<<<<<<<<<<<<<
@@ -10203,12 +10206,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 430, __pyx_L1_error)
+          __PYX_ERR(0, 431, __pyx_L1_error)
         }
         __pyx_t_12 = (((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) ))) > __pyx_v_value) != 0);
         if (__pyx_t_12) {
 
-          /* "fastpivot/pivot.pyx":431
+          /* "fastpivot/pivot.pyx":432
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:
  *                     pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -10228,11 +10231,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
           } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
           if (unlikely(__pyx_t_11 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_11);
-            __PYX_ERR(0, 431, __pyx_L1_error)
+            __PYX_ERR(0, 432, __pyx_L1_error)
           }
           *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_10 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
 
-          /* "fastpivot/pivot.pyx":430
+          /* "fastpivot/pivot.pyx":431
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):
  *                 if pivot_arr[i, j] > value:             # <<<<<<<<<<<<<<
@@ -10241,7 +10244,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
  */
         }
 
-        /* "fastpivot/pivot.pyx":429
+        /* "fastpivot/pivot.pyx":430
  *         value = value_arr[k]
  *         if not isnan(value):
  *             if not isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10251,7 +10254,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
         goto __pyx_L6;
       }
 
-      /* "fastpivot/pivot.pyx":433
+      /* "fastpivot/pivot.pyx":434
  *                     pivot_arr[i, j] = value
  *             else:
  *                 pivot_arr[i, j] = value             # <<<<<<<<<<<<<<
@@ -10272,13 +10275,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
         } else if (unlikely(__pyx_t_10 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_11 = 1;
         if (unlikely(__pyx_t_11 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_11);
-          __PYX_ERR(0, 433, __pyx_L1_error)
+          __PYX_ERR(0, 434, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_10 * __pyx_v_pivot_arr.strides[1]) )) = __pyx_v_value;
       }
       __pyx_L6:;
 
-      /* "fastpivot/pivot.pyx":428
+      /* "fastpivot/pivot.pyx":429
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -10288,7 +10291,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":434
+  /* "fastpivot/pivot.pyx":435
  *             else:
  *                 pivot_arr[i, j] = value
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -10299,7 +10302,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":418
+  /* "fastpivot/pivot.pyx":419
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_min(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M):             # <<<<<<<<<<<<<<
@@ -10330,7 +10333,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_min(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":436
+/* "fastpivot/pivot.pyx":437
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -10364,23 +10367,23 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_count", 0);
 
-  /* "fastpivot/pivot.pyx":437
+  /* "fastpivot/pivot.pyx":438
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     if not fill_zero:
  *         init.fill(np.nan)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -10388,21 +10391,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 437, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 438, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10410,7 +10413,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   __pyx_v_init = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "fastpivot/pivot.pyx":438
+  /* "fastpivot/pivot.pyx":439
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -10420,18 +10423,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   __pyx_t_6 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_6) {
 
-    /* "fastpivot/pivot.pyx":439
+    /* "fastpivot/pivot.pyx":440
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr = init
  *     cdef int i, j, k
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 439, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 440, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 439, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 440, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 439, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 440, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -10447,12 +10450,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 439, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 440, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "fastpivot/pivot.pyx":438
+    /* "fastpivot/pivot.pyx":439
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -10461,19 +10464,19 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
  */
   }
 
-  /* "fastpivot/pivot.pyx":440
+  /* "fastpivot/pivot.pyx":441
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr = init             # <<<<<<<<<<<<<<
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):
  */
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 441, __pyx_L1_error)
   __pyx_v_pivot_arr = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "fastpivot/pivot.pyx":442
+  /* "fastpivot/pivot.pyx":443
  *     cdef double[:, :] pivot_arr = init
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -10485,7 +10488,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "fastpivot/pivot.pyx":443
+    /* "fastpivot/pivot.pyx":444
  *     cdef int i, j, k
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -10500,11 +10503,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_11 >= __pyx_v_idx_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 443, __pyx_L1_error)
+      __PYX_ERR(0, 444, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":444
+    /* "fastpivot/pivot.pyx":445
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -10519,11 +10522,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_11 >= __pyx_v_col_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 444, __pyx_L1_error)
+      __PYX_ERR(0, 445, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":445
+    /* "fastpivot/pivot.pyx":446
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10543,12 +10546,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 445, __pyx_L1_error)
+      __PYX_ERR(0, 446, __pyx_L1_error)
     }
     __pyx_t_6 = (isnan((*((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )))) != 0);
     if (__pyx_t_6) {
 
-      /* "fastpivot/pivot.pyx":446
+      /* "fastpivot/pivot.pyx":447
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -10568,11 +10571,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
       } else if (unlikely(__pyx_t_11 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 446, __pyx_L1_error)
+        __PYX_ERR(0, 447, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_13 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_11 * __pyx_v_pivot_arr.strides[1]) )) = 0.0;
 
-      /* "fastpivot/pivot.pyx":445
+      /* "fastpivot/pivot.pyx":446
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         if isnan(pivot_arr[i, j]):             # <<<<<<<<<<<<<<
@@ -10581,7 +10584,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
  */
     }
 
-    /* "fastpivot/pivot.pyx":447
+    /* "fastpivot/pivot.pyx":448
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:             # <<<<<<<<<<<<<<
@@ -10596,12 +10599,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     } else if (unlikely(__pyx_t_11 >= __pyx_v_nans_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 447, __pyx_L1_error)
+      __PYX_ERR(0, 448, __pyx_L1_error)
     }
     __pyx_t_6 = ((!((*((bool *) ( /* dim=0 */ (__pyx_v_nans_arr.data + __pyx_t_11 * __pyx_v_nans_arr.strides[0]) ))) != 0)) != 0);
     if (__pyx_t_6) {
 
-      /* "fastpivot/pivot.pyx":448
+      /* "fastpivot/pivot.pyx":449
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:
  *             pivot_arr[i, j] += 1.0             # <<<<<<<<<<<<<<
@@ -10621,11 +10624,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
       } else if (unlikely(__pyx_t_13 >= __pyx_v_pivot_arr.shape[1])) __pyx_t_12 = 1;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 448, __pyx_L1_error)
+        __PYX_ERR(0, 449, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr.data + __pyx_t_11 * __pyx_v_pivot_arr.strides[0]) ) + __pyx_t_13 * __pyx_v_pivot_arr.strides[1]) )) += 1.0;
 
-      /* "fastpivot/pivot.pyx":447
+      /* "fastpivot/pivot.pyx":448
  *         if isnan(pivot_arr[i, j]):
  *             pivot_arr[i, j] = 0.0
  *         if not nans_arr[k]:             # <<<<<<<<<<<<<<
@@ -10635,7 +10638,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
     }
   }
 
-  /* "fastpivot/pivot.pyx":449
+  /* "fastpivot/pivot.pyx":450
  *         if not nans_arr[k]:
  *             pivot_arr[i, j] += 1.0
  *     return pivot_arr             # <<<<<<<<<<<<<<
@@ -10646,7 +10649,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   __pyx_r = __pyx_v_pivot_arr;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":436
+  /* "fastpivot/pivot.pyx":437
  *     return pivot_arr
  * 
  * cdef double[:, :] pivot_cython_count(long[:] idx_arr, long[:] col_arr, int N, int M, bool[:] nans_arr, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -10677,7 +10680,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_count(__Pyx_mem
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":490
+/* "fastpivot/pivot.pyx":491
  * #ctypedef long vec_to_long(vector[double] &)
  * 
  * cdef double sum_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -10695,7 +10698,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
   int __pyx_t_3;
   __Pyx_RefNannySetupContext("sum_cython", 0);
 
-  /* "fastpivot/pivot.pyx":492
+  /* "fastpivot/pivot.pyx":493
  * cdef double sum_cython(vector[double] &vec):
  *     cdef int k
  *     cdef double value = 0.0             # <<<<<<<<<<<<<<
@@ -10704,7 +10707,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
  */
   __pyx_v_value = 0.0;
 
-  /* "fastpivot/pivot.pyx":493
+  /* "fastpivot/pivot.pyx":494
  *     cdef int k
  *     cdef double value = 0.0
  *     for k in range(vec.size()):             # <<<<<<<<<<<<<<
@@ -10716,7 +10719,7 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "fastpivot/pivot.pyx":494
+    /* "fastpivot/pivot.pyx":495
  *     cdef double value = 0.0
  *     for k in range(vec.size()):
  *         value += vec[k]             # <<<<<<<<<<<<<<
@@ -10726,17 +10729,17 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
     __pyx_v_value = (__pyx_v_value + (__pyx_v_vec[__pyx_v_k]));
   }
 
-  /* "fastpivot/pivot.pyx":495
+  /* "fastpivot/pivot.pyx":496
  *     for k in range(vec.size()):
  *         value += vec[k]
  *     return value             # <<<<<<<<<<<<<<
  * 
- * # very slow on duplicates
+ * cdef double median_cython_sort(vector[double] &vec):
  */
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":490
+  /* "fastpivot/pivot.pyx":491
  * #ctypedef long vec_to_long(vector[double] &)
  * 
  * cdef double sum_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -10751,6 +10754,162 @@ static double __pyx_f_9fastpivot_5pivot_sum_cython(std::vector<double>  &__pyx_v
 }
 
 /* "fastpivot/pivot.pyx":498
+ *     return value
+ * 
+ * cdef double median_cython_sort(vector[double] &vec):             # <<<<<<<<<<<<<<
+ *     cdef int k
+ *     cdef int idx
+ */
+
+static double __pyx_f_9fastpivot_5pivot_median_cython_sort(std::vector<double>  &__pyx_v_vec) {
+  int __pyx_v_idx;
+  CYTHON_UNUSED double __pyx_v_value;
+  double __pyx_v_med;
+  double __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  double __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("median_cython_sort", 0);
+
+  /* "fastpivot/pivot.pyx":501
+ *     cdef int k
+ *     cdef int idx
+ *     cdef double value = 0.0             # <<<<<<<<<<<<<<
+ *     cdef double med
+ *     stdsort(vec.begin(), vec.end())
+ */
+  __pyx_v_value = 0.0;
+
+  /* "fastpivot/pivot.pyx":503
+ *     cdef double value = 0.0
+ *     cdef double med
+ *     stdsort(vec.begin(), vec.end())             # <<<<<<<<<<<<<<
+ *     idx = vec.size() / 2
+ *     if vec.size() % 2 == 1:
+ */
+  std::sort<std::vector<double> ::iterator>(__pyx_v_vec.begin(), __pyx_v_vec.end());
+
+  /* "fastpivot/pivot.pyx":504
+ *     cdef double med
+ *     stdsort(vec.begin(), vec.end())
+ *     idx = vec.size() / 2             # <<<<<<<<<<<<<<
+ *     if vec.size() % 2 == 1:
+ *         med = vec[idx]
+ */
+  __pyx_v_idx = (__pyx_v_vec.size() / 2);
+
+  /* "fastpivot/pivot.pyx":505
+ *     stdsort(vec.begin(), vec.end())
+ *     idx = vec.size() / 2
+ *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
+ *         med = vec[idx]
+ *     elif vec.size() == 0:
+ */
+  __pyx_t_1 = (((__pyx_v_vec.size() % 2) == 1) != 0);
+  if (__pyx_t_1) {
+
+    /* "fastpivot/pivot.pyx":506
+ *     idx = vec.size() / 2
+ *     if vec.size() % 2 == 1:
+ *         med = vec[idx]             # <<<<<<<<<<<<<<
+ *     elif vec.size() == 0:
+ *         med = np.nan
+ */
+    __pyx_v_med = (__pyx_v_vec[__pyx_v_idx]);
+
+    /* "fastpivot/pivot.pyx":505
+ *     stdsort(vec.begin(), vec.end())
+ *     idx = vec.size() / 2
+ *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
+ *         med = vec[idx]
+ *     elif vec.size() == 0:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "fastpivot/pivot.pyx":507
+ *     if vec.size() % 2 == 1:
+ *         med = vec[idx]
+ *     elif vec.size() == 0:             # <<<<<<<<<<<<<<
+ *         med = np.nan
+ *     else:
+ */
+  __pyx_t_1 = ((__pyx_v_vec.size() == 0) != 0);
+  if (__pyx_t_1) {
+
+    /* "fastpivot/pivot.pyx":508
+ *         med = vec[idx]
+ *     elif vec.size() == 0:
+ *         med = np.nan             # <<<<<<<<<<<<<<
+ *     else:
+ *         med = (vec[idx] + vec[idx-1]) / 2
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 508, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 508, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 508, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_med = __pyx_t_4;
+
+    /* "fastpivot/pivot.pyx":507
+ *     if vec.size() % 2 == 1:
+ *         med = vec[idx]
+ *     elif vec.size() == 0:             # <<<<<<<<<<<<<<
+ *         med = np.nan
+ *     else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "fastpivot/pivot.pyx":510
+ *         med = np.nan
+ *     else:
+ *         med = (vec[idx] + vec[idx-1]) / 2             # <<<<<<<<<<<<<<
+ *     return med
+ * 
+ */
+  /*else*/ {
+    __pyx_v_med = (((__pyx_v_vec[__pyx_v_idx]) + (__pyx_v_vec[(__pyx_v_idx - 1)])) / 2.0);
+  }
+  __pyx_L3:;
+
+  /* "fastpivot/pivot.pyx":511
+ *     else:
+ *         med = (vec[idx] + vec[idx-1]) / 2
+ *     return med             # <<<<<<<<<<<<<<
+ * 
+ * # very slow on duplicates
+ */
+  __pyx_r = __pyx_v_med;
+  goto __pyx_L0;
+
+  /* "fastpivot/pivot.pyx":498
+ *     return value
+ * 
+ * cdef double median_cython_sort(vector[double] &vec):             # <<<<<<<<<<<<<<
+ *     cdef int k
+ *     cdef int idx
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_WriteUnraisable("fastpivot.pivot.median_cython_sort", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "fastpivot/pivot.pyx":514
  * 
  * # very slow on duplicates
  * cdef double median_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -10776,7 +10935,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("median_cython", 0);
 
-  /* "fastpivot/pivot.pyx":499
+  /* "fastpivot/pivot.pyx":515
  * # very slow on duplicates
  * cdef double median_cython(vector[double] &vec):
  *     cdef int k = 0             # <<<<<<<<<<<<<<
@@ -10785,7 +10944,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_k = 0;
 
-  /* "fastpivot/pivot.pyx":500
+  /* "fastpivot/pivot.pyx":516
  * cdef double median_cython(vector[double] &vec):
  *     cdef int k = 0
  *     cdef int mid = vec.size() / 2             # <<<<<<<<<<<<<<
@@ -10794,7 +10953,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_mid = (__pyx_v_vec.size() / 2);
 
-  /* "fastpivot/pivot.pyx":502
+  /* "fastpivot/pivot.pyx":518
  *     cdef int mid = vec.size() / 2
  *     cdef double med
  *     cdef int i = 0             # <<<<<<<<<<<<<<
@@ -10803,7 +10962,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_i = 0;
 
-  /* "fastpivot/pivot.pyx":503
+  /* "fastpivot/pivot.pyx":519
  *     cdef double med
  *     cdef int i = 0
  *     cdef int j = vec.size() - 1             # <<<<<<<<<<<<<<
@@ -10812,7 +10971,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   __pyx_v_j = (__pyx_v_vec.size() - 1);
 
-  /* "fastpivot/pivot.pyx":506
+  /* "fastpivot/pivot.pyx":522
  *     cdef double max_left
  * 
  *     if vec.size() == 0:             # <<<<<<<<<<<<<<
@@ -10822,24 +10981,24 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   __pyx_t_1 = ((__pyx_v_vec.size() == 0) != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":507
+    /* "fastpivot/pivot.pyx":523
  * 
  *     if vec.size() == 0:
  *         return np.nan             # <<<<<<<<<<<<<<
  * 
  *     while k != mid:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 507, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 507, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 507, __pyx_L1_error)
+    __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_4;
     goto __pyx_L0;
 
-    /* "fastpivot/pivot.pyx":506
+    /* "fastpivot/pivot.pyx":522
  *     cdef double max_left
  * 
  *     if vec.size() == 0:             # <<<<<<<<<<<<<<
@@ -10848,7 +11007,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
   }
 
-  /* "fastpivot/pivot.pyx":509
+  /* "fastpivot/pivot.pyx":525
  *         return np.nan
  * 
  *     while k != mid:             # <<<<<<<<<<<<<<
@@ -10859,7 +11018,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_t_1 = ((__pyx_v_k != __pyx_v_mid) != 0);
     if (!__pyx_t_1) break;
 
-    /* "fastpivot/pivot.pyx":510
+    /* "fastpivot/pivot.pyx":526
  * 
  *     while k != mid:
  *         k = partition(vec, mid, i, j)             # <<<<<<<<<<<<<<
@@ -10868,7 +11027,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
     __pyx_v_k = __pyx_f_9fastpivot_5pivot_partition(__pyx_v_vec, __pyx_v_mid, __pyx_v_i, __pyx_v_j);
 
-    /* "fastpivot/pivot.pyx":512
+    /* "fastpivot/pivot.pyx":528
  *         k = partition(vec, mid, i, j)
  *         #print(k)
  *         if k < mid:             # <<<<<<<<<<<<<<
@@ -10878,7 +11037,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_t_1 = ((__pyx_v_k < __pyx_v_mid) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":513
+      /* "fastpivot/pivot.pyx":529
  *         #print(k)
  *         if k < mid:
  *             i = k + 1             # <<<<<<<<<<<<<<
@@ -10887,7 +11046,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
       __pyx_v_i = (__pyx_v_k + 1);
 
-      /* "fastpivot/pivot.pyx":512
+      /* "fastpivot/pivot.pyx":528
  *         k = partition(vec, mid, i, j)
  *         #print(k)
  *         if k < mid:             # <<<<<<<<<<<<<<
@@ -10897,7 +11056,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
       goto __pyx_L6;
     }
 
-    /* "fastpivot/pivot.pyx":514
+    /* "fastpivot/pivot.pyx":530
  *         if k < mid:
  *             i = k + 1
  *         elif k > mid:             # <<<<<<<<<<<<<<
@@ -10907,7 +11066,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_t_1 = ((__pyx_v_k > __pyx_v_mid) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":515
+      /* "fastpivot/pivot.pyx":531
  *             i = k + 1
  *         elif k > mid:
  *             j = k - 1             # <<<<<<<<<<<<<<
@@ -10916,7 +11075,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
       __pyx_v_j = (__pyx_v_k - 1);
 
-      /* "fastpivot/pivot.pyx":514
+      /* "fastpivot/pivot.pyx":530
  *         if k < mid:
  *             i = k + 1
  *         elif k > mid:             # <<<<<<<<<<<<<<
@@ -10927,7 +11086,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     __pyx_L6:;
   }
 
-  /* "fastpivot/pivot.pyx":516
+  /* "fastpivot/pivot.pyx":532
  *         elif k > mid:
  *             j = k - 1
  *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
@@ -10937,7 +11096,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   __pyx_t_1 = (((__pyx_v_vec.size() % 2) == 1) != 0);
   if (__pyx_t_1) {
 
-    /* "fastpivot/pivot.pyx":517
+    /* "fastpivot/pivot.pyx":533
  *             j = k - 1
  *     if vec.size() % 2 == 1:
  *         med = vec[mid]             # <<<<<<<<<<<<<<
@@ -10946,7 +11105,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
  */
     __pyx_v_med = (__pyx_v_vec[__pyx_v_mid]);
 
-    /* "fastpivot/pivot.pyx":516
+    /* "fastpivot/pivot.pyx":532
  *         elif k > mid:
  *             j = k - 1
  *     if vec.size() % 2 == 1:             # <<<<<<<<<<<<<<
@@ -10956,7 +11115,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
     goto __pyx_L7;
   }
 
-  /* "fastpivot/pivot.pyx":519
+  /* "fastpivot/pivot.pyx":535
  *         med = vec[mid]
  *     else:
  *         max_left = max_left_cython(vec, mid - 1)             # <<<<<<<<<<<<<<
@@ -10966,7 +11125,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   /*else*/ {
     __pyx_v_max_left = __pyx_f_9fastpivot_5pivot_max_left_cython(__pyx_v_vec, (__pyx_v_mid - 1));
 
-    /* "fastpivot/pivot.pyx":520
+    /* "fastpivot/pivot.pyx":536
  *     else:
  *         max_left = max_left_cython(vec, mid - 1)
  *         med = (vec[mid] + max_left) / 2             # <<<<<<<<<<<<<<
@@ -10977,7 +11136,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   }
   __pyx_L7:;
 
-  /* "fastpivot/pivot.pyx":522
+  /* "fastpivot/pivot.pyx":538
  *         med = (vec[mid] + max_left) / 2
  * 
  *     return med             # <<<<<<<<<<<<<<
@@ -10987,7 +11146,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   __pyx_r = __pyx_v_med;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":498
+  /* "fastpivot/pivot.pyx":514
  * 
  * # very slow on duplicates
  * cdef double median_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11006,7 +11165,7 @@ static double __pyx_f_9fastpivot_5pivot_median_cython(std::vector<double>  &__py
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":524
+/* "fastpivot/pivot.pyx":540
  *     return med
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):             # <<<<<<<<<<<<<<
@@ -11022,7 +11181,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("partition", 0);
 
-  /* "fastpivot/pivot.pyx":525
+  /* "fastpivot/pivot.pyx":541
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):
  *     cdef double x = vec[mid]             # <<<<<<<<<<<<<<
@@ -11031,7 +11190,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
   __pyx_v_x = (__pyx_v_vec[__pyx_v_mid]);
 
-  /* "fastpivot/pivot.pyx":527
+  /* "fastpivot/pivot.pyx":543
  *     cdef double x = vec[mid]
  *     cdef double temp
  *     while True:             # <<<<<<<<<<<<<<
@@ -11040,7 +11199,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
   while (1) {
 
-    /* "fastpivot/pivot.pyx":528
+    /* "fastpivot/pivot.pyx":544
  *     cdef double temp
  *     while True:
  *         while vec[i] < x:             # <<<<<<<<<<<<<<
@@ -11051,7 +11210,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_i]) < __pyx_v_x) != 0);
       if (!__pyx_t_1) break;
 
-      /* "fastpivot/pivot.pyx":529
+      /* "fastpivot/pivot.pyx":545
  *     while True:
  *         while vec[i] < x:
  *             i += 1             # <<<<<<<<<<<<<<
@@ -11061,7 +11220,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_v_i = (__pyx_v_i + 1);
     }
 
-    /* "fastpivot/pivot.pyx":530
+    /* "fastpivot/pivot.pyx":546
  *         while vec[i] < x:
  *             i += 1
  *         while vec[j] > x:             # <<<<<<<<<<<<<<
@@ -11072,7 +11231,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_j]) > __pyx_v_x) != 0);
       if (!__pyx_t_1) break;
 
-      /* "fastpivot/pivot.pyx":531
+      /* "fastpivot/pivot.pyx":547
  *             i += 1
  *         while vec[j] > x:
  *             j -= 1             # <<<<<<<<<<<<<<
@@ -11082,7 +11241,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_v_j = (__pyx_v_j - 1);
     }
 
-    /* "fastpivot/pivot.pyx":532
+    /* "fastpivot/pivot.pyx":548
  *         while vec[j] > x:
  *             j -= 1
  *         if i == j:             # <<<<<<<<<<<<<<
@@ -11092,7 +11251,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
     __pyx_t_1 = ((__pyx_v_i == __pyx_v_j) != 0);
     if (__pyx_t_1) {
 
-      /* "fastpivot/pivot.pyx":533
+      /* "fastpivot/pivot.pyx":549
  *             j -= 1
  *         if i == j:
  *             return j             # <<<<<<<<<<<<<<
@@ -11102,7 +11261,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_r = __pyx_v_j;
       goto __pyx_L0;
 
-      /* "fastpivot/pivot.pyx":532
+      /* "fastpivot/pivot.pyx":548
  *         while vec[j] > x:
  *             j -= 1
  *         if i == j:             # <<<<<<<<<<<<<<
@@ -11111,7 +11270,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
     }
 
-    /* "fastpivot/pivot.pyx":535
+    /* "fastpivot/pivot.pyx":551
  *             return j
  *         else:
  *             temp = vec[i]             # <<<<<<<<<<<<<<
@@ -11121,7 +11280,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
     /*else*/ {
       __pyx_v_temp = (__pyx_v_vec[__pyx_v_i]);
 
-      /* "fastpivot/pivot.pyx":536
+      /* "fastpivot/pivot.pyx":552
  *         else:
  *             temp = vec[i]
  *             vec[i] = vec[j]             # <<<<<<<<<<<<<<
@@ -11130,7 +11289,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
       (__pyx_v_vec[__pyx_v_i]) = (__pyx_v_vec[__pyx_v_j]);
 
-      /* "fastpivot/pivot.pyx":537
+      /* "fastpivot/pivot.pyx":553
  *             temp = vec[i]
  *             vec[i] = vec[j]
  *             vec[j] = temp             # <<<<<<<<<<<<<<
@@ -11139,7 +11298,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
       (__pyx_v_vec[__pyx_v_j]) = __pyx_v_temp;
 
-      /* "fastpivot/pivot.pyx":538
+      /* "fastpivot/pivot.pyx":554
  *             vec[i] = vec[j]
  *             vec[j] = temp
  *             if vec[j] == x:             # <<<<<<<<<<<<<<
@@ -11149,7 +11308,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
       __pyx_t_1 = (((__pyx_v_vec[__pyx_v_j]) == __pyx_v_x) != 0);
       if (__pyx_t_1) {
 
-        /* "fastpivot/pivot.pyx":539
+        /* "fastpivot/pivot.pyx":555
  *             vec[j] = temp
  *             if vec[j] == x:
  *                 i += 1             # <<<<<<<<<<<<<<
@@ -11158,7 +11317,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
  */
         __pyx_v_i = (__pyx_v_i + 1);
 
-        /* "fastpivot/pivot.pyx":538
+        /* "fastpivot/pivot.pyx":554
  *             vec[i] = vec[j]
  *             vec[j] = temp
  *             if vec[j] == x:             # <<<<<<<<<<<<<<
@@ -11169,7 +11328,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
     }
   }
 
-  /* "fastpivot/pivot.pyx":524
+  /* "fastpivot/pivot.pyx":540
  *     return med
  * 
  * cdef int partition(vector[double] &vec, int mid, int i, int j):             # <<<<<<<<<<<<<<
@@ -11184,7 +11343,7 @@ static int __pyx_f_9fastpivot_5pivot_partition(std::vector<double>  &__pyx_v_vec
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":541
+/* "fastpivot/pivot.pyx":557
  *                 i += 1
  * 
  * cdef double max_left_cython(vector[double] & vec, int upper_idx):             # <<<<<<<<<<<<<<
@@ -11203,7 +11362,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("max_left_cython", 0);
 
-  /* "fastpivot/pivot.pyx":545
+  /* "fastpivot/pivot.pyx":561
  *     cdef int i
  *     cdef double value
  *     value = vec[0]             # <<<<<<<<<<<<<<
@@ -11212,7 +11371,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
  */
   __pyx_v_value = (__pyx_v_vec[0]);
 
-  /* "fastpivot/pivot.pyx":546
+  /* "fastpivot/pivot.pyx":562
  *     cdef double value
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):             # <<<<<<<<<<<<<<
@@ -11224,7 +11383,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   for (__pyx_t_3 = 1; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "fastpivot/pivot.pyx":547
+    /* "fastpivot/pivot.pyx":563
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:             # <<<<<<<<<<<<<<
@@ -11234,7 +11393,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
     __pyx_t_4 = ((__pyx_v_value < (__pyx_v_vec[__pyx_v_i])) != 0);
     if (__pyx_t_4) {
 
-      /* "fastpivot/pivot.pyx":548
+      /* "fastpivot/pivot.pyx":564
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:
  *             value = vec[i]             # <<<<<<<<<<<<<<
@@ -11243,7 +11402,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
  */
       __pyx_v_value = (__pyx_v_vec[__pyx_v_i]);
 
-      /* "fastpivot/pivot.pyx":547
+      /* "fastpivot/pivot.pyx":563
  *     value = vec[0]
  *     for i in range(1, upper_idx + 1):
  *         if value < vec[i]:             # <<<<<<<<<<<<<<
@@ -11253,7 +11412,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
     }
   }
 
-  /* "fastpivot/pivot.pyx":549
+  /* "fastpivot/pivot.pyx":565
  *         if value < vec[i]:
  *             value = vec[i]
  *     return value             # <<<<<<<<<<<<<<
@@ -11263,7 +11422,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":541
+  /* "fastpivot/pivot.pyx":557
  *                 i += 1
  * 
  * cdef double max_left_cython(vector[double] & vec, int upper_idx):             # <<<<<<<<<<<<<<
@@ -11277,7 +11436,7 @@ static double __pyx_f_9fastpivot_5pivot_max_left_cython(std::vector<double>  &__
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":551
+/* "fastpivot/pivot.pyx":567
  *     return value
  * 
  * cdef double nunique_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11299,7 +11458,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nunique_cython", 0);
 
-  /* "fastpivot/pivot.pyx":555
+  /* "fastpivot/pivot.pyx":571
  *     cdef cset[double] value_set
  *     cdef double n
  *     for k in range(vec.size()):             # <<<<<<<<<<<<<<
@@ -11311,7 +11470,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_k = __pyx_t_3;
 
-    /* "fastpivot/pivot.pyx":556
+    /* "fastpivot/pivot.pyx":572
  *     cdef double n
  *     for k in range(vec.size()):
  *         value_set.insert(vec[k])             # <<<<<<<<<<<<<<
@@ -11322,11 +11481,11 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
       __pyx_v_value_set.insert((__pyx_v_vec[__pyx_v_k]));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 556, __pyx_L1_error)
+      __PYX_ERR(0, 572, __pyx_L1_error)
     }
   }
 
-  /* "fastpivot/pivot.pyx":557
+  /* "fastpivot/pivot.pyx":573
  *     for k in range(vec.size()):
  *         value_set.insert(vec[k])
  *     n = value_set.size()             # <<<<<<<<<<<<<<
@@ -11335,7 +11494,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
  */
   __pyx_v_n = __pyx_v_value_set.size();
 
-  /* "fastpivot/pivot.pyx":558
+  /* "fastpivot/pivot.pyx":574
  *         value_set.insert(vec[k])
  *     n = value_set.size()
  *     return n             # <<<<<<<<<<<<<<
@@ -11345,7 +11504,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   __pyx_r = __pyx_v_n;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":551
+  /* "fastpivot/pivot.pyx":567
  *     return value
  * 
  * cdef double nunique_cython(vector[double] &vec):             # <<<<<<<<<<<<<<
@@ -11362,7 +11521,7 @@ static double __pyx_f_9fastpivot_5pivot_nunique_cython(std::vector<double>  &__p
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":560
+/* "fastpivot/pivot.pyx":576
  *     return n
  * 
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):             # <<<<<<<<<<<<<<
@@ -11404,7 +11563,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg", 0);
 
-  /* "fastpivot/pivot.pyx":562
+  /* "fastpivot/pivot.pyx":578
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -11415,27 +11574,27 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     __pyx_t_1 = std::vector<std::vector<double> > ((__pyx_v_N * __pyx_v_M));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 562, __pyx_L1_error)
+    __PYX_ERR(0, 578, __pyx_L1_error)
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "fastpivot/pivot.pyx":564
+  /* "fastpivot/pivot.pyx":580
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     cdef double[:, :] pivot_arr_return = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     cdef int i, j
  *     cdef double value
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -11443,32 +11602,32 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 564, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_6, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 564, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_t_6, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 580, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_pivot_arr_return = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "fastpivot/pivot.pyx":569
+  /* "fastpivot/pivot.pyx":585
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -11480,7 +11639,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "fastpivot/pivot.pyx":570
+    /* "fastpivot/pivot.pyx":586
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -11495,11 +11654,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_idx_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 570, __pyx_L1_error)
+      __PYX_ERR(0, 586, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_11 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":571
+    /* "fastpivot/pivot.pyx":587
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -11514,11 +11673,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_col_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 571, __pyx_L1_error)
+      __PYX_ERR(0, 587, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_11 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":572
+    /* "fastpivot/pivot.pyx":588
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -11533,11 +11692,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     } else if (unlikely(__pyx_t_11 >= __pyx_v_value_arr.shape[0])) __pyx_t_12 = 0;
     if (unlikely(__pyx_t_12 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_12);
-      __PYX_ERR(0, 572, __pyx_L1_error)
+      __PYX_ERR(0, 588, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_11 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":573
+    /* "fastpivot/pivot.pyx":589
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11547,7 +11706,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     __pyx_t_13 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_13) {
 
-      /* "fastpivot/pivot.pyx":574
+      /* "fastpivot/pivot.pyx":590
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -11558,10 +11717,10 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
         (__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]).push_back(__pyx_v_value);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 574, __pyx_L1_error)
+        __PYX_ERR(0, 590, __pyx_L1_error)
       }
 
-      /* "fastpivot/pivot.pyx":573
+      /* "fastpivot/pivot.pyx":589
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11571,7 +11730,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     }
   }
 
-  /* "fastpivot/pivot.pyx":577
+  /* "fastpivot/pivot.pyx":593
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -11583,7 +11742,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "fastpivot/pivot.pyx":578
+    /* "fastpivot/pivot.pyx":594
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -11595,7 +11754,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
     for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_17; __pyx_t_18+=1) {
       __pyx_v_j = __pyx_t_18;
 
-      /* "fastpivot/pivot.pyx":579
+      /* "fastpivot/pivot.pyx":595
  *     for i in range(N):
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -11604,7 +11763,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
  */
       __pyx_v_value = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "fastpivot/pivot.pyx":580
+      /* "fastpivot/pivot.pyx":596
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 pivot_arr_return[i, j] = value             # <<<<<<<<<<<<<<
@@ -11624,13 +11783,13 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
       } else if (unlikely(__pyx_t_19 >= __pyx_v_pivot_arr_return.shape[1])) __pyx_t_20 = 1;
       if (unlikely(__pyx_t_20 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_20);
-        __PYX_ERR(0, 580, __pyx_L1_error)
+        __PYX_ERR(0, 596, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_11 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_19 * __pyx_v_pivot_arr_return.strides[1]) )) = __pyx_v_value;
     }
   }
 
-  /* "fastpivot/pivot.pyx":582
+  /* "fastpivot/pivot.pyx":598
  *                 pivot_arr_return[i, j] = value
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -11641,7 +11800,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":560
+  /* "fastpivot/pivot.pyx":576
  *     return n
  * 
  * cdef double[:, :] pivot_cython_agg(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg):             # <<<<<<<<<<<<<<
@@ -11671,7 +11830,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg(__Pyx_memvi
   return __pyx_r;
 }
 
-/* "fastpivot/pivot.pyx":584
+/* "fastpivot/pivot.pyx":600
  *     return pivot_arr_return
  * 
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -11714,7 +11873,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pivot_cython_agg_nan", 0);
 
-  /* "fastpivot/pivot.pyx":586
+  /* "fastpivot/pivot.pyx":602
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):
  *     #tick = time.perf_counter()
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)             # <<<<<<<<<<<<<<
@@ -11725,27 +11884,27 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     __pyx_t_1 = std::vector<std::vector<double> > ((__pyx_v_N * __pyx_v_M));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 586, __pyx_L1_error)
+    __PYX_ERR(0, 602, __pyx_L1_error)
   }
   __pyx_v_pivot_arr = __pyx_t_1;
 
-  /* "fastpivot/pivot.pyx":588
+  /* "fastpivot/pivot.pyx":604
  *     cdef vector[vector[double]] pivot_arr = vector[vector[double]](N*M)
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)             # <<<<<<<<<<<<<<
  *     if not fill_zero:
  *         init.fill(np.nan)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_N); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -11753,21 +11912,21 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 588, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 588, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -11775,7 +11934,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   __pyx_v_init = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "fastpivot/pivot.pyx":589
+  /* "fastpivot/pivot.pyx":605
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -11785,18 +11944,18 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   __pyx_t_7 = ((!(__pyx_v_fill_zero != 0)) != 0);
   if (__pyx_t_7) {
 
-    /* "fastpivot/pivot.pyx":590
+    /* "fastpivot/pivot.pyx":606
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:
  *         init.fill(np.nan)             # <<<<<<<<<<<<<<
  *     cdef double[:, :] pivot_arr_return = init
  *     cdef int i, j
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 590, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_init, __pyx_n_s_fill); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 590, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 590, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -11812,12 +11971,12 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     __pyx_t_6 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 590, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 606, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "fastpivot/pivot.pyx":589
+    /* "fastpivot/pivot.pyx":605
  *     cdef vector[double].iterator it
  *     init = np.zeros((N, M), dtype=np.float64)
  *     if not fill_zero:             # <<<<<<<<<<<<<<
@@ -11826,19 +11985,19 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
  */
   }
 
-  /* "fastpivot/pivot.pyx":591
+  /* "fastpivot/pivot.pyx":607
  *     if not fill_zero:
  *         init.fill(np.nan)
  *     cdef double[:, :] pivot_arr_return = init             # <<<<<<<<<<<<<<
  *     cdef int i, j
  *     cdef double value
  */
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dsds_double(__pyx_v_init, PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(0, 607, __pyx_L1_error)
   __pyx_v_pivot_arr_return = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "fastpivot/pivot.pyx":596
+  /* "fastpivot/pivot.pyx":612
  *     #print('cdef and initialize', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):             # <<<<<<<<<<<<<<
@@ -11850,7 +12009,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_k = __pyx_t_11;
 
-    /* "fastpivot/pivot.pyx":597
+    /* "fastpivot/pivot.pyx":613
  *     #tick = time.perf_counter()
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]             # <<<<<<<<<<<<<<
@@ -11865,11 +12024,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     } else if (unlikely(__pyx_t_12 >= __pyx_v_idx_arr.shape[0])) __pyx_t_13 = 0;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
-      __PYX_ERR(0, 597, __pyx_L1_error)
+      __PYX_ERR(0, 613, __pyx_L1_error)
     }
     __pyx_v_i = (*((long *) ( /* dim=0 */ (__pyx_v_idx_arr.data + __pyx_t_12 * __pyx_v_idx_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":598
+    /* "fastpivot/pivot.pyx":614
  *     for k in range(idx_arr.shape[0]):
  *         i = idx_arr[k]
  *         j = col_arr[k]             # <<<<<<<<<<<<<<
@@ -11884,11 +12043,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     } else if (unlikely(__pyx_t_12 >= __pyx_v_col_arr.shape[0])) __pyx_t_13 = 0;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
-      __PYX_ERR(0, 598, __pyx_L1_error)
+      __PYX_ERR(0, 614, __pyx_L1_error)
     }
     __pyx_v_j = (*((long *) ( /* dim=0 */ (__pyx_v_col_arr.data + __pyx_t_12 * __pyx_v_col_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":599
+    /* "fastpivot/pivot.pyx":615
  *         i = idx_arr[k]
  *         j = col_arr[k]
  *         value = value_arr[k]             # <<<<<<<<<<<<<<
@@ -11903,11 +12062,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     } else if (unlikely(__pyx_t_12 >= __pyx_v_value_arr.shape[0])) __pyx_t_13 = 0;
     if (unlikely(__pyx_t_13 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_13);
-      __PYX_ERR(0, 599, __pyx_L1_error)
+      __PYX_ERR(0, 615, __pyx_L1_error)
     }
     __pyx_v_value = (*((double *) ( /* dim=0 */ (__pyx_v_value_arr.data + __pyx_t_12 * __pyx_v_value_arr.strides[0]) )));
 
-    /* "fastpivot/pivot.pyx":600
+    /* "fastpivot/pivot.pyx":616
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11917,7 +12076,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     __pyx_t_7 = ((!(isnan(__pyx_v_value) != 0)) != 0);
     if (__pyx_t_7) {
 
-      /* "fastpivot/pivot.pyx":601
+      /* "fastpivot/pivot.pyx":617
  *         value = value_arr[k]
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)             # <<<<<<<<<<<<<<
@@ -11928,10 +12087,10 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
         (__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]).push_back(__pyx_v_value);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 601, __pyx_L1_error)
+        __PYX_ERR(0, 617, __pyx_L1_error)
       }
 
-      /* "fastpivot/pivot.pyx":602
+      /* "fastpivot/pivot.pyx":618
  *         if not isnan(value):
  *             pivot_arr[i*M + j].push_back(value)
  *             pivot_arr_return[i, j] = 0.0             # <<<<<<<<<<<<<<
@@ -11951,11 +12110,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
       } else if (unlikely(__pyx_t_14 >= __pyx_v_pivot_arr_return.shape[1])) __pyx_t_13 = 1;
       if (unlikely(__pyx_t_13 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_13);
-        __PYX_ERR(0, 602, __pyx_L1_error)
+        __PYX_ERR(0, 618, __pyx_L1_error)
       }
       *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_12 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_14 * __pyx_v_pivot_arr_return.strides[1]) )) = 0.0;
 
-      /* "fastpivot/pivot.pyx":600
+      /* "fastpivot/pivot.pyx":616
  *         j = col_arr[k]
  *         value = value_arr[k]
  *         if not isnan(value):             # <<<<<<<<<<<<<<
@@ -11965,7 +12124,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     }
   }
 
-  /* "fastpivot/pivot.pyx":605
+  /* "fastpivot/pivot.pyx":621
  *     #print('push_back', time.perf_counter() - tick)
  *     #tick = time.perf_counter()
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -11977,7 +12136,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
     __pyx_v_i = __pyx_t_16;
 
-    /* "fastpivot/pivot.pyx":606
+    /* "fastpivot/pivot.pyx":622
  *     #tick = time.perf_counter()
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -11989,7 +12148,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
       __pyx_v_j = __pyx_t_19;
 
-      /* "fastpivot/pivot.pyx":607
+      /* "fastpivot/pivot.pyx":623
  *     for i in range(N):
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])             # <<<<<<<<<<<<<<
@@ -11998,7 +12157,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
  */
       __pyx_v_value = __pyx_v_agg((__pyx_v_pivot_arr[((__pyx_v_i * __pyx_v_M) + __pyx_v_j)]));
 
-      /* "fastpivot/pivot.pyx":608
+      /* "fastpivot/pivot.pyx":624
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:             # <<<<<<<<<<<<<<
@@ -12008,7 +12167,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
       __pyx_t_7 = ((__pyx_v_value != 0.0) != 0);
       if (__pyx_t_7) {
 
-        /* "fastpivot/pivot.pyx":609
+        /* "fastpivot/pivot.pyx":625
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:
  *                     pivot_arr_return[i, j] = value             # <<<<<<<<<<<<<<
@@ -12028,11 +12187,11 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
         } else if (unlikely(__pyx_t_12 >= __pyx_v_pivot_arr_return.shape[1])) __pyx_t_20 = 1;
         if (unlikely(__pyx_t_20 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_20);
-          __PYX_ERR(0, 609, __pyx_L1_error)
+          __PYX_ERR(0, 625, __pyx_L1_error)
         }
         *((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_pivot_arr_return.data + __pyx_t_14 * __pyx_v_pivot_arr_return.strides[0]) ) + __pyx_t_12 * __pyx_v_pivot_arr_return.strides[1]) )) = __pyx_v_value;
 
-        /* "fastpivot/pivot.pyx":608
+        /* "fastpivot/pivot.pyx":624
  *         for j in range(M):
  *                 value = agg(pivot_arr[i*M + j])
  *                 if value != 0:             # <<<<<<<<<<<<<<
@@ -12043,7 +12202,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
     }
   }
 
-  /* "fastpivot/pivot.pyx":611
+  /* "fastpivot/pivot.pyx":627
  *                     pivot_arr_return[i, j] = value
  *     #print('agg and assign', time.perf_counter() - tick)
  *     return pivot_arr_return             # <<<<<<<<<<<<<<
@@ -12054,7 +12213,7 @@ static __Pyx_memviewslice __pyx_f_9fastpivot_5pivot_pivot_cython_agg_nan(__Pyx_m
   __pyx_r = __pyx_v_pivot_arr_return;
   goto __pyx_L0;
 
-  /* "fastpivot/pivot.pyx":584
+  /* "fastpivot/pivot.pyx":600
  *     return pivot_arr_return
  * 
  * cdef double[:, :] pivot_cython_agg_nan(long[:] idx_arr, long[:] col_arr, double[:] value_arr, int N, int M, vec_to_double agg, bool fill_zero):             # <<<<<<<<<<<<<<
@@ -27054,7 +27213,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 284, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 947, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 133, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 148, __pyx_L1_error)
@@ -27072,17 +27231,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "fastpivot/pivot.pyx":155
+  /* "fastpivot/pivot.pyx":156
  *         aggfunc_dict = {value: sorted(aggfunc) for value in values_list}
  *     elif isinstance(aggfunc, dict):
  *         def process(x):             # <<<<<<<<<<<<<<
  *             assert isinstance(x, str) or isinstance(x, list)
  *             if isinstance(x, str):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_x); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_x); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_process, 155, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_process, 156, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 156, __pyx_L1_error)
 
   /* "../../../anaconda3/lib/python3.7/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
@@ -27298,65 +27457,65 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "fastpivot/pivot.pyx":25
+  /* "fastpivot/pivot.pyx":26
  * # TODO: further optimization?
  * # TODO: try multithread when values or aggfunc multiple? or even in general?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
  *     """
  *     Summary:
  */
-  __pyx_tuple__23 = PyTuple_Pack(20, __pyx_n_s_df, __pyx_n_s_index, __pyx_n_s_columns, __pyx_n_s_values, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_dropna, __pyx_n_s_dropna_idxcol, __pyx_n_s_idx_arr, __pyx_n_s_idx_arr_unique, __pyx_n_s_col_arr, __pyx_n_s_col_arr_unique, __pyx_n_s_values_list, __pyx_n_s_aggfunc_dict, __pyx_n_s_keys, __pyx_n_s_pivot_dfs, __pyx_n_s_value, __pyx_n_s_agg_list, __pyx_n_s_agg, __pyx_n_s_pivot_df); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(20, __pyx_n_s_df, __pyx_n_s_index, __pyx_n_s_columns, __pyx_n_s_values, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_dropna, __pyx_n_s_dropna_idxcol, __pyx_n_s_idx_arr, __pyx_n_s_idx_arr_unique, __pyx_n_s_col_arr, __pyx_n_s_col_arr_unique, __pyx_n_s_values_list, __pyx_n_s_aggfunc_dict, __pyx_n_s_keys, __pyx_n_s_pivot_dfs, __pyx_n_s_value, __pyx_n_s_agg_list, __pyx_n_s_agg, __pyx_n_s_pivot_df); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(8, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_table, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(8, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_table, 26, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 26, __pyx_L1_error)
 
-  /* "fastpivot/pivot.pyx":134
+  /* "fastpivot/pivot.pyx":135
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
  *     # standardize format of values, aggfunc.
  *     # standardized means values is a sorted list of strings and
  */
-  __pyx_tuple__25 = PyTuple_Pack(12, __pyx_n_s_values, __pyx_n_s_aggfunc, __pyx_n_s_values_list, __pyx_n_s_aggfunc_dict, __pyx_n_s_process, __pyx_n_s_process, __pyx_n_s_keys, __pyx_n_s_value, __pyx_n_s_agg, __pyx_n_s_value, __pyx_n_s_value, __pyx_n_s_value); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(12, __pyx_n_s_values, __pyx_n_s_aggfunc, __pyx_n_s_values_list, __pyx_n_s_aggfunc_dict, __pyx_n_s_process, __pyx_n_s_process, __pyx_n_s_keys, __pyx_n_s_value, __pyx_n_s_agg, __pyx_n_s_value, __pyx_n_s_value, __pyx_n_s_value); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_process_values_aggfunc, 134, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_process_values_aggfunc, 135, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 135, __pyx_L1_error)
 
-  /* "fastpivot/pivot.pyx":178
+  /* "fastpivot/pivot.pyx":179
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
  * 
  *     n_idx = idx_arr_unique.shape[0]
  */
-  __pyx_tuple__27 = PyTuple_Pack(14, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_dropna, __pyx_n_s_index, __pyx_n_s_columns, __pyx_n_s_idx_arr, __pyx_n_s_col_arr, __pyx_n_s_values_series, __pyx_n_s_idx_arr_unique, __pyx_n_s_col_arr_unique, __pyx_n_s_n_idx, __pyx_n_s_n_col, __pyx_n_s_pivot_arr, __pyx_n_s_pivot_df); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(14, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_dropna, __pyx_n_s_index, __pyx_n_s_columns, __pyx_n_s_idx_arr, __pyx_n_s_col_arr, __pyx_n_s_values_series, __pyx_n_s_idx_arr_unique, __pyx_n_s_col_arr_unique, __pyx_n_s_n_idx, __pyx_n_s_n_col, __pyx_n_s_pivot_arr, __pyx_n_s_pivot_df); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(10, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_compute_table, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(10, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_compute_table, 179, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 179, __pyx_L1_error)
 
-  /* "fastpivot/pivot.pyx":190
+  /* "fastpivot/pivot.pyx":191
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
  *     # computes pivot table and aggregates.
  *     # if fill_value is zero then sum, count, and nunique fill by zero right away since these aggfuncs never have
  */
-  __pyx_tuple__30 = PyTuple_Pack(14, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_idx_arr, __pyx_n_s_col_arr, __pyx_n_s_values_series, __pyx_n_s_n_idx, __pyx_n_s_n_col, __pyx_n_s_values_dtype, __pyx_n_s_numeric, __pyx_n_s_pivot_arr, __pyx_n_s_nans_arr, __pyx_n_s_values_arr, __pyx_n_s__29, __pyx_n_s_arr); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(14, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_idx_arr, __pyx_n_s_col_arr, __pyx_n_s_values_series, __pyx_n_s_n_idx, __pyx_n_s_n_col, __pyx_n_s_values_dtype, __pyx_n_s_numeric, __pyx_n_s_pivot_arr, __pyx_n_s_nans_arr, __pyx_n_s_values_arr, __pyx_n_s__29, __pyx_n_s_arr); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(7, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_compute_agg, 190, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(7, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_compute_agg, 191, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 191, __pyx_L1_error)
 
-  /* "fastpivot/pivot.pyx":241
+  /* "fastpivot/pivot.pyx":242
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
  *     if aggfunc in ['sum', 'count', 'nunique']:
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  */
-  __pyx_tuple__32 = PyTuple_Pack(9, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_dropna, __pyx_n_s_pivot_df, __pyx_n_s_idx_arr, __pyx_n_s_col_arr, __pyx_n_s_values_series, __pyx_n_s_n_idx, __pyx_n_s_n_col); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(9, __pyx_n_s_aggfunc, __pyx_n_s_fill_value, __pyx_n_s_dropna, __pyx_n_s_pivot_df, __pyx_n_s_idx_arr, __pyx_n_s_col_arr, __pyx_n_s_values_series, __pyx_n_s_n_idx, __pyx_n_s_n_col); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 242, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(9, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_drop_fill, 241, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(9, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fastpivot_pivot_pyx, __pyx_n_s_pivot_drop_fill, 242, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 242, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -27823,7 +27982,7 @@ if (!__Pyx_RefNanny) {
 
   /* "fastpivot/pivot.pyx":16
  * #from libc.stdlib cimport malloc
- * #from libcpp.algorithm cimport sort as stdsort
+ * from libcpp.algorithm cimport sort as stdsort
  * import pandas as pd             # <<<<<<<<<<<<<<
  * import numpy as np
  * cimport numpy as np
@@ -27834,7 +27993,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "fastpivot/pivot.pyx":17
- * #from libcpp.algorithm cimport sort as stdsort
+ * from libcpp.algorithm cimport sort as stdsort
  * import pandas as pd
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
@@ -27850,71 +28009,71 @@ if (!__Pyx_RefNanny) {
  * cimport numpy as np
  * import time             # <<<<<<<<<<<<<<
  * 
- * # TODO: faster dropna, fillna?
+ * # TODO: median slow when dupes
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_time, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_time, __pyx_t_1) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":25
+  /* "fastpivot/pivot.pyx":26
  * # TODO: further optimization?
  * # TODO: try multithread when values or aggfunc multiple? or even in general?
  * def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):             # <<<<<<<<<<<<<<
  *     """
  *     Summary:
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_1pivot_table, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_1pivot_table, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_table, __pyx_t_1) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_table, __pyx_t_1) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":134
+  /* "fastpivot/pivot.pyx":135
  *     return pivot_df
  * 
  * def process_values_aggfunc(values, aggfunc):             # <<<<<<<<<<<<<<
  *     # standardize format of values, aggfunc.
  *     # standardized means values is a sorted list of strings and
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_3process_values_aggfunc, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_3process_values_aggfunc, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_values_aggfunc, __pyx_t_1) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_process_values_aggfunc, __pyx_t_1) < 0) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":178
+  /* "fastpivot/pivot.pyx":179
  *     return values_list, aggfunc_dict, keys
  * 
  * def pivot_compute_table(aggfunc, fill_value, dropna, index, columns, idx_arr, col_arr, values_series, idx_arr_unique, col_arr_unique):             # <<<<<<<<<<<<<<
  * 
  *     n_idx = idx_arr_unique.shape[0]
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_compute_table, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_5pivot_compute_table, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_compute_table, __pyx_t_1) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_compute_table, __pyx_t_1) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":190
+  /* "fastpivot/pivot.pyx":191
  *     return pivot_df
  * 
  * def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
  *     # computes pivot table and aggregates.
  *     # if fill_value is zero then sum, count, and nunique fill by zero right away since these aggfuncs never have
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_7pivot_compute_agg, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_7pivot_compute_agg, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_compute_agg, __pyx_t_1) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_compute_agg, __pyx_t_1) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "fastpivot/pivot.pyx":241
+  /* "fastpivot/pivot.pyx":242
  *     return arr
  * 
  * def pivot_drop_fill(aggfunc, fill_value, dropna, pivot_df, idx_arr, col_arr, values_series, n_idx, n_col):             # <<<<<<<<<<<<<<
  *     if aggfunc in ['sum', 'count', 'nunique']:
  *         # these functions can only have nans if (idx, col) doesn't exist so no need to drop. only fill.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_9pivot_drop_fill, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9fastpivot_5pivot_9pivot_drop_fill, NULL, __pyx_n_s_fastpivot_pivot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_drop_fill, __pyx_t_1) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pivot_drop_fill, __pyx_t_1) < 0) __PYX_ERR(0, 242, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "fastpivot/pivot.pyx":1
