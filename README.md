@@ -11,14 +11,12 @@ fastpivot.pivot_sparse
 
 pip install fastpivot
 
-Latest version: 0.1.11
+Latest version: 0.1.12
 
 # Documentation
 
 ~~~text
-
-def fastpivot.pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):
-    """
+fastpivot.pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dropna=True, dropna_idxcol=True):
     A limited, but hopefully fast implementation of pivot table.
     Tends to be faster than pandas.pivot_table when resulting pivot table is sparse.
     The main limitation is that you must include index, columns, values and you must aggregate.
@@ -53,10 +51,8 @@ def fastpivot.pivot_table(df, index, columns, values, aggfunc='mean', fill_value
 
     Returns:
     pivot_df: pandas dataframe
-    """
 
-def fastpivot.pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True):
-    """
+fastpivot.pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True):
     Uses scipy.sparse.coo_matrix to construct a pivot table.
     This uses less memory and is faster in most cases when the resulting pivot_table will be sparse.
     Aggregates by sum. Less functionality overall, but efficient for its usecase.
@@ -72,8 +68,6 @@ def fastpivot.pivot_sparse(df, index, columns, values, fill_value=None, dropna_i
     
     Returns:
     pivot_df: pandas dataframe
-    """
-
 ~~~
 
 # Example
