@@ -71,7 +71,7 @@ fastpivot.pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxco
 ~~~
 
 # Example
-~~~text
+```Python
 import pandas as pd
 import numpy as np
 import time
@@ -111,7 +111,7 @@ tick = time.perf_counter()
 pivot_sparse_df = pivot_sparse(df, index=NAME_IDX, columns=NAME_COL, values=NAME_VALUE, fill_value=0.0)
 print(msg, time.perf_counter() - tick)
 print(pivot_sparse_df)
-~~~
+```
 # Benchmarks
 
 Computed using AMD Ryzen 5 2600 CPU and 16 GB RAM.  
@@ -230,7 +230,7 @@ Winners: fastpivot.pivot_sparse (when applicable), fastpivot.pivot_table
 
 ~~~
 
-Takeaway:
+## Takeaway:
 
 pandas.pivot_table is highly flexible and optimized for input with a large number of rows but few distinct values in the index and column, so that the resulting pivot table is small and each value results from aggregating a large number of values in the original dataframe.  
 
