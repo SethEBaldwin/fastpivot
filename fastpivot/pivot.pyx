@@ -501,7 +501,7 @@ cdef double median_cython_sort(vector[double] &vec):
     cdef double value = 0.0
     cdef double med
     stdsort(vec.begin(), vec.end())
-    idx = vec.size() / 2
+    idx = <int>(vec.size() / 2)
     if vec.size() % 2 == 1:
         med = vec[idx]
     elif vec.size() == 0:
@@ -513,7 +513,7 @@ cdef double median_cython_sort(vector[double] &vec):
 # very slow on duplicates
 cdef double median_cython(vector[double] &vec):
     cdef int k = 0
-    cdef int mid = vec.size() / 2
+    cdef int mid = <int>(vec.size() / 2)
     cdef double med
     cdef int i = 0
     cdef int j = vec.size() - 1
