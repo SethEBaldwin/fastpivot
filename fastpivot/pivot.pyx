@@ -89,20 +89,20 @@ def pivot_table(df, index, columns, values, aggfunc='mean', fill_value=None, dro
 
     if isinstance(index, str):
         #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = df[index].factorize(sort=True, na_sentinel=None)
+        idx_arr, idx_arr_unique = df[index].factorize(sort=True, use_na_sentinel=False)
         #print('factorize idx', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)
+        idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, use_na_sentinel=False)
         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
         #print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
         #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = df[columns].factorize(sort=True, na_sentinel=None)
+        col_arr, col_arr_unique = df[columns].factorize(sort=True, use_na_sentinel=False)
         #print('tuple conversion col', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
+        col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, use_na_sentinel=False)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
     # print('prepare index and columns', time.perf_counter() - tick)
@@ -231,7 +231,7 @@ def pivot_compute_agg(aggfunc, fill_value, idx_arr, col_arr, values_series, n_id
             pivot_arr = pivot_cython_count(idx_arr, col_arr, n_idx, n_col, nans_arr, fill_value == 0)
         elif aggfunc == 'nunique':
             nans_arr = values_series.isna().to_numpy()
-            values_arr, _ = values_series.factorize(na_sentinel=None)
+            values_arr, _ = values_series.factorize(use_na_sentinel=False)
             values_arr = values_arr.astype(np.float64)
             values_arr[nans_arr] = np.nan
             pivot_arr = pivot_cython_agg_nan(idx_arr, col_arr, values_arr, n_idx, n_col, nunique_cython, fill_value == 0)
@@ -501,7 +501,7 @@ cdef double median_cython_sort(vector[double] &vec):
     cdef double value = 0.0
     cdef double med
     stdsort(vec.begin(), vec.end())
-    idx = vec.size() / 2
+    idx = <int>(vec.size() / 2)
     if vec.size() % 2 == 1:
         med = vec[idx]
     elif vec.size() == 0:
@@ -513,7 +513,7 @@ cdef double median_cython_sort(vector[double] &vec):
 # very slow on duplicates
 cdef double median_cython(vector[double] &vec):
     cdef int k = 0
-    cdef int mid = vec.size() / 2
+    cdef int mid = <int>(vec.size() / 2)
     cdef double med
     cdef int i = 0
     cdef int j = vec.size() - 1

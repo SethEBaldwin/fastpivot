@@ -54,20 +54,20 @@ def pivot_sparse(df, index, columns, values, fill_value=None, dropna_idxcol=True
 
     if isinstance(index, str):
         #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = df[index].factorize(sort=True, na_sentinel=None)
+        idx_arr, idx_arr_unique = df[index].factorize(sort=True, use_na_sentinel=False)
         #print('factorize idx', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, na_sentinel=None)
+        idx_arr, idx_arr_unique = pd.MultiIndex.from_frame(df[index]).factorize(sort=True, use_na_sentinel=False)
         idx_arr_unique = pd.MultiIndex.from_tuples(idx_arr_unique, names=index)
         #print('factorize idx', time.perf_counter() - tick1)
     if isinstance(columns, str):
         #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = df[columns].factorize(sort=True, na_sentinel=None)
+        col_arr, col_arr_unique = df[columns].factorize(sort=True, use_na_sentinel=False)
         #print('tuple conversion col', time.perf_counter() - tick1)
     else: #TODO: any speedup here?
         #tick1 = time.perf_counter()
-        col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, na_sentinel=None)
+        col_arr, col_arr_unique = pd.MultiIndex.from_frame(df[columns]).factorize(sort=True, use_na_sentinel=False)
         col_arr_unique = pd.MultiIndex.from_tuples(col_arr_unique, names=columns)
         #print('factorize col', time.perf_counter() - tick1)
     # print('prepare index and columns', time.perf_counter() - tick)
