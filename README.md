@@ -11,7 +11,7 @@ fastpivot.pivot_sparse
 
 pip install fastpivot
 
-Latest version: 0.1.12
+Latest version: 0.1.13
 
 # Documentation
 
